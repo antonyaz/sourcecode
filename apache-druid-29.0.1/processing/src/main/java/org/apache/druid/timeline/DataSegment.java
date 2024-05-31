@@ -53,6 +53,11 @@ import java.util.stream.Collectors;
  * DataSegment's equality ({@link #equals}/{@link #hashCode}) and {@link #compareTo} methods consider only the
  * {@link SegmentId} of the segment.
  */
+/**
+  todo: add by antony at: 2024/5/31
+  DataSegment： 仅是 segment的元数据信息，不可变对象
+ Segment： 包含了一个segment中可以查询的数据体
+*/
 @PublicApi
 public class DataSegment implements Comparable<DataSegment>, Overshadowable<DataSegment>
 {

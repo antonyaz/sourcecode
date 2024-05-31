@@ -83,6 +83,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * org.apache.druid.server.http.SegmentListerResource#getSegments}), to keep sync'd state of segments served by those
  * servers.
  */
+/**
+  todo: add by antony at: 2024/5/31
+  用于发现查询节点，如historicals和realtime peon processes。
+ 通过http服务的方式来查询
+*/
 public class HttpServerInventoryView implements ServerInventoryView, FilteredServerInventoryView
 {
   public static final TypeReference<ChangeRequestsSnapshot<DataSegmentChangeRequest>> SEGMENT_LIST_RESP_TYPE_REF =
@@ -144,6 +149,10 @@ public class HttpServerInventoryView implements ServerInventoryView, FilteredSer
   }
 
 
+  /**
+    todo: add by antony at: 2024/5/31
+    是一个生命周期Lifecycle节点，入口点为 start()
+  */
   @LifecycleStart
   public void start()
   {
@@ -155,6 +164,10 @@ public class HttpServerInventoryView implements ServerInventoryView, FilteredSer
       log.info("Starting executor[%s].", execNamePrefix);
 
       try {
+        /**
+          todo: add by antony at: 2024/5/31
+          创建一个 inventorySync线程池，池子大小为1
+        */
         inventorySyncExecutor = executorFactory.create(
             config.getNumThreads(),
             execNamePrefix + "-%s"

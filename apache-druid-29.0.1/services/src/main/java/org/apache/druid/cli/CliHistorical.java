@@ -85,6 +85,10 @@ public class CliHistorical extends ServerRunnable
     isZkEnabled = ZkEnablementConfig.isEnabled(properties);
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    节点角色仅为 Historical
+  */
   @Override
   protected Set<NodeRole> getNodeRoles(Properties properties)
   {
@@ -95,8 +99,16 @@ public class CliHistorical extends ServerRunnable
   protected List<? extends Module> getModules()
   {
     return ImmutableList.of(
+            /**
+              todo: add by antony at: 2024/5/31
+             ，解析druid.processing 参数 及验证 直接内存
+            */
         new DruidProcessingModule(),
         new QueryableModule(),
+        /**
+          todo: add by antony at: 2024/5/31    
+          配置各种Query
+        */
         new QueryRunnerFactoryModule(),
         new JoinableFactoryModule(),
         new HistoricalServiceModule(),
@@ -107,14 +119,38 @@ public class CliHistorical extends ServerRunnable
           binder.bindConstant().annotatedWith(PruneLastCompactionState.class).to(true);
           binder.bind(ResponseContextConfig.class).toInstance(ResponseContextConfig.newConfig(true));
 
+          /**
+            todo: add by antony at: 2024/5/31    
+            绑定 jetty server，启动web 服务
+          */
           // register Server before binding ZkCoordinator to ensure HTTP endpoints are available immediately
           LifecycleModule.register(binder, Server.class);
+          /**
+            todo: add by antony at: 2024/5/31    
+            用于绑定 Historical节点中的 查询 handler
+          */
           binder.bind(ServerManager.class).in(LazySingleton.class);
+          /**
+            todo: add by antony at: 2024/5/31    
+            维护数据源及状态信息，线程安全的
+          */
           binder.bind(SegmentManager.class).in(LazySingleton.class);
           binder.bind(ZkCoordinator.class).in(ManageLifecycle.class);
+          /**
+            todo: add by antony at: 2024/5/31    
+            绑定 querygSegmentWalker 
+          */
           bindQuerySegmentWalker(binder);
 
+          /**
+            todo: add by antony at: 2024/5/31    
+            绑定serverType节点为 historical
+          */
           binder.bind(ServerTypeConfig.class).toInstance(new ServerTypeConfig(ServerType.HISTORICAL));
+          /**
+            todo: add by antony at: 2024/5/31    
+            绑定jett 查询服务
+          */
           binder.bind(JettyServerInitializer.class).to(QueryJettyServerInitializer.class).in(LazySingleton.class);
           binder.bind(QueryCountStatsProvider.class).to(QueryResource.class);
           Jerseys.addResource(binder, QueryResource.class);

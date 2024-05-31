@@ -27,6 +27,15 @@ import java.util.concurrent.Executor;
 
 /**
  */
+/**
+  todo: add by antony at: 2024/5/31
+  不是很好翻译这个名称
+ 可以理解为接口回调通知
+ 1、集群中一个server被移除的回调
+ 2、集群中一个server中segment被操作后(加载、移除、schema被通知、segmentView初始化)的回调
+
+ 目前只有一个http的实现类
+*/
 public interface ServerView
 {
   void registerServerRemovedCallback(Executor exec, ServerRemovedCallback callback);
@@ -38,6 +47,10 @@ public interface ServerView
     UNREGISTER,
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    server移除后的回调
+  */
   interface ServerRemovedCallback
   {
     /**
@@ -57,6 +70,15 @@ public interface ServerView
     CallbackAction serverRemoved(DruidServer server);
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    segment的系列回调
+   1、在一个server中新增加segments回调
+   2、在一个server中移除segments的回调
+   3、segmentView初始化后的回调
+   4、当segment schema 被announce的回调
+   回调的返回结果就是 或者 继续 或者 未注册
+  */
   interface SegmentCallback
   {
     /**

@@ -311,6 +311,10 @@ public class SqlSegmentsMetadataManager implements SegmentsMetadataManager
       final long localStartOrder = currentStartPollingOrder;
 
       periodicPollTaskFuture = exec.scheduleWithFixedDelay(
+              /**
+                todo: add by antony at: 2024/5/31
+                核心调用点，创建了pool的task
+              */
           createPollTaskForStartOrder(localStartOrder, periodicDatabasePoll),
           0,
           periodicPollDelay.getMillis(),
@@ -330,6 +334,10 @@ public class SqlSegmentsMetadataManager implements SegmentsMetadataManager
     }
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+   开启一个单线程来执行populateUsedFlagLastUpdated
+  */
   @Override
   public void populateUsedFlagLastUpdatedAsync()
   {
@@ -455,6 +463,10 @@ public class SqlSegmentsMetadataManager implements SegmentsMetadataManager
       try {
         if (startOrder == currentStartPollingOrder) {
           periodicDatabasePoll.lastPollStartTimestampInMs = System.currentTimeMillis();
+          /**
+            todo: add by antony at: 2024/5/31
+            核心点在与 poll
+          */
           poll();
           periodicDatabasePoll.firstPollCompletionFuture.complete(null);
           latestDatabasePoll = periodicDatabasePoll;

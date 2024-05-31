@@ -159,12 +159,20 @@ public class ForkingTaskRunner
     );
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    入口方法
+  */
   @Override
   public ListenableFuture<TaskStatus> run(final Task task)
   {
     synchronized (tasks) {
       tasks.computeIfAbsent(
           task.getId(), k ->
+                      /**
+                        todo: add by antony at: 2024/5/31
+                        包含了task任务自身及 运行的结果 statusFuture
+                      */
           new ForkingTaskRunnerWorkItem(
             task,
             exec.submit(
@@ -174,6 +182,10 @@ public class ForkingTaskRunner
                 {
                   final TaskStorageDirTracker.StorageSlot storageSlot;
                   try {
+                    /**
+                      todo: add by antony at: 2024/5/31
+                      1、获取storageSlot 存储的槽位
+                    */
                     storageSlot = getTracker().pickStorageSlot(task.getId());
                   }
                   catch (RuntimeException e) {
@@ -184,6 +196,10 @@ public class ForkingTaskRunner
                     );
                   }
 
+                  /**
+                    todo: add by antony at: 2024/5/31
+                    2、创建系列文件夹来存储任务&日志等信息
+                  */
                   final File taskDir = new File(storageSlot.getDirectory(), task.getId());
                   final String attemptId = String.valueOf(getNextAttemptID(taskDir));
                   final File attemptDir = Paths.get(taskDir.getAbsolutePath(), "attempt", attemptId).toFile();
@@ -206,6 +222,10 @@ public class ForkingTaskRunner
                   try {
                     final Closer closer = Closer.create();
                     try {
+                      /**
+                        todo: add by antony at: 2024/5/31
+                        创建对应的task 文件
+                      */
                       final File taskFile = new File(taskDir, "task.json");
                       final File statusFile = new File(attemptDir, "status.json");
                       final File logFile = new File(taskDir, "log");
@@ -213,6 +233,10 @@ public class ForkingTaskRunner
 
                       // time to adjust process holders
                       synchronized (tasks) {
+                        /**
+                          todo: add by antony at: 2024/5/31
+                          3、获取单个task对象
+                        */
                         final ForkingTaskRunnerWorkItem taskWorkItem = tasks.get(task.getId());
 
                         if (taskWorkItem == null) {
@@ -231,6 +255,10 @@ public class ForkingTaskRunner
                           throw new ISE("TaskInfo already has processHolder for task[%s]!", task.getId());
                         }
 
+                        /**
+                          todo: add by antony at: 2024/5/31
+                          4、组装运行task进程所需要的command 命令
+                        */
                         final CommandListBuilder command = new CommandListBuilder();
                         final String taskClasspath;
                         if (task.getClasspathPrefix() != null && !task.getClasspathPrefix().isEmpty()) {
@@ -387,6 +415,10 @@ public class ForkingTaskRunner
                             "Running command: %s",
                             getMaskedCommand(startupLoggingConfig.getMaskProperties(), command.getCommandList())
                         );
+                        /**
+                          todo: add by antony at: 2024/5/31
+                          5、执行task进程
+                        */
                         taskWorkItem.processHolder = runTaskProcess(command.getCommandList(), logFile, taskLocation);
 
                         processHolder = taskWorkItem.processHolder;
@@ -401,6 +433,10 @@ public class ForkingTaskRunner
                       );
 
                       LOGGER.info("Logging task %s output to: %s", task.getId(), logFile);
+                      /**
+                        todo: add by antony at: 2024/5/31
+                        6、等待task执行结果
+                      */
                       final int exitCode = waitForTaskProcessToComplete(task, processHolder, logFile, reportsFile);
                       final TaskStatus status;
                       if (exitCode == 0) {
@@ -441,6 +477,10 @@ public class ForkingTaskRunner
                   finally {
                     try {
                       synchronized (tasks) {
+                        /**
+                          todo: add by antony at: 2024/5/31
+                          7、执行task完毕后，结果处理
+                        */
                         final ForkingTaskRunnerWorkItem taskWorkItem = tasks.remove(task.getId());
                         if (taskWorkItem != null && taskWorkItem.processHolder != null) {
                           taskWorkItem.processHolder.shutdown();
@@ -482,6 +522,10 @@ public class ForkingTaskRunner
             )
           )
       );
+      /**
+        todo: add by antony at: 2024/5/31
+        8、保存运行中的task
+      */
       saveRunningTasks();
       return tasks.get(task.getId()).getResult();
     }
@@ -491,6 +535,10 @@ public class ForkingTaskRunner
   ProcessHolder runTaskProcess(List<String> command, File logFile, TaskLocation taskLocation) throws IOException
   {
     return new ProcessHolder(
+            /**
+              todo: add by antony at: 2024/5/31
+              创建  bProcessBuilder 对象来执行 command
+            */
         new ProcessBuilder(ImmutableList.copyOf(command)).redirectErrorStream(true).start(),
         logFile,
         taskLocation

@@ -152,6 +152,10 @@ import java.util.concurrent.ExecutorService;
     name = "coordinator",
     description = "Runs the Coordinator, see https://druid.apache.org/docs/latest/Coordinator.html for a description."
 )
+/**
+  todo: add by antony at: 2024/5/31
+  druid 核心组件之一-协调器
+*/
 public class CliCoordinator extends ServerRunnable
 {
   private static final Logger log = new Logger(CliCoordinator.class);
@@ -171,6 +175,10 @@ public class CliCoordinator extends ServerRunnable
   public void configure(Properties properties)
   {
     this.properties = properties;
+    /**
+      todo: add by antony at: 2024/5/31
+      是否需要接管overlord组件
+    */
     beOverlord = isOverlord(properties);
     isSegmentMetadataCacheEnabled = isSegmentMetadataCacheEnabled(properties);
 
@@ -182,6 +190,11 @@ public class CliCoordinator extends ServerRunnable
   @Override
   protected Set<NodeRole> getNodeRoles(Properties properties)
   {
+    /**
+      todo: add by antony at: 2024/5/31
+      根据是否需要接管overlord来返回节点角色
+     如果接管的话，返回COORDINATOR和OVERLORD，单节点部署两节点服务
+    */
     return isOverlord(properties)
            ? ImmutableSet.of(NodeRole.COORDINATOR, NodeRole.OVERLORD)
            : ImmutableSet.of(NodeRole.COORDINATOR);
@@ -192,9 +205,24 @@ public class CliCoordinator extends ServerRunnable
   {
     List<Module> modules = new ArrayList<>();
 
+    /**
+      todo: add by antony at: 2024/5/31
+      启动jetty服务
+    */
     modules.add(JettyHttpClientModule.global());
 
+    /**
+      todo: add by antony at: 2024/5/31
+      是否需要开启segment的元数据缓存
+     开启后有两种serverViewType
+      1. http
+      2. datasource
+    */
     if (isSegmentMetadataCacheEnabled) {
+      /**
+        todo: add by antony at: 2024/5/31
+        获取serverViewType
+      */
       String serverViewType = (String) properties.getOrDefault(
           ServerViewModule.SERVERVIEW_TYPE_PROPERTY,
           ServerViewModule.DEFAULT_SERVERVIEW_TYPE
@@ -224,6 +252,10 @@ public class CliCoordinator extends ServerRunnable
           @Override
           public void configure(Binder binder)
           {
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定组件的基础信息
+            */
             binder.bindConstant()
                   .annotatedWith(Names.named("serviceName"))
                   .to(TieredBrokerConfig.DEFAULT_COORDINATOR_SERVICE_NAME);
@@ -246,13 +278,26 @@ public class CliCoordinator extends ServerRunnable
             );
             JsonConfigProvider.bind(binder, "druid.coordinator.segmentMetadataCache", SegmentMetadataCacheConfig.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定api服务中的跳转过滤器
+            */
             binder.bind(RedirectFilter.class).in(LazySingleton.class);
+            /**
+              todo: add by antony at: 2024/5/31
+              根据是否需要接管overlord服务，来控制请求overlord api服务时的跳转
+            */
             if (beOverlord) {
               binder.bind(RedirectInfo.class).to(CoordinatorOverlordRedirectInfo.class).in(LazySingleton.class);
             } else {
               binder.bind(RedirectInfo.class).to(CoordinatorRedirectInfo.class).in(LazySingleton.class);
             }
 
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定 segments  ServerView of coordinator for the state of segments being loaded in the cluster.
+             启动一个单线程，来接受一个server中segment 增加&移除&schema初始化&schema发布 等的回调处理，及 server移除后的回调
+            */
             LifecycleModule.register(binder, CoordinatorServerView.class);
 
             if (!isSegmentMetadataCacheEnabled) {
@@ -260,26 +305,72 @@ public class CliCoordinator extends ServerRunnable
               binder.bind(DirectDruidClientFactory.class).toProvider(Providers.of(null));
             }
 
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定 segments 的元数据管理器，目前仅sql版本的视线
+             SegmentsMetadataManager： 位于coordinator的内存中
+             MetadataSegmentView： 位于broker的内存中
+
+            */
             binder.bind(SegmentsMetadataManager.class)
                   .toProvider(SegmentsMetadataManagerProvider.class)
                   .in(ManageLifecycle.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定 metaData 的rule retention管理器，目前仅sql版本的实现
+            */
             binder.bind(MetadataRuleManager.class)
                   .toProvider(MetadataRuleManagerProvider.class)
                   .in(ManageLifecycle.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定 lookup  协调管理器
+            */
             binder.bind(LookupCoordinatorManager.class).in(LazySingleton.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定 协调器的动态配置管理器 dynamicConfig
+            */
             binder.bind(CoordinatorConfigManager.class);
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定coordinator组件中的所有使用到的元数据管理器
+             AuditManager auditManager,
+             CoordinatorConfigManager configManager,
+             SegmentsMetadataManager segmentsMetadataManager,
+             MetadataSupervisorManager metadataSupervisorManager,
+             MetadataRuleManager metadataRuleManager,
+             IndexerMetadataStorageCoordinator storageCoordinator
+            */
             binder.bind(MetadataManager.class);
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定  coordinator 核心组件
+             这是一个Lifecycye组件，需要注册到LifecycleModule组件中，入口方法 start()
+            */
             binder.bind(DruidCoordinator.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              注册到 lifecycle组件中
+            */
             LifecycleModule.register(binder, MetadataStorage.class);
             LifecycleModule.register(binder, DruidCoordinator.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定  jetty server的初始化
+            */
             binder.bind(JettyServerInitializer.class)
                   .to(CoordinatorJettyServerInitializer.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              增加 基于jetty的 系列 api服务接口
+            */
             Jerseys.addResource(binder, CoordinatorResource.class);
             Jerseys.addResource(binder, CompactionResource.class);
             Jerseys.addResource(binder, CoordinatorDynamicConfigsResource.class);
@@ -294,7 +385,16 @@ public class CliCoordinator extends ServerRunnable
             Jerseys.addResource(binder, ClusterResource.class);
             Jerseys.addResource(binder, HttpServerInventoryViewResource.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              注册 jetty的web server 到lifecycle组件中，来启动webserver
+            */
             LifecycleModule.register(binder, Server.class);
+
+            /**
+              todo: add by antony at: 2024/5/31
+              注册 druid中已经接入的数据源到 lifecycle组件中
+            */
             LifecycleModule.register(binder, DataSourcesResource.class);
 
             if (properties.containsKey("druid.coordinator.merge.on")) {
@@ -310,6 +410,10 @@ public class CliCoordinator extends ServerRunnable
             //TODO: make this configurable when there are multiple search policies
             binder.bind(CompactionSegmentSearchPolicy.class).to(NewestSegmentFirstPolicy.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              发布公告
+            */
             bindAnnouncer(
                 binder,
                 Coordinator.class,
@@ -319,6 +423,10 @@ public class CliCoordinator extends ServerRunnable
             Jerseys.addResource(binder, SelfDiscoveryResource.class);
             LifecycleModule.registerKey(binder, Key.get(SelfDiscoveryResource.class));
 
+            /**
+              todo: add by antony at: 2024/5/31
+              如果不接管overlord组件时
+            */
             if (!beOverlord) {
               // These are needed to deserialize SupervisorSpec for Supervisor Auto Cleanup
               binder.bind(TaskStorage.class).toProvider(Providers.of(null));

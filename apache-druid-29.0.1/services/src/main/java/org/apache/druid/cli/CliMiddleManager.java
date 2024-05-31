@@ -97,6 +97,10 @@ import java.util.Set;
     name = "middleManager",
     description = "Runs a Middle Manager, this is a \"task\" node used as part of the remote indexing service, see https://druid.apache.org/docs/latest/design/middlemanager.html for a description"
 )
+/**
+  todo: add by antony at: 2024/5/31
+  主要负责用于数据的接入
+*/
 public class CliMiddleManager extends ServerRunnable
 {
   private static final Logger log = new Logger(CliMiddleManager.class);
@@ -111,9 +115,17 @@ public class CliMiddleManager extends ServerRunnable
   @Inject
   public void configure(Properties properties)
   {
+    /**
+      todo: add by antony at: 2024/5/31
+      是否已开启zk
+    */
     isZkEnabled = ZkEnablementConfig.isEnabled(properties);
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    该组件的角色仅为 MidlleManager
+  */
   @Override
   protected Set<NodeRole> getNodeRoles(Properties properties)
   {
@@ -124,28 +136,56 @@ public class CliMiddleManager extends ServerRunnable
   protected List<? extends Module> getModules()
   {
     return ImmutableList.of(
+            /**
+              todo: add by antony at: 2024/5/31
+              组件基本信息
+            */
         new MiddleManagerServiceModule(),
         new Module()
         {
           @Override
           public void configure(Binder binder)
           {
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定组件信息
+            */
             binder.bindConstant().annotatedWith(Names.named("serviceName")).to("druid/middlemanager");
             binder.bindConstant().annotatedWith(Names.named("servicePort")).to(8091);
             binder.bindConstant().annotatedWith(Names.named("tlsServicePort")).to(8291);
             binder.bindConstant().annotatedWith(PruneLastCompactionState.class).to(true);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              配置数据拉取任务的RunnerConfig
+            */
             IndexingServiceModuleHelper.configureTaskRunnerConfigs(binder);
 
             JsonConfigProvider.bind(binder, "druid.indexer.task", TaskConfig.class);
             JsonConfigProvider.bind(binder, "druid.worker", WorkerConfig.class);
             binder.bind(RetryPolicyFactory.class).in(LazySingleton.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              绑定 ForkingTaskRunner， 核心点
+             以进程的方式来执行
+             1、获取执行task所需要的槽位
+             2、提交该task及对应的task的statusFuture
+             3、创建该task对应的文件夹及文件
+             4、组装运行该task所需要的command 命令，包含了 add-exports、javaopts、系统环境变量、属性对象、jvm参数、指定的参数、任务运行参数等来启动 internal peon
+             5、等待task执行结果
+             6、执行task完毕后，事后处理
+             7、保存运行中的任务列表
+            */
             binder.bind(TaskRunner.class).to(ForkingTaskRunner.class);
             binder.bind(ForkingTaskRunner.class).in(ManageLifecycle.class);
             binder.bind(WorkerTaskCountStatsProvider.class).to(ForkingTaskRunner.class);
 
             binder.bind(ParallelIndexSupervisorTaskClientProvider.class).toProvider(Providers.of(null));
+            /**
+              todo: add by antony at: 2024/5/31
+              执行并行索引时 intermediate data 执行 shuffle的客户端
+            */
             binder.bind(ShuffleClient.class).toProvider(Providers.of(null));
             binder.bind(ChatHandlerProvider.class).toProvider(Providers.of(new NoopChatHandlerProvider()));
             PolyBind.createChoice(
@@ -162,16 +202,36 @@ public class CliMiddleManager extends ServerRunnable
                 .in(LazySingleton.class);
             binder.bind(DropwizardRowIngestionMetersFactory.class).in(LazySingleton.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              binder中来安装相关 workerMgr 组件
+            */
             binder.install(makeWorkerManagementModule(isZkEnabled));
 
+            /**
+              todo: add by antony at: 2024/5/31
+              binder中来绑定 jetty 的 web接口
+            */
             binder.bind(JettyServerInitializer.class)
                   .to(MiddleManagerJettyServerInitializer.class)
                   .in(LazySingleton.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              用来创建及管理 Appenderator 对象
+             AppenderatorsManager 主要
+             1、用于当运行在 peon中及 CliIndexer进程中的任务在需要Appenderator时
+             2、用于创建需要在读取Appenderator中所包含的数据的 QueryRunner实例时
+             这个对象中的方法可多线程来调用
+            */
             binder.bind(AppenderatorsManager.class)
                   .to(DummyForInjectionAppenderatorsManager.class)
                   .in(LazySingleton.class);
 
+            /**
+              todo: add by antony at: 2024/5/31
+              启动jetty web server
+            */
             LifecycleModule.register(binder, Server.class);
 
             bindAnnouncer(
@@ -242,7 +302,15 @@ public class CliMiddleManager extends ServerRunnable
         new ShuffleModule(),
         new IndexingServiceFirehoseModule(),
         new IndexingServiceInputSourceModule(),
+            /**
+              todo: add by antony at: 2024/5/31
+              indexingServiceTask的日志模块
+            */
         new IndexingServiceTaskLogsModule(),
+            /**
+              todo: add by antony at: 2024/5/31
+              indexingService的调优模块
+            */
         new IndexingServiceTuningConfigModule(),
         new InputSourceModule(),
         new LookupSerdeModule()

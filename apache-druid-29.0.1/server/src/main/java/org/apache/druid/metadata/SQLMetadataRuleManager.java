@@ -190,6 +190,10 @@ public class SQLMetadataRuleManager implements MetadataRuleManager
       currentStartOrder = startCount;
       long localStartedOrder = currentStartOrder;
 
+      /**
+        todo: add by antony at: 2024/5/31
+        开启一个线程来执行
+      */
       exec = Execs.scheduledSingleThreaded("DatabaseRuleManager-Exec--%d");
 
       createDefaultRule(dbi, getRulesTable(), config.getDefaultRule(), jsonMapper);
@@ -200,6 +204,10 @@ public class SQLMetadataRuleManager implements MetadataRuleManager
               // See https://github.com/apache/druid/issues/6028
               synchronized (lock) {
                 if (localStartedOrder == currentStartOrder) {
+                  /**
+                    todo: add by antony at: 2024/5/31
+                    开始polll
+                  */
                   poll();
                 }
               }
@@ -235,7 +243,7 @@ public class SQLMetadataRuleManager implements MetadataRuleManager
   public void poll()
   {
     try {
-    
+
       Map<String, List<Rule>> newRulesMap =
           dbi.withHandle(
               handle -> handle.createQuery(

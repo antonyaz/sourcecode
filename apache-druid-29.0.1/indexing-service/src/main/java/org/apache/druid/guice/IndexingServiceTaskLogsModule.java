@@ -38,6 +38,10 @@ public class IndexingServiceTaskLogsModule implements Module
   @Override
   public void configure(Binder binder)
   {
+    /**
+      todo: add by antony at: 2024/5/31
+      基于 参数来  多态绑定
+    */
     PolyBind.createChoice(binder, "druid.indexer.logs.type", Key.get(TaskLogs.class), Key.get(FileTaskLogs.class));
     JsonConfigProvider.bind(binder, "druid.indexer.logs", FileTaskLogsConfig.class);
 
@@ -45,6 +49,10 @@ public class IndexingServiceTaskLogsModule implements Module
     taskLogBinder.addBinding("noop").to(NoopTaskLogs.class).in(LazySingleton.class);
     taskLogBinder.addBinding("file").to(FileTaskLogs.class).in(LazySingleton.class);
     binder.bind(NoopTaskLogs.class).in(LazySingleton.class);
+    /**
+      todo: add by antony at: 2024/5/31
+      file task log的文件操作
+    */
     binder.bind(FileTaskLogs.class).in(LazySingleton.class);
 
     binder.bind(TaskLogPusher.class).to(TaskLogs.class);

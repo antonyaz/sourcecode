@@ -52,6 +52,10 @@ import java.util.function.Function;
 /**
  * ServerView of coordinator for the state of segments being loaded in the cluster.
  */
+/**
+  todo: add by antony at: 2024/5/31
+  在druid集群中，需要加载的segments的 状态 的 serverView
+*/
 @ManageLifecycle
 public class CoordinatorServerView implements InventoryView
 {
@@ -65,6 +69,10 @@ public class CoordinatorServerView implements InventoryView
   // In parallel, it is used by {@link org.apache.druid.segment.metadata.SegmentMetadataQuerySegmentWalker} to run queries.
   private final ConcurrentMap<String, QueryRunner> serverQueryRunners;
   private final ConcurrentMap<TimelineCallback, Executor> timelineCallbacks;
+  /**
+    todo: add by antony at: 2024/5/31
+
+  */
   private final ServerInventoryView baseView;
   private final CoordinatorSegmentWatcherConfig segmentWatcherConfig;
   private final CountDownLatch initialized = new CountDownLatch(1);
@@ -80,6 +88,10 @@ public class CoordinatorServerView implements InventoryView
       @Nullable final DirectDruidClientFactory druidClientFactory
   )
   {
+    /**
+      todo: add by antony at: 2024/5/31
+      目前仅http版本的实现
+    */
     this.baseView = baseView;
     this.segmentWatcherConfig = segmentWatcherConfig;
     this.emitter = emitter;
@@ -89,6 +101,10 @@ public class CoordinatorServerView implements InventoryView
     this.serverQueryRunners = new ConcurrentHashMap<>();
     this.timelineCallbacks = new ConcurrentHashMap<>();
 
+    /**
+      todo: add by antony at: 2024/5/31
+      单个的线程来处理segment的各种操作后的回调使用
+    */
     ExecutorService exec = Execs.singleThreaded("CoordinatorServerView-%s");
     baseView.registerSegmentCallback(
         exec,
@@ -97,6 +113,10 @@ public class CoordinatorServerView implements InventoryView
           @Override
           public ServerView.CallbackAction segmentAdded(DruidServerMetadata server, DataSegment segment)
           {
+            /**
+              todo: add by antony at: 2024/5/31
+              在server中新增加segment后的回调
+            */
             serverAddedSegment(server, segment);
             return ServerView.CallbackAction.CONTINUE;
           }
@@ -104,6 +124,10 @@ public class CoordinatorServerView implements InventoryView
           @Override
           public ServerView.CallbackAction segmentRemoved(final DruidServerMetadata server, DataSegment segment)
           {
+            /**
+              todo: add by antony at: 2024/5/31
+              在server中移除了segment后的回调
+            */
             serverRemovedSegment(server, segment);
             return ServerView.CallbackAction.CONTINUE;
           }
@@ -111,6 +135,11 @@ public class CoordinatorServerView implements InventoryView
           @Override
           public ServerView.CallbackAction segmentViewInitialized()
           {
+            /**
+              todo: add by antony at: 2024/5/31
+              segmentView初始化后的回调
+             来回到 timeline
+            */
             initialized.countDown();
             runTimelineCallbacks(TimelineCallback::timelineInitialized);
             return ServerView.CallbackAction.CONTINUE;
@@ -125,6 +154,10 @@ public class CoordinatorServerView implements InventoryView
         }
     );
 
+    /**
+      todo: add by antony at: 2024/5/31
+      注册server被移除后的回调
+    */
     baseView.registerServerRemovedCallback(
         exec,
         new ServerView.ServerRemovedCallback()
@@ -132,6 +165,10 @@ public class CoordinatorServerView implements InventoryView
           @Override
           public ServerView.CallbackAction serverRemoved(DruidServer server)
           {
+            /**
+              todo: add by antony at: 2024/5/31
+              处理移除一个server后的逻辑
+            */
             removeServer(server);
             return ServerView.CallbackAction.CONTINUE;
           }
@@ -139,6 +176,12 @@ public class CoordinatorServerView implements InventoryView
     );
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    这是一个Lifecycle节点，入口为start()
+    在start()中，会等待initialized的回调，即segmentView初始化完成
+
+  */
   @LifecycleStart
   public void start() throws InterruptedException
   {
@@ -155,41 +198,84 @@ public class CoordinatorServerView implements InventoryView
     }
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    当server移除时，执行两件事
+   1、移除该server中的所有的segment
+   2、移除缓存中该server对应的QueryRunner，确保不在执行相关查询操作
+  */
   private void removeServer(DruidServer server)
   {
+    /**
+      todo: add by antony at: 2024/5/31
+      遍历待移除的server节点中的所有的segment
+      并调用serverRemovedSegment()来移除
+
+    */
     for (DataSegment segment : server.iterateAllSegments()) {
       serverRemovedSegment(server.getMetadata(), segment);
     }
+    /**
+      todo: add by antony at: 2024/5/31
+      从server与QueryRunner的映射关系中移除当前的server
+    */
     // remove QueryRunner for the server
     serverQueryRunners.remove(server.getName());
   }
 
   private void serverAddedSegment(final DruidServerMetadata server, final DataSegment segment)
   {
+    /**
+      todo: add by antony at: 2024/5/31
+      1、先获取segId
+    */
     SegmentId segmentId = segment.getId();
     synchronized (lock) {
       log.debug("Adding segment[%s] for server[%s]", segment, server);
 
+      /**
+        todo: add by antony at: 2024/5/31
+        2、根据segId来获取对应的 segmentLoadingInfo
+       如果获取不到，就初始化一个新的loadingInfo
+      */
       SegmentLoadInfo segmentLoadInfo = segmentLoadInfos.get(segmentId);
       if (segmentLoadInfo == null) {
         // servers escape the scope of this object so use ConcurrentSet
         segmentLoadInfo = new SegmentLoadInfo(segment);
 
+        /**
+          todo: add by antony at: 2024/5/31
+          3、根据该segment对应的DataSource来获取对应的timeline
+         如果timeline为空，则初始化一个新的timeline，并将初始化后的timeline添加到对应的缓存中
+        */
         VersionedIntervalTimeline<String, SegmentLoadInfo> timeline = timelines.get(segment.getDataSource());
         if (timeline == null) {
           timeline = new VersionedIntervalTimeline<>(Ordering.natural());
           timelines.put(segment.getDataSource(), timeline);
         }
 
+        /**
+          todo: add by antony at: 2024/5/31
+          4、完善初始化后的timeline信息，包含时间段、版本、分区信息等
+        */
         timeline.add(
             segment.getInterval(),
             segment.getVersion(),
             segment.getShardSpec().createChunk(segmentLoadInfo)
         );
+        /**
+          todo: add by antony at: 2024/5/31
+          5、将segmentLoadingInfo添加到缓存中
+        */
         segmentLoadInfos.put(segmentId, segmentLoadInfo);
       }
 
       if (druidClientFactory != null) {
+        /**
+          todo: add by antony at: 2024/5/31
+          6、根据server的名称来获取对应的QueryRunner
+         如果queryRuner为空，则创建一个QueryRunner并更新到映射关系中
+        */
         QueryRunner queryRunner = serverQueryRunners.get(server.getName());
         if (queryRunner == null) {
           DruidServer inventoryValue = baseView.getInventoryValue(server.getName());
@@ -206,8 +292,16 @@ public class CoordinatorServerView implements InventoryView
         }
       }
 
+      /**
+        todo: add by antony at: 2024/5/31
+        7、关联创建的loadingInfo和server
+      */
       segmentLoadInfo.addServer(server);
 
+      /**
+        todo: add by antony at: 2024/5/31
+        8、执行timeline的回调
+      */
       // segment added notification
       runTimelineCallbacks(callback -> callback.segmentAdded(server, segment));
     }
@@ -215,23 +309,43 @@ public class CoordinatorServerView implements InventoryView
 
   private void serverRemovedSegment(DruidServerMetadata server, DataSegment segment)
   {
+    /**
+      todo: add by antony at: 2024/5/31
+      1、先获取待移除的segId
+    */
     SegmentId segmentId = segment.getId();
 
     synchronized (lock) {
       log.debug("Removing segment[%s] from server[%s].", segmentId, server);
 
+      /**
+        todo: add by antony at: 2024/5/31
+        2、获取对应的segmentLoadingInfo，如果loadingInfo为空则直接返回
+      */
       final SegmentLoadInfo segmentLoadInfo = segmentLoadInfos.get(segmentId);
       if (segmentLoadInfo == null) {
         log.warn("Told to remove non-existant segment[%s]", segmentId);
         return;
       }
 
+      /**
+        todo: add by antony at: 2024/5/31
+        3、移除loadingInfo中绑定的server
+      */
       if (segmentLoadInfo.removeServer(server)) {
         // server segment removed notification
+        /**
+          todo: add by antony at: 2024/5/31
+          4、回调timeline
+        */
         runTimelineCallbacks(callback -> callback.serverSegmentRemoved(server, segment));
       }
 
       if (segmentLoadInfo.isEmpty()) {
+        /**
+          todo: add by antony at: 2024/5/31
+          5、获取缓存timelines中对应该segment的timeline，并执行移除操作
+        */
         VersionedIntervalTimeline<String, SegmentLoadInfo> timeline = timelines.get(segment.getDataSource());
         segmentLoadInfos.remove(segmentId);
 

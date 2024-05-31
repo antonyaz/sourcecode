@@ -55,6 +55,14 @@ import java.util.stream.Collectors;
  *   <li>Initializes the {@link BalancerStrategy} for the run.</li>
  * </ul>
  */
+/**
+  todo: add by antony at: 2024/5/31
+  主要做的事情如下：
+  1. 创建一个不可变的DruidCluster，其中包含ServerHolder，代表集群中当前的服务器状态。
+  2. 启动和停止新出现的服务器的负载。
+  3. 取消所有正在进行的服务器的负载。这用于确保在RunRules duty之后，在集群中分配给服务器的所有过度复制的段。
+  4. 初始化运行时的平衡策略。
+*/
 public class PrepareBalancerAndLoadQueues implements CoordinatorDuty
 {
   private static final Logger log = new Logger(PrepareBalancerAndLoadQueues.class);
@@ -87,7 +95,15 @@ public class PrepareBalancerAndLoadQueues implements CoordinatorDuty
     final SegmentLoadingConfig segmentLoadingConfig
         = SegmentLoadingConfig.create(dynamicConfig, params.getUsedSegments().size());
 
+    /**
+      todo: add by antony at: 2024/5/31
+      组装DruidCluster对象
+    */
     final DruidCluster cluster = prepareCluster(dynamicConfig, segmentLoadingConfig, currentServers);
+    /**
+      todo: add by antony at: 2024/5/31
+      在已经下掉的server中来取消加载
+    */
     cancelLoadsOnDecommissioningServers(cluster);
 
     final CoordinatorRunStats stats = params.getCoordinatorStats();

@@ -39,6 +39,10 @@ import java.util.Set;
 
 /**
  */
+/**
+  todo: add by antony at: 2024/5/31
+  通过Guice来bind各个对象，来调用Lifecycle 的start
+*/
 public abstract class GuiceRunnable implements Runnable
 {
   private final Logger log;
@@ -97,6 +101,10 @@ public abstract class GuiceRunnable implements Runnable
   public static Lifecycle initLifecycle(Injector injector, Logger log)
   {
     try {
+      /**
+        todo: add by antony at: 2024/5/31
+        获取注入的Lifecycle对象
+      */
       final Lifecycle lifecycle = injector.getInstance(Lifecycle.class);
       final StartupLoggingConfig startupLoggingConfig = injector.getInstance(StartupLoggingConfig.class);
 
@@ -108,6 +116,10 @@ public abstract class GuiceRunnable implements Runnable
         // querying direct memory is not supported
       }
 
+      /**
+        todo: add by antony at: 2024/5/31
+        输出当前运行该节点的系统信息及配置信息
+      */
       log.info(
           "Starting up with processors [%,d], memory [%,d], maxMemory [%,d]%s. Properties follow.",
           JvmUtils.getRuntimeInfo().getAvailableProcessors(),
@@ -133,6 +145,10 @@ public abstract class GuiceRunnable implements Runnable
       }
 
       try {
+        /**
+          todo: add by antony at: 2024/5/31
+          启动对应的组件
+        */
         lifecycle.start();
       }
       catch (Throwable t) {

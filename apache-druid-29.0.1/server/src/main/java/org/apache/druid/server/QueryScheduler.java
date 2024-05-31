@@ -61,6 +61,10 @@ import java.util.Set;
  *
  * This class is shared by all requests on the HTTP theadpool and must be thread safe.
  */
+/**
+  todo: add by antony at: 2024/5/31    
+  查询调度器
+*/
 public class QueryScheduler implements QueryWatcher
 {
   private static final Logger LOGGER = new Logger(QueryScheduler.class);

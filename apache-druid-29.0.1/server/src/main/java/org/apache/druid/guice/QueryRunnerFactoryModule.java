@@ -73,6 +73,10 @@ public class QueryRunnerFactoryModule extends QueryToolChestModule
   {
     super.configure(binder);
 
+    /**
+      todo: add by antony at: 2024/5/31
+      绑定 查询调度器
+    */
     binder.bind(QueryScheduler.class)
           .toProvider(Key.get(QuerySchedulerProvider.class, Global.class))
           .in(LazySingleton.class);

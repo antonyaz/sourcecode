@@ -70,6 +70,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * start() has not been called yet.  The other set will add instances and, if the lifecycle is already started, start
  * them.
  */
+/**
+  todo: add by antony at: 2024/5/31
+  控制一系列对应的生命周期对象的启动和关闭
+ 生命周期状态包含三个：未启动、运行中和停止
+*/
 public class Lifecycle
 {
   private static final Logger log = new Logger(Lifecycle.class);

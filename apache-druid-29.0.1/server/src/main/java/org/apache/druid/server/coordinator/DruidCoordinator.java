@@ -104,6 +104,11 @@ import java.util.stream.Collectors;
 /**
  *
  */
+/**
+  todo: add by antony at: 2024/5/31
+  该组件会被选举来判断是否为leader，在成为leader节点之后，相关事项如下
+ 1、
+*/
 @ManageLifecycle
 public class DruidCoordinator
 {
@@ -315,6 +320,10 @@ public class DruidCoordinator
     return coordLeaderSelector.getCurrentLeader();
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    作为Lifecycle的入口方法
+  */
   @LifecycleStart
   public void start()
   {
@@ -324,18 +333,30 @@ public class DruidCoordinator
       }
       started = true;
 
+      /**
+        todo: add by antony at: 2024/5/31
+        注册 listener
+      */
       coordLeaderSelector.registerListener(
           new DruidLeaderSelector.Listener()
           {
             @Override
             public void becomeLeader()
             {
+              /**
+                todo: add by antony at: 2024/5/31
+                成为了集群中的leader节点，执行后续操作
+              */
               DruidCoordinator.this.becomeLeader();
             }
 
             @Override
             public void stopBeingLeader()
             {
+              /**
+                todo: add by antony at: 2024/5/31
+                不在成为leader节点
+              */
               DruidCoordinator.this.stopBeingLeader();
             }
           }
@@ -396,15 +417,63 @@ public class DruidCoordinator
           config.getCoordinatorStartDelay()
       );
 
+      /**
+        todo: add by antony at: 2024/5/31
+        1、metadataMgr周期性的拉取segments信息和pooulate xxx  和 更新rules
+      */
       metadataManager.onLeaderStart();
+      /**
+        todo: add by antony at: 2024/5/31
+        2、设置taskMaster的状态为leader
+      */
       taskMaster.onLeaderStart();
+      /**
+        todo: add by antony at: 2024/5/31
+        3、启动lookup  coordinator mgr
+      */
       lookupCoordinatorManager.start();
+      /**
+        todo: add by antony at: 2024/5/31
+        4、发布公告，
+      */
       serviceAnnouncer.announce(self);
       final int startingLeaderCounter = coordLeaderSelector.localTerm();
 
+      /**
+        todo: add by antony at: 2024/5/31
+        5、设置coordinator duty，主要包含四部分，historical、indexing、metadataStorage及coordinatorGroup自定义的职责
+       Historical查询节点的主要职责：
+       1、准备 Balancer和 LoadQueue
+       2、执行retention Rules
+       3、更新副本状态
+       4、卸载不在使用的segments
+       5、标记overshadowed的segment为未使用
+       6、标记EternityTombstones的为未使用状态
+       7、平衡segments
+       8、收集segments和server的统计状态
+
+       Indexing服务的主要职责有：按照顺序来执行
+       1、移除不在使用的segments
+       2、移除状态处于pending的segments
+       3、开始合并segments（位于最后一步）
+
+       metadataStore的主要职责有：继承自 MetadataCleanupDuty ，执行一些清理操作
+       1、移除supervisor
+       2、移除AuditLog
+       3、移除retention rules
+       4、移除数据源中的元数据
+       5、移除compaction配置信息
+
+       coordinatorGroup自定义的职责
+       1、默认为空未设置
+      */
       final List<DutiesRunnable> dutiesRunnables = new ArrayList<>();
       dutiesRunnables.add(
           new DutiesRunnable(
+                  /**
+                    todo: add by antony at: 2024/5/31
+                    historical中定义的duty
+                  */
               makeHistoricalManagementDuties(),
               startingLeaderCounter,
               HISTORICAL_MANAGEMENT_DUTIES_DUTY_GROUP,
@@ -503,6 +572,18 @@ public class DruidCoordinator
     dutyGroupExecutors.clear();
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+   Historical查询节点的主要职责：
+    1、准备 Balancer和 LoadQueue
+   2、执行retention Rules
+   3、更新副本状态
+   4、卸载不在使用的segments
+   5、标记overshadowed的segment为未使用
+   6、标记EternityTombstones的为未使用状态
+   7、平衡segments
+   8、收集segments和server的统计状态
+  */
   private List<CoordinatorDuty> makeHistoricalManagementDuties()
   {
     return ImmutableList.of(
@@ -522,6 +603,14 @@ public class DruidCoordinator
     );
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    Indexing服务的主要职责有：按照顺序来执行
+   1、移除不在使用的segments
+   2、移除状态处于pending的segments
+   3、开始合并segments（位于最后一步）
+
+  */
   @VisibleForTesting
   List<CoordinatorDuty> makeIndexingServiceDuties()
   {
@@ -545,6 +634,15 @@ public class DruidCoordinator
     return ImmutableList.copyOf(duties);
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    metadataStore的主要职责有：继承自 MetadataCleanupDuty ，执行一些清理操作
+   1、移除supervisor
+   2、移除AuditLog
+   3、移除retention rules
+   4、移除数据源中的元数据
+   5、移除compaction配置信息
+  */
   private List<CoordinatorDuty> makeMetadataStoreManagementDuties()
   {
     return Arrays.asList(
@@ -606,6 +704,10 @@ public class DruidCoordinator
       this.period = period;
     }
 
+    /**
+      todo: add by antony at: 2024/5/31
+      线程，核心方法的入口
+    */
     @Override
     public void run()
     {
@@ -613,6 +715,11 @@ public class DruidCoordinator
         log.info("Starting coordinator run for group [%s]", dutyGroupName);
         final Stopwatch groupRunTime = Stopwatch.createStarted();
 
+        /**
+          todo: add by antony at: 2024/5/31
+          在线程中，需要使用synchroinzed
+         1、判断是否为leader，如果是的话， 先停止成为leader
+        */
         synchronized (lock) {
           if (!coordLeaderSelector.isLeader()) {
             log.info("LEGGO MY EGGO. [%s] is leader.", coordLeaderSelector.getCurrentLeader());
@@ -621,6 +728,10 @@ public class DruidCoordinator
           }
         }
 
+        /**
+          todo: add by antony at: 2024/5/31
+          2、判断metadataManager和serverInventoryView是否已经启动，如果没有启动，停止成为leader
+        */
         List<Boolean> allStarted = Arrays.asList(
             metadataManager.isStarted(),
             serverInventoryView.isStarted()
@@ -633,6 +744,10 @@ public class DruidCoordinator
           }
         }
 
+        /**
+          todo: add by antony at: 2024/5/31
+          获取快照中所有已经加载正在使用的segments
+        */
         // Do coordinator stuff.
         DataSourcesSnapshot dataSourcesSnapshot
             = metadataManager.segments().getSnapshotOfDataSourcesWithAllUsedSegments();
@@ -661,6 +776,11 @@ public class DruidCoordinator
         }
 
         final Stopwatch dutyRunTime = Stopwatch.createUnstarted();
+        /**
+          todo: add by antony at: 2024/5/31
+          遍历开始执行各种 duties
+         duties主要来源于 historical、indexingService、metaDataManager和 cooridinatorCustomDuties
+        */
         for (CoordinatorDuty duty : duties) {
           // Don't read state and run state in the same duty otherwise racy conditions may exist
           if (!coordinationPaused
@@ -668,6 +788,10 @@ public class DruidCoordinator
               && startingLeaderCounter == coordLeaderSelector.localTerm()) {
 
             dutyRunTime.restart();
+            /**
+              todo: add by antony at: 2024/5/31
+              执行duty
+            */
             params = duty.run(params);
             dutyRunTime.stop();
 
@@ -683,6 +807,10 @@ public class DruidCoordinator
           }
         }
 
+        /**
+          todo: add by antony at: 2024/5/31
+          执行后的运行状态信息进行同步
+        */
         // Emit stats collected from all duties
         final CoordinatorRunStats allStats = params.getCoordinatorStats();
         if (allStats.rowCount() > 0) {

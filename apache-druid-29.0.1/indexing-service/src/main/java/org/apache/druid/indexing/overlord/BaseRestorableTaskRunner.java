@@ -82,6 +82,10 @@ public abstract class BaseRestorableTaskRunner<WorkItemType extends TaskRunnerWo
     return tracker;
   }
 
+  /**
+    todo: add by antony at: 2024/5/31
+    恢复任务
+  */
   @Override
   public List<Pair<Task, ListenableFuture<TaskStatus>>> restore()
   {
@@ -100,6 +104,10 @@ public abstract class BaseRestorableTaskRunner<WorkItemType extends TaskRunnerWo
     }
 
     final List<Pair<Task, ListenableFuture<TaskStatus>>> retVal = new ArrayList<>();
+    /**
+      todo: add by antony at: 2024/5/31
+      获取运行的文件列表
+    */
     final Map<String, TaskStorageDirTracker.StorageSlot> existingTaskDirs =
         tracker.findExistingTaskDirs(taskRestoreInfo.getRunningTasks());
     for (final String taskId : taskRestoreInfo.getRunningTasks()) {

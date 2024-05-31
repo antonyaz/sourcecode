@@ -58,8 +58,20 @@ public class MetadataManager
 
   public void onLeaderStart()
   {
+    /**
+      todo: add by antony at: 2024/5/31
+      周期性的来获取segments
+    */
     segmentsMetadataManager.startPollingDatabasePeriodically();
+    /**
+      todo: add by antony at: 2024/5/31
+     开启一个线程来Populate used_status_last_updated for unused segments whose current value for said column is NULL
+    */
     segmentsMetadataManager.populateUsedFlagLastUpdatedAsync();
+    /**
+      todo: add by antony at: 2024/5/31
+      开启一个单线程来同步rule
+    */
     metadataRuleManager.start();
   }
 

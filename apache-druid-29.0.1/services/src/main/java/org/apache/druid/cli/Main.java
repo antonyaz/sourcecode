@@ -51,12 +51,16 @@ public class Main
   {
     final CliBuilder<Runnable> builder = Cli.builder("druid");
 
+    /**
+      todo: add by antony at: 2024/5/31
+     构建启动的cmd
+    */
     builder.withDescription("Druid command-line runner.")
            .withDefaultCommand(Help.class)
            .withCommands(Help.class, Version.class);
 
     /**
-      todo: add by antony at: 2024/5/31    
+      todo: add by antony at: 2024/5/31
       各个组件的启动类
     */
     List<Class<? extends Runnable>> serverCommands = Arrays.asList(
@@ -114,7 +118,7 @@ public class Main
         injector.injectMembers(command);
       }
       /**
-        todo: add by antony at: 2024/5/31    
+        todo: add by antony at: 2024/5/31
         启动对应的组件
       */
       command.run();
