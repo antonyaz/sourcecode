@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="zookeeper-recipes-queue" />
+        <module name="zookeeper-server" />
+        <module name="zookeeper-contrib-loggraph" />
+        <module name="zookeeper-client-c" />
+        <module name="zookeeper-contrib-rest" />
+        <module name="zookeeper-recipes-lock" />
+        <module name="zookeeper-contrib-zooinspector" />
+        <module name="zookeeper-recipes-election" />
+        <module name="zookeeper-jute" />
+        <module name="zookeeper-docs" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

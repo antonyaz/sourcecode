@@ -1,0 +1,45 @@
+
+p
+java:S1192"YDefine a constant instead of duplicating this literal "Socket connection closed" 3 times.(²Û‚‰
+F
+java:S1066œ"/Merge this if statement with the enclosing one.(·¨·Ê
+K
+java:S1066ú"/Merge this if statement with the enclosing one.(ŞÚ˜ûÿÿÿÿ
+Q
+java:S1141ä"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+Q
+java:S1141õ"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+I
+java:S1199Î"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+A
+java:S1181‚"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿ
+M
+java:S1135o"2Complete the task associated to this TODO comment.(­æãœúÿÿÿÿ
+M
+java:S1135v"2Complete the task associated to this TODO comment.(­æãœúÿÿÿÿ
+i
+java:S3776¡"RRefactor this method to reduce its Cognitive Complexity from 23 to the 15 allowed.(î­¹³
+A
+java:S1181Ó"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿ
+\
+java:S3252»"EUse static access with "org.apache.flink.util.AbstractID" for "SIZE".( Şáï
+\
+java:S3252¼"EUse static access with "org.apache.flink.util.AbstractID" for "SIZE".(†·—è
+ 
+java:S5803Ğ"ƒRemove this usage of "getStorageLocation", it is annotated with @VisibleForTesting and should not be accessed from production code.(ƒ¼Ê‚úÿÿÿÿ
+A
+java:S1181¨"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿ
+A
+java:S1181î"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿ
+i
+java:S3776·"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(úŞÀ„
+A
+java:S1181î"%Catch Exception instead of Throwable.(•”ø¾øÿÿÿÿ
+\
+java:S3252Æ"EUse static access with "org.apache.flink.util.AbstractID" for "SIZE".( Şáï
+\
+java:S3252Ç"EUse static access with "org.apache.flink.util.AbstractID" for "SIZE".(†·—è
+j
+java:S4042ú"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ŞÚ˜ûÿÿÿÿ
+X
+java:S3457û"AFormat specifiers should be used instead of string concatenation.(“‹ÚÔ

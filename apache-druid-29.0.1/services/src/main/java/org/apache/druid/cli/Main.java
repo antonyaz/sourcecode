@@ -55,6 +55,10 @@ public class Main
            .withDefaultCommand(Help.class)
            .withCommands(Help.class, Version.class);
 
+    /**
+      todo: add by antony at: 2024/5/31    
+      各个组件的启动类
+    */
     List<Class<? extends Runnable>> serverCommands = Arrays.asList(
         CliCoordinator.class,
         CliHistorical.class,
@@ -109,6 +113,10 @@ public class Main
       if (!(command instanceof Help)) { // Hack to work around Help not liking being injected
         injector.injectMembers(command);
       }
+      /**
+        todo: add by antony at: 2024/5/31    
+        启动对应的组件
+      */
       command.run();
     }
     catch (ParseException e) {

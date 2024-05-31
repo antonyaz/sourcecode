@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy file="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/flink-examples-batch_2.11-1.14.4-KMeans.jar" tofile="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/KMeans.jar"/>
+  <copy file="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/flink-examples-batch_2.11-1.14.4-ConnectedComponents.jar" tofile="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/ConnectedComponents.jar"/>
+  <copy file="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/flink-examples-batch_2.11-1.14.4-EnumTriangles.jar" tofile="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/EnumTriangles.jar"/>
+  <copy file="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/flink-examples-batch_2.11-1.14.4-PageRank.jar" tofile="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/PageRank.jar"/>
+  <copy file="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/flink-examples-batch_2.11-1.14.4-TransitiveClosure.jar" tofile="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/TransitiveClosure.jar"/>
+  <copy file="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/flink-examples-batch_2.11-1.14.4-WebLogAnalysis.jar" tofile="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/WebLogAnalysis.jar"/>
+  <copy file="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/flink-examples-batch_2.11-1.14.4-WordCount.jar" tofile="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/WordCount.jar"/>
+  <copy file="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/flink-examples-batch_2.11-1.14.4-DistCp.jar" tofile="/Users/zhaoyang29/Documents/study/BIG_DATA/source_code/flink-1.14.4/flink-examples/flink-examples-batch/target/DistCp.jar"/>
+</target>
+</project>
