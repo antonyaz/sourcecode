@@ -48,6 +48,10 @@ import java.util.concurrent.CompletableFuture;
  * <p>Gateways which implement this method run a REST endpoint which is reachable under the returned
  * address.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  restful接口的gateway
+*/
 public interface RestfulGateway extends RpcGateway {
 
     /**
@@ -57,6 +61,10 @@ public interface RestfulGateway extends RpcGateway {
      * @param timeout of the operation
      * @return A future acknowledge if the cancellation succeeded
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      取消指定的job
+    */
     CompletableFuture<Acknowledge> cancelJob(JobID jobId, @RpcTimeout Time timeout);
 
     /**
@@ -68,6 +76,10 @@ public interface RestfulGateway extends RpcGateway {
      * @return Future containing the {@link ArchivedExecutionGraph} for the given jobId, otherwise
      *     {@link FlinkJobNotFoundException}
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取指定job的ArchivedExecutionGraph
+    */
     default CompletableFuture<ArchivedExecutionGraph> requestJob(
             JobID jobId, @RpcTimeout Time timeout) {
         return requestExecutionGraphInfo(jobId, timeout)
@@ -84,6 +96,10 @@ public interface RestfulGateway extends RpcGateway {
      * @return Future containing the {@link ExecutionGraphInfo} for the given jobId, otherwise
      *     {@link FlinkJobNotFoundException}
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取指定job的ExecutionGraphInfo
+    */
     CompletableFuture<ExecutionGraphInfo> requestExecutionGraphInfo(
             JobID jobId, @RpcTimeout Time timeout);
 
@@ -94,6 +110,10 @@ public interface RestfulGateway extends RpcGateway {
      * @param timeout for the asynchronous operation
      * @return Future which is completed with the job's {@link JobResult} once the job has finished
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取指定job的JobResult
+    */
     CompletableFuture<JobResult> requestJobResult(JobID jobId, @RpcTimeout Time timeout);
 
     /**
@@ -102,6 +122,10 @@ public interface RestfulGateway extends RpcGateway {
      * @param timeout for the asynchronous operation
      * @return Future containing the job details
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取当前集群中正在执行的job列表详情
+    */
     CompletableFuture<MultipleJobsDetails> requestMultipleJobDetails(@RpcTimeout Time timeout);
 
     /**
@@ -110,6 +134,10 @@ public interface RestfulGateway extends RpcGateway {
      * @param timeout for the asynchronous operation
      * @return Future containing the status overview
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取集群状态信息
+    */
     CompletableFuture<ClusterOverview> requestClusterOverview(@RpcTimeout Time timeout);
 
     /**
@@ -118,6 +146,10 @@ public interface RestfulGateway extends RpcGateway {
      * @param timeout for the asynchronous operation
      * @return Future containing the collection of metric query service addresses to query
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取集群中所有TaskManager的MetricQueryService地址
+    */
     CompletableFuture<Collection<String>> requestMetricQueryServiceAddresses(
             @RpcTimeout Time timeout);
 
@@ -128,6 +160,10 @@ public interface RestfulGateway extends RpcGateway {
      * @return Future containing the collection of instance ids and the corresponding metric query
      *     service address
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取集群中所有TaskManager的MetricQueryService地址
+    */
     CompletableFuture<Collection<Tuple2<ResourceID, String>>>
             requestTaskManagerMetricQueryServiceAddresses(@RpcTimeout Time timeout);
 
@@ -140,6 +176,10 @@ public interface RestfulGateway extends RpcGateway {
      * @return A future to the {@link CompletedCheckpoint#getExternalPointer() external pointer} of
      *     the savepoint.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      在指定的目录中为job来触发savepoint
+    */
     default CompletableFuture<String> triggerSavepoint(
             JobID jobId, String targetDirectory, boolean cancelJob, @RpcTimeout Time timeout) {
         throw new UnsupportedOperationException();
@@ -155,6 +195,10 @@ public interface RestfulGateway extends RpcGateway {
      * @param timeout for the rpc call
      * @return Future which is completed with the savepoint path once completed
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      停止job并触发savepoint
+    */
     default CompletableFuture<String> stopWithSavepoint(
             final JobID jobId,
             final String targetDirectory,
@@ -170,6 +214,10 @@ public interface RestfulGateway extends RpcGateway {
      * @param timeout RPC timeout
      * @return A future acknowledge if the disposal succeeded
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      释放当前的savepoint
+    */
     default CompletableFuture<Acknowledge> disposeSavepoint(
             final String savepointPath, @RpcTimeout final Time timeout) {
         throw new UnsupportedOperationException();
@@ -182,10 +230,18 @@ public interface RestfulGateway extends RpcGateway {
      * @param timeout for the asynchronous operation
      * @return A future to the {@link JobStatus} of the given job
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取job的状态信息
+    */
     default CompletableFuture<JobStatus> requestJobStatus(JobID jobId, @RpcTimeout Time timeout) {
         throw new UnsupportedOperationException();
     }
 
+    /**
+      todo: add by antony at: 2024/6/1
+      停止集群
+    */
     default CompletableFuture<Acknowledge> shutDownCluster() {
         throw new UnsupportedOperationException();
     }
@@ -202,6 +258,10 @@ public interface RestfulGateway extends RpcGateway {
      *     operator/coordinator exists for the given ID, or the coordinator cannot handle client
      *     events.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+
+    */
     default CompletableFuture<CoordinationResponse> deliverCoordinationRequestToCoordinator(
             JobID jobId,
             OperatorID operatorId,

@@ -43,6 +43,10 @@ import java.util.concurrent.TimeUnit;
  *
  * <p>This ResourceManager doesn't acquire new resources.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  resouceManager的 standalone实现版本，用于启动flink的standalone模式
+*/
 public class StandaloneResourceManager extends ResourceManager<ResourceID> {
 
     /** The duration of the startup period. A duration of zero means there is no startup period. */

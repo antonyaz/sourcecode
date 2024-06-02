@@ -39,6 +39,10 @@ import scala.concurrent.duration.FiniteDuration;
  * Adapter to use a {@link ActorSystem} as a {@link ScheduledExecutor}. Furthermore ensures that the
  * context class loader is set to the Flink class loader while the runnable is running.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  *  这个类的作用是将ActorSystem转换为ScheduledExecutor，
+*/
 public final class ActorSystemScheduledExecutorAdapter implements ScheduledExecutor {
 
     private final ActorSystem actorSystem;

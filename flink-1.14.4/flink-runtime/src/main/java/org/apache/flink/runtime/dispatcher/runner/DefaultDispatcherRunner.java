@@ -36,6 +36,10 @@ import java.util.concurrent.CompletableFuture;
  * Runner for the {@link org.apache.flink.runtime.dispatcher.Dispatcher} which is responsible for
  * the leader election.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  leader选举后Dispatcher的runner
+*/
 public final class DefaultDispatcherRunner implements DispatcherRunner, LeaderContender {
 
     private static final Logger LOG = LoggerFactory.getLogger(DefaultDispatcherRunner.class);
@@ -122,6 +126,10 @@ public final class DefaultDispatcherRunner implements DispatcherRunner, LeaderCo
     }
 
     private void startNewDispatcherLeaderProcess(UUID leaderSessionID) {
+        /**
+          todo: add by antony at: 2024/6/1
+          停止当前的 DispatcherLeaderProcess
+        */
         stopDispatcherLeaderProcess();
 
         /**

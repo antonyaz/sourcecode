@@ -84,6 +84,10 @@ import static org.apache.flink.client.cli.CliFrontendParser.HELP_OPTION;
 import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /** Implementation of a simple command line frontend for executing programs. */
+/**
+  todo: add by antony at: 2024/6/2
+
+*/
 public class CliFrontend {
 
     private static final Logger LOG = LoggerFactory.getLogger(CliFrontend.class);
@@ -1140,6 +1144,10 @@ public class CliFrontend {
     }
 
     /** Submits the job based on the arguments. */
+    /**
+      todo: add by antony at: 2024/6/2
+      客户端执行函数入口
+    */
     public static void main(final String[] args) {
         EnvironmentInformation.logEnvironmentInfo(LOG, "Command Line Client", args);
 
@@ -1162,7 +1170,7 @@ public class CliFrontend {
             retCode = SecurityUtils.getInstalledContext().runSecured(() ->
                     /**
                      *  TODO: add by antony at 2022/5/4
-                     *  解析参数兵运行
+                     *  解析参数并运行
                      */
                     cli.parseAndRun(args));
         } catch (Throwable t) {

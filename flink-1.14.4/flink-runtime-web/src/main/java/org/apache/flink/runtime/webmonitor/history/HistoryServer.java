@@ -139,6 +139,10 @@ public class HistoryServer {
                             new Callable<Integer>() {
                                 @Override
                                 public Integer call() throws Exception {
+                                    /**
+                                      todo: add by antony at: 2024/6/1
+                                      初始化historyServer及启动server
+                                    */
                                     HistoryServer hs = new HistoryServer(flinkConfig);
                                     hs.run();
                                     return 0;

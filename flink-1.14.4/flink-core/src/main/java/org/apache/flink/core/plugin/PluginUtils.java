@@ -26,6 +26,10 @@ import java.util.Collection;
 import java.util.Collections;
 
 /** Utility functions for the plugin mechanism. */
+/**
+  todo: add by antony at: 2024/6/2    
+  plugin插件工具
+*/
 public final class PluginUtils {
 
     private PluginUtils() {

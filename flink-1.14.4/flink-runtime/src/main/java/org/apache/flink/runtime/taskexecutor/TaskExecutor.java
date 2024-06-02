@@ -180,13 +180,25 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * TaskExecutor implementation. The task executor is responsible for the execution of multiple
  * {@link Task}.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  用于执行多种的task
+*/
 public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 
     public static final String TASK_MANAGER_NAME = "taskmanager";
 
     /** The access to the leader election and retrieval services. */
+    /**
+      todo: add by antony at: 2024/6/1
+      ha 服务
+    */
     private final HighAvailabilityServices haServices;
 
+    /**
+      todo: add by antony at: 2024/6/1
+      tm中的系列服务组件，比如MemoryManager、IoManager、ShuffleEnvironment等
+    */
     private final TaskManagerServices taskExecutorServices;
 
     /** The task manager configuration. */
@@ -195,8 +207,16 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
     /** The fatal error handler to use in case of a fatal error. */
     private final FatalErrorHandler fatalErrorHandler;
 
+    /**
+      todo: add by antony at: 2024/6/1
+      大文件缓存服务
+    */
     private final BlobCacheService blobCacheService;
 
+    /**
+      todo: add by antony at: 2024/6/1
+      依赖库缓存manager
+    */
     private final LibraryCacheManager libraryCacheManager;
 
     /** The address to metric query service on this Task Manager. */
@@ -219,9 +239,17 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
     private final ExternalResourceInfoProvider externalResourceInfoProvider;
 
     /** The network component in the task manager. */
+    /**
+      todo: add by antony at: 2024/6/1
+      网络组件
+    */
     private final ShuffleEnvironment<?, ?> shuffleEnvironment;
 
     /** The kvState registration service in the task manager. */
+    /**
+      todo: add by antony at: 2024/6/1
+      vm中注册的kv存储服务
+    */
     private final KvStateService kvStateService;
 
     private final Executor ioExecutor;
@@ -247,10 +275,18 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
     private FileCache fileCache;
 
     /** The heartbeat manager for job manager in the task manager. */
+    /**
+      todo: add by antony at: 2024/6/1
+      jm的心跳Manager
+    */
     private final HeartbeatManager<AllocatedSlotReport, TaskExecutorToJobManagerHeartbeatPayload>
             jobManagerHeartbeatManager;
 
     /** The heartbeat manager for resource manager in the task manager. */
+    /**
+      todo: add by antony at: 2024/6/1
+      resourceManager的心跳Manager
+    */
     private final HeartbeatManager<Void, TaskExecutorHeartbeatPayload>
             resourceManagerHeartbeatManager;
 
@@ -388,9 +424,17 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
     //  Life cycle
     // ------------------------------------------------------------------------
 
+    /**
+      todo: add by antony at: 2024/6/1
+      lifecycle的入口方法
+    */
     @Override
     public void onStart() throws Exception {
         try {
+            /**
+              todo: add by antony at: 2024/6/1
+              启动tm系列服务
+            */
             startTaskExecutorServices();
         } catch (Throwable t) {
             final TaskManagerException exception =
@@ -399,22 +443,41 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             onFatalError(exception);
             throw exception;
         }
-
+        /**
+          todo: add by antony at: 2024/6/1
+          开始注册超时
+        */
         startRegistrationTimeout();
     }
 
     private void startTaskExecutorServices() throws Exception {
         try {
             // start by connecting to the ResourceManager
+            /**
+              todo: add by antony at: 2024/6/1
+              1、开始启动rm的leader的变更的监听
+            */
             resourceManagerLeaderRetriever.start(new ResourceManagerLeaderListener());
 
             // tell the task slot table who's responsible for the task slot actions
+            /**
+              todo: add by antony at: 2024/6/1
+              2、启动超时定时服务来检测已经分配额操作是否可执行超时操作，如果可以，就超时这些槽位
+            */
             taskSlotTable.start(new SlotActionsImpl(), getMainThreadExecutor());
 
             // start the job leader service
+            /**
+              todo: add by antony at: 2024/6/1
+              3、启动job leader service
+            */
             jobLeaderService.start(
                     getAddress(), getRpcService(), haServices, new JobLeaderListenerImpl());
 
+            /**
+              todo: add by antony at: 2024/6/1
+              4、移除tmp的缓存文件
+            */
             fileCache =
                     new FileCache(
                             taskManagerConfiguration.getTmpDirectories(),
@@ -1360,6 +1423,10 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             String newLeaderAddress, ResourceManagerId newResourceManagerId) {
         resourceManagerAddress =
                 createResourceManagerAddress(newLeaderAddress, newResourceManagerId);
+        /**
+          todo: add by antony at: 2024/6/1
+          重新连接至资源管理器
+        */
         reconnectToResourceManager(
                 new FlinkException(
                         String.format(
@@ -1379,6 +1446,12 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
     }
 
     private void reconnectToResourceManager(Exception cause) {
+        /**
+          todo: add by antony at: 2024/6/1
+          1、关闭旧的rm
+         2、开始注册超时
+         3、尝试连接至rm
+        */
         closeResourceManagerConnection(cause);
         startRegistrationTimeout();
         tryConnectToResourceManager();
@@ -1390,6 +1463,10 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
         }
     }
 
+    /**
+      todo: add by antony at: 2024/6/1
+      连接至rm
+    */
     private void connectToResourceManager() {
         assert (resourceManagerAddress != null);
         assert (establishedResourceManagerConnection == null);
@@ -1397,6 +1474,10 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 
         log.info("Connecting to ResourceManager {}.", resourceManagerAddress);
 
+        /**
+          todo: add by antony at: 2024/6/1
+          配置tm的注册信息
+        */
         final TaskExecutorRegistration taskExecutorRegistration =
                 new TaskExecutorRegistration(
                         getAddress(),
@@ -1408,6 +1489,10 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                         taskManagerConfiguration.getDefaultSlotResourceProfile(),
                         taskManagerConfiguration.getTotalResourceProfile());
 
+        /**
+          todo: add by antony at: 2024/6/1
+          创建rm connection连接对象
+        */
         resourceManagerConnection =
                 new TaskExecutorToResourceManagerConnection(
                         log,
@@ -1418,6 +1503,10 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                         getMainThreadExecutor(),
                         new ResourceManagerRegistrationListener(),
                         taskExecutorRegistration);
+        /**
+          todo: add by antony at: 2024/6/2
+          开始连接
+        */
         resourceManagerConnection.start();
     }
 
@@ -1975,7 +2064,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 
     /**
      * TODO: add by antony at 2022/5/3
-     *
+     * 释放槽位
      */
     private void freeSlotInternal(AllocationID allocationId, Throwable cause) {
         checkNotNull(allocationId);
@@ -1983,17 +2072,37 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
         log.debug("Free slot with allocation id {} because: {}", allocationId, cause.getMessage());
 
         try {
+            /**
+              todo: add by antony at: 2024/6/1
+              从taskSlotTable中来获取job信息
+            */
             final JobID jobId = taskSlotTable.getOwningJob(allocationId);
 
+            /**
+              todo: add by antony at: 2024/6/1
+              释放对应job的槽位
+            */
             final int slotIndex = taskSlotTable.freeSlot(allocationId, cause);
 
             if (slotIndex != -1) {
 
+                /**
+                  todo: add by antony at: 2024/6/1
+                  如果连接到rm了，就发送通知
+                */
                 if (isConnectedToResourceManager()) {
                     // the slot was freed. Tell the RM about it
+                    /**
+                      todo: add by antony at: 2024/6/1
+                      获取rm的rpc
+                    */
                     ResourceManagerGateway resourceManagerGateway =
                             establishedResourceManagerConnection.getResourceManagerGateway();
 
+                    /**
+                      todo: add by antony at: 2024/6/1
+                      发送通知，告知slot可以使用了
+                    */
                     resourceManagerGateway.notifySlotAvailable(
                             establishedResourceManagerConnection.getTaskExecutorRegistrationId(),
                             new SlotID(getResourceID(), slotIndex),

@@ -38,6 +38,7 @@ import java.util.concurrent.TimeUnit;
     等同于Akka中的ActorSystem
     封装了 ActorSystem
     RpcEndpoint的运行时环
+    用于启动和连接至 RpcEndPoint  返回一个RpcGateway，来调用远程的服务
  */
 public interface RpcService {
 
@@ -68,6 +69,10 @@ public interface RpcService {
      * @return Future containing the rpc gateway or an {@link RpcConnectionException} if the
      *     connection attempt failed
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      连接至远程的rpc server 并返回 指定类型的rpcGateway
+    */
     <C extends RpcGateway> CompletableFuture<C> connect(String address, Class<C> clazz);
 
     /**
@@ -93,6 +98,10 @@ public interface RpcService {
      * @param <C> Type of the rpc endpoint
      * @return Self gateway to dispatch remote procedure calls to oneself
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      启动一个rpc server，并将远程过程调用转发至指定的rpc endpoint
+    */
     <C extends RpcEndpoint & RpcGateway> RpcServer startServer(C rpcEndpoint);
 
     /**
@@ -114,6 +123,10 @@ public interface RpcService {
      *
      * @param selfGateway Self gateway describing the underlying rpc server
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      停止指定的selfGateway的rpc server
+    */
     void stopServer(RpcServer selfGateway);
 
     /**
@@ -121,6 +134,10 @@ public interface RpcService {
      *
      * @return Future which is completed once the {@link RpcService} has been fully stopped.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      触发异步的停止
+    */
     CompletableFuture<Void> stopService();
 
     /**

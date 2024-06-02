@@ -96,6 +96,12 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * constructs the related components (network, I/O manager, memory manager, RPC service, HA service)
  * and starts them.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  在yarn或standalone模型使用，
+  构造相关组件（网络，I / O管理器，内存管理器，RPC服务，HA服务）并启动它们。
+
+*/
 public class TaskManagerRunner implements FatalErrorHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(TaskManagerRunner.class);
@@ -176,6 +182,10 @@ public class TaskManagerRunner implements FatalErrorHandler {
                 getTaskManagerResourceID(
                         configuration, rpcService.getAddress(), rpcService.getPort());
 
+        /**
+          todo: add by antony at: 2024/6/2
+          心跳检测服务
+        */
         HeartbeatServices heartbeatServices = HeartbeatServices.fromConfiguration(configuration);
 
         metricRegistry =

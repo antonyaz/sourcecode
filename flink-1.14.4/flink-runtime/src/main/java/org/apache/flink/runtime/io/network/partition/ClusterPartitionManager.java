@@ -23,6 +23,10 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 /** Interface for components that manage cluster partitions. */
+/**
+  todo: add by antony at: 2024/6/1
+  管理集群中的分区
+*/
 public interface ClusterPartitionManager {
 
     /**

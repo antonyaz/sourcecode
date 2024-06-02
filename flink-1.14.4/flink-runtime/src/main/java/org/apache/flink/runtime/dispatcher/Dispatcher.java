@@ -97,6 +97,13 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * job submissions, persisting them, spawning JobManagers to execute the jobs and to recover them in
  * case of a master failure. Furthermore, it knows about the state of the Flink session cluster.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  dispatch的基础组件，用于接受客户端所提交的job任务细腻并持久化，创建JobManagers来执行这些jobs并挡在master节点异常的时候
+ 来恢复这些jobs，
+ 进一步来说，Dispatcher知晓Flink Session Cluster集群中的状态
+
+*/
 public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<DispatcherId>
         implements DispatcherGateway {
 

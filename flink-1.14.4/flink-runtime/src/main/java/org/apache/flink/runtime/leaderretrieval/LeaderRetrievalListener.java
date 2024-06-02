@@ -26,6 +26,10 @@ import java.util.UUID;
  * Classes which want to be notified about a changing leader by the {@link LeaderRetrievalService}
  * have to implement this interface.
  */
+/**
+  todo: add by antony at: 2024/6/1
+    这个接口是用来监听LeaderRetrievalService的，当LeaderRetrievalService发现新的Leader时，会调用notifyLeaderAddress方法，
+*/
 public interface LeaderRetrievalListener {
 
     /**

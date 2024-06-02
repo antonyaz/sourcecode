@@ -25,6 +25,10 @@ import org.apache.flink.util.AutoCloseableAsync;
 import java.util.concurrent.CompletableFuture;
 
 /** The {@link DispatcherRunner} encapsulates how a {@link Dispatcher} is being executed. */
+/**
+  todo: add by antony at: 2024/6/1
+  对 Dispatcher的封装
+*/
 public interface DispatcherRunner extends AutoCloseableAsync {
 
     /**

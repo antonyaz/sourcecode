@@ -84,6 +84,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * TODO: add by antony at 2022/5/3
  * 真正的服务组件 同 Spark中的RpcEndpoint
  * 对RPC框架中提供具体服务的实体的抽象，所有提供远程调用方法的组件都需要继承该抽象类
+ * rpcEndPoint 提供 runAsync、callAsync和 getMainThreadExecutor()来在endPoint的主线程中来执行相关的代码
  */
 public abstract class RpcEndpoint implements RpcGateway, AutoCloseableAsync {
 
@@ -137,7 +138,7 @@ public abstract class RpcEndpoint implements RpcGateway, AutoCloseableAsync {
          * 1、在initializeServices()方法中创建了一系列 基础 公用服务， 第一件事就是创建RpcService
          * 2、此时通过rpcService来启动RpcEndpoint来得到rpcServer，this即StandaloneResourceManager
          * 3、此时即已经启动了StandaloneResourceManager
-         * 4、要给守护Actor发送start消息的时候，zhegRpcEndpoint才真正启动
+         * 4、要给守护Actor发送start消息的时候，这个RpcEndpoint才真正启动
          */
         this.rpcServer = rpcService.startServer(this);
 

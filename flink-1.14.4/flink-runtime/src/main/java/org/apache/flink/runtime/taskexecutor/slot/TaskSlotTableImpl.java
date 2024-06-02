@@ -75,6 +75,10 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
     private final int memoryPageSize;
 
     /** Timer service used to time out allocated slots. */
+    /**
+      todo: add by antony at: 2024/6/1
+      定时器服务用于超时已经分配的那些槽位
+    */
     private final TimerService<AllocationID> timerService;
 
     /** The list of all task slots. */
@@ -158,6 +162,10 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
         this.slotActions = Preconditions.checkNotNull(initialSlotActions);
         this.mainThreadExecutor = Preconditions.checkNotNull(mainThreadExecutor);
 
+        /**
+          todo: add by antony at: 2024/6/1
+          开始定时处理超时的那些已经分配的槽位
+        */
         timerService.start(this);
 
         state = State.RUNNING;
@@ -655,11 +663,23 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
     // TimeoutListener methods
     // ---------------------------------------------------------------------
 
+    /**
+      todo: add by antony at: 2024/6/1
+      超时定时服务接受到的回调
+    */
     @Override
     public void notifyTimeout(AllocationID key, UUID ticket) {
+        /**
+          todo: add by antony at: 2024/6/1
+          检测超时定时服务是否已启动
+        */
         checkStarted();
 
         if (slotActions != null) {
+            /**
+              todo: add by antony at: 2024/6/1
+              超时对应的槽位
+            */
             slotActions.timeoutSlot(key, ticket);
         }
     }

@@ -30,6 +30,10 @@ public interface SlotActions {
      *
      * @param allocationId to identify the slot to be freed
      */
+    /**
+      todo: add by antony at: 2024/6/1    
+      释放槽位
+    */
     void freeSlot(AllocationID allocationId);
 
     /**
@@ -39,5 +43,9 @@ public interface SlotActions {
      * @param allocationId identifying the task slot to be timed out
      * @param ticket allowing to filter invalid timeouts out
      */
+    /**
+      todo: add by antony at: 2024/6/1    
+      超时槽位
+    */
     void timeoutSlot(AllocationID allocationId, UUID ticket);
 }

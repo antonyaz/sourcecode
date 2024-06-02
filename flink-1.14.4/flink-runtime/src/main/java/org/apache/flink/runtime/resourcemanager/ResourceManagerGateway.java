@@ -67,6 +67,10 @@ public interface ResourceManagerGateway
      * @param timeout Timeout for the future to complete
      * @return Future registration response
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      在resourceManager中来注册JobMaster
+    */
     CompletableFuture<RegistrationResponse> registerJobManager(
             JobMasterId jobMasterId,
             ResourceID jobMasterResourceId,
@@ -81,6 +85,10 @@ public interface ResourceManagerGateway
      * @param resourceRequirements resource requirements
      * @return The confirmation that the requirements have been processed
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      为jobMaster注册资源需求
+    */
     CompletableFuture<Acknowledge> declareRequiredResources(
             JobMasterId jobMasterId,
             ResourceRequirements resourceRequirements,
@@ -93,6 +101,10 @@ public interface ResourceManagerGateway
      * @param timeout The timeout for the response.
      * @return The future to the response by the ResourceManager.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      在resourceManager中来注册TaskExecutor
+    */
     CompletableFuture<RegistrationResponse> registerTaskExecutor(
             TaskExecutorRegistration taskExecutorRegistration, @RpcTimeout Time timeout);
 
@@ -105,6 +117,10 @@ public interface ResourceManagerGateway
      * @return Future which is completed with {@link Acknowledge} once the slot report has been
      *     received.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      发送slotReport到resourceManager
+    */
     CompletableFuture<Acknowledge> sendSlotReport(
             ResourceID taskManagerResourceId,
             InstanceID taskManagerRegistrationId,
@@ -118,6 +134,10 @@ public interface ResourceManagerGateway
      * @param slotID The SlotID of the freed slot
      * @param oldAllocationId to which the slot has been allocated
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      通知resourceManager一个slot已经可用
+    */
     void notifySlotAvailable(InstanceID instanceId, SlotID slotID, AllocationID oldAllocationId);
 
     /**
@@ -127,6 +147,9 @@ public interface ResourceManagerGateway
      * @param diagnostics additional information for the resource management system, can be {@code
      *     null}
      */
+    /**
+      todo: add by antony at: 2024/6/1
+    */
     CompletableFuture<Acknowledge> deregisterApplication(
             final ApplicationStatus finalStatus, @Nullable final String diagnostics);
 
@@ -135,6 +158,10 @@ public interface ResourceManagerGateway
      *
      * @return The future to the number of registered TaskManagers.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取当前注册的TaskManager数量
+    */
     CompletableFuture<Integer> getNumberOfRegisteredTaskManagers();
 
     /**
@@ -144,6 +171,10 @@ public interface ResourceManagerGateway
      * @param heartbeatPayload payload from the originating TaskManager
      * @return future which is completed exceptionally if the operation fails
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      发送来自tm的heartbeat到resourceManager
+    */
     CompletableFuture<Void> heartbeatFromTaskManager(
             final ResourceID heartbeatOrigin, final TaskExecutorHeartbeatPayload heartbeatPayload);
 
@@ -153,6 +184,10 @@ public interface ResourceManagerGateway
      * @param heartbeatOrigin unique id of the job manager
      * @return future which is completed exceptionally if the operation fails
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      发送来自jm的heartbeat到resourceManager
+    */
     CompletableFuture<Void> heartbeatFromJobManager(final ResourceID heartbeatOrigin);
 
     /**
@@ -161,6 +196,10 @@ public interface ResourceManagerGateway
      * @param resourceID identifying the TaskManager to disconnect
      * @param cause for the disconnection of the TaskManager
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      断开指定的resourceID与tm的连接
+    */
     void disconnectTaskManager(ResourceID resourceID, Exception cause);
 
     /**
@@ -170,6 +209,10 @@ public interface ResourceManagerGateway
      * @param jobStatus status of the job at the time of disconnection
      * @param cause for the disconnection of the JobManager
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      断开指定的resourceID与jm的连接
+    */
     void disconnectJobManager(JobID jobId, JobStatus jobStatus, Exception cause);
 
     /**
@@ -178,6 +221,10 @@ public interface ResourceManagerGateway
      * @param timeout of the request
      * @return Future collection of TaskManager information
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取已注册的TaskManager信息
+    */
     CompletableFuture<Collection<TaskManagerInfo>> requestTaskManagerInfo(@RpcTimeout Time timeout);
 
     /**
@@ -187,6 +234,10 @@ public interface ResourceManagerGateway
      * @param timeout of the request
      * @return Future TaskManager information and its allocated slots
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取指定TaskExecutor的详细信息
+    */
     CompletableFuture<TaskManagerInfoWithSlots> requestTaskManagerDetailsInfo(
             ResourceID taskManagerId, @RpcTimeout Time timeout);
 
@@ -197,6 +248,10 @@ public interface ResourceManagerGateway
      * @param timeout of the request
      * @return Future containing the resource overview
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取资源概览，包含已连接的tm信息、slot的总数量和可用slot的数量
+    */
     CompletableFuture<ResourceOverview> requestResourceOverview(@RpcTimeout Time timeout);
 
     /**
@@ -206,6 +261,10 @@ public interface ResourceManagerGateway
      * @return Future containing the collection of resource ids and the corresponding metric query
      *     service path
      */
+    /**
+      todo: add by antony at: 2024/6/1
+
+    */
     CompletableFuture<Collection<Tuple2<ResourceID, String>>>
             requestTaskManagerMetricQueryServiceAddresses(@RpcTimeout Time timeout);
 
@@ -219,6 +278,10 @@ public interface ResourceManagerGateway
      * @return Future which is completed with the {@link TransientBlobKey} after uploading the file
      *     to the {@link BlobServer}.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      来自TaskExecutor的文件上传至集群的BlobServer中，通过文件类型
+    */
     CompletableFuture<TransientBlobKey> requestTaskManagerFileUploadByType(
             ResourceID taskManagerId, FileType fileType, @RpcTimeout Time timeout);
 
@@ -232,6 +295,10 @@ public interface ResourceManagerGateway
      * @return Future which is completed with the {@link TransientBlobKey} after uploading the file
      *     to the {@link BlobServer}.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+     来自TaskExecutor的文件上传至集群的BlobServer中，通过文件名称
+    */
     CompletableFuture<TransientBlobKey> requestTaskManagerFileUploadByName(
             ResourceID taskManagerId, String fileName, @RpcTimeout Time timeout);
 
@@ -242,6 +309,10 @@ public interface ResourceManagerGateway
      * @param timeout for the asynchronous operation
      * @return Future which is completed with the historical log list
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      请求来自TaskExecutor的日志列表
+    */
     CompletableFuture<Collection<LogInfo>> requestTaskManagerLogList(
             ResourceID taskManagerId, @RpcTimeout Time timeout);
 
@@ -253,6 +324,10 @@ public interface ResourceManagerGateway
      * @param timeout timeout of the asynchronous operation
      * @return Future containing the thread dump information
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      请求来自TaskExecutor的线程堆栈信息
+    */
     CompletableFuture<ThreadDumpInfo> requestThreadDump(
             ResourceID taskManagerId, @RpcTimeout Time timeout);
 
@@ -262,6 +337,10 @@ public interface ResourceManagerGateway
      * @param taskManagerId identifying the {@link TaskExecutor}.
      * @return Future containing the task executor gateway.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      获取来自TaskExecutor的TaskExecutorGateway
+    */
     CompletableFuture<TaskExecutorThreadInfoGateway> requestTaskExecutorThreadInfoGateway(
             ResourceID taskManagerId, @RpcTimeout Time timeout);
 }

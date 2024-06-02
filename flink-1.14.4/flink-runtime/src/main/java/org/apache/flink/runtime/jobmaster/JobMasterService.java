@@ -23,6 +23,10 @@ import org.apache.flink.util.AutoCloseableAsync;
 import java.util.concurrent.CompletableFuture;
 
 /** Interface which specifies the JobMaster service. */
+/**
+  todo: add by antony at: 2024/6/1
+  *  这个接口是用来定义JobMasterService的，
+*/
 public interface JobMasterService extends AutoCloseableAsync {
 
     /**

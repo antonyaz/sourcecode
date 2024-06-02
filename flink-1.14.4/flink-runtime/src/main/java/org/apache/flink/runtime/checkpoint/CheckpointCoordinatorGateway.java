@@ -24,6 +24,10 @@ import org.apache.flink.runtime.messages.checkpoint.DeclineCheckpoint;
 import org.apache.flink.runtime.rpc.RpcGateway;
 
 /** RPC Gateway interface for messages to the CheckpointCoordinator. */
+/**
+  todo: add by antony at: 2024/6/1
+  向CheckpointCoordinator发送消息的接口
+*/
 public interface CheckpointCoordinatorGateway extends RpcGateway {
 
     void acknowledgeCheckpoint(

@@ -28,6 +28,10 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.CompletableFuture;
 
 /** Gateway to report key-value state registration and deregistrations. */
+/**
+  todo: add by antony at: 2024/6/1
+  kv state的注册及反注册的gateway
+*/
 public interface KvStateRegistryGateway {
 
     /**

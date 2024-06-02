@@ -56,6 +56,10 @@ import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
 /** {@link JobMaster} rpc gateway interface. */
+/**
+  todo: add by antony at: 2024/6/1
+  JobMaster的rpc gateway 接口
+*/
 public interface JobMasterGateway
         extends CheckpointCoordinatorGateway,
                 FencedRpcGateway<JobMasterId>,
@@ -69,6 +73,10 @@ public interface JobMasterGateway
      * @param timeout of this operation
      * @return Future acknowledge of the operation
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      取消当前正在执行的任务，超时时间
+    */
     CompletableFuture<Acknowledge> cancel(@RpcTimeout Time timeout);
 
     /**
@@ -77,6 +85,10 @@ public interface JobMasterGateway
      * @param taskExecutionState New task execution state for a given task
      * @return Future flag of the task execution state update result
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      更新任务执行状态，返回一个future
+    */
     CompletableFuture<Acknowledge> updateTaskExecutionState(
             final TaskExecutionState taskExecutionState);
 
@@ -89,6 +101,10 @@ public interface JobMasterGateway
      * @return The future of the input split. If there is no further input split, will return an
      *     empty object.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      请求下一个ExecutionJobVertex的输入分片，返回一个SerializedInputSplit的future
+    */
     CompletableFuture<SerializedInputSplit> requestNextInputSplit(
             final JobVertexID vertexID, final ExecutionAttemptID executionAttempt);
 
@@ -101,6 +117,10 @@ public interface JobMasterGateway
      * @param partitionId The partition ID of the partition to request the state of.
      * @return The future of the partition state
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      请求分区状态，返回一个future
+    */
     CompletableFuture<ExecutionState> requestPartitionState(
             final IntermediateDataSetID intermediateResultId, final ResultPartitionID partitionId);
 
@@ -118,6 +138,10 @@ public interface JobMasterGateway
      * @param timeout before the rpc call fails
      * @return Future acknowledge of the notification
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      通知JobManager，分区已经产生数据，返回一个future
+    */
     CompletableFuture<Acknowledge> notifyPartitionDataAvailable(
             final ResultPartitionID partitionID, @RpcTimeout final Time timeout);
 
@@ -129,6 +153,10 @@ public interface JobMasterGateway
      * @param cause for the disconnection of the TaskManager
      * @return Future acknowledge once the JobMaster has been disconnected from the TaskManager
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      断开指定的TaskExecutor与JobMaster的连接
+    */
     CompletableFuture<Acknowledge> disconnectTaskManager(ResourceID resourceID, Exception cause);
 
     /**
@@ -137,6 +165,10 @@ public interface JobMasterGateway
      * @param resourceManagerId identifying the resource manager leader id
      * @param cause of the disconnect
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      断开指定的ResourceManager与JobMaster的连接
+    */
     void disconnectResourceManager(
             final ResourceManagerId resourceManagerId, final Exception cause);
 
@@ -148,6 +180,10 @@ public interface JobMasterGateway
      * @param timeout for the rpc call
      * @return Future set of accepted slots.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+     为JobManager提供可用的slots，响应中包含了可以使用的slots
+    */
     CompletableFuture<Collection<SlotOffer>> offerSlots(
             final ResourceID taskManagerId,
             final Collection<SlotOffer> slots,
@@ -160,6 +196,10 @@ public interface JobMasterGateway
      * @param allocationId identifying the slot to fail
      * @param cause of the failing
      */
+    /**
+      todo: add by antony at: 2024/6/1
+
+    */
     void failSlot(
             final ResourceID taskManagerId, final AllocationID allocationId, final Exception cause);
 
@@ -173,6 +213,10 @@ public interface JobMasterGateway
      * @return Future registration response indicating whether the registration was successful or
      *     not
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      在JobManager中来注册TaskManager，返回一个future
+    */
     CompletableFuture<RegistrationResponse> registerTaskManager(
             final String taskManagerRpcAddress,
             final UnresolvedTaskManagerLocation unresolvedTaskManagerLocation,
@@ -186,6 +230,10 @@ public interface JobMasterGateway
      * @param payload report payload
      * @return future which is completed exceptionally if the operation fails
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      发送来自task manager组件的心跳到JobManager，返回一个future
+    */
     CompletableFuture<Void> heartbeatFromTaskManager(
             final ResourceID resourceID, final TaskExecutorToJobManagerHeartbeatPayload payload);
 

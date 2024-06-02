@@ -102,6 +102,10 @@ class SupervisorActor extends AbstractActor {
                 terminationFutureExecutor);
     }
 
+    /**
+      todo: add by antony at: 2024/6/1
+      2、处理消息
+    */
     private void createStartAkkaRpcActorMessage(StartAkkaRpcActor startAkkaRpcActor) {
         final String endpointId = startAkkaRpcActor.getEndpointId();
         final AkkaRpcActorRegistration akkaRpcActorRegistration =
@@ -118,10 +122,18 @@ class SupervisorActor extends AbstractActor {
                 endpointId);
 
         try {
+            /**
+              todo: add by antony at: 2024/6/1
+              1、创建Actor
+            */
             final ActorRef actorRef = getContext().actorOf(akkaRpcActorProps, endpointId);
 
             registeredAkkaRpcActors.put(actorRef, akkaRpcActorRegistration);
 
+            /**
+              todo: add by antony at: 2024/6/1
+              回复消息
+            */
             getSender()
                     .tell(
                             StartAkkaRpcActorResponse.success(
@@ -197,8 +209,16 @@ class SupervisorActor extends AbstractActor {
         return actorSystem.actorOf(supervisorProps, getActorName());
     }
 
+    /**
+      todo: add by antony at: 2024/6/1
+      1、发送消息
+    */
     public static StartAkkaRpcActorResponse startAkkaRpcActor(
             ActorRef supervisor, StartAkkaRpcActor.PropsFactory propsFactory, String endpointId) {
+        /**
+          todo: add by antony at: 2024/6/1
+          以ask方式发送消息，并等待结果，
+        */
         return Patterns.ask(
                         supervisor,
                         createStartAkkaRpcActorMessage(propsFactory, endpointId),

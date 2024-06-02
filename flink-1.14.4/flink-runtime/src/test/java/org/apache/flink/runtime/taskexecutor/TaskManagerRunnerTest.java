@@ -224,6 +224,10 @@ public class TaskManagerRunnerTest extends TestLogger {
                 PluginUtils.createPluginManagerFromRootFolder(configuration);
         TaskManagerRunner taskManagerRunner =
                 new TaskManagerRunner(configuration, pluginManager, taskExecutorServiceFactory);
+        /**
+          todo: add by antony at: 2024/6/2
+          启动taskManagerRunner
+        */
         taskManagerRunner.start();
         return taskManagerRunner;
     }

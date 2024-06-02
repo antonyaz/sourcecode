@@ -51,6 +51,10 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 /** {@link TaskExecutor} RPC gateway interface. */
+/**
+  todo: add by antony at: 2024/6/1
+  TaskExecutor中的rpc gateway接口信息
+*/
 public interface TaskExecutorGateway
         extends RpcGateway, TaskExecutorOperatorEventGateway, TaskExecutorThreadInfoGateway {
 
@@ -67,6 +71,10 @@ public interface TaskExecutorGateway
      * @param timeout for the operation
      * @return answer to the slot request
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      从tm中来请求一个slot
+    */
     CompletableFuture<Acknowledge> requestSlot(
             SlotID slotId,
             JobID jobId,
@@ -84,6 +92,10 @@ public interface TaskExecutorGateway
      * @param timeout of the submit operation
      * @return Future acknowledge of the successful operation
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      提交一个task到TaskExecutor中
+    */
     CompletableFuture<Acknowledge> submitTask(
             TaskDeploymentDescriptor tdd, JobMasterId jobMasterId, @RpcTimeout Time timeout);
 
@@ -95,6 +107,10 @@ public interface TaskExecutorGateway
      * @param timeout for the update partitions operation
      * @return Future acknowledge if the partitions have been successfully updated
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      更新task中哪些partition可以被找到
+    */
     CompletableFuture<Acknowledge> updatePartitions(
             ExecutionAttemptID executionAttemptID,
             Iterable<PartitionInfo> partitionInfos,
@@ -107,6 +123,10 @@ public interface TaskExecutorGateway
      * @param partitionToRelease partition ids to release
      * @param partitionsToPromote partitions ids to promote
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      批量释放/提升intermediate result partitions
+    */
     void releaseOrPromotePartitions(
             JobID jobId,
             Set<ResultPartitionID> partitionToRelease,
@@ -119,6 +139,10 @@ public interface TaskExecutorGateway
      * @param timeout for the partitions release operation
      * @return Future acknowledge that the request was received
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      释放所有cluster partitions属于给定data sets
+    */
     CompletableFuture<Acknowledge> releaseClusterPartitions(
             Collection<IntermediateDataSetID> dataSetsToRelease, @RpcTimeout Time timeout);
 
@@ -132,6 +156,10 @@ public interface TaskExecutorGateway
      * @param checkpointOptions for performing the checkpoint
      * @return Future acknowledge if the checkpoint has been successfully triggered
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      触发给定task的checkpoint，checkpoint由checkpoint ID和checkpoint timestamp唯一标识
+    */
     CompletableFuture<Acknowledge> triggerCheckpoint(
             ExecutionAttemptID executionAttemptID,
             long checkpointID,
@@ -147,6 +175,10 @@ public interface TaskExecutorGateway
      * @param checkpointTimestamp is the timestamp when the checkpoint has been initiated
      * @return Future acknowledge if the checkpoint has been successfully confirmed
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      确认给定task的checkpoint，checkpoint由checkpoint ID和checkpoint timestamp唯一标识
+    */
     CompletableFuture<Acknowledge> confirmCheckpoint(
             ExecutionAttemptID executionAttemptID, long checkpointId, long checkpointTimestamp);
 
@@ -160,6 +192,10 @@ public interface TaskExecutorGateway
      * @param checkpointTimestamp is the timestamp when the checkpoint has been initiated
      * @return Future acknowledge if the checkpoint has been successfully confirmed
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      取消给定task的checkpoint，checkpoint由checkpoint ID和checkpoint timestamp唯一标识
+    */
     CompletableFuture<Acknowledge> abortCheckpoint(
             ExecutionAttemptID executionAttemptID,
             long checkpointId,
@@ -173,6 +209,10 @@ public interface TaskExecutorGateway
      * @param timeout for the cancel operation
      * @return Future acknowledge if the task is successfully canceled
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      取消给定task
+    */
     CompletableFuture<Acknowledge> cancelTask(
             ExecutionAttemptID executionAttemptID, @RpcTimeout Time timeout);
 
@@ -182,6 +222,10 @@ public interface TaskExecutorGateway
      * @param heartbeatOrigin unique id of the job manager
      * @return future which is completed exceptionally if the operation fails
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      来自job manager的心跳请求
+    */
     CompletableFuture<Void> heartbeatFromJobManager(
             ResourceID heartbeatOrigin, AllocatedSlotReport allocatedSlotReport);
 
@@ -191,6 +235,10 @@ public interface TaskExecutorGateway
      * @param heartbeatOrigin unique id of the resource manager
      * @return future which is completed exceptionally if the operation fails
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      来自resource manager的心跳请求
+    */
     CompletableFuture<Void> heartbeatFromResourceManager(ResourceID heartbeatOrigin);
 
     /**
@@ -199,6 +247,10 @@ public interface TaskExecutorGateway
      * @param jobId JobID for which the JobManager was the leader
      * @param cause for the disconnection from the JobManager
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      从tm中断开指定jm的连接
+    */
     void disconnectJobManager(JobID jobId, Exception cause);
 
     /**
@@ -206,6 +258,10 @@ public interface TaskExecutorGateway
      *
      * @param cause for the disconnection from the ResourceManager
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      从tm中断开指定rm的连接
+    */
     void disconnectResourceManager(Exception cause);
 
     /**
@@ -216,6 +272,10 @@ public interface TaskExecutorGateway
      * @param timeout for the operation
      * @return Future acknowledge which is returned once the slot has been freed
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      释放指定allocation id的slot
+    */
     CompletableFuture<Acknowledge> freeSlot(
             final AllocationID allocationId, final Throwable cause, @RpcTimeout final Time timeout);
 
@@ -225,6 +285,10 @@ public interface TaskExecutorGateway
      * @param jobId job for which all inactive slots should be released
      * @param timeout for the operation
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      释放指定job的所有inactive slot
+    */
     void freeInactiveSlots(JobID jobId, @RpcTimeout Time timeout);
 
     /**
@@ -234,6 +298,10 @@ public interface TaskExecutorGateway
      * @param timeout for the asynchronous operation
      * @return Future which is completed with the {@link TransientBlobKey} of the uploaded file.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      请求指定类型的文件上传到cluster的blob server中
+    */
     CompletableFuture<TransientBlobKey> requestFileUploadByType(
             FileType fileType, @RpcTimeout Time timeout);
 
@@ -244,6 +312,10 @@ public interface TaskExecutorGateway
      * @param timeout for the asynchronous operation
      * @return Future which is completed with the {@link TransientBlobKey} of the uploaded file.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      请求指定名称的文件上传到cluster的blob server中
+    */
     CompletableFuture<TransientBlobKey> requestFileUploadByName(
             String fileName, @RpcTimeout Time timeout);
 
@@ -252,6 +324,10 @@ public interface TaskExecutorGateway
      *
      * @return Future gateway of Metric Query Service on the TaskManager.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      返回task manager上的metric query service的gateway
+    */
     CompletableFuture<SerializableOptional<String>> requestMetricQueryServiceAddress(
             @RpcTimeout Time timeout);
 
@@ -261,6 +337,10 @@ public interface TaskExecutorGateway
      *
      * @return Future flag indicating whether the task executor can be released.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      检查task executor是否可以被释放，如果有未消费的result partitions，则不能被释放
+    */
     CompletableFuture<Boolean> canBeReleased();
 
     /**
@@ -268,9 +348,17 @@ public interface TaskExecutorGateway
      *
      * @return A Tuple2 Array with all log file names with its length.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      请求task manager上的历史log文件名
+    */
     CompletableFuture<Collection<LogInfo>> requestLogList(@RpcTimeout Time timeout);
 
     @Override
+    /**
+      todo: add by antony at: 2024/6/1
+      发送operator event到task中
+    */
     CompletableFuture<Acknowledge> sendOperatorEventToTask(
             ExecutionAttemptID task, OperatorID operator, SerializedValue<OperatorEvent> evt);
 
@@ -280,5 +368,9 @@ public interface TaskExecutorGateway
      * @param timeout timeout for the asynchronous operation
      * @return the {@link ThreadDumpInfo} for this TaskManager.
      */
+    /**
+      todo: add by antony at: 2024/6/1
+      请求task manager上的thread dump
+    */
     CompletableFuture<ThreadDumpInfo> requestThreadDump(@RpcTimeout Time timeout);
 }

@@ -60,6 +60,12 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
  * {@link ShuffleEnvironment}. All services are exclusive to a single {@link TaskExecutor}.
  * Consequently, the respective {@link TaskExecutor} is responsible for closing them.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  taskManager的系列服务组件
+ 比如，MemoryManager、IoManager、ShuffleEnvironment等
+
+*/
 public class TaskManagerServices {
     private static final Logger LOG = LoggerFactory.getLogger(TaskManagerServices.class);
 

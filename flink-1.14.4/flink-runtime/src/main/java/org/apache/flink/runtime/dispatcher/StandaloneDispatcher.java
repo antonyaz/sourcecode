@@ -29,6 +29,11 @@ import java.util.Collection;
  * within in the same process. This dispatcher can be used as the default for all different session
  * clusters.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  在所有的session cluster中来使用该dispatcher
+  目的是：在一个相同的进程中 spawn 一个 JobMaster来执行所提交的JobGraph
+*/
 public class StandaloneDispatcher extends Dispatcher {
     public StandaloneDispatcher(
             RpcService rpcService,

@@ -339,6 +339,10 @@ public class AkkaRpcService implements RpcService {
         synchronized (lock) {
             checkState(!stopped, "RpcService is stopped");
 
+            /**
+              todo: add by antony at: 2024/6/1    
+              创建Actor
+            */
             final SupervisorActor.StartAkkaRpcActorResponse startAkkaRpcActorResponse =
                     SupervisorActor.startAkkaRpcActor(
                             supervisor.getActor(),
@@ -362,6 +366,10 @@ public class AkkaRpcService implements RpcService {
                                                     rpcEndpoint.getEndpointId()),
                                             cause));
 
+            /**
+              todo: add by antony at: 2024/6/1    
+              在RpcService中保持ActorRef与RpcEndpoint的引用关系
+            */
             actors.put(actorRegistration.getActorRef(), rpcEndpoint);
 
             return actorRegistration;

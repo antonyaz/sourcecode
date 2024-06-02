@@ -47,17 +47,37 @@ import java.util.function.Supplier;
  * Component which starts a {@link Dispatcher}, {@link ResourceManager} and {@link
  * WebMonitorEndpoint} in the same process.
  */
+/**
+  todo: add by antony at: 2024/6/1
+  *  这个类是用来启动一个Dispatcher，ResourceManager和WebMonitorEndpoint的，一个组件
+*/
 public class DispatcherResourceManagerComponent implements AutoCloseableAsync {
 
     private static final Logger LOG =
             LoggerFactory.getLogger(DispatcherResourceManagerComponent.class);
 
+    /**
+      todo: add by antony at: 2024/6/1
+      dispatcher组件
+    */
     @Nonnull private final DispatcherRunner dispatcherRunner;
 
+    /**
+      todo: add by antony at: 2024/6/1
+      resourceManager组件
+    */
     @Nonnull private final ResourceManagerService resourceManagerService;
 
+    /**
+      todo: add by antony at: 2024/6/1
+      dispatcher的 leader选举服务
+    */
     @Nonnull private final LeaderRetrievalService dispatcherLeaderRetrievalService;
 
+    /**
+      todo: add by antony at: 2024/6/1
+      resourceManager的leader选举服务
+    */
     @Nonnull private final LeaderRetrievalService resourceManagerRetrievalService;
 
     @Nonnull private final AutoCloseableAsync webMonitorEndpoint;

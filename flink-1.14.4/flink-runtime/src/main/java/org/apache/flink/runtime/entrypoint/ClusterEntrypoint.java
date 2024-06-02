@@ -103,7 +103,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 /**
   todo: add by antony at: 2023/7/16
-  Flink 集群入口
+  Flink 集群入口类
+ 用于 session 和 perjob  模式
 */
 public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErrorHandler {
 

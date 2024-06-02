@@ -32,6 +32,7 @@ package org.apache.flink.runtime.leaderretrieval;
 /**
  * TODO: add by antony at 2022/5/3
  *  观察者设计模式
+ *
  */
 public interface LeaderRetrievalService {
 

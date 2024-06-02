@@ -147,6 +147,10 @@ public abstract class RetryingRegistration<
             if (FencedRpcGateway.class.isAssignableFrom(targetType)) {
                 rpcGatewayFuture =
                         (CompletableFuture<G>)
+                                /**
+                                  todo: add by antony at: 2024/6/2
+                                  调用rpcService来开始连接
+                                */
                                 rpcService.connect(
                                         targetAddress,
                                         fencingToken,
@@ -160,6 +164,10 @@ public abstract class RetryingRegistration<
                     rpcGatewayFuture.thenAcceptAsync(
                             (G rpcGateway) -> {
                                 log.info("Resolved {} address, beginning registration", targetName);
+                                /**
+                                  todo: add by antony at: 2024/6/2
+                                  连接成功后，开始尝试注册
+                                */
                                 register(
                                         rpcGateway,
                                         1,
