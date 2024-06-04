@@ -42,7 +42,7 @@ import static org.apache.flink.table.utils.PartitionPathUtils.listStatusWithoutH
  * files, if it is new partition, will create partition to meta store. 2.{@link #loadNonPartition}:
  * just rename all files to final output path.
  *
- * <p>TODO: src and dest may be on different FS.
+ * <p>todo: src and dest may be on different FS.
  */
 @Internal
 public class PartitionLoader implements Closeable {
@@ -92,7 +92,7 @@ public class PartitionLoader implements Closeable {
             FileStatus[] existingFiles = listStatusWithoutHidden(fs, destDir);
             if (existingFiles != null) {
                 for (FileStatus existingFile : existingFiles) {
-                    // TODO: We need move to trash when auto-purge is false.
+                    // todo: We need move to trash when auto-purge is false.
                     fs.delete(existingFile.getPath(), true);
                 }
             }

@@ -141,7 +141,7 @@ public class LocalContextUtils {
                 dependencies.add(location);
             }
         } catch (URISyntaxException | ClassNotFoundException e) {
-            // TODO: Introduce user jar analyzer to determine user jar whether contains the python
+            // todo: Introduce user jar analyzer to determine user jar whether contains the python
             // function or not. If user jar contains python function, manually add the python
             // dependencies
             throw new SqlExecutionException(

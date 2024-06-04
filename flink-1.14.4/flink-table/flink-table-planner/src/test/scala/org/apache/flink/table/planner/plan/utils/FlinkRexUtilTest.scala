@@ -456,7 +456,7 @@ class FlinkRexUtilTest {
       newPredicate19.toString)
 
     // c >= 0 OR SEARCH(c, [0, 1])
-    // TODO `c >= 0 OR SEARCH(c, [0, 1])` should be simplified to c >= 0
+    // todo `c >= 0 OR SEARCH(c, [0, 1])` should be simplified to c >= 0
     val predicate20 = rexBuilder.makeCall(
       OR,
       rexBuilder.makeCall(GREATER_THAN_OR_EQUAL, c, intLiteral(0)),

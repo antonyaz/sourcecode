@@ -269,7 +269,7 @@ class FlinkRelMdSelectivity private extends MetadataHandler[BuiltInMetadata.Sele
     mq.getSelectivity(rel, predicate)
   }
 
-  // TODO only effects BatchPhysicalRel instead of all RelNode now
+  // todo only effects BatchPhysicalRel instead of all RelNode now
   def getSelectivity(rel: RelNode, mq: RelMetadataQuery, predicate: RexNode): JDouble = {
     rel match {
       case _: BatchPhysicalRel => estimateSelectivity(rel, mq, predicate)

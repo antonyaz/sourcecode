@@ -55,7 +55,7 @@ public class GCloudEmulatorManager {
     private static String dockerIpAddress = "127.0.0.1";
 
     public static final String INTERNAL_PUBSUB_PORT = "22222";
-    // TODO: use :latest again once
+    // todo: use :latest again once
     // https://github.com/GoogleCloudPlatform/cloud-sdk-docker/issues/225 is resolved.
     public static final String DOCKER_IMAGE_NAME = "google/cloud-sdk:313.0.0";
 

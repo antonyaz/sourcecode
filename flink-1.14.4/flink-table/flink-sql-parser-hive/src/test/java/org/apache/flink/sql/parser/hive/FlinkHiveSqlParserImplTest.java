@@ -107,13 +107,13 @@ public class FlinkHiveSqlParserImplTest extends SqlParserTest {
 
     @Test
     public void testShowTables() {
-        // TODO: support SHOW TABLES IN 'db_name' 'regex_pattern'
+        // todo: support SHOW TABLES IN 'db_name' 'regex_pattern'
         sql("show tables").ok("SHOW TABLES");
     }
 
     @Test
     public void testDescribeTable() {
-        // TODO: support describe partition and columns
+        // todo: support describe partition and columns
         sql("describe tbl").ok("DESCRIBE `TBL`");
         sql("describe extended tbl").ok("DESCRIBE EXTENDED `TBL`");
         sql("describe formatted tbl").ok("DESCRIBE FORMATTED `TBL`");
@@ -193,7 +193,7 @@ public class FlinkHiveSqlParserImplTest extends SqlParserTest {
 
         sql("create table if not exists tbl (x int)")
                 .ok("CREATE TABLE IF NOT EXISTS `TBL` (\n" + "  `X`  INTEGER\n" + ")");
-        // TODO: support CLUSTERED BY, SKEWED BY, STORED BY, col constraints
+        // todo: support CLUSTERED BY, SKEWED BY, STORED BY, col constraints
     }
 
     @Test
@@ -315,7 +315,7 @@ public class FlinkHiveSqlParserImplTest extends SqlParserTest {
                         "ALTER TABLE `TBL` PARTITION (`P1` = 1, `P2` = 'a') SET LOCATION '/new/partition/location'");
     }
 
-    // TODO: support ALTER CLUSTERED BY, SKEWED, STORED AS DIRECTORIES, column constraints
+    // todo: support ALTER CLUSTERED BY, SKEWED, STORED AS DIRECTORIES, column constraints
 
     @Test
     public void testAlterPartitionRename() {
@@ -336,9 +336,9 @@ public class FlinkHiveSqlParserImplTest extends SqlParserTest {
                                 + ")");
     }
 
-    // TODO: support EXCHANGE PARTITION, RECOVER PARTITIONS
+    // todo: support EXCHANGE PARTITION, RECOVER PARTITIONS
 
-    // TODO: support (UN)ARCHIVE PARTITION
+    // todo: support (UN)ARCHIVE PARTITION
 
     @Test
     public void testAlterFileFormat() {
@@ -348,7 +348,7 @@ public class FlinkHiveSqlParserImplTest extends SqlParserTest {
                 .ok("ALTER TABLE `TBL` PARTITION (`P` = 1) SET FILEFORMAT `SEQUENCEFILE`");
     }
 
-    // TODO: support ALTER TABLE/PARTITION TOUCH, PROTECTION, COMPACT, CONCATENATE, UPDATE COLUMNS
+    // todo: support ALTER TABLE/PARTITION TOUCH, PROTECTION, COMPACT, CONCATENATE, UPDATE COLUMNS
 
     @Test
     public void testChangeColumn() {
@@ -399,7 +399,7 @@ public class FlinkHiveSqlParserImplTest extends SqlParserTest {
                                 + "AS\n"
                                 + "SELECT *\n"
                                 + "FROM `TBL`");
-        // TODO: support column comments
+        // todo: support column comments
     }
 
     @Test
@@ -450,7 +450,7 @@ public class FlinkHiveSqlParserImplTest extends SqlParserTest {
                                 + "PARTITION (`P1` = 'a', `P2` = 1),\n"
                                 + "PARTITION (`P1` = 'b', `P2` = 2),\n"
                                 + "PARTITION (`P1` = 'c', `P2` = 3)");
-        // TODO: support IGNORE PROTECTION, PURGE
+        // todo: support IGNORE PROTECTION, PURGE
     }
 
     @Test
@@ -545,7 +545,7 @@ public class FlinkHiveSqlParserImplTest extends SqlParserTest {
 
     @Test
     public void testExplainAsJson() {
-        // TODO: FLINK-20562
+        // todo: FLINK-20562
     }
 
     @Test

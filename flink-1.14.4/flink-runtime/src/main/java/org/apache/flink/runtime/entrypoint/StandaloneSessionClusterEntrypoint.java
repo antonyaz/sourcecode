@@ -28,7 +28,7 @@ import org.apache.flink.runtime.util.SignalHandler;
 /** Entry point for the standalone session cluster. */
 
 /**
- * TODO: add by antony at 2022/5/3
+ * todo: add by antony at 2022/5/3
  * 主节点启动类
  *
  */
@@ -53,7 +53,7 @@ public class StandaloneSessionClusterEntrypoint extends SessionClusterEntrypoint
         JvmShutdownSafeguard.installAsShutdownHook(LOG);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  解析 main 方法及参数
          */
         final EntrypointClusterConfiguration entrypointClusterConfiguration =
@@ -63,20 +63,20 @@ public class StandaloneSessionClusterEntrypoint extends SessionClusterEntrypoint
                         StandaloneSessionClusterEntrypoint.class);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  解析 flink-conf.yaml 配置文件
          */
         Configuration configuration = loadConfiguration(entrypointClusterConfiguration);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建主节点启动对象 StandaloneSessionClusterEntrypoint
          */
         StandaloneSessionClusterEntrypoint entrypoint =
                 new StandaloneSessionClusterEntrypoint(configuration);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  启动集群
          */
         ClusterEntrypoint.runClusterEntrypoint(entrypoint);

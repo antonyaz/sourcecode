@@ -632,7 +632,7 @@ public class HiveParserBaseSemanticAnalyzer {
                     case '\\':
                         sb.append("\\");
                         break;
-                        // The following 2 lines are exactly what MySQL does TODO: why do we do
+                        // The following 2 lines are exactly what MySQL does todo: why do we do
                         // this?
                     case '%':
                         sb.append("\\%");
@@ -1473,7 +1473,7 @@ public class HiveParserBaseSemanticAnalyzer {
             ExprNodeDesc grpbyExprNDesc,
             List<ExprNodeDesc> gbExprNDescLst,
             List<String> outputColumnNames) {
-        // TODO: Should we use grpbyExprNDesc.getTypeInfo()? what if expr is UDF
+        // todo: Should we use grpbyExprNDesc.getTypeInfo()? what if expr is UDF
         int i = gbExprNDescLst.size();
         String field = getColumnInternalName(i);
         outputColumnNames.add(field);

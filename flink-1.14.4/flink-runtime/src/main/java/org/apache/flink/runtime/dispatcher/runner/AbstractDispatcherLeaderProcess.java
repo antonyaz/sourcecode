@@ -89,13 +89,13 @@ public abstract class AbstractDispatcherLeaderProcess implements DispatcherLeade
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 启动   startInternal
      */
     @Override
     public final void start() {
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  startInternal
          */
         runIfStateIs(State.CREATED, this::startInternal);
@@ -104,13 +104,13 @@ public abstract class AbstractDispatcherLeaderProcess implements DispatcherLeade
     private void startInternal() {
         log.info("Start {}.", getClass().getSimpleName());
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  更改状态为RUNNING
          */
         state = State.RUNNING;
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  继续启动
          */
         onStart();

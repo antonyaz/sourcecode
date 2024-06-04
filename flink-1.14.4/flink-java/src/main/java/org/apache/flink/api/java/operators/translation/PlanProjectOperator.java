@@ -72,7 +72,7 @@ public class PlanProjectOperator<T, R extends Tuple>
             }
         }
 
-        // TODO We should use code generation for this.
+        // todo We should use code generation for this.
         @SuppressWarnings("unchecked")
         @Override
         public R map(Tuple inTuple) throws Exception {

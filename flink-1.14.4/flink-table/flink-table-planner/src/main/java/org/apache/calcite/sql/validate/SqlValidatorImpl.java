@@ -239,7 +239,7 @@ public class SqlValidatorImpl implements SqlValidatorWithHints {
 
     private SqlNode top;
 
-    // TODO jvs 11-Dec-2008:  make this local to performUnconditionalRewrites
+    // todo jvs 11-Dec-2008:  make this local to performUnconditionalRewrites
     // if it's OK to expand the signature of that method.
     private boolean validatingSqlMerge;
 
@@ -587,7 +587,7 @@ public class SqlValidatorImpl implements SqlValidatorWithHints {
                         for (RelDataTypeField field : rowType.getFieldList()) {
                             String columnName = field.getName();
 
-                            // TODO: do real implicit collation here
+                            // todo: do real implicit collation here
                             final SqlIdentifier exp =
                                     new SqlIdentifier(
                                             ImmutableList.of(child.name, columnName),
@@ -652,7 +652,7 @@ public class SqlValidatorImpl implements SqlValidatorWithHints {
                     for (RelDataTypeField field : rowType.getFieldList()) {
                         String columnName = field.getName();
 
-                        // TODO: do real implicit collation here
+                        // todo: do real implicit collation here
                         addOrExpandField(
                                 selectItems,
                                 aliases,
@@ -1632,7 +1632,7 @@ public class SqlValidatorImpl implements SqlValidatorWithHints {
             rowTypes.add(typeFactory.createStructType(typeList, aliasList));
         }
         if (rows.size() == 1) {
-            // TODO jvs 10-Oct-2005:  get rid of this workaround once
+            // todo jvs 10-Oct-2005:  get rid of this workaround once
             // leastRestrictive can handle all cases
             return rowTypes.get(0);
         }
@@ -1747,7 +1747,7 @@ public class SqlValidatorImpl implements SqlValidatorWithHints {
         assert sqlIdentifier != null;
         RelDataType type = catalogReader.getNamedType(sqlIdentifier);
         if (type == null) {
-            // TODO jvs 12-Feb-2005:  proper type name formatting
+            // todo jvs 12-Feb-2005:  proper type name formatting
             throw newValidationError(
                     sqlIdentifier, RESOURCE.unknownDatatypeName(sqlIdentifier.toString()));
         }
@@ -1901,7 +1901,7 @@ public class SqlValidatorImpl implements SqlValidatorWithHints {
             final List<SqlNode> operands = callBinding.operands();
             final RelDataType[] operandTypes = new RelDataType[operands.size()];
             Arrays.fill(operandTypes, unknownType);
-            // TODO:  eventually should assert(operandTypeInference != null)
+            // todo:  eventually should assert(operandTypeInference != null)
             // instead; for now just eat it
             if (operandTypeInference != null) {
                 operandTypeInference.inferOperandTypes(callBinding, inferredType, operandTypes);
@@ -4079,7 +4079,7 @@ public class SqlValidatorImpl implements SqlValidatorWithHints {
         }
         getRawSelectScope(select).setExpandedSelectList(expandedSelectItems);
 
-        // TODO: when SELECT appears as a value sub-query, should be using
+        // todo: when SELECT appears as a value sub-query, should be using
         // something other than unknownType for targetRowType
         inferUnknownTypes(targetRowType, selectScope, newSelectList);
 
@@ -5917,7 +5917,7 @@ public class SqlValidatorImpl implements SqlValidatorWithHints {
 
         /** Returns the <code>ordinal</code>th item in the select list. */
         private SqlNode nthSelectItem(int ordinal, final SqlParserPos pos) {
-            // TODO: Don't expand the list every time. Maybe keep an expanded
+            // todo: Don't expand the list every time. Maybe keep an expanded
             // version of each expression -- select lists and identifiers -- in
             // the validator.
 

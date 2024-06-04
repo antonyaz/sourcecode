@@ -163,7 +163,7 @@ public class AsyncLookupJoinRunner extends RichAsyncFunction<RowData, RowData> {
      *   <li>combine left input and the right result into a JoinedRowData, call it join result
      * </ol>
      *
-     * <p>TODO: code generate a whole JoinedRowResultFuture in the future
+     * <p>todo: code generate a whole JoinedRowResultFuture in the future
      */
     private static final class JoinedRowResultFuture implements ResultFuture<Object> {
 

@@ -73,7 +73,7 @@ public class CollectCoordinationResponse implements CoordinationResponse {
         return lastCheckpointedOffset;
     }
 
-    // TODO the following two methods might be not so efficient
+    // todo the following two methods might be not so efficient
     //  optimize them with MemorySegment if needed
 
     public <T> List<T> getResults(TypeSerializer<T> elementSerializer) throws IOException {

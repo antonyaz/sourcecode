@@ -83,19 +83,19 @@ public class DefaultDispatcherResourceManagerComponentFactory
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * Dispatcher 工厂
      */
     @Nonnull private final DispatcherRunnerFactory dispatcherRunnerFactory;
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * ResourceManager 工厂
      */
     @Nonnull private final ResourceManagerFactory<?> resourceManagerFactory;
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * WebMonitorEndpoint 工厂
      */
     @Nonnull private final RestEndpointFactory<?> restEndpointFactory;
@@ -110,7 +110,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 1、创建 WebMonitorEndpoint
      * 2、创建 ResourceManager
      * 3、创建 Dispatcher
@@ -130,7 +130,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
             throws Exception {
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建对应组件额监听服务
          */
         LeaderRetrievalService dispatcherLeaderRetrievalService = null;
@@ -164,7 +164,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
                                     12, Duration.ofMillis(10), Duration.ofMillis(50)));
 
             /**
-             *  TODO: add by antony at 2022/10/3
+             *  todo: add by antony at 2022/10/3
              *
              */
             final ScheduledExecutorService executor =
@@ -185,7 +185,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
                                     executor);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  webMonitorEndpoint
              *  1、作用：
              *  启动一个rest服务器，内部通过netty来实现，负责接受rest的各种请求
@@ -206,7 +206,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
 
             log.debug("Starting Dispatcher REST endpoint.");
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  webMonitorEndpoint启动逻辑
              *  1、启动 内部 netty服务端
              *  2、startInternal()
@@ -253,7 +253,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
 
             log.debug("Starting Dispatcher.");
             /**
-             * TODO: add by antony at 2022/5/2
+             * todo: add by antony at 2022/5/2
              * 三件事情
              * 1、创建 DispatchRunner
              * 2、开启 DispatcherRunner 的生命周期
@@ -274,7 +274,7 @@ public class DefaultDispatcherResourceManagerComponentFactory
 
             log.debug("Starting ResourceManagerService.");
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  启动ResourceManagerService
              *  核心逻辑就是 开启竞选，
              *  竞选成功后的回调，回调 ResourceManagerServiceImpl的grantLeadership()
@@ -310,14 +310,14 @@ public class DefaultDispatcherResourceManagerComponentFactory
             resourceManagerService.start();
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  开启监听
              */
             resourceManagerRetrievalService.start(resourceManagerGatewayRetriever);
             dispatcherLeaderRetrievalService.start(dispatcherGatewayRetriever);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  将创建好的三个组件封装为 DispatcherResourceManagerComponent 并返回
              */
             return new DispatcherResourceManagerComponent(

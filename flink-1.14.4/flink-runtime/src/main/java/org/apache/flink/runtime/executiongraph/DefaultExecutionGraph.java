@@ -238,7 +238,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
     /** The coordinator for checkpoints, if snapshot checkpoints are enabled. */
     @Nullable private CheckpointCoordinator checkpointCoordinator;
 
-    /** TODO, replace it with main thread executor. */
+    /** todo, replace it with main thread executor. */
     @Nullable private ScheduledExecutorService checkpointCoordinatorTimer;
 
     /**
@@ -435,7 +435,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
 
         // create the coordinator that triggers and commits checkpoints and holds the state
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建和触发提交检查点并保持状态的协调器
          *  在 ExecutionGraph 中 创建  一个用来协调 ck执行的全局协调器 CheckpointCoordinator
          */
@@ -468,7 +468,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
         checkpointCoordinator.setCheckpointStatsTracker(checkpointStatsTracker);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  注册监听器 JobStatusListener
          *  作用： 监听到 Job 的状态为RUNNING 的时候，就会回调 该监听器的 对应方法 jobStatusChanges
          *  监听器： CheckpointCoordinatorDeActivator
@@ -478,7 +478,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
             // the periodic checkpoint scheduler is activated and deactivated as a result of
             // job status changes (running -> on, all other states -> off)
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  注册
              */
             registerJobStatusListener(checkpointCoordinator.createActivatorDeactivator());
@@ -787,7 +787,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
         final long createTimestamp = System.currentTimeMillis();
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  遍历 JobGraph 中的每个顶点 JobVertex
          */
         for (JobVertex jobVertex : topologicallySorted) {
@@ -801,7 +801,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
 
             // create the execution job vertex and attach it to the graph
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  遍历 JobGraph 中的每个顶点 JobVertex 生成一个 ExecutionJobVertex
              */
             ExecutionJobVertex ejv =
@@ -815,7 +815,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
                             initialAttemptCounts.getAttemptCounts(jobVertex.getID()));
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *   完成上下游 ExecutionVertex 的链接  的 边的关系
              *   构建边
              */
@@ -848,7 +848,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
 
         // the topology assigning should happen before notifying new vertices to failoverStrategy
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  构造Execution拓扑图
          */
         executionTopology = DefaultExecutionTopology.fromExecutionGraph(this);
@@ -1077,7 +1077,7 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
 
             stateTimestamps[newState.ordinal()] = System.currentTimeMillis();
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  通知 监听器 状态变更
              */
             notifyJobStatusChange(newState, error);
@@ -1478,13 +1478,13 @@ public class DefaultExecutionGraph implements ExecutionGraph, InternalExecutionG
             final Throwable serializedError = error == null ? null : new SerializedThrowable(error);
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *
              */
             for (JobStatusListener listener : jobStatusListeners) {
                 try {
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  如果开启了 checkpoint ，会通过此处来回调至 CheckpointCoordinatorDeActivator
                      */
                     listener.jobStatusChanges(getJobID(), newState, timestamp, serializedError);

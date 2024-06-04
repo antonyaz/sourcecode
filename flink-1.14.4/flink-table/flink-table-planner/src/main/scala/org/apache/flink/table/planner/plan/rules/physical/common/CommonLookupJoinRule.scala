@@ -85,12 +85,12 @@ trait CommonLookupJoinRule extends CommonTemporalTableJoinRule {
         scan.tableSource.isInstanceOf[LookupTableSource]
       case scan: CommonPhysicalTableSourceScan =>
         scan.tableSource.isInstanceOf[LookupTableSource]
-      // TODO: find TableSource in FlinkLogicalIntermediateTableScan
+      // todo: find TableSource in FlinkLogicalIntermediateTableScan
       case _ => false
     }
   }
 
-  // TODO Support `IS NOT DISTINCT FROM` in the future: FLINK-13509
+  // todo Support `IS NOT DISTINCT FROM` in the future: FLINK-13509
   protected def validateJoin(join: FlinkLogicalJoin): Unit = {
 
     val filterNulls: Array[Boolean] = {

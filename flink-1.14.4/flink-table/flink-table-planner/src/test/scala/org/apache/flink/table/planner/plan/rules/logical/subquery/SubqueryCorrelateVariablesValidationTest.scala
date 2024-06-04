@@ -111,7 +111,7 @@ class SubqueryCorrelateVariablesValidationTest extends SubQueryTestBase {
   }
 
   @Test(expected = classOf[AssertionError])
-  // TODO some bugs in RelDecorrelator.AdjustProjectForCountAggregateRule
+  // todo some bugs in RelDecorrelator.AdjustProjectForCountAggregateRule
   def testWithProjectCaseWhenCorrelate(): Unit = {
     val sqlQuery =
       """

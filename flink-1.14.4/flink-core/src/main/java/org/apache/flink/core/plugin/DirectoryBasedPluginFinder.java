@@ -87,7 +87,7 @@ public class DirectoryBasedPluginFinder implements PluginFinder {
             throws IOException {
         URL[] urls = createJarURLsFromDirectory(subDirectory);
         Arrays.sort(urls, Comparator.comparing(URL::toString));
-        // TODO: This class could be extended to parse exclude-pattern from a optional text files in
+        // todo: This class could be extended to parse exclude-pattern from a optional text files in
         // the plugin directories.
         return new PluginDescriptor(subDirectory.getFileName().toString(), urls, new String[0]);
     }

@@ -66,7 +66,7 @@ public class HiveMapredSplitReader implements SplitReader {
     private final Deserializer deserializer;
 
     // indices of fields to be returned, with projection applied (if any)
-    // TODO: push projection into underlying input format that supports it
+    // todo: push projection into underlying input format that supports it
     private final int[] selectedFields;
 
     // Hive StructField list contain all related info for specific serde.

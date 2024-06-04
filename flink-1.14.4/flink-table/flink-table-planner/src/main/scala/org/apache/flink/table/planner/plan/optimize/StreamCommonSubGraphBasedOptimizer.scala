@@ -81,7 +81,7 @@ class StreamCommonSubGraphBasedOptimizer(planner: StreamPlanner)
       return sinkBlocks
     }
 
-    // TODO FLINK-24048: Move changeLog inference out of optimizing phase
+    // todo FLINK-24048: Move changeLog inference out of optimizing phase
     // infer modifyKind property for each blocks independently
     sinkBlocks.foreach(b => optimizeBlock(b, isSinkBlock = true))
     // infer and propagate updateKind and miniBatchInterval property for each blocks

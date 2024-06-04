@@ -59,7 +59,7 @@ class DefaultDispatcherGatewayServiceFactory
         final Dispatcher dispatcher;
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              * 以StandaloneSession集群为例
              * 此处dispatcher 为 StandaloneDispatcher RpcServer
              */
@@ -77,7 +77,7 @@ class DefaultDispatcherGatewayServiceFactory
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  启动 dispatcher，看 onStart()
          *  dispatcher 为 rpcServer，调用rpcServer.start()即查看
          *  StandaloneDispatcher 类中的onStart()

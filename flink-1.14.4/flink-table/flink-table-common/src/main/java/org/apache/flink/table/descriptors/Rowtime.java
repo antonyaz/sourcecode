@@ -36,8 +36,8 @@ public class Rowtime implements Descriptor {
 
     private final DescriptorProperties internalProperties = new DescriptorProperties(true);
 
-    // TODO: Put these fields into RowtimeValidator once it is also ported into table-common.
-    // TODO: Because these fields have polluted this API class.
+    // todo: Put these fields into RowtimeValidator once it is also ported into table-common.
+    // todo: Because these fields have polluted this API class.
     public static final String ROWTIME = "rowtime";
     public static final String ROWTIME_TIMESTAMPS_TYPE = "rowtime.timestamps.type";
     public static final String ROWTIME_TIMESTAMPS_TYPE_VALUE_FROM_FIELD = "from-field";

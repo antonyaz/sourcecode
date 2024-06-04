@@ -391,7 +391,7 @@ public class JdbcExactlyOnceSinkE2eTest extends JdbcTestBase {
                     && !Thread.currentThread().isInterrupted()
                     && haveActiveSources()) {
                 if (System.currentTimeMillis() - start > 10_000) {
-                    // debugging FLINK-22889 (TODO: remove after resolved)
+                    // debugging FLINK-22889 (todo: remove after resolved)
                     LOG.debug("Slept more than 10s", new Exception());
                     start = Long.MAX_VALUE;
                 }
@@ -408,7 +408,7 @@ public class JdbcExactlyOnceSinkE2eTest extends JdbcTestBase {
             long start = System.currentTimeMillis();
             while (running && haveActiveSources()) {
                 if (System.currentTimeMillis() - start > 10_000) {
-                    // debugging FLINK-22889 (TODO: remove after resolved)
+                    // debugging FLINK-22889 (todo: remove after resolved)
                     LOG.debug("Slept more than 10s", new Exception());
                     start = Long.MAX_VALUE;
                 }

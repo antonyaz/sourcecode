@@ -107,8 +107,8 @@ public class KafkaShuffleFetcher<T> extends KafkaFetcher<T> {
         for (ConsumerRecord<byte[], byte[]> record : partitionRecords) {
             final KafkaShuffleElement element = kafkaShuffleDeserializer.deserialize(record);
 
-            // TODO: Do we need to check the end of stream if reaching the end watermark
-            // TODO: Currently, if one of the partition sends an end-of-stream signal the fetcher
+            // todo: Do we need to check the end of stream if reaching the end watermark
+            // todo: Currently, if one of the partition sends an end-of-stream signal the fetcher
             // stops running.
             // The current "ending of stream" logic in KafkaFetcher a bit strange: if any partition
             // has a record

@@ -35,7 +35,7 @@ public class NettyConnectionManager implements ConnectionManager {
     private final NettyClient client;
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * netty server 和 netty client 之间的通信协议
      */
     private final NettyBufferPool bufferPool;
@@ -50,27 +50,27 @@ public class NettyConnectionManager implements ConnectionManager {
             NettyConfig nettyConfig) {
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  初始化 netty server
          */
         this.server = new NettyServer(nettyConfig);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  初始化 netty client
          */
         this.client = new NettyClient(nettyConfig);
         this.bufferPool = new NettyBufferPool(nettyConfig.getNumberOfArenas());
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  初始化 一个 包装类
          */
         this.partitionRequestClientFactory =
                 new PartitionRequestClientFactory(client, nettyConfig.getNetworkRetries());
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  netty client 和 netty server 之间的通信协议
          *  这俩在运行的时候，都需要去绑定一些 Handler来完成请求处理
          *  so，通信协议提供了两个方法
@@ -83,20 +83,20 @@ public class NettyConnectionManager implements ConnectionManager {
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 启动 client 和 server
      */
     @Override
     public int start() throws IOException {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  netty的客户端启动
          *  client = Netty Client
          */
         client.init(nettyProtocol, bufferPool);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  netty的服务端启动
          *  server = Netty Server
          */

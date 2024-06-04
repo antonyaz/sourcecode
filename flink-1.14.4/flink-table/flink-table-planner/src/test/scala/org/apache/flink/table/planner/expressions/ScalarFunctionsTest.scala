@@ -1420,7 +1420,7 @@ class ScalarFunctionsTest extends ScalarTypesTestBase {
       "truncate(cast(f28 as DOUBLE))",
       "0.0")
 
-    // TODO: ignore TableApiTest for cast to DECIMAL(p, s) is not support now.
+    // todo: ignore TableApiTest for cast to DECIMAL(p, s) is not support now.
     //  see https://issues.apache.org/jira/browse/FLINK-13651
     //    testAllApis(
     //      'f31.cast(DataTypes.DECIMAL(38, 18)).truncate(2),
@@ -1499,7 +1499,7 @@ class ScalarFunctionsTest extends ScalarTypesTestBase {
       "truncate(cast(null as double))",
       "null")
 
-    // TODO: ignore TableApiTest for cast to DECIMAL(p, s) is not support now.
+    // todo: ignore TableApiTest for cast to DECIMAL(p, s) is not support now.
     //  see https://issues.apache.org/jira/browse/FLINK-13651
     //    testAllApis(
     //      'f33.cast(DataTypes.DECIMAL(10, 5)).truncate(),
@@ -1639,7 +1639,7 @@ class ScalarFunctionsTest extends ScalarTypesTestBase {
       math.pow(4.5F, 44L).toString)
 
     // f22: bigDecimal
-    // TODO delete casting in SQL when CALCITE-1467 is fixed
+    // todo delete casting in SQL when CALCITE-1467 is fixed
     testAllApis(
       'f22.cast(DataTypes.DOUBLE).power('f5),
       "f22.cast(DOUBLE).power(f5)",
@@ -1712,7 +1712,7 @@ class ScalarFunctionsTest extends ScalarTypesTestBase {
     testAllApis(
       2.2.sqrt(),
       "2.2.sqrt()",
-      "POWER(CAST(2.2 AS DOUBLE), CAST(0.5 AS DOUBLE))", // TODO fix FLINK-4621
+      "POWER(CAST(2.2 AS DOUBLE), CAST(0.5 AS DOUBLE))", // todo fix FLINK-4621
       math.sqrt(2.2).toString)
   }
 

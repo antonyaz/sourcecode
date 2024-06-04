@@ -97,7 +97,7 @@ public class JobGraph implements Serializable {
 
     /** The settings for the job checkpoints. */
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * checkpoint 的配置参数
      * StreamExecutionEnvironment中设置后，经由StreamGraph 传递到 JobGraph
      */
@@ -147,7 +147,7 @@ public class JobGraph implements Serializable {
 
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  初始化 一个空的 ExecutionConfig
              */
             setExecutionConfig(new ExecutionConfig());

@@ -30,7 +30,7 @@ object UpdatingPlanChecker {
       sink: UpsertStreamTableSink[_]): Option[Array[String]] = {
     // extract unique key fields
     // Now we pick shortest one to sink
-    // TODO UpsertStreamTableSink setKeyFields interface should be Array[Array[String]]
+    // todo UpsertStreamTableSink setKeyFields interface should be Array[Array[String]]
     val sinkFieldNames = sink.getTableSchema.getFieldNames
     /** Extracts the unique keys of the table produced by the plan. */
     val fmq = FlinkRelMetadataQuery.reuseOrCreate(sinkNode.getCluster.getMetadataQuery)

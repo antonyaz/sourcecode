@@ -211,7 +211,7 @@ object PlannerExpressionParserImpl extends JavaTokenParsers
           } else if (n.endsWith("f") || n.endsWith("F")) {
             valueLiteral(n.toFloat)
           } else {
-            valueLiteral(n.toDouble)
+            valueLiteral(n.todouble)
           }
       }
 

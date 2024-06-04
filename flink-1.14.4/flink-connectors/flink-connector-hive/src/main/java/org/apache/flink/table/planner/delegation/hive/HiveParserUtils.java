@@ -550,7 +550,7 @@ public class HiveParserUtils {
             throw new SemanticException(e);
         }
         // set r.convertedParameters
-        // TODO: type conversion
+        // todo: type conversion
         res.convertedParameters = aggParameters;
 
         return res;
@@ -568,7 +568,7 @@ public class HiveParserUtils {
 
     // Returns the GenericUDAFEvaluator for the aggregation. This is called once for each GroupBy
     // aggregation.
-    // TODO: Requiring a GenericUDAFEvaluator means we only support hive UDAFs. Need to avoid this
+    // todo: Requiring a GenericUDAFEvaluator means we only support hive UDAFs. Need to avoid this
     // to support flink UDAFs.
     public static GenericUDAFEvaluator getGenericUDAFEvaluator(
             String aggName,
@@ -1001,7 +1001,7 @@ public class HiveParserUtils {
         }
     }
 
-    // TODO: we need a way to tell whether a function is built-in, for now just return false so that
+    // todo: we need a way to tell whether a function is built-in, for now just return false so that
     // the unparser will quote them
     public static boolean isNative(SqlOperator sqlOperator) {
         return false;
@@ -1215,7 +1215,7 @@ public class HiveParserUtils {
             SessionState sessionState = SessionState.get();
             HiveConf hiveConf = sessionState != null ? sessionState.getConf() : null;
             if (hiveConf != null) {
-                // TODO: need to support overriding hive version
+                // todo: need to support overriding hive version
                 try (HiveMetastoreClientWrapper hmsClient =
                         new HiveMetastoreClientWrapper(hiveConf, HiveShimLoader.getHiveVersion())) {
                     String[] parts = FunctionUtils.getQualifiedFunctionNameParts(funcName);
@@ -1315,7 +1315,7 @@ public class HiveParserUtils {
                 FieldSchema fieldSchema = derivedSchema.get(i);
                 // Modify a copy, not the original
                 fieldSchema = new FieldSchema(fieldSchema);
-                // TODO: there's a potential problem here if some table uses external schema like
+                // todo: there's a potential problem here if some table uses external schema like
                 // Avro, with a very large type name. It seems like the view does not derive the
                 // SerDe from the table, so it won't be able to just get the type from the
                 // deserializer
@@ -1540,7 +1540,7 @@ public class HiveParserUtils {
                 HiveParserUtils.toRelDataType(aggInfo.getReturnType(), cluster.getTypeFactory());
 
         // 2. Convert Agg Fn args and type of args to Calcite
-        // TODO: Does HQL allows expressions as aggregate args or can it only be projections from
+        // todo: Does HQL allows expressions as aggregate args or can it only be projections from
         // child?
         List<Integer> argIndices = new ArrayList<>();
         RelDataTypeFactory typeFactory = cluster.getTypeFactory();
@@ -1550,7 +1550,7 @@ public class HiveParserUtils {
             Integer argIndex = Preconditions.checkNotNull(rexNodeToPos.get(paramRex.toString()));
             argIndices.add(argIndex);
 
-            // TODO: does arg need type cast?
+            // todo: does arg need type cast?
             calciteArgTypes.add(HiveParserUtils.toRelDataType(expr.getTypeInfo(), typeFactory));
         }
 

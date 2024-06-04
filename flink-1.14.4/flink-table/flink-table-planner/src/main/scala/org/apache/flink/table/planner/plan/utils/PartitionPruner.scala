@@ -173,7 +173,7 @@ object PartitionPruner {
       case INTEGER => v.toInt
       case BIGINT => v.toLong
       case FLOAT => v.toFloat
-      case DOUBLE => v.toDouble
+      case DOUBLE => v.todouble
       case DECIMAL =>
         val decimalType = t.asInstanceOf[DecimalType]
         DecimalDataUtils.castFrom(v, decimalType.getPrecision, decimalType.getScale)

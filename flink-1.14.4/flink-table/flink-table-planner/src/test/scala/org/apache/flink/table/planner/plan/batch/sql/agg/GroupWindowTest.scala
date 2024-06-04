@@ -111,7 +111,7 @@ class GroupWindowTest(aggStrategy: AggregatePhaseStrategy) extends TableTestBase
 
   @Test(expected = classOf[AssertionError])
   def testWindowAggWithGroupSets(): Unit = {
-    // TODO supports group sets
+    // todo supports group sets
     // currently, the optimized plan is not collect, and an exception will be thrown in code-gen
     val sql =
     """
@@ -283,7 +283,7 @@ class GroupWindowTest(aggStrategy: AggregatePhaseStrategy) extends TableTestBase
   }
 
   @Test
-  // TODO session window is not supported now
+  // todo session window is not supported now
   def testNonPartitionedSessionWindow(): Unit = {
     val sqlQuery = "SELECT COUNT(*) AS cnt FROM MyTable2 GROUP BY SESSION(ts, INTERVAL '30' MINUTE)"
     expectedException.expect(classOf[TableException])
@@ -293,7 +293,7 @@ class GroupWindowTest(aggStrategy: AggregatePhaseStrategy) extends TableTestBase
   }
 
   @Test
-  // TODO session window is not supported now
+  // todo session window is not supported now
   def testPartitionedSessionWindow(): Unit = {
     val sqlQuery =
       """
@@ -365,7 +365,7 @@ class GroupWindowTest(aggStrategy: AggregatePhaseStrategy) extends TableTestBase
     util.verifyExecPlan(sql)
   }
 
-  // TODO: fix the plan regression when FLINK-19668 is fixed.
+  // todo: fix the plan regression when FLINK-19668 is fixed.
   @Test
   def testReturnTypeInferenceForWindowAgg() = {
 

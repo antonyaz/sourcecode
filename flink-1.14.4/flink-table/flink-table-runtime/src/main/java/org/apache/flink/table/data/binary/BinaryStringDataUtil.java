@@ -561,7 +561,7 @@ public class BinaryStringDataUtil {
         return null;
     }
 
-    public static Double toDouble(BinaryStringData str) {
+    public static Double todouble(BinaryStringData str) {
         try {
             return Double.valueOf(str.toString());
         } catch (NumberFormatException e) {

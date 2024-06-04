@@ -93,6 +93,10 @@ public class KvStateService {
 
             if (kvStateServer != null) {
                 try {
+                    /**
+                      todo: add by antony at: 2024/6/3    
+                      启动kvStateServer 
+                    */
                     kvStateServer.start();
                 } catch (Throwable ie) {
                     kvStateServer.shutdown();
@@ -103,6 +107,10 @@ public class KvStateService {
 
             if (kvStateClientProxy != null) {
                 try {
+                    /**
+                      todo: add by antony at: 2024/6/3    
+                      启动kvStateProxy
+                    */
                     kvStateClientProxy.start();
                 } catch (Throwable ie) {
                     kvStateClientProxy.shutdown();

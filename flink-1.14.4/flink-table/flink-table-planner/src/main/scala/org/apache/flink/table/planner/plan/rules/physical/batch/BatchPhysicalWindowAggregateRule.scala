@@ -156,7 +156,7 @@ class BatchPhysicalWindowAggregateRule
     val groupSet = agg.getGroupSet.toArray
     val aggregates = aggCallToAggFunction.map(_._2).toArray
 
-    // TODO aggregate include projection now, so do not provide new trait will be safe
+    // todo aggregate include projection now, so do not provide new trait will be safe
     val aggProvidedTraitSet = input.getTraitSet.replace(FlinkConventions.BATCH_PHYSICAL)
 
     val inputTimeFieldIndex = AggregateUtil.timeFieldIndex(

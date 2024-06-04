@@ -160,7 +160,7 @@ class RemoveCollationTest extends TableTestBase {
 
   @Test
   def testRemoveCollation_Rank_3(): Unit = {
-    // TODO remove local rank for single distribution input
+    // todo remove local rank for single distribution input
     val sqlQuery =
       """
         |SELECT * FROM (

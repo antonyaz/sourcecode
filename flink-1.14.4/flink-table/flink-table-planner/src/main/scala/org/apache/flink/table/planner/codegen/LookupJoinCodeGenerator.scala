@@ -185,7 +185,7 @@ object LookupJoinCodeGenerator {
       callContext,
       udf,
       functionName,
-      // TODO: filter all records when there is any nulls on the join key, because
+      // todo: filter all records when there is any nulls on the join key, because
       //  "IS NOT DISTINCT FROM" is not supported yet.
       skipIfArgsNull = true)
 

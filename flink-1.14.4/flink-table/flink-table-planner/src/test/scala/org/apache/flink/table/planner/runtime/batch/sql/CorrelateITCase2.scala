@@ -143,7 +143,7 @@ class CorrelateITCase2 extends BatchTestBase {
     )
   }
 
-// TODO support dyn
+// todo support dyn
 //  @Test
 //  def testConstantTableFuncWithDyn(): Unit = {
 //    registerFunction("str_split", new StringSplit())

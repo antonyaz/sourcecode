@@ -24,8 +24,8 @@ import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.DoubleToLo
 import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.DoubleValueToLongValueWithProperHashCode;
 import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValueToChar;
 import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValueToCharValue;
-import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValueToDouble;
-import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValueToDoubleValue;
+import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValuetodouble;
+import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValuetodoubleValue;
 import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValueToLong;
 import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValueToLongValueWithProperHashCode;
 import org.apache.flink.graph.drivers.transform.GraphKeyTypeTransform.LongValueToString;
@@ -503,19 +503,19 @@ public class GraphKeyTypeTransformTest {
     // DoubleValue
 
     @Test
-    public void testToDoubleValue() throws Exception {
-        TranslateFunction<LongValue, DoubleValue> translator = new LongValueToDoubleValue();
+    public void testtodoubleValue() throws Exception {
+        TranslateFunction<LongValue, DoubleValue> translator = new LongValuetodoubleValue();
 
         Assert.assertEquals(
-                new DoubleValue(Double.longBitsToDouble(0L)),
+                new DoubleValue(Double.longBitstodouble(0L)),
                 translator.translate(new LongValue(0L), doubleValue));
 
         Assert.assertEquals(
-                new DoubleValue(Double.longBitsToDouble(Long.MIN_VALUE)),
+                new DoubleValue(Double.longBitstodouble(Long.MIN_VALUE)),
                 translator.translate(new LongValue(Long.MIN_VALUE), doubleValue));
 
         Assert.assertEquals(
-                new DoubleValue(Double.longBitsToDouble(Long.MAX_VALUE)),
+                new DoubleValue(Double.longBitstodouble(Long.MAX_VALUE)),
                 translator.translate(new LongValue(Long.MAX_VALUE), doubleValue));
     }
 
@@ -527,37 +527,37 @@ public class GraphKeyTypeTransformTest {
         Assert.assertEquals(
                 new LongValueWithProperHashCode(0L),
                 translator.translate(
-                        new DoubleValue(Double.longBitsToDouble(0L)), longValueWithProperHashCode));
+                        new DoubleValue(Double.longBitstodouble(0L)), longValueWithProperHashCode));
 
         Assert.assertEquals(
                 new LongValueWithProperHashCode(Long.MIN_VALUE),
                 translator.translate(
-                        new DoubleValue(Double.longBitsToDouble(Long.MIN_VALUE)),
+                        new DoubleValue(Double.longBitstodouble(Long.MIN_VALUE)),
                         longValueWithProperHashCode));
 
         Assert.assertEquals(
                 new LongValueWithProperHashCode(Long.MAX_VALUE),
                 translator.translate(
-                        new DoubleValue(Double.longBitsToDouble(Long.MAX_VALUE)),
+                        new DoubleValue(Double.longBitstodouble(Long.MAX_VALUE)),
                         longValueWithProperHashCode));
     }
 
     // Double
 
     @Test
-    public void testToDouble() throws Exception {
-        TranslateFunction<LongValue, Double> translator = new LongValueToDouble();
+    public void testtodouble() throws Exception {
+        TranslateFunction<LongValue, Double> translator = new LongValuetodouble();
 
         Assert.assertEquals(
-                Double.valueOf(Double.longBitsToDouble(0L)),
+                Double.valueOf(Double.longBitstodouble(0L)),
                 translator.translate(new LongValue(0L), null));
 
         Assert.assertEquals(
-                Double.valueOf(Double.longBitsToDouble(Long.MIN_VALUE)),
+                Double.valueOf(Double.longBitstodouble(Long.MIN_VALUE)),
                 translator.translate(new LongValue(Long.MIN_VALUE), null));
 
         Assert.assertEquals(
-                Double.valueOf(Double.longBitsToDouble(Long.MAX_VALUE)),
+                Double.valueOf(Double.longBitstodouble(Long.MAX_VALUE)),
                 translator.translate(new LongValue(Long.MAX_VALUE), null));
     }
 
@@ -568,17 +568,17 @@ public class GraphKeyTypeTransformTest {
 
         Assert.assertEquals(
                 new LongValueWithProperHashCode(0L),
-                translator.translate(Double.longBitsToDouble(0L), longValueWithProperHashCode));
+                translator.translate(Double.longBitstodouble(0L), longValueWithProperHashCode));
 
         Assert.assertEquals(
                 new LongValueWithProperHashCode(Long.MIN_VALUE),
                 translator.translate(
-                        Double.longBitsToDouble(Long.MIN_VALUE), longValueWithProperHashCode));
+                        Double.longBitstodouble(Long.MIN_VALUE), longValueWithProperHashCode));
 
         Assert.assertEquals(
                 new LongValueWithProperHashCode(Long.MAX_VALUE),
                 translator.translate(
-                        Double.longBitsToDouble(Long.MAX_VALUE), longValueWithProperHashCode));
+                        Double.longBitstodouble(Long.MAX_VALUE), longValueWithProperHashCode));
     }
 
     // StringValue

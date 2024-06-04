@@ -185,7 +185,7 @@ public class KafkaConsumerThread<T> extends Thread {
                         consumerMetricGroup.gauge(
                                 metric.getKey().name(), new KafkaMetricWrapper(metric.getValue()));
 
-                        // TODO this metric is kept for compatibility purposes; should remove in the
+                        // todo this metric is kept for compatibility purposes; should remove in the
                         // future
                         subtaskMetricGroup.gauge(
                                 metric.getKey().name(), new KafkaMetricWrapper(metric.getValue()));

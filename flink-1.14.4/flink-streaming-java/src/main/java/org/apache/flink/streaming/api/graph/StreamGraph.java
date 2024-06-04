@@ -371,7 +371,7 @@ public class StreamGraph implements Pipeline {
             TypeInformation<OUT> outTypeInfo,
             String operatorName) {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  获取Task 启动类的定义
          *  1、源头Task = SourceStreamTask
          *  2、中间Task = OneInputStreamTask
@@ -381,7 +381,7 @@ public class StreamGraph implements Pipeline {
                         ? SourceStreamTask.class
                         : OneInputStreamTask.class;
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  添加一个 StreamNode 节点
          */
         addOperator(

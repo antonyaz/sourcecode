@@ -28,7 +28,7 @@ import java.io.IOException;
  * <p>This currently bypasses the I/O manager as it is the only synchronous implementation, which is
  * currently in use.
  *
- * <p>TODO Refactor I/O manager setup and refactor this into it
+ * <p>todo Refactor I/O manager setup and refactor this into it
  */
 public class SynchronousBufferFileReader extends SynchronousFileIOChannel
         implements BufferFileReader {

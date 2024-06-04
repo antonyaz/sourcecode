@@ -196,7 +196,7 @@ class RelTimeIndicatorConverterTest extends TableTestBase {
     util.verifyExecPlan(stmtSet)
   }
 
-  // TODO add temporal table join case
+  // todo add temporal table join case
 }
 
 object RelTimeIndicatorConverterTest {

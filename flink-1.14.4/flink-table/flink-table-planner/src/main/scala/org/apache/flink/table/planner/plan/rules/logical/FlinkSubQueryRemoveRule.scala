@@ -61,7 +61,7 @@ class FlinkSubQueryRemoveRule(
     if (hasUnsupportedSubQuery(condition)) {
       // has some unsupported subquery, such as: subquery connected with OR
       // select * from t1 where t1.a > 10 or t1.b in (select t2.c from t2)
-      // TODO supports ExistenceJoin
+      // todo supports ExistenceJoin
       return
     }
 
@@ -157,7 +157,7 @@ class FlinkSubQueryRemoveRule(
       // will have the final conditions in the ANTI JOIN as
       // (A.A1 = B.B1 OR ISNULL(A.A1 = B.B1)) AND (B.B2 = A.A2)
       case SqlKind.IN =>
-        // TODO:
+        // todo:
         // Calcite does not support project with correlated expressions.
         // e.g.
         // SELECT b FROM l WHERE (

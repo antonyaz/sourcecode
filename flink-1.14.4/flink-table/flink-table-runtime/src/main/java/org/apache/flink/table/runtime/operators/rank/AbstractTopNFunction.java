@@ -97,7 +97,7 @@ public abstract class AbstractTopNFunction extends KeyedProcessFunction<RowData,
             boolean generateUpdateBefore,
             boolean outputRankNumber) {
         this.ttlConfig = ttlConfig;
-        // TODO support RANK and DENSE_RANK
+        // todo support RANK and DENSE_RANK
         switch (rankType) {
             case ROW_NUMBER:
                 break;

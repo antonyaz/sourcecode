@@ -106,7 +106,7 @@ class BatchPhysicalOverAggregateRule
         groupToAggCallToAggFunction.flatMap(_._2).map(_._1))
 
       val providedTraitSet = call.getPlanner.emptyTraitSet.replace(FlinkConventions.BATCH_PHYSICAL)
-      // TODO: split pandas udaf, general python udaf, java/scala udaf into different node
+      // todo: split pandas udaf, general python udaf, java/scala udaf into different node
       val existGeneralPythonFunction = groupToAggCallToAggFunction
         .map(_._2)
         .exists(_.map(_._1).exists(isPythonAggregate(_, PythonFunctionKind.GENERAL)))

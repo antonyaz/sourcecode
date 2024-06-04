@@ -166,7 +166,7 @@ public class ExpressionConverterTest {
                 converter.visit(
                         valueLiteral(
                                 LocalTime.parse("12:12:12.12345"), DataTypes.TIME(5).notNull()));
-        // TODO planner supports up to TIME(3)
+        // todo planner supports up to TIME(3)
         assertThat(
                 ((RexLiteral) rex).getValueAs(TimeString.class),
                 equalTo(new TimeString("12:12:12.123")));
@@ -193,7 +193,7 @@ public class ExpressionConverterTest {
                 ((RexLiteral) rex).getValueAs(BigDecimal.class),
                 equalTo(BigDecimal.valueOf(value.toMillis())));
         assertThat(rex.getType().getSqlTypeName(), equalTo(SqlTypeName.INTERVAL_DAY_SECOND));
-        // TODO planner ignores the precision
+        // todo planner ignores the precision
         assertThat(rex.getType().getPrecision(), equalTo(2)); // day precision, should actually be 1
         assertThat(
                 rex.getType().getScale(), equalTo(6)); // fractional precision, should actually be 3
@@ -206,7 +206,7 @@ public class ExpressionConverterTest {
         assertThat(
                 ((RexLiteral) rex).getValueAs(BigDecimal.class),
                 equalTo(BigDecimal.valueOf(value.toTotalMonths())));
-        // TODO planner ignores the precision
+        // todo planner ignores the precision
         assertThat(rex.getType().getSqlTypeName(), equalTo(SqlTypeName.INTERVAL_YEAR_MONTH));
         assertThat(
                 rex.getType().getPrecision(), equalTo(2)); // year precision, should actually be 3

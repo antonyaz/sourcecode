@@ -132,7 +132,7 @@ public class SinkITCase extends AbstractTestBase {
 
         env.execute();
 
-        // TODO: At present, for a bounded scenario, the occurrence of final checkpoint is not a
+        // todo: At present, for a bounded scenario, the occurrence of final checkpoint is not a
         // deterministic event, so
         // we do not need to verify this matter. After the final checkpoint becomes ready in the
         // future,
@@ -223,7 +223,7 @@ public class SinkITCase extends AbstractTestBase {
 
         env.execute();
 
-        // TODO: At present, for a bounded scenario, the occurrence of final checkpoint is not a
+        // todo: At present, for a bounded scenario, the occurrence of final checkpoint is not a
         // deterministic event, so
         // we do not need to verify this matter. After the final checkpoint becomes ready in the
         // future,

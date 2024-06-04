@@ -287,7 +287,7 @@ public class BinaryArrayDataTest {
             assertTrue(newArray.isNullAt(0));
 
             newArray.setDouble(0, 3);
-            assertEquals(newArray, BinaryArrayData.fromPrimitiveArray(newArray.toDoubleArray()));
+            assertEquals(newArray, BinaryArrayData.fromPrimitiveArray(newArray.todoubleArray()));
         }
 
         {

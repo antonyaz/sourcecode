@@ -83,7 +83,7 @@ object UserDefinedFunctionUtils {
     * by a Scala object, since concurrent risks.
     */
   def checkNotSingleton(clazz: Class[_]): Unit = {
-    // TODO it is not a good way to check singleton. Maybe improve it further.
+    // todo it is not a good way to check singleton. Maybe improve it further.
     if (clazz.getFields.map(_.getName) contains "MODULE$") {
       throw new ValidationException(
         s"TableFunction implemented by class ${clazz.getCanonicalName} " +

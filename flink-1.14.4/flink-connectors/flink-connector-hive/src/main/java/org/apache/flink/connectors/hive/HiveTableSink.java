@@ -421,7 +421,7 @@ public class HiveTableSink implements DynamicTableSink, SupportsPartitioning, Su
         if (!finalDir.endsWith(Path.SEPARATOR)) {
             res += Path.SEPARATOR;
         }
-        // TODO: may append something more meaningful than a timestamp, like query ID
+        // todo: may append something more meaningful than a timestamp, like query ID
         res += ".staging_" + System.currentTimeMillis();
         Path path = new Path(res);
         FileSystem fs = path.getFileSystem(conf);

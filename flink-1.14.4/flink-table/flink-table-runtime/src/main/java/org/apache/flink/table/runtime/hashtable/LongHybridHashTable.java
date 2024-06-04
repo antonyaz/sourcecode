@@ -43,7 +43,7 @@ import static org.apache.flink.table.runtime.hashtable.LongHashPartition.INVALID
 /**
  * Special optimized hashTable with key long.
  *
- * <p>See {@link LongHashPartition}. TODO add min max long filter and bloomFilter to spilled
+ * <p>See {@link LongHashPartition}. todo add min max long filter and bloomFilter to spilled
  * partition.
  */
 public abstract class LongHybridHashTable extends BaseHybridHashTable {
@@ -220,7 +220,7 @@ public abstract class LongHybridHashTable extends BaseHybridHashTable {
             // try to request memory.
             int buffers = (int) Math.ceil(((double) (range * 8)) / segmentSize);
 
-            // TODO MemoryManager needs to support flexible larger segment, so that the index area
+            // todo MemoryManager needs to support flexible larger segment, so that the index area
             // of the
             // build side is placed on a segment to avoid the overhead of addressing.
             MemorySegment[] denseBuckets = new MemorySegment[buffers];

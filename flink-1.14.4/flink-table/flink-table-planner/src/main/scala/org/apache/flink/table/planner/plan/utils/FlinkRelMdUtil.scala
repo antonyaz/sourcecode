@@ -542,7 +542,7 @@ object FlinkRelMdUtil {
 
   def binaryRowAverageSize(rel: RelNode): JDouble = {
     val binaryType = FlinkTypeFactory.toLogicalRowType(rel.getRowType)
-    // TODO reuse FlinkRelMetadataQuery here
+    // todo reuse FlinkRelMetadataQuery here
     val mq = rel.getCluster.getMetadataQuery
     val columnSizes = mq.getAverageColumnSizes(rel)
     var length = 0d
@@ -566,7 +566,7 @@ object FlinkRelMdUtil {
   }
 
   def computeSortMemory(mq: RelMetadataQuery, inputOfSort: RelNode): JDouble = {
-    //TODO It's hard to make sure that the normalized key's length is accurate in optimized stage.
+    //todo It's hard to make sure that the normalized key's length is accurate in optimized stage.
     // use SortCodeGenerator.MAX_NORMALIZED_KEY_LEN instead of 16
     val normalizedKeyBytes = 16
     val rowCount = mq.getRowCount(inputOfSort)
@@ -606,7 +606,7 @@ object FlinkRelMdUtil {
   }
 
   def getRankRangeNdv(rankRange: RankRange): JDouble = rankRange match {
-    case r: ConstantRankRange => (r.getRankEnd - r.getRankStart + 1).toDouble
+    case r: ConstantRankRange => (r.getRankEnd - r.getRankStart + 1).todouble
     case _ => 100D // default value now
   }
 

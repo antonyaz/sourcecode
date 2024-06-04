@@ -241,7 +241,7 @@ public class RexNodeJsonSerializer extends StdSerializer<RexNode> {
                 gen.writeEndArray();
                 break;
             default:
-                // TODO support ARRAY, MAP
+                // todo support ARRAY, MAP
                 throw new TableException("Unknown value: " + value + ", type: " + literalTypeName);
         }
     }
@@ -315,7 +315,7 @@ public class RexNodeJsonSerializer extends StdSerializer<RexNode> {
         gen.writeStringField(FIELD_NAME_NAME, operator.getName());
         gen.writeStringField(FIELD_NAME_KIND, operator.kind.name());
         gen.writeStringField(FIELD_NAME_SYNTAX, operator.getSyntax().name());
-        // TODO if a udf is registered with class name, class name is recorded enough
+        // todo if a udf is registered with class name, class name is recorded enough
         if (operator instanceof ScalarSqlFunction) {
             ScalarSqlFunction scalarSqlFunc = (ScalarSqlFunction) operator;
             gen.writeStringField(FIELD_NAME_DISPLAY_NAME, scalarSqlFunc.displayName());

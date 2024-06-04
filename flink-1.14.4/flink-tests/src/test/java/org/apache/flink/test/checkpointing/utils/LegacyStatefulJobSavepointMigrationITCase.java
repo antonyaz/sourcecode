@@ -74,9 +74,9 @@ public class LegacyStatefulJobSavepointMigrationITCase extends SavepointMigratio
     }
 
     /**
-     * TODO to generate savepoints for a specific Flink version / backend type, TODO change these
-     * values accordingly, e.g. to generate for 1.3 with RocksDB, TODO set as
-     * (MigrationVersion.v1_3, StateBackendLoader.ROCKSDB_STATE_BACKEND_NAME) TODO Note: You should
+     * todo to generate savepoints for a specific Flink version / backend type, todo change these
+     * values accordingly, e.g. to generate for 1.3 with RocksDB, todo set as
+     * (MigrationVersion.v1_3, StateBackendLoader.ROCKSDB_STATE_BACKEND_NAME) todo Note: You should
      * generate the savepoint based on the release branch instead of the master.
      */
     private final MigrationVersion flinkGenerateSavepointVersion = MigrationVersion.v1_4;

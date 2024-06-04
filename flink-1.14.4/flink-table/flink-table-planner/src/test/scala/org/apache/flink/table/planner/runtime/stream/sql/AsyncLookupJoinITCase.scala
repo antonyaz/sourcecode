@@ -55,10 +55,10 @@ class AsyncLookupJoinITCase(legacyTableSource: Boolean, backend: StateBackendMod
   @Before
   override def before(): Unit = {
     super.before()
-    // TODO: remove this until [FLINK-12351] is fixed.
+    // todo: remove this until [FLINK-12351] is fixed.
     //  currently AsyncWaitOperator doesn't copy input element which is a bug
     env.getConfig.disableObjectReuse()
-    
+
     createScanTable("src", data)
     createLookupTable("user_table", userData)
   }

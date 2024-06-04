@@ -141,7 +141,7 @@ public class OperationConverterUtils {
                         catalogTable.getPartitionKeys(),
                         newProperties,
                         catalogTable.getComment()));
-        // TODO: handle watermark and constraints
+        // todo: handle watermark and constraints
     }
 
     // change a column in the old table schema and return the updated table schema

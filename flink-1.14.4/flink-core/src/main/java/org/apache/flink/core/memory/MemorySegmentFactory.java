@@ -136,7 +136,7 @@ public final class MemorySegmentFactory {
         try {
             return ByteBuffer.allocateDirect(size);
         } catch (OutOfMemoryError outOfMemoryError) {
-            // TODO: this error handling can be removed in future,
+            // todo: this error handling can be removed in future,
             // once we find a common way to handle OOM errors in netty threads.
             // Here we enrich it to propagate better OOM message to the receiver
             // if it happens in a netty thread.

@@ -58,7 +58,7 @@ object PythonTableUtils {
     new CollectionInputFormat(data.map(converter(_).asInstanceOf[Row]),
       dataType.createSerializer(config))
   }
-  
+
   /**
     * Wrap the unpickled python data with an InputFormat. It will be passed to
     * StreamExecutionEnvironment.creatInput() to create an InputFormat later.
@@ -122,7 +122,7 @@ object PythonTableUtils {
       }
 
       case _ if dataType == Types.DOUBLE => (obj: Any) => nullSafeConvert(obj) {
-        case c: Float => c.toDouble
+        case c: Float => c.todouble
         case c: Double => c
       }
 

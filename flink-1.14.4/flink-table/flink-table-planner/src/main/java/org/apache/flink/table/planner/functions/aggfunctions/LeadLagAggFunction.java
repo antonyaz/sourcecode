@@ -91,7 +91,7 @@ public abstract class LeadLagAggFunction extends DeclarativeAggregateFunction {
         return new Expression[] {operand(0)};
     }
 
-    // TODO hack, use the current input reset the buffer value.
+    // todo hack, use the current input reset the buffer value.
     @Override
     public Expression[] retractExpressions() {
         return new Expression[] {

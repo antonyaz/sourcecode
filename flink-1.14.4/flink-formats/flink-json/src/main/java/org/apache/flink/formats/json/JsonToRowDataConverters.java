@@ -131,7 +131,7 @@ public class JsonToRowDataConverters implements Serializable {
             case FLOAT:
                 return this::convertToFloat;
             case DOUBLE:
-                return this::convertToDouble;
+                return this::converttodouble;
             case CHAR:
             case VARCHAR:
                 return this::convertToString;
@@ -187,7 +187,7 @@ public class JsonToRowDataConverters implements Serializable {
         }
     }
 
-    private double convertToDouble(JsonNode jsonNode) {
+    private double converttodouble(JsonNode jsonNode) {
         if (jsonNode.isDouble()) {
             // avoid redundant toString and parseDouble, for better performance
             return jsonNode.asDouble();

@@ -162,7 +162,7 @@ public class HiveModuleTest {
                                 .collect());
         assertEquals("[2018-01-192019-12-27 17:58:23.385]", results.toString());
 
-        // TODO: null cannot be a constant argument at the moment. This test will make more sense
+        // todo: null cannot be a constant argument at the moment. This test will make more sense
         // when that changes.
         results =
                 CollectionUtil.iteratorToList(

@@ -29,8 +29,8 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 
-// TODO case class Tuple2[T1, T2](_1: T1, _2: T2)
-// TODO case class Foo(a: Int, b: String
+// todo case class Tuple2[T1, T2](_1: T1, _2: T2)
+// todo case class Foo(a: Int, b: String
 
 case class Nested(myLong: Long)
 

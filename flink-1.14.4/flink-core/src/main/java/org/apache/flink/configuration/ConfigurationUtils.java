@@ -299,7 +299,7 @@ public class ConfigurationUtils {
         } else if (Float.class.equals(clazz)) {
             return (T) convertToFloat(rawValue);
         } else if (Double.class.equals(clazz)) {
-            return (T) convertToDouble(rawValue);
+            return (T) converttodouble(rawValue);
         } else if (String.class.equals(clazz)) {
             return (T) convertToString(rawValue);
         } else if (clazz.isEnum()) {
@@ -480,7 +480,7 @@ public class ConfigurationUtils {
         return Float.parseFloat(o.toString());
     }
 
-    static Double convertToDouble(Object o) {
+    static Double converttodouble(Object o) {
         if (o.getClass() == Double.class) {
             return (Double) o;
         } else if (o.getClass() == Float.class) {

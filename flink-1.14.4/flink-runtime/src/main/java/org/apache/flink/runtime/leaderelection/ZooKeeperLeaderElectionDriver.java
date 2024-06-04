@@ -239,7 +239,7 @@ public class ZooKeeperLeaderElectionDriver implements LeaderElectionDriver, Lead
                 } else {
                     try {
                         /**
-                         *  TODO: add by antony at 2022/5/3
+                         *  todo: add by antony at 2022/5/3
                          *  创建znode节点
                          */
                         client.create()

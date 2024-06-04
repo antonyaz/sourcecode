@@ -29,7 +29,7 @@ class DefaultExecutionVertexOperations implements ExecutionVertexOperations {
     @Override
     public void deploy(final ExecutionVertex executionVertex) throws JobException {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  executionVertex 就是 ExecutionGraph 中的一个任务顶点
          */
         executionVertex.deploy();

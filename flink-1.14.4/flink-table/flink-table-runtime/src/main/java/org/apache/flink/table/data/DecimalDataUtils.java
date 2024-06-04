@@ -193,7 +193,7 @@ public final class DecimalDataUtils {
         return (float) doubleValue(dec);
     }
 
-    public static double castToDouble(DecimalData dec) {
+    public static double casttodouble(DecimalData dec) {
         return doubleValue(dec);
     }
 

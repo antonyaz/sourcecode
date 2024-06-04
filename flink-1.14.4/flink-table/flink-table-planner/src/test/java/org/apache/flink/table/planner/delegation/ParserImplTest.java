@@ -99,7 +99,7 @@ public class ParserImplTest {
                             .summary("SET pipeline.name=test name"),
                     forStatement("SET pipeline.name = ' '").summary("SET pipeline.name= "),
                     forStatement("SET execution.runtime-type=")
-                            // TODO: the exception message should be "no value defined"
+                            // todo: the exception message should be "no value defined"
                             .error(
                                     "SQL parse failed. Encountered \"execution\" at line 1, column 5"));
 

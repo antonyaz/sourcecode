@@ -133,7 +133,7 @@ class EqualiserCodeGenerator(fieldTypes: Array[LogicalType]) {
   private def generateEqualsCode(ctx: CodeGeneratorContext, fieldType: LogicalType,
                   leftFieldTerm: String, rightFieldTerm: String,
                   leftNullTerm: String, rightNullTerm: String) = {
-    // TODO merge ScalarOperatorGens.generateEquals.
+    // todo merge ScalarOperatorGens.generateEquals.
     if (isInternalPrimitive(fieldType)) {
       ("", s"$leftFieldTerm == $rightFieldTerm")
     } else if (isCompositeType(fieldType)) {

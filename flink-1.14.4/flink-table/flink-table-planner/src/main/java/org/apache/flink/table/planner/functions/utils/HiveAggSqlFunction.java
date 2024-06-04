@@ -42,7 +42,7 @@ import static org.apache.flink.table.types.utils.TypeConversions.fromLegacyInfoT
  * HiveUDAF#setArgumentTypesAndConstants}. Override SqlReturnTypeInference to invoke {@code
  * HiveUDAF#getHiveResultType} instead of {@code HiveUDAF#getResultType}.
  *
- * @deprecated TODO hack code, its logical should be integrated to AggSqlFunction
+ * @deprecated todo hack code, its logical should be integrated to AggSqlFunction
  */
 @Deprecated
 public class HiveAggSqlFunction extends AggSqlFunction {

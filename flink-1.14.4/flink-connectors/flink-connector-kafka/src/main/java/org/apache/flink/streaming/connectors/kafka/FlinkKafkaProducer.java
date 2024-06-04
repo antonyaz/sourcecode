@@ -1408,7 +1408,7 @@ public class FlinkKafkaProducer<IN>
                     if (wrapper != null) {
                         wrapper.setKafkaMetric(metric);
                     } else {
-                        // TODO: somehow merge metrics from all active producers?
+                        // todo: somehow merge metrics from all active producers?
                         wrapper = new KafkaMetricMutableWrapper(metric);
                         previouslyCreatedMetrics.put(name, wrapper);
                         kafkaMetricGroup.gauge(name, wrapper);

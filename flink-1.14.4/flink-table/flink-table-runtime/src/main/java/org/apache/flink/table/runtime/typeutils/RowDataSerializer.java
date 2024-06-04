@@ -185,7 +185,7 @@ public class RowDataSerializer extends AbstractRowDataSerializer<RowData> {
         return types.length;
     }
 
-    /** Convert {@link RowData} into {@link BinaryRowData}. TODO modify it to code gen. */
+    /** Convert {@link RowData} into {@link BinaryRowData}. todo modify it to code gen. */
     @Override
     public BinaryRowData toBinaryRow(RowData row) {
         if (row instanceof BinaryRowData) {

@@ -501,7 +501,7 @@ class FlinkRelMdColumnUniqueness private extends MetadataHandler[BuiltInMetadata
     areColumnsUniqueOfJoin(
       join.joinInfo, join.joinType, left.getRowType,
       (leftSet: ImmutableBitSet) => mq.areColumnsUnique(left, leftSet, ignoreNulls),
-      // TODO get uniqueKeys from TableSchema of TableSource
+      // todo get uniqueKeys from TableSchema of TableSource
       (_: ImmutableBitSet) => null,
       mq, columns
     )

@@ -210,7 +210,7 @@ public class DefaultJobGraphStore<R extends ResourceVersion<R>>
                 if (!currentVersion.isExisting()) {
                     try {
                         /**
-                         *  TODO: add by antony at 2022/5/3
+                         *  todo: add by antony at 2022/5/3
                          *  没有注册过，就进行注册
                          */
                         jobGraphStateHandleStore.addAndLock(name, jobGraph);
@@ -224,7 +224,7 @@ public class DefaultJobGraphStore<R extends ResourceVersion<R>>
                 } else if (addedJobGraphs.contains(jobID)) {
                     try {
                         /**
-                         *  TODO: add by antony at 2022/5/3
+                         *  todo: add by antony at 2022/5/3
                          *  已经存在过，进行替换
                          */
                         jobGraphStateHandleStore.replace(name, currentVersion, jobGraph);

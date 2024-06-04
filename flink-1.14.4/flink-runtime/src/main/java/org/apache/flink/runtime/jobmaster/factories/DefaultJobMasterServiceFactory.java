@@ -93,7 +93,7 @@ public class DefaultJobMasterServiceFactory implements JobMasterServiceFactory {
                 FunctionUtils.uncheckedSupplier(
                         () ->
                                 /**
-                                 *  TODO: add by antony at 2022/5/4
+                                 *  todo: add by antony at 2022/5/4
                                  *  创建JobMaster 及 启动
                                  */
                                 internalCreateJobMasterService(leaderSessionId, onCompletionActions)),
@@ -104,7 +104,7 @@ public class DefaultJobMasterServiceFactory implements JobMasterServiceFactory {
             UUID leaderSessionId, OnCompletionActions onCompletionActions) throws Exception {
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  内部最重要的事情
          *  JobMaster 是一个RpcEndpoint组件
          *  1、创建 Scheduler 及完成 JobGraph 到 ExecutionGraph 额转变
@@ -141,7 +141,7 @@ public class DefaultJobMasterServiceFactory implements JobMasterServiceFactory {
                         initializationTimestamp);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  2、启动JobMaster 调用onStart()
          */
         jobMaster.start();

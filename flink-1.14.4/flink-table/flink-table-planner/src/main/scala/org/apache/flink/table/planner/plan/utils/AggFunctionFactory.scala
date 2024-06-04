@@ -81,7 +81,7 @@ class AggFunctionFactory(
       case _: SqlCountAggFunction if call.getArgList.size() > 1 =>
         throw new TableException("We now only support the count of one field.")
 
-      // TODO supports ApproximateCountDistinctAggFunction and CountDistinctAggFunction
+      // todo supports ApproximateCountDistinctAggFunction and CountDistinctAggFunction
 
       case _: SqlCountAggFunction if call.getArgList.isEmpty => createCount1AggFunction(argTypes)
 
@@ -118,7 +118,7 @@ class AggFunctionFactory(
       case _: SqlListAggFunction if call.getArgList.size() == 2 =>
         createListAggWsFunction(argTypes, index)
 
-      // TODO supports SqlCardinalityCountAggFunction
+      // todo supports SqlCardinalityCountAggFunction
 
       case a: SqlAggFunction if a.getKind == SqlKind.COLLECT =>
         createCollectAggFunction(argTypes)

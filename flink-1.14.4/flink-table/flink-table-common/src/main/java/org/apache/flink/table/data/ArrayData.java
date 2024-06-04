@@ -128,7 +128,7 @@ public interface ArrayData {
 
     float[] toFloatArray();
 
-    double[] toDoubleArray();
+    double[] todoubleArray();
 
     // ------------------------------------------------------------------------------------------
     // Access Utilities

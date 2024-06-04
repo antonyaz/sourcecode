@@ -80,7 +80,7 @@ public class FlinkAggregateRemoveRule extends RelOptRule {
         }
         for (AggregateCall aggCall : aggregate.getAggCallList()) {
             SqlKind aggCallKind = aggCall.getAggregation().getKind();
-            // TODO supports more AggregateCalls
+            // todo supports more AggregateCalls
             boolean isAllowAggCall =
                     aggCallKind == SqlKind.SUM
                             || aggCallKind == SqlKind.MIN

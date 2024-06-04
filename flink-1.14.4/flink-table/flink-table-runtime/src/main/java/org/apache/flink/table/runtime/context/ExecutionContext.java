@@ -27,7 +27,7 @@ import org.apache.flink.table.data.RowData;
  */
 public interface ExecutionContext {
 
-    // TODO add create state method.
+    // todo add create state method.
 
     /** @return key of the current processed element. */
     RowData currentKey();

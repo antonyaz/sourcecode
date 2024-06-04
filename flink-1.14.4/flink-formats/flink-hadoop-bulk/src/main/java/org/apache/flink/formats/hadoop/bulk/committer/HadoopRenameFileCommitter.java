@@ -91,7 +91,7 @@ public class HadoopRenameFileCommitter implements HadoopFileCommitter {
                         String.format("In progress file(%s) not exists.", tempFilePath));
             } else {
                 // By pass the re-commit if source file not exists.
-                // TODO: in the future we may also need to check if the target file exists.
+                // todo: in the future we may also need to check if the target file exists.
                 return;
             }
         }

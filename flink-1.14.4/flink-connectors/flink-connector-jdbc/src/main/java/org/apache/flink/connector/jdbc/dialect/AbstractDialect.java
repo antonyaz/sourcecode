@@ -36,7 +36,7 @@ abstract class AbstractDialect implements JdbcDialect {
             DataType dt = schema.getFieldDataType(i).get();
             String fieldName = schema.getFieldName(i).get();
 
-            // TODO: We can't convert VARBINARY(n) data type to
+            // todo: We can't convert VARBINARY(n) data type to
             //  PrimitiveArrayTypeInfo.BYTE_PRIMITIVE_ARRAY_TYPE_INFO in
             // LegacyTypeInfoDataTypeConverter
             //  when n is smaller than Integer.MAX_VALUE

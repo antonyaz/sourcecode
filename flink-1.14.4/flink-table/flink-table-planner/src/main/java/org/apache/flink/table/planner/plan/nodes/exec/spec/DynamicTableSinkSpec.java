@@ -63,7 +63,7 @@ public class DynamicTableSinkSpec extends CatalogTableSpecBase {
         if (tableSink == null) {
             tableSink =
                     FactoryUtil.createTableSink(
-                            null, // catalog, TODO support create Factory from catalog
+                            null, // catalog, todo support create Factory from catalog
                             objectIdentifier,
                             catalogTable,
                             configuration,

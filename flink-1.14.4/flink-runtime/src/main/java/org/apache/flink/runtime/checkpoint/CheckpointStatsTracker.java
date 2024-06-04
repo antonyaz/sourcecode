@@ -168,21 +168,21 @@ public class CheckpointStatsTracker {
      * @param checkpointId ID of the checkpoint.
      * @param triggerTimestamp Trigger timestamp of the checkpoint.
      * @param props The checkpoint properties.
-     * @param vertexToDop mapping of {@link JobVertexID} to DOP
+     * @param vertextodop mapping of {@link JobVertexID} to DOP
      * @return Tracker for statistics gathering.
      */
     PendingCheckpointStats reportPendingCheckpoint(
             long checkpointId,
             long triggerTimestamp,
             CheckpointProperties props,
-            Map<JobVertexID, Integer> vertexToDop) {
+            Map<JobVertexID, Integer> vertextodop) {
 
         PendingCheckpointStats pending =
                 new PendingCheckpointStats(
                         checkpointId,
                         triggerTimestamp,
                         props,
-                        vertexToDop,
+                        vertextodop,
                         PendingCheckpointStatsCallback.proxyFor(this));
 
         statsReadWriteLock.lock();

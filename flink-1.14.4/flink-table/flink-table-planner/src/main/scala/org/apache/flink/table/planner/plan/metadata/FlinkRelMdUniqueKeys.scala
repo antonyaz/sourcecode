@@ -490,7 +490,7 @@ class FlinkRelMdUniqueKeys private extends MetadataHandler[BuiltInMetadata.Uniqu
     getJoinUniqueKeys(
       join.joinType, leftType, leftUniqueKeys, null,
       mq.areColumnsUnique(left, join.joinInfo.leftSet, ignoreNulls),
-      // TODO get uniqueKeys from TableSchema of TableSource
+      // todo get uniqueKeys from TableSchema of TableSource
       null)
   }
 

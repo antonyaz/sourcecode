@@ -29,6 +29,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 
 /** Utility class to initialize entities used in queryable state. */
+/**
+  todo: add by antony at: 2024/6/3
+  状态查询的工具类
+*/
 public final class QueryableStateUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(QueryableStateUtils.class);

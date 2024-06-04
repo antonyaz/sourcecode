@@ -850,7 +850,7 @@ public class RocksDBKeyedStateBackend<K> extends AbstractKeyedStateBackend<K> {
         int count = 0;
 
         for (RocksDbKvStateInfo metaInfo : kvStateInformation.values()) {
-            // TODO maybe filterOrTransform only for k/v states
+            // todo maybe filterOrTransform only for k/v states
             try (RocksIteratorWrapper rocksIterator =
                     RocksDBOperationUtils.getRocksIterator(
                             db, metaInfo.columnFamilyHandle, readOptions)) {

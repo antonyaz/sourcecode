@@ -69,7 +69,7 @@ class PruneAggregateCallITCase(
       Seq(row(1))
     )
 
-    // TODO enable this case after translateToPlanInternal method is implemented
+    // todo enable this case after translateToPlanInternal method is implemented
     //  in StreamExecJoin
     // checkResult(
     //   "SELECT * FROM MyTable WHERE EXISTS (SELECT COUNT(*) FROM MyTable2)",
@@ -86,14 +86,14 @@ class PruneAggregateCallITCase(
       Seq(row(1))
     )
 
-    // TODO enable this case after translateToPlanInternal method is implemented
+    // todo enable this case after translateToPlanInternal method is implemented
     //  in StreamExecJoin
     // checkResult(
     //    "SELECT * FROM MyTable WHERE EXISTS (SELECT SUM(a), COUNT(*) FROM MyTable2)",
     //    Seq(row(1, 1, "Hi"), row(2, 2, "Hello"), row(3, 2, "Hello world"))
     // )
 
-    // TODO enable this case after translateToPlanInternal method is implemented
+    // todo enable this case after translateToPlanInternal method is implemented
     //  in StreamExecJoin
     // checkResult(
     //    "SELECT * FROM MyTable WHERE EXISTS (SELECT COUNT(*), SUM(a) FROM MyTable2)",

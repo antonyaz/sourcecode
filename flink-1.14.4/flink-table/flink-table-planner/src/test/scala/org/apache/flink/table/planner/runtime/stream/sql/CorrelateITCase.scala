@@ -429,7 +429,7 @@ class CorrelateITCase extends StreamingTestBase {
     assertEquals(expected.sorted, sink.getAppendResults.sorted)
   }
 
-  // TODO support agg
+  // todo support agg
 //  @Test
 //  def testCountStarOnCorrelate(): Unit = {
 //    val data = List(

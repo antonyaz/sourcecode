@@ -77,7 +77,7 @@ class RewriteCoalesceRuleTest extends TableTestBase {
   }
 
   @Test(expected = classOf[CodeGenException])
-  // TODO remove expected exception after [FLINK-12371] merged
+  // todo remove expected exception after [FLINK-12371] merged
   def testCalcite864_1(): Unit = {
     val sqlQuery =
       """
@@ -94,7 +94,7 @@ class RewriteCoalesceRuleTest extends TableTestBase {
   }
 
   @Test(expected = classOf[CodeGenException])
-  // TODO remove expected exception after [FLINK-12371] merged
+  // todo remove expected exception after [FLINK-12371] merged
   def testCalcite864_3(): Unit = {
     val sqlQuery =
       """

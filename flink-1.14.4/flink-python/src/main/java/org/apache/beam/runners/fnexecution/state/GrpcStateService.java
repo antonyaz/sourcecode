@@ -104,7 +104,7 @@ public class GrpcStateService extends BeamFnStateGrpc.BeamFnStateImplBase
         @Override
         public void abort() {
             deregister();
-            // TODO: Abort in-flight state requests. Flag this processBundleInstructionId as a fail.
+            // todo: Abort in-flight state requests. Flag this processBundleInstructionId as a fail.
         }
     }
 
@@ -113,7 +113,7 @@ public class GrpcStateService extends BeamFnStateGrpc.BeamFnStateImplBase
      *
      * <p>Is only threadsafe if the outbound observer is threadsafe.
      *
-     * <p>TODO: Handle when the client indicates completion or an error on the inbound stream and
+     * <p>todo: Handle when the client indicates completion or an error on the inbound stream and
      * there are pending requests.
      */
     private class Inbound implements StreamObserver<StateRequest> {

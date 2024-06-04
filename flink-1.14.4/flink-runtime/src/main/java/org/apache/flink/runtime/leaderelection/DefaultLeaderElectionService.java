@@ -122,13 +122,13 @@ public class DefaultLeaderElectionService
 
         synchronized (lock) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  检测是否是 leadership
              */
             if (hasLeadership(leaderSessionID)) {
                 if (running) {
                     /**
-                     *  TODO: add by antony at 2022/5/3
+                     *  todo: add by antony at 2022/5/3
                      *  确定 sessionID 和 address地址信息
                      */
                     confirmLeaderInformation(leaderSessionID, leaderAddress);
@@ -192,7 +192,7 @@ public class DefaultLeaderElectionService
         confirmedLeaderSessionID = leaderSessionID;
         confirmedLeaderAddress = leaderAddress;
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  更新到zk中
          *  默认为Zookeeper
          */

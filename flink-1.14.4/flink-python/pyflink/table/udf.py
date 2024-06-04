@@ -543,7 +543,7 @@ class UserDefinedAggregateFunctionWrapper(UserDefinedFunctionWrapper):
         return DelegatingPandasAggregateFunction(self._func)
 
 
-# TODO: support to configure the python execution environment
+# todo: support to configure the python execution environment
 def _get_python_env():
     gateway = get_gateway()
     exec_type = gateway.jvm.org.apache.flink.table.functions.python.PythonEnv.ExecType.PROCESS

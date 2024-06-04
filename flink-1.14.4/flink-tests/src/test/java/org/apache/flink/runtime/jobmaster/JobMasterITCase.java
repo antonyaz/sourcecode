@@ -70,7 +70,7 @@ public class JobMasterITCase extends TestLogger {
      * This test is to guard against the issue reported in FLINK-22001, where any exception from the
      * JobManager initialization was not forwarded to the user.
      *
-     * <p>TODO: This test relies on an internal error. Replace it with a more robust approach.
+     * <p>todo: This test relies on an internal error. Replace it with a more robust approach.
      */
     @Test
     public void testJobManagerInitializationExceptionsAreForwardedToTheUser() {

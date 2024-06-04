@@ -48,7 +48,7 @@ import java.util.Set;
  * <p>These fixes are just enough to test Flink XA-related functionality. They aren't enough for
  * proper XA support.
  *
- * <p>TODO: fix the issue in the upstream.
+ * <p>todo: fix the issue in the upstream.
  */
 public class H2XaResourceWrapper implements XAResource {
 

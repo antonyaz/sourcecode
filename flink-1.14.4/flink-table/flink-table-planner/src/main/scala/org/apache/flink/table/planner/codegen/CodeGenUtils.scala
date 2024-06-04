@@ -348,7 +348,7 @@ object CodeGenUtils {
       case (DECIMAL, FLOAT) =>
         s"$DECIMAL_UTIL.castToFloat(${expr.resultTerm})"
       case (DECIMAL, DOUBLE) =>
-        s"$DECIMAL_UTIL.castToDouble(${expr.resultTerm})"
+        s"$DECIMAL_UTIL.casttodouble(${expr.resultTerm})"
 
       // float -> other numeric types
       case (FLOAT, DOUBLE) => s"(double) ${expr.resultTerm}"

@@ -156,7 +156,7 @@ object RelExplainUtil {
     } else {
       distinctInfos.map { distinct =>
         val argListNames = distinct.argIndexes.map(inputFieldNames).mkString(",")
-        // TODO Refactor local&global aggregate name
+        // todo Refactor local&global aggregate name
         val filterNames = distinct.filterArgs.filter(_ > 0).map(inputFieldNames).mkString(", ")
         if (filterNames.nonEmpty) {
           s"DISTINCT($argListNames) FILTER ($filterNames)"
@@ -337,7 +337,7 @@ object RelExplainUtil {
     }
     val isIncremental: Boolean = shuffleKey.isDefined
 
-    // TODO output local/global agg call names like Partial_XXX, Final_XXX
+    // todo output local/global agg call names like Partial_XXX, Final_XXX
     val aggStrings = if (isLocal) {
       stringifyLocalAggregates(aggInfos, distinctInfos, distinctAggs, aggFilters, inFieldNames)
     } else if (isGlobal || isIncremental) {

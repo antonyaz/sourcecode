@@ -2825,9 +2825,9 @@ SqlNode SqlRichExplain() :
     Set<String> explainDetails = new HashSet<String>();
 }
 {
-    <EXPLAIN> 
+    <EXPLAIN>
     [
-        <PLAN> <FOR> 
+        <PLAN> <FOR>
         |
             ParseExplainDetail(explainDetails)
         (
@@ -2850,12 +2850,12 @@ void ParseExplainDetail(Set<String> explainDetails):
 }
 {
     (
-        <ESTIMATED_COST> 
-        | 
-        <CHANGELOG_MODE> 
-        | 
+        <ESTIMATED_COST>
+        |
+        <CHANGELOG_MODE>
+        |
         <JSON_EXECUTION_PLAN>
-    ) 
+    )
     {
         if (explainDetails.contains(token.image.toUpperCase())) {
             throw SqlUtil.newContextException(
@@ -3552,7 +3552,7 @@ SqlNode SqlUpdate() :
         targetColumnList.add(id);
     }
     <EQ> exp = Expression(ExprContext.ACCEPT_SUB_QUERY) {
-        // TODO:  support DEFAULT also
+        // todo:  support DEFAULT also
         sourceExpressionList.add(exp);
     }
     (
@@ -3668,7 +3668,7 @@ SqlInsert WhenNotMatchedClause(SqlNode table) :
     rowConstructor = RowConstructor()
     [ <RPAREN> ]
     {
-        // TODO zfong 5/26/06: note that extra parentheses are accepted above
+        // todo zfong 5/26/06: note that extra parentheses are accepted above
         // around the VALUES clause as a hack for unparse, but this is
         // actually invalid SQL; should fix unparse
         insertValues = SqlStdOperatorTable.VALUES.createCall(
@@ -3825,7 +3825,7 @@ SqlNode JoinTable(SqlNode e) :
     )
 }
 
-// TODO jvs 15-Nov-2003:  SQL standard allows parentheses in the FROM list for
+// todo jvs 15-Nov-2003:  SQL standard allows parentheses in the FROM list for
 // building up non-linear join trees (e.g. OUTER JOIN two tables, and then INNER
 // JOIN the result).  Also note that aliases on parenthesized FROM expressions
 // "hide" all table names inside the parentheses (without aliases, they're
@@ -4302,7 +4302,7 @@ SqlNode RowConstructor() :
 {
     // hints are necessary here due to common LPAREN prefixes
     (
-        // TODO jvs 8-Feb-2004: extra parentheses are accepted here as a hack
+        // todo jvs 8-Feb-2004: extra parentheses are accepted here as a hack
         // for unparse, but this is actually invalid SQL; should
         // fix unparse
         LOOKAHEAD(3)
@@ -5267,7 +5267,7 @@ SqlNode Expression(ExprContext exprContext) :
     }
 }
 
-// TODO jvs 15-Nov-2003:  ANY/ALL
+// todo jvs 15-Nov-2003:  ANY/ALL
 
 void Expression2b(ExprContext exprContext, List<Object> list) :
 {
@@ -5549,7 +5549,7 @@ SqlNode Expression3(ExprContext exprContext) :
     }
     [
         LOOKAHEAD(2)
-        /* TODO:
+        /* todo:
         (
             op = periodOperator()
             list2 = ParenthesizedQueryOrCommaList(exprContext)
@@ -5898,7 +5898,7 @@ SqlCreate SqlCreate() :
     ]
     (
         create = SqlCreateExtended(s, replace)
-        
+
     )
     {
         return create;
@@ -5918,7 +5918,7 @@ SqlDrop SqlDrop() :
     <DROP> { s = span(); }
     (
         drop = SqlDropExtended(s, replace)
-        
+
     )
     {
         return drop;
@@ -6111,7 +6111,7 @@ SqlNode StringLiteral() :
         { charSet = SqlParserUtil.getCharacterSet(token.image); }
     |   <QUOTED_STRING>
     |   <UNICODE_STRING_LITERAL> {
-            // TODO jvs 2-Feb-2009:  support the explicit specification of
+            // todo jvs 2-Feb-2009:  support the explicit specification of
             // a character set for Unicode string literals, per SQL:2003
             unicodeEscapeChar = BACKSLASH;
             charSet = "UTF16";
@@ -6263,7 +6263,7 @@ SqlNode MultisetConstructor() :
         }
     |
         // by enumeration "MULTISET[e0, e1, ..., eN]"
-        <LBRACKET> // TODO: do trigraph as well ??( ??)
+        <LBRACKET> // todo: do trigraph as well ??( ??)
         e = Expression(ExprContext.ACCEPT_NON_QUERY) { args = startList(e); }
         (
             <COMMA> e = Expression(ExprContext.ACCEPT_NON_QUERY) { args.add(e); }
@@ -6297,7 +6297,7 @@ SqlNode ArrayConstructor() :
         }
     |
         // by enumeration "ARRAY[e0, e1, ..., eN]"
-        <LBRACKET> // TODO: do trigraph as well ??( ??)
+        <LBRACKET> // todo: do trigraph as well ??( ??)
         (
             args = ExpressionCommaList(s, ExprContext.ACCEPT_NON_QUERY)
         |
@@ -6332,7 +6332,7 @@ SqlNode MapConstructor() :
         }
     |
         // by enumeration "MAP[k0, v0, ..., kN, vN]"
-        <LBRACKET> // TODO: do trigraph as well ??( ??)
+        <LBRACKET> // todo: do trigraph as well ??( ??)
         (
             args = ExpressionCommaList(s, ExprContext.ACCEPT_NON_QUERY)
         |
@@ -6953,7 +6953,7 @@ SqlNode NewSpecification() :
     }
 }
 
-//TODO: real parse errors.
+//todo: real parse errors.
 int UnsignedIntLiteral() :
 {
     Token t;
@@ -8409,7 +8409,7 @@ SqlCall nullTreatment(SqlCall arg) :
  * view definitions to permanently bind references to a particular function
  * after the overload resolution performed by view creation.
  *
- * <p>TODO jvs 25-Mar-2005:  Once we have SQL-Flagger support, flag SPECIFIC
+ * <p>todo jvs 25-Mar-2005:  Once we have SQL-Flagger support, flag SPECIFIC
  * as non-standard.
  */
 SqlNode NamedFunctionCall() :

@@ -102,7 +102,7 @@ public class HiveSourceFileEnumerator implements FileEnumerator {
         ReflectionUtils.setConf(format, jobConf);
         // need to escape comma in the location path
         jobConf.set(INPUT_DIR, StringUtils.escapeString(sd.getLocation()));
-        // TODO: we should consider how to calculate the splits according to minNumSplits in the
+        // todo: we should consider how to calculate the splits according to minNumSplits in the
         // future.
         return format.getSplits(jobConf, minNumSplits);
     }

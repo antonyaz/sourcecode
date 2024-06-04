@@ -567,7 +567,7 @@ public class Execution
                     slot.getAllocationId());
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  生成部署抽象对象 TDD
              *  1、封装成 TaskDeploymentDescriptor
              *  部署所需要的一切信息，均在该对象中
@@ -583,7 +583,7 @@ public class Execution
             taskRestore = null;
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  获取目标 从节点  TaskExecutor 的 gateway
              */
             final TaskManagerGateway taskManagerGateway = slot.getTaskManagerGateway();
@@ -597,7 +597,7 @@ public class Execution
             // the main thread and sync back to the main thread once submission is completed.
             CompletableFuture.supplyAsync(
                             /**
-                             *  TODO: add by antony at 2022/5/3
+                             *  todo: add by antony at 2022/5/3
                              *  2、执行提交 submitTask
                              */
                             () -> taskManagerGateway.submitTask(deployment, rpcTimeout), executor)
@@ -880,7 +880,7 @@ public class Execution
             final TaskManagerGateway taskManagerGateway = slot.getTaskManagerGateway();
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  真正的发送 RPC 请求
              *  重要的参数：
              *  1、attemptId ： TaskID
@@ -1353,7 +1353,7 @@ public class Execution
                             .collect(Collectors.toSet());
 
             if (!partitionIds.isEmpty()) {
-                // TODO For some tests this could be a problem when querying too early if all
+                // todo For some tests this could be a problem when querying too early if all
                 // resources were released
                 taskManagerGateway.releasePartitions(getVertex().getJobId(), partitionIds);
             }

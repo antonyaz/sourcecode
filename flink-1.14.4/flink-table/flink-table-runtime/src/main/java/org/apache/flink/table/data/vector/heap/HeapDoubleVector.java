@@ -50,7 +50,7 @@ public class HeapDoubleVector extends AbstractHeapVector implements WritableDoub
         if (dictionary == null) {
             return vector[i];
         } else {
-            return dictionary.decodeToDouble(dictionaryIds.vector[i]);
+            return dictionary.decodetodouble(dictionaryIds.vector[i]);
         }
     }
 

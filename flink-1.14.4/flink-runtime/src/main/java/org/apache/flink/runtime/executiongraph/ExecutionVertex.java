@@ -84,7 +84,7 @@ public class ExecutionVertex
 
     /** The current or latest execution attempt of this vertex's task. */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 包装了当前这个顶点 ExecutionVertex 的关于Task部署的一切信息
      * AttemptID: 这个顶点，每尝试部署一个Task运行的话，都有一个不同的ID
      */
@@ -432,7 +432,7 @@ public class ExecutionVertex
 
     public void deploy() throws JobException {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  DeploymentHandler.deploy() 的底层 就是调用ExecutionVertex.currentExecution.deploy()完成部署
          *  ExecutionVertex运行一次，就生成一个Execution，
          *  Execution currentExecution

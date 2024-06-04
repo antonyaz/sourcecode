@@ -378,7 +378,7 @@ public abstract class DelimitedInputFormat<OT> extends FileInputFormat<OT>
             }
 
             // disabling sampling for unsplittable files since the logic below assumes splitability.
-            // TODO: Add sampling for unsplittable files. Right now, only compressed text files are
+            // todo: Add sampling for unsplittable files. Right now, only compressed text files are
             // affected by this limitation.
             if (unsplittable) {
                 return stats;

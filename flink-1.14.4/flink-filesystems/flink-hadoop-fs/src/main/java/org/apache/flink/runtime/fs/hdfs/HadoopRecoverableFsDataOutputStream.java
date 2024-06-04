@@ -302,7 +302,7 @@ class HadoopRecoverableFsDataOutputStream extends RecoverableFsDataOutputStream 
                 //   - (2) a recovery of a savepoint that is some time old and the users
                 //         removed the files in the meantime.
 
-                // TODO how to handle this?
+                // todo how to handle this?
                 // We probably need an option for users whether this should log,
                 // or result in an exception or unrecoverable exception
             }

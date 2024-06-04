@@ -303,7 +303,7 @@ public class Task
      * case of a failing task deployment.
      */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 总结:
      * 1、封装得到一个TaskInfo对象
      * 2、创建得到一个上下文
@@ -410,7 +410,7 @@ public class Task
         final String taskNameWithSubtaskAndId = taskNameWithSubtask + " (" + executionId + ')';
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  2、创建 ShuffleIOOwnerContext
          *  需要搞清楚 shuffleEnvironment 的来源、时机
          *
@@ -420,7 +420,7 @@ public class Task
                         taskNameWithSubtaskAndId, executionId, metrics.getIOMetricGroup());
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  3、创建ResultPartition 和 ResultSubPartition
          */
         // produced intermediate result partitions
@@ -431,7 +431,7 @@ public class Task
                         .toArray(new ResultPartitionWriter[] {});
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建一组ResultPartitionWriter返回
          *  decorate 修饰 包装的功能
          *  4、将生成的PipelinedSubPartition 包装成 ConsumableNotifyingResultPartitionWriter
@@ -447,7 +447,7 @@ public class Task
                         resultPartitionConsumableNotifier);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  5、创建InputGate 和 InputChannel
          *  通过 shuffleEnvironment 来创建
          */
@@ -480,7 +480,7 @@ public class Task
         invokableHasBeenCanceled = new AtomicBoolean(false);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  6、内部初始化了一个线程对象，来执行这个Task
          */
         // finally, create the executing thread, but do not start it
@@ -607,14 +607,14 @@ public class Task
     /** Starts the task's thread. */
     public void startTaskThread() {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  executingThread 即 当前线程，target 为 this当前对象
          *  执行 当前线程的 run()
          */
         executingThread.start();
     }
     /**
-     *  TODO: add by antony at 2022/5/3
+     *  todo: add by antony at 2022/5/3
      *  对比
      *  1、Spark： 执行一个Task也是一个线程，封装了一个TaskRunner额线程对象，提交到Executor中的线程池中来执行
      *  2、Flink： 执行一个Task是通过一个专门的线程来执行这个Task
@@ -634,7 +634,7 @@ public class Task
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 16件事
      * Task 状态周期： CREATED -> DEPLOYING -> INITIALIZING -> RUNNING -> FINISHED
      * 1、更改Task的状态： 由 CREATED -> DEPLOYING
@@ -651,7 +651,7 @@ public class Task
             ExecutionState current = this.executionState;
             if (current == ExecutionState.CREATED) {
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  1、更改Task的状态，由 CREATED 变更为 DEPLOYING
                  */
                 if (transitionState(ExecutionState.CREATED, ExecutionState.DEPLOYING)) {
@@ -706,7 +706,7 @@ public class Task
             userCodeClassLoader = createUserCodeClassloader();
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  2、准备ExecutionConfig 当前Task 部署时所需要的参数对象
              *  最终部署的时候调用的是 Execution.deploy() 部署的
              *
@@ -738,7 +738,7 @@ public class Task
             LOG.debug("Registering task at network: {}.", this);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  3、注册输入和输出组件 拉起 ResultPartiton 和 InputGate
              *  3-1、给输入组件申请内存
              *  3-2、给输出组件执行注册
@@ -746,7 +746,7 @@ public class Task
             setupPartitionsAndGates(consumableNotifyingPartitionWriters, inputGates);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  4、注册ResultPartition 到 taskEventDispatcher
              */
             for (ResultPartitionWriter partitionWriter : consumableNotifyingPartitionWriters) {
@@ -756,7 +756,7 @@ public class Task
             // next, kick off the background copying of files for the distributed cache
             try {
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  5、从分布式缓存中，拷贝一些运行Task所需要的资源文件
                  */
                 for (Map.Entry<String, DistributedCache.DistributedCacheEntry> entry :
@@ -787,7 +787,7 @@ public class Task
                     kvStateService.createKvStateTaskRegistry(jobId, getJobVertexId());
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  6、初始化环境对象 RuntimeEnvironment
              */
             Environment env =
@@ -831,7 +831,7 @@ public class Task
 
             try {
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  7、初始化 调用对象  非常重要
                  *  创建 StreamTask 的具体实例
                  *  invokable TaskInvokable 的子类非常多
@@ -855,7 +855,7 @@ public class Task
             // ----------------------------------------------------------------
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  8、保存该启动实例
              */
             // we must make strictly sure that the invokable is accessible to the cancel() call
@@ -863,7 +863,7 @@ public class Task
             this.invokable = invokable;
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  9、更改Task实例的状态，由 DEPLOYING 更改为 INITIALIZING
              */
             // switch to the INITIALIZING state, if that fails, we have been canceled/failed in the
@@ -873,7 +873,7 @@ public class Task
             }
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  10、Task 切换进入到 INITIALIZING 状态，并告知 JobMaster
              *  发送RPC请求
              */
@@ -884,7 +884,7 @@ public class Task
             executingThread.setContextClassLoader(userCodeClassLoader.asClassLoader());
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  11、12、13、14
              */
             restoreAndInvoke(invokable);
@@ -900,7 +900,7 @@ public class Task
             // ----------------------------------------------------------------
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  15、 ResultPartitionWriter 完成所有还未 flush的数据的flush 动作
              */
             // finish the produced partitions. if this fails, we consider the execution failed.
@@ -911,7 +911,7 @@ public class Task
             }
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  16、更改Task的状态： RUNNING -> FINISHED
              */
             // try to mark the task as finished
@@ -1057,14 +1057,14 @@ public class Task
     private void restoreAndInvoke(TaskInvokable finalInvokable) throws Exception {
         try {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  11、可调用数据恢复到上次有效状态
              *  restore
              */
             runWithSystemExitMonitoring(finalInvokable::restore);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  12、更改Task的状态由 INITIALIZING 更改为 RUNNING
              */
             if (!transitionState(ExecutionState.INITIALIZING, ExecutionState.RUNNING)) {
@@ -1072,7 +1072,7 @@ public class Task
             }
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  13、Task 切换进入到RUNNING 状态， 并告知JobMaster
              */
             // notify everyone that we switched to running
@@ -1080,7 +1080,7 @@ public class Task
                     new TaskExecutionState(executionId, ExecutionState.RUNNING));
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  14、真正的启动Task了
              *  invoke 注意是 Stream 还是 Batch
              */
@@ -1116,7 +1116,7 @@ public class Task
             ResultPartitionWriter[] producedPartitions, InputGate[] inputGates) throws IOException {
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  PiplinedResultPartition 注册到 ResultPartition
          *  输出组件 ResultPartition 的默认实现 PiplinedResultPartition
          */
@@ -1125,7 +1125,7 @@ public class Task
         }
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  跟InputGate 单独申请缓存
          */
         // InputGates must be initialized after the partitions, since during InputGate#setup
@@ -1484,7 +1484,7 @@ public class Task
             checkState(invokable instanceof CheckpointableTask, "invokable is not checkpointable");
             try {
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  触发
                  *  1、checkpoint 从 SourceStreamTask 开始，嵌入 Barrier
                  *  2、Barrier 随着数据流动到下游， 下游 Task 接受到了后 会根据条件来执行 checkpoint
@@ -1726,7 +1726,7 @@ public class Task
             ClassLoader classLoader, String className, Environment environment) throws Throwable {
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  AbstractTaskInvokable 有可能是
          *  1、SourceStreamTask
          *  2、OneInputStreamTask
@@ -1745,7 +1745,7 @@ public class Task
 
         try {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  获取构造器
              */
             statelessCtor = invokableClass.getConstructor(Environment.class);
@@ -1756,7 +1756,7 @@ public class Task
         // instantiate the class
         try {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  通过反射来创建实例对象
              */
             //noinspection ConstantConditions  --> cannot happen

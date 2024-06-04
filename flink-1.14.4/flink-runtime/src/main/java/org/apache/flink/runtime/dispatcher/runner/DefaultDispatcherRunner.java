@@ -105,7 +105,7 @@ public final class DefaultDispatcherRunner implements DispatcherRunner, LeaderCo
     // ---------------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 回调选举成功
      */
     @Override
@@ -118,7 +118,7 @@ public final class DefaultDispatcherRunner implements DispatcherRunner, LeaderCo
                             leaderSessionID,
                             DispatcherLeaderProcess.class.getSimpleName());
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  竞选成功成为leader
                      */
                     startNewDispatcherLeaderProcess(leaderSessionID);
@@ -133,7 +133,7 @@ public final class DefaultDispatcherRunner implements DispatcherRunner, LeaderCo
         stopDispatcherLeaderProcess();
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  1、先创建得到一个 DispatcherLeaderProcess 处理器程序
          */
         dispatcherLeaderProcess = createNewDispatcherLeaderProcess(leaderSessionID);
@@ -142,7 +142,7 @@ public final class DefaultDispatcherRunner implements DispatcherRunner, LeaderCo
         FutureUtils.assertNoException(
                 previousDispatcherLeaderProcessTerminationFuture.thenRun(
                         /**
-                         *  TODO: add by antony at 2022/5/4
+                         *  todo: add by antony at 2022/5/4
                          *  2、启动 DispatcherLeaderProcess （start需查看session模式）
                          */
                         newDispatcherLeaderProcess::start));
@@ -243,7 +243,7 @@ public final class DefaultDispatcherRunner implements DispatcherRunner, LeaderCo
             DispatcherLeaderProcessFactory dispatcherLeaderProcessFactory)
             throws Exception {
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 先创建 DefaultDispatcherRunner 对象
          * 作用是： 负责启动Dispatcher
          */
@@ -251,7 +251,7 @@ public final class DefaultDispatcherRunner implements DispatcherRunner, LeaderCo
                 new DefaultDispatcherRunner(
                         leaderElectionService, fatalErrorHandler, dispatcherLeaderProcessFactory);
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 开启这个对象 DefaultDispatcherRunner 的生命周期
          * 领导者选举的生命周期
          */

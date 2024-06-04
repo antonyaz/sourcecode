@@ -46,7 +46,7 @@ import java.util.Set;
  * Test for the basic functionality of accumulators. We cannot test all different kinds of plans
  * here (iterative, etc.).
  *
- * <p>TODO Test conflict when different UDFs write to accumulator with same name but with different
+ * <p>todo Test conflict when different UDFs write to accumulator with same name but with different
  * type. The conflict will occur in JobManager while merging.
  */
 @SuppressWarnings("serial")

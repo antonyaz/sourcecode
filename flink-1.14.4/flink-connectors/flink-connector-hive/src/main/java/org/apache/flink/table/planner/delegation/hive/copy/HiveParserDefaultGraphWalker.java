@@ -87,7 +87,7 @@ public class HiveParserDefaultGraphWalker implements GraphWalker {
             // Some walkers extending DefaultGraphWalker e.g. ForwardWalker
             // do not use opQueue and rely uniquely in the toWalk structure,
             // thus we store the results produced by the dispatcher here
-            // TODO: rewriting the logic of those walkers to use opQueue
+            // todo: rewriting the logic of those walkers to use opQueue
             if (nodeOutput != null && getDispatchedList().contains(nd)) {
                 nodeOutput.put(nd, retMap.get(nd));
             }

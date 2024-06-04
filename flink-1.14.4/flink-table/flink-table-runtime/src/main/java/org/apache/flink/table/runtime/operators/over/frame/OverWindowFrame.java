@@ -56,7 +56,7 @@ public interface OverWindowFrame extends Serializable {
     RowData process(int index, RowData current) throws Exception;
 
     /**
-     * Get next row from iterator. Return null if iterator has no next. TODO Maybe copy is repeated.
+     * Get next row from iterator. Return null if iterator has no next. todo Maybe copy is repeated.
      */
     static BinaryRowData getNextOrNull(ResettableExternalBuffer.BufferIterator iterator) {
         return iterator.advanceNext() ? iterator.getRow().copy() : null;

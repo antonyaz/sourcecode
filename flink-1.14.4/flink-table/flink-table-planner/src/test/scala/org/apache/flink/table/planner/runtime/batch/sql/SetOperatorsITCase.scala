@@ -144,7 +144,7 @@ object SetOperatorsITCase {
   @Parameterized.Parameters(name = "{0}")
   def parameters(): util.Collection[Array[_]] = {
     util.Arrays.asList(
-      // TODO
+      // todo
 //      Array(BroadcastHashJoin),
 //      Array(HashJoin),
 //      Array(NestedLoopJoin),

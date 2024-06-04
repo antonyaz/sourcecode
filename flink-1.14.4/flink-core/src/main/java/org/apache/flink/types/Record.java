@@ -1350,7 +1350,7 @@ public final class Record implements Value, CopyableValue<Record> {
 
         @Override
         public double readDouble() throws IOException {
-            return Double.longBitsToDouble(readLong());
+            return Double.longBitstodouble(readLong());
         }
 
         @Override

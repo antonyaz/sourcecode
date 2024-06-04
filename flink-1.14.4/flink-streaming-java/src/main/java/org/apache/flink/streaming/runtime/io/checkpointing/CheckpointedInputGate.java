@@ -148,7 +148,7 @@ public class CheckpointedInputGate implements PullingAsyncDataInput<BufferOrEven
     @Override
     public Optional<BufferOrEvent> pollNext() throws IOException, InterruptedException {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *
          */
         Optional<BufferOrEvent> next = inputGate.pollNext();
@@ -158,7 +158,7 @@ public class CheckpointedInputGate implements PullingAsyncDataInput<BufferOrEven
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  处理下所获取到的数据，可能是 CheckpointBarrier 、 EndOfPartitionEvent 等事件
          *  除了普通的 数据 记录外， 还有可能是这些夹杂到 DataStream 中的 Event
          */
@@ -166,7 +166,7 @@ public class CheckpointedInputGate implements PullingAsyncDataInput<BufferOrEven
 
         if (bufferOrEvent.isEvent()) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  处理 CheckpointBarrier
              */
             return handleEvent(bufferOrEvent);
@@ -189,18 +189,18 @@ public class CheckpointedInputGate implements PullingAsyncDataInput<BufferOrEven
 
     private Optional<BufferOrEvent> handleEvent(BufferOrEvent bufferOrEvent) throws IOException {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  类型转换 Event
          */
         Class<? extends AbstractEvent> eventClass = bufferOrEvent.getEvent().getClass();
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  checkpoint 的屏障消息
          */
         if (eventClass == CheckpointBarrier.class) {
             CheckpointBarrier checkpointBarrier = (CheckpointBarrier) bufferOrEvent.getEvent();
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  处理 屏障
              */
             barrierHandler.processBarrier(checkpointBarrier, bufferOrEvent.getChannelInfo(), false);

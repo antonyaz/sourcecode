@@ -281,11 +281,15 @@ public class TaskManagerServices {
         final TaskEventDispatcher taskEventDispatcher = new TaskEventDispatcher();
 
         // start the I/O manager, it will create some temp directories.
+        /**
+          todo: add by antony at: 2024/6/3
+          异步IO管理器
+        */
         final IOManager ioManager =
                 new IOManagerAsync(taskManagerServicesConfiguration.getTmpDirPaths());
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建 ShuffleEnvironment 非常重要
          */
         final ShuffleEnvironment<?, ?> shuffleEnvironment =
@@ -295,13 +299,17 @@ public class TaskManagerServices {
                         taskManagerMetricGroup,
                         ioExecutor);
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  NettyShuffleEnvironment 启动
          *  本质就是启动内部的 ConnectionManager
          *  实际上启动的是 Netty的 客户端和 服务端
          */
         final int listeningDataPort = shuffleEnvironment.start();
 
+        /**
+          todo: add by antony at: 2024/6/3
+          创建kvState存储服务，并启动噶以服务
+        */
         final KvStateService kvStateService =
                 KvStateService.fromConfiguration(taskManagerServicesConfiguration);
         kvStateService.start();
@@ -317,13 +325,13 @@ public class TaskManagerServices {
                                 : listeningDataPort);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  广播变量管理器
          */
         final BroadcastVariableManager broadcastVariableManager = new BroadcastVariableManager();
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 负责给当前从节点管理slot
          * TaskExecutor中最为重要的一个组件： TaskSlotTable
          * TaskManager -> TaskExecutor(管理slot，接受task执行) -> TaskSlotTable 管理slot和task
@@ -339,13 +347,13 @@ public class TaskManagerServices {
                         ioExecutor);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  Job的记账本
          */
         final JobTable jobTable = DefaultJobTable.create();
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * JobMaster的管理器
          */
         final JobLeaderService jobLeaderService =
@@ -364,7 +372,7 @@ public class TaskManagerServices {
         }
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * state状态管理的存储
          */
         final TaskExecutorLocalStateStoresManager taskStateManager =
@@ -394,6 +402,10 @@ public class TaskManagerServices {
                                 failOnJvmMetaspaceOomError ? fatalErrorHandler : null,
                                 checkClassLoaderLeak));
 
+        /**
+          todo: add by antony at: 2024/6/3
+          创建taskManagerServices服务
+        */
         return new TaskManagerServices(
                 unresolvedTaskManagerLocation,
                 taskManagerServicesConfiguration.getManagedMemorySize().getBytes(),
@@ -439,7 +451,7 @@ public class TaskManagerServices {
             throws FlinkException {
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建 ShuffleEnvironmentContext 上下文对象
          */
         final ShuffleEnvironmentContext shuffleEnvironmentContext =
@@ -454,14 +466,14 @@ public class TaskManagerServices {
                         ioExecutor);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  1、获取配置: shuffle-service-factory.class = org.apache.flink.runtime.io.network.NettyShuffleServiceFactory
          *  2、通过反射创建 org.aapche.flink.runtime.io.network.NettyShuffleServiceFactory 实例
          */
         return ShuffleServiceLoader.loadShuffleServiceFactory(
                         taskManagerServicesConfiguration.getConfiguration())
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  通过 ShuffleEnvironmentContext 创建 ShuffleEnvironment
                  */
                 .createShuffleEnvironment(shuffleEnvironmentContext);

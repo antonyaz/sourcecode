@@ -293,7 +293,7 @@ public class LongHashPartition extends AbstractPagedInputView implements Seekabl
             if (segment.getLong(segOffset) != key && currAddress != INVALID_ADDRESS) {
                 // hash conflicts, the bucket is occupied by another key
 
-                // TODO test Conflict resolution:
+                // todo test Conflict resolution:
                 // now:    +1 +1 +1... cache friendly but more conflict, so we set factor to 0.5
                 // other1: +1 +2 +3... less conflict, factor can be 0.75
                 // other2: Secondary hashCode... less and less conflict, but need compute hash again

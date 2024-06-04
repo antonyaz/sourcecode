@@ -85,7 +85,7 @@ class GroupWindowTest extends TableTestBase {
 
   @Test(expected = classOf[AssertionError])
   def testWindowAggWithGroupSets(): Unit = {
-    // TODO supports group sets
+    // todo supports group sets
     // currently, the optimized plan is not collect, and an exception will be thrown in code-gen
     val sql =
     """

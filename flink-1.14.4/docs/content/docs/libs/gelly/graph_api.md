@@ -215,7 +215,7 @@ val simpleGraph = Graph.fromCsvReader[Long, Double, NullValue](
         pathEdges = "path/to/edge/input",
         vertexValueInitializer = new MapFunction[Long, Double]() {
             def map(id: Long): Double = {
-                id.toDouble
+                id.todouble
             }
         },
         env = env)

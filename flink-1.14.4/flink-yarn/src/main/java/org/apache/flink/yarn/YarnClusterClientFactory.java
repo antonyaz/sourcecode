@@ -59,7 +59,7 @@ public class YarnClusterClientFactory
         YarnLogConfigUtil.setLogConfigFileInConfig(configuration, configurationDirectory);
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  create yarn client
          */
         return getClusterDescriptor(configuration);
@@ -84,7 +84,7 @@ public class YarnClusterClientFactory
                 Utils.getYarnAndHadoopConfiguration(configuration);
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  完成yarnclient的初始化及启动
          */
         yarnClient.init(yarnConfiguration);

@@ -912,7 +912,7 @@ public class CEPOperatorTest extends TestLogger {
 
             harness.setProcessingTime(49L);
 
-            // TODO: 3/13/17 we have to have another event in order to clean up
+            // todo: 3/13/17 we have to have another event in order to clean up
             harness.processElement(new StreamRecord<>(new Event(42, "foobar", 1.0), 2L));
 
             // the pattern expired

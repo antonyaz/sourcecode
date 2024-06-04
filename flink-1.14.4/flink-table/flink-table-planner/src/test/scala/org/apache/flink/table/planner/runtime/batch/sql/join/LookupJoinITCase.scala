@@ -69,7 +69,7 @@ class LookupJoinITCase(legacyTableSource: Boolean, isAsyncMode: Boolean) extends
     createLookupTable("userTableWithNull", userDataWithNull)
     createLookupTableWithComputedColumn("userTableWithComputedColumn", userData)
 
-    // TODO: enable object reuse until [FLINK-12351] is fixed.
+    // todo: enable object reuse until [FLINK-12351] is fixed.
     env.getConfig.disableObjectReuse()
   }
 

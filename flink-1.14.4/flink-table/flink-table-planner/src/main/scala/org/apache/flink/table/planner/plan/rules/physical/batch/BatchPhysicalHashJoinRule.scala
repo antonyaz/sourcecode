@@ -68,7 +68,7 @@ class BatchPhysicalHashJoinRule
     val rightSize = binaryRowRelNodeSize(join.getRight)
     val (isBroadcast, _) = canBroadcast(join.getJoinType, leftSize, rightSize, tableConfig)
 
-    // TODO use shuffle hash join if isBroadcast is true and isBroadcastHashJoinEnabled is false ?
+    // todo use shuffle hash join if isBroadcast is true and isBroadcastHashJoinEnabled is false ?
     if (isBroadcast) isBroadcastHashJoinEnabled else isShuffleHashJoinEnabled
   }
 

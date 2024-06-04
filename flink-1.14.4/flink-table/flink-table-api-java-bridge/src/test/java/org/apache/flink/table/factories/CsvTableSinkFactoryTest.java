@@ -51,7 +51,7 @@ public class CsvTableSinkFactoryTest {
                     .field(
                             "myfield4",
                             DataTypes.ROW(DataTypes.FIELD("nested_f1", DataTypes.BIGINT())))
-                    // TODO: we can't declare the TINYINT as NOT NULL, because CSV connector will
+                    // todo: we can't declare the TINYINT as NOT NULL, because CSV connector will
                     // ignore the information
                     .field("myfield5", DataTypes.ARRAY(DataTypes.TINYINT()))
                     .build();

@@ -706,8 +706,8 @@ class AggregateITCase(
     tEnv.sqlQuery(sqlQuery).toRetractStream[Row].addSink(sink)
     env.execute()
 
-    // TODO: the string result of collect is not deterministic
-    // TODO: sort the map result in the future
+    // todo: the string result of collect is not deterministic
+    // todo: sort the map result in the future
     val expected = List(
       "1,{1=1}",
       "2,{2=1, 3=1}",
@@ -1184,7 +1184,7 @@ class AggregateITCase(
     val sink = new TestingRetractSink
     tEnv.sqlQuery(sqlQuery).toRetractStream[Row].addSink(sink)
     env.execute()
-    // TODO: define precise behavior of VAR_POP()
+    // todo: define precise behavior of VAR_POP()
     val expected = List(15602500.toString, 28889.toString)
     assertEquals(expected.sorted, sink.getRetractResults.sorted)
   }
@@ -1296,7 +1296,7 @@ class AggregateITCase(
   @Test
   def testGenericTypesWithoutStateClean(): Unit = {
     // because we don't provide a way to disable state cleanup.
-    // TODO verify all tests with state cleanup closed.
+    // todo verify all tests with state cleanup closed.
     tEnv.getConfig.setIdleStateRetentionTime(Time.days(0), Time.days(0))
     val t = failingDataSource(Seq(1, 2, 3)).toTable(tEnv, 'a)
     val results = t

@@ -62,7 +62,7 @@ import static org.apache.flink.table.runtime.types.LogicalTypeDataTypeConverter.
  * HiveGenericUDTF#getHiveResultType} instead of {@code HiveGenericUDTF#getResultType(Object[],
  * Class[])}.
  *
- * @deprecated TODO hack code, its logical should be integrated to TableSqlFunction
+ * @deprecated todo hack code, its logical should be integrated to TableSqlFunction
  */
 @Deprecated
 public class HiveTableSqlFunction extends TableSqlFunction {
@@ -125,7 +125,7 @@ public class HiveTableSqlFunction extends TableSqlFunction {
     }
 
     /**
-     * This method is copied from calcite, and modify it to not rely on Function. TODO
+     * This method is copied from calcite, and modify it to not rely on Function. todo
      * FlinkTableFunction need implement getElementType.
      */
     private static Object[] convertArguments(
@@ -183,7 +183,7 @@ public class HiveTableSqlFunction extends TableSqlFunction {
     /**
      * Checker for remember previousArgTypes.
      *
-     * @deprecated TODO hack code, should modify calcite getRowType to pass operand types
+     * @deprecated todo hack code, should modify calcite getRowType to pass operand types
      */
     @Deprecated
     public static class HiveOperandTypeChecker extends OperandMetadata {

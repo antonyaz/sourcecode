@@ -151,11 +151,11 @@ public class StreamExecGroupAggregate extends StreamExecAggregateBase {
                                 new CodeGeneratorContext(tableConfig),
                                 planner.getRelBuilder(),
                                 JavaScalaConversionUtil.toScala(inputRowType.getChildren()),
-                                // TODO: heap state backend do not copy key currently,
+                                // todo: heap state backend do not copy key currently,
                                 //  we have to copy input field
-                                // TODO: copy is not need when state backend is rocksdb,
+                                // todo: copy is not need when state backend is rocksdb,
                                 //  improve this in future
-                                // TODO: but other operators do not copy this input field.....
+                                // todo: but other operators do not copy this input field.....
                                 true)
                         .needAccumulate();
 

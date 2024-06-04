@@ -107,7 +107,7 @@ class HeapSnapshotStrategy<K>
 
         final KeyedBackendSerializationProxy<K> serializationProxy =
                 new KeyedBackendSerializationProxy<>(
-                        // TODO: this code assumes that writing a serializer is threadsafe, we
+                        // todo: this code assumes that writing a serializer is threadsafe, we
                         // should support to
                         // get a serialized form already at state registration time in the future
                         syncPartResource.getKeySerializer(),

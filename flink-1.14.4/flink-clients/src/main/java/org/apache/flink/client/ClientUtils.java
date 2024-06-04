@@ -91,7 +91,7 @@ public enum ClientUtils {
         final ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
         try {
             /**
-             *  TODO: add by antony at 2022/10/2 
+             *  todo: add by antony at 2022/10/2
              *  设置当前的classLoader为用户代码的classLoader
              */
             Thread.currentThread().setContextClassLoader(userCodeClassLoader);
@@ -100,7 +100,7 @@ public enum ClientUtils {
                     "Starting program (detached: {})",
                     !configuration.getBoolean(DeploymentOptions.ATTACHED));
 
-            // TODO: 配置执行环境的上下文，用户代码中的 getExecutionEnvironment就会拿到这些信息
+            // todo: 配置执行环境的上下文，用户代码中的 getExecutionEnvironment就会拿到这些信息
             ContextEnvironment.setAsContext(
                     executorServiceLoader,
                     configuration,
@@ -117,8 +117,8 @@ public enum ClientUtils {
 
             try {
                 /**
-                 *  TODO: add by antony at 2022/5/3
-                 *
+                 *  todo: add by antony at 2022/5/3
+                 *  执行提交的jar中的main
                  */
                 program.invokeInteractiveModeForExecution();
             } finally {

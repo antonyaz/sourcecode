@@ -167,7 +167,7 @@ public class StreamingJobGraphGenerator {
         // Generate deterministic hashes for the nodes in order to identify them across
         // submission iff they didn't change.
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  hash 转换
          */
         Map<Integer, byte[]> hashes =
@@ -180,7 +180,7 @@ public class StreamingJobGraphGenerator {
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  StreamGraph转换成JobGraph的核心点
          *  相邻Operator能否chain在一起的核心代码
          *
@@ -188,14 +188,14 @@ public class StreamingJobGraphGenerator {
         setChaining(hashes, legacyHashes);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  设置StreamEdge
          *  将每个 JobVertex 的入边集合也序列化到该 JobVertex 的 StreamConfig 中
          */
         setPhysicalEdges();
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  设置SlotSharing 和 CoLocation
          *  根据 group name，为每个 JobVertex 指定所属的 SlotSharingGroup
          *  以及针对 Iteration 的头尾设置
@@ -212,7 +212,7 @@ public class StreamingJobGraphGenerator {
                 id -> streamGraph.getStreamNode(id).getManagedMemorySlotScopeUseCases());
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  设置checkpoint
          */
         configureCheckpointing();
@@ -402,7 +402,7 @@ public class StreamingJobGraphGenerator {
         // iterate over a copy of the values, because this map gets concurrently modified
         for (OperatorChainInfo info : initialEntryPoints) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  创建 chain
              */
             createChain(
@@ -430,12 +430,12 @@ public class StreamingJobGraphGenerator {
             StreamNode currentNode = streamGraph.getStreamNode(currentNodeId);
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  判定当前顶点和下游顶点之间的关系，是否可以进行chain
              */
             for (StreamEdge outEdge : currentNode.getOutEdges()) {
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  判定是否可以进行chain，9个条件，需全部满足才可以chain
                  */
                 if (isChainable(outEdge, streamGraph)) {
@@ -448,7 +448,7 @@ public class StreamingJobGraphGenerator {
             for (StreamEdge chainable : chainableOutputs) {
                 transitiveOutEdges.addAll(
                         /**
-                         *  TODO: add by antony at 2022/5/4
+                         *  todo: add by antony at 2022/5/4
                          *  创建chain
                          */
                         createChain(
@@ -497,7 +497,7 @@ public class StreamingJobGraphGenerator {
             }
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  第二个重点：创建Vertex
              */
             StreamConfig config =
@@ -519,13 +519,13 @@ public class StreamingJobGraphGenerator {
                 config.setOperatorName(streamGraph.getStreamNode(currentNodeId).getOperatorName());
 
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  重点
                  *  链接上下游顶点JobVertex， 并且创建IntermediateDataset 和 JobEdge 并且维护他们的关系
                  */
                 for (StreamEdge edge : transitiveOutEdges) {
                     /**
-                     *  TODO: add by antony at 2022/5/3
+                     *  todo: add by antony at 2022/5/3
                      *  1、创建 IntermediateDataSet 和 JobEdge
                      *  2、维护 IntermediateDataSet he JobEdge 和  JobVertex 的关系
                      */
@@ -924,13 +924,13 @@ public class StreamingJobGraphGenerator {
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      *  能否chain 9个条件必须全部满足
      */
     public static boolean isChainable(StreamEdge edge, StreamGraph streamGraph) {
         StreamNode downStreamVertex = streamGraph.getTargetVertex(edge);
         /**
-         * TODO: 判定是否chain-条件1
+         * todo: 判定是否chain-条件1
          * 1、下游节点的入度为1(也就是下游节点没有来自其他节点的输入)
          * 必须是单流
          * 上游顶点的所有数据，都暑促给下游顶点，也即是 forward
@@ -939,7 +939,7 @@ public class StreamingJobGraphGenerator {
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      *  能否chain的其他8个条件
      */
     private static boolean isChainableInput(StreamEdge edge, StreamGraph streamGraph) {
@@ -1291,7 +1291,7 @@ public class StreamingJobGraphGenerator {
 
     private void configureCheckpointing() {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  获取 StreamGraph 的 CheckpointConfig 参数
          */
         CheckpointConfig cfg = streamGraph.getCheckpointConfig();
@@ -1384,7 +1384,7 @@ public class StreamingJobGraphGenerator {
         //  --- done, put it all together ---
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  设置checkpoint 配置参数信息
          *  参数为 CheckpointCoordinatorConfiguration
          *  cfg 就是 StreamGraph 中的 checkpointCfg对象
@@ -1417,7 +1417,7 @@ public class StreamingJobGraphGenerator {
                         serializedHooks);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  将 JobCheckpointingSettings 设置为 JobGraph 的成员变量
          */
         jobGraph.setSnapshotSettings(settings);

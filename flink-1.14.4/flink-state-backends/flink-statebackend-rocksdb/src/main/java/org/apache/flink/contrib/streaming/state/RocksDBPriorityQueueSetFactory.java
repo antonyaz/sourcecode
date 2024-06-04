@@ -52,7 +52,7 @@ import java.util.function.Function;
 public class RocksDBPriorityQueueSetFactory implements PriorityQueueSetFactory {
 
     /** Default cache size per key-group. */
-    @VisibleForTesting static final int DEFAULT_CACHES_SIZE = 128; // TODO make this configurable
+    @VisibleForTesting static final int DEFAULT_CACHES_SIZE = 128; // todo make this configurable
 
     /** A shared buffer to serialize elements for the priority queue. */
     @Nonnull private final DataOutputSerializer sharedElementOutView;
@@ -161,7 +161,7 @@ public class RocksDBPriorityQueueSetFactory implements PriorityQueueSetFactory {
             RocksDBOperationUtils.registerKvStateInformation(
                     kvStateInformation, nativeMetricMonitor, stateName, stateInfo);
         } else {
-            // TODO we implement the simple way of supporting the current functionality, mimicking
+            // todo we implement the simple way of supporting the current functionality, mimicking
             // keyed state
             // because this should be reworked in FLINK-9376 and then we should have a common
             // algorithm over

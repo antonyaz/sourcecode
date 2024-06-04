@@ -96,7 +96,7 @@ public class TaskManagerProcessFailureStreamingRecoveryITCase
             // blocking call until execution is done
             env.execute();
 
-            // TODO: Figure out why this fails when ran with other tests
+            // todo: Figure out why this fails when ran with other tests
             // Check whether checkpoints have been cleaned up properly
             // assertDirectoryEmpty(tempCheckpointDir);
         } finally {

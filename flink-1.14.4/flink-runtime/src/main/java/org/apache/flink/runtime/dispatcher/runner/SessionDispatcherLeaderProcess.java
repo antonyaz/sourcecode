@@ -73,7 +73,7 @@ public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProc
     @Override
     protected void onStart() {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          * 1、启动Dispatcher的必要服务
          * (启动jobGraphStore的监听)
          */
@@ -81,7 +81,7 @@ public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProc
 
         onGoingRecoveryOperation =
                 /**
-                 * TODO: add by antony at 2022/5/4
+                 * todo: add by antony at 2022/5/4
                  * 2、恢复Job执行
                  * recoverJobsAsync：
                  * 3、恢复执行 createDispatcherIfRunning
@@ -94,7 +94,7 @@ public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProc
     private void startServices() {
         try {
             /**
-             * TODO: add by antony at 2022/5/2
+             * todo: add by antony at 2022/5/2
              * 启动监听
              * Dispatcher的内部启动了jobGraphStore，用来存储客户端所提交的JobGraph
              */
@@ -110,7 +110,7 @@ public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProc
 
     private void createDispatcherIfRunning(Collection<JobGraph> jobGraphs) {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建 Dispatcher
          */
         runIfStateIs(State.RUNNING, () -> createDispatcher(jobGraphs));
@@ -119,7 +119,7 @@ public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProc
     private void createDispatcher(Collection<JobGraph> jobGraphs) {
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 1、真正创建 DispatcherGatewayService 通信服务
          */
         final DispatcherGatewayService dispatcherService =
@@ -127,7 +127,7 @@ public class SessionDispatcherLeaderProcess extends AbstractDispatcherLeaderProc
                         DispatcherId.fromUuid(getLeaderSessionId()), jobGraphs, jobGraphStore);
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 2、完成启动
          */
         completeDispatcherSetup(dispatcherService);

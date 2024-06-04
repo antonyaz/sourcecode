@@ -202,7 +202,7 @@ public class BinaryHashTable extends BaseHybridHashTable {
     /** Put a build side row to hash table. */
     public void putBuildRow(RowData row) throws IOException {
         final int hashCode = hash(this.buildSideProjection.apply(row).hashCode(), 0);
-        // TODO: combine key projection and build side conversion to code gen.
+        // todo: combine key projection and build side conversion to code gen.
         insertIntoTable(originBuildSideSerializer.toBinaryRow(row), hashCode);
     }
 
@@ -689,7 +689,7 @@ public class BinaryHashTable extends BaseHybridHashTable {
                                 buildKey.getSegments()[0].getHeapMemory(),
                                 probeKey.getSegments()[0].getHeapMemory(),
                                 buildKey.getSizeInBytes());
-        // TODO do null filter in advance?
+        // todo do null filter in advance?
         if (!nullSafe) {
             equal =
                     equal

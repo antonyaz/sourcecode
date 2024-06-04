@@ -150,7 +150,7 @@ public abstract class ResultPartition implements ResultPartitionWriter {
 
         this.bufferPool = checkNotNull(bufferPoolFactory.get());
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  一个从节点只有一个 PartitionResultManager
          *  负责管理这个节点上所有的 Task 的输出组件ResultPartition
          */

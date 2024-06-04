@@ -44,7 +44,7 @@ abstract class AbstractOneInputTransformationTranslator<IN, OUT, OP extends Tran
         extends SimpleTransformationTranslator<OUT, OP> {
 
     /**
-     * TODO: 内部实现，两件重要的事情
+     * todo: 内部实现，两件重要的事情
      * 1、创建StreamNode
      * 2、创建StreamEdge，并且维护StreamNode和StreamEdge之间的关系
      */
@@ -66,7 +66,7 @@ abstract class AbstractOneInputTransformationTranslator<IN, OUT, OP extends Tran
         final ExecutionConfig executionConfig = streamGraph.getExecutionConfig();
 
         /**
-         * TODO: 第一件重要事情
+         * todo: 第一件重要事情
          * 给StreamGraph 添加一个构建好的StreamNode，并注册到StreamGraph的map集合中
          */
         streamGraph.addOperator(
@@ -97,12 +97,12 @@ abstract class AbstractOneInputTransformationTranslator<IN, OUT, OP extends Tran
                         + parentTransformations.size());
 
         /**
-         * TODO: 添加边的关系
+         * todo: 添加边的关系
          * 一般来说，都是一个输入
          */
         for (Integer inputId : context.getStreamNodeIds(parentTransformations.get(0))) {
             /**
-             * TODO: 生成边，并且维护和上游节点关系
+             * todo: 生成边，并且维护和上游节点关系
              * inputId： 上游输入节点
              * transformationId: 当前transformation的ID
              *

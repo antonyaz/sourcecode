@@ -266,7 +266,7 @@ public class CollectSinkFunction<IN> extends RichSinkFunction<IN>
     public void invoke(IN value, Context context) throws Exception {
         bufferLock.lock();
         try {
-            // TODO this implementation is not very effective,
+            // todo this implementation is not very effective,
             //  optimize this with MemorySegment if needed
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             DataOutputViewStreamWrapper wrapper = new DataOutputViewStreamWrapper(baos);

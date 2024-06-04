@@ -301,7 +301,7 @@ public class StreamExecPythonGroupWindowAggregate extends StreamExecAggregateBas
                 windowAssiger = CountTumblingWindowAssigner.of(toLong(size));
                 trigger = ElementTriggers.count(toLong(size));
             } else {
-                // TODO: EventTimeTumblingGroupWindow should sort the stream on event time
+                // todo: EventTimeTumblingGroupWindow should sort the stream on event time
                 // before applying the  windowing logic. Otherwise, this would be the same as a
                 // ProcessingTimeTumblingGroupWindow
                 throw new UnsupportedOperationException(
@@ -324,7 +324,7 @@ public class StreamExecPythonGroupWindowAggregate extends StreamExecAggregateBas
                 windowAssiger = CountSlidingWindowAssigner.of(toLong(size), toLong(slide));
                 trigger = ElementTriggers.count(toLong(size));
             } else {
-                // TODO: EventTimeTumblingGroupWindow should sort the stream on event time
+                // todo: EventTimeTumblingGroupWindow should sort the stream on event time
                 // before applying the  windowing logic. Otherwise, this would be the same as a
                 // ProcessingTimeTumblingGroupWindow
                 throw new UnsupportedOperationException(

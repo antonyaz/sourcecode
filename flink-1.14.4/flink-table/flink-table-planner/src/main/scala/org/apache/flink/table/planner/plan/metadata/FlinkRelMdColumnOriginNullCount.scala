@@ -52,7 +52,7 @@ class FlinkRelMdColumnOriginNullCount private extends MetadataHandler[ColumnOrig
     val statistic = relOptTable.getStatistic
     val colStats = statistic.getColumnStats(fieldName)
     if (colStats != null && colStats.getNullCount != null) {
-      colStats.getNullCount.toDouble
+      colStats.getNullCount.todouble
     } else {
       null
     }

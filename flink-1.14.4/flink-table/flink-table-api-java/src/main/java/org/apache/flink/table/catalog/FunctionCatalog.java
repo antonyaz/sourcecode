@@ -658,7 +658,7 @@ public final class FunctionCatalog {
         }
         return UserDefinedFunctionHelper.instantiateFunction(
                 Thread.currentThread()
-                        .getContextClassLoader(), // TODO use classloader of catalog manager in the
+                        .getContextClassLoader(), // todo use classloader of catalog manager in the
                 // future
                 config,
                 name,

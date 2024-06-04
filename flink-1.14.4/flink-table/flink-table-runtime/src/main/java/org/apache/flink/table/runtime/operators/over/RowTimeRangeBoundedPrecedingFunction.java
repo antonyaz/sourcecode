@@ -185,7 +185,7 @@ public class RowTimeRangeBoundedPrecedingFunction<K>
         Long curCleanupTimestamp = cleanupTsState.value();
         if (curCleanupTimestamp == null || curCleanupTimestamp < minCleanupTimestamp) {
             // we don't delete existing timer since it may delete timer for data processing
-            // TODO Use timer with namespace to distinguish timers
+            // todo Use timer with namespace to distinguish timers
             ctx.timerService().registerEventTimeTimer(maxCleanupTimestamp);
             cleanupTsState.update(maxCleanupTimestamp);
         }

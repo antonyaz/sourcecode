@@ -524,7 +524,7 @@ class FlinkRelMdModifiedMonotonicity private extends MetadataHandler[ModifiedMon
     getMonotonicity(rel.getInput(0), mq, rel.getRowType.getFieldCount)
   }
 
-  // TODO supports temporal table function join
+  // todo supports temporal table function join
 
   def getRelModifiedMonotonicity(rel: Union, mq: RelMetadataQuery): RelModifiedMonotonicity = {
     val fmq = FlinkRelMetadataQuery.reuseOrCreate(mq)

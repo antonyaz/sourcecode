@@ -58,7 +58,7 @@ public class ExecEdge {
         this.shuffle = checkNotNull(shuffle);
         this.exchangeMode = checkNotNull(exchangeMode);
 
-        // TODO once FLINK-21224 [Remove BatchExecExchange and StreamExecExchange, and replace their
+        // todo once FLINK-21224 [Remove BatchExecExchange and StreamExecExchange, and replace their
         //  functionality with ExecEdge] is finished, we should remove the following validation.
         if (shuffle.getType() != Shuffle.Type.FORWARD) {
             throw new TableException("Only FORWARD shuffle is supported now.");

@@ -98,14 +98,14 @@ public class DefaultTimerService<K> implements TimerService<K> {
     @Override
     public void unregisterTimeout(K key) {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  Timeout 的核心逻辑就是 freeSlot()
          */
         Timeout<K> timeout = timeouts.remove(key);
 
         if (timeout != null) {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  查看run
              */
             timeout.cancel();

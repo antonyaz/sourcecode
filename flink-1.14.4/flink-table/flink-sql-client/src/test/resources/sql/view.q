@@ -41,7 +41,7 @@ create temporary view v1 as select * from orders;
 org.apache.flink.table.api.ValidationException: Temporary table '`default_catalog`.`default_database`.`v1`' already exists
 !error
 
-# TODO: warning users the view already exists
+# todo: warning users the view already exists
 create temporary view if not exists v1 as select * from orders;
 [INFO] Execute statement succeed.
 !info

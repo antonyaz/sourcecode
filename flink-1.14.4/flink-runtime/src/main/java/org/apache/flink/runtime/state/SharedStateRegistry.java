@@ -203,7 +203,7 @@ public class SharedStateRegistry implements AutoCloseable {
             try {
                 asyncDisposalExecutor.execute(asyncDisposalRunnable);
             } catch (RejectedExecutionException ex) {
-                // TODO This is a temporary fix for a problem during
+                // todo This is a temporary fix for a problem during
                 // ZooKeeperCompletedCheckpointStore#shutdown:
                 // Disposal is issued in another async thread and the shutdown proceeds to close the
                 // I/O Executor pool.

@@ -200,7 +200,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                     (Callable<Void>)
                             () -> {
                                 /**
-                                 *  TODO: add by antony at 2022/5/3
+                                 *  todo: add by antony at 2022/5/3
                                  *  启动集群
                                  *  1、初始化系列基础服务
                                  *  2、初始化三个重要组件工厂
@@ -254,7 +254,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 启动主节点的核心代码
      * 1、启动各种基础服务
      * 2、创建主节点非常重要的三个组件工厂
@@ -270,7 +270,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
             throws Exception {
         synchronized (lock) {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  初始化系列基础服务 RPC相关
              */
             initializeServices(configuration, pluginManager);
@@ -280,7 +280,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
             configuration.setInteger(JobManagerOptions.PORT, commonRpcService.getPort());
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  创建Dispatcher ResourceManager的组件工厂类
              *  有从本地重建JobGraph的过程
              */
@@ -288,7 +288,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                     dispatcherResourceManagerComponentFactory =
                             createDispatcherResourceManagerComponentFactory(configuration);
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  创建和启动 JobManager中的三个组件： Dispatcher、ResourceManager 和 JobMaster
              *  创建component factory
              */
@@ -368,7 +368,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
             configuration.setInteger(JobManagerOptions.PORT, commonRpcService.getPort());
 
             /**
-             * TODO: add by antony at 2022/5/2
+             * todo: add by antony at 2022/5/2
              * flink大量的代码，涉及的工作时间都比较长，为了提升性能
              * 通过线程池异步编程来提升性能
              */
@@ -378,21 +378,21 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                             new ExecutorThreadFactory("cluster-io"));
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  创建高可用服务
              *  flink基于zk来实现
              */
             haServices = createHaServices(configuration, ioExecutor, rpcSystem);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  创建大文件服务
              */
             blobServer = new BlobServer(configuration, haServices.createBlobStore());
             blobServer.start();
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  心跳服务 初始化
              */
             heartbeatServices = createHeartbeatServices(configuration);
@@ -401,7 +401,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
             metricRegistry = createMetricRegistry(configuration, pluginManager, rpcSystem);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  性能监控服务
              */
             final RpcService metricQueryServiceRpcService =
@@ -419,7 +419,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
                                     configuration));
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  存储executionGraph 服务
              */
             executionGraphInfoStore =
@@ -706,7 +706,7 @@ public abstract class ClusterEntrypoint implements AutoCloseableAsync, FatalErro
         final String clusterEntrypointName = clusterEntrypoint.getClass().getSimpleName();
         try {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  启动集群
              */
             clusterEntrypoint.startCluster();

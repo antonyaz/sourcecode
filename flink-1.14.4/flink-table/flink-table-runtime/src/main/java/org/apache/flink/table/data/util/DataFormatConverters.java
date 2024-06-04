@@ -1102,7 +1102,7 @@ public class DataFormatConverters {
 
         @Override
         double[] toExternalImpl(ArrayData value) {
-            return value.toDoubleArray();
+            return value.todoubleArray();
         }
 
         @Override
@@ -1198,7 +1198,7 @@ public class DataFormatConverters {
                 case FLOAT:
                     return (T[]) ArrayUtils.toObject(value.toFloatArray());
                 case DOUBLE:
-                    return (T[]) ArrayUtils.toObject(value.toDoubleArray());
+                    return (T[]) ArrayUtils.toObject(value.todoubleArray());
                 default:
                     throw new RuntimeException("Not a primitive type: " + eleType);
             }

@@ -76,7 +76,7 @@ public class StreamOperatorFactoryUtil {
             processingTimeService = null;
         }
 
-        // TODO: what to do with ProcessingTimeServiceAware?
+        // todo: what to do with ProcessingTimeServiceAware?
         OP op =
                 operatorFactory.createStreamOperator(
                         new StreamOperatorParameters<>(

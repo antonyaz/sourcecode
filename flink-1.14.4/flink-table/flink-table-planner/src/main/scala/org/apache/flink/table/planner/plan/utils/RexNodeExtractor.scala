@@ -389,7 +389,7 @@ class RexNodeToExpressionConverter(
   }
 
   override def visitLiteral(literal: RexLiteral): Option[ResolvedExpression] = {
-    // TODO support SqlTrimFunction.Flag
+    // todo support SqlTrimFunction.Flag
     literal.getValue match {
       case _: SqlTrimFunction.Flag => return None
       case _ => // do nothing

@@ -31,7 +31,7 @@ import java.io.IOException;
 @Internal
 public class NullSerializer extends TypeSerializerSingleton<Object> {
 
-    // TODO move this class to org.apache.flink.table.runtime.typeutils
+    // todo move this class to org.apache.flink.table.runtime.typeutils
     //  after we dropped the legacy ListView/MapView logic
 
     private static final long serialVersionUID = -5381596724707742625L;

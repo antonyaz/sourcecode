@@ -149,7 +149,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
   def testInWithUncorrelatedOnWhere_Case2(): Unit = {
     util.addTableSource[(Int)]("t1", 'i)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a IN (SELECT 1 FROM t1) THEN 1 ELSE 2 END) IN (SELECT d FROM r)"
     util.verifyRelPlan(sqlQuery)
@@ -159,7 +159,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
   def testInWithUncorrelatedOnWhere_Case3(): Unit = {
     util.addTableSource[(Int)]("t1", 'i)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a IN (SELECT i FROM t1) THEN 1 ELSE 2 END) IN (SELECT d FROM r)"
     util.verifyRelPlan(sqlQuery)
@@ -170,7 +170,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a IN (SELECT i FROM t1) THEN 1 WHEN a IN (SELECT j FROM t2) THEN 2 ELSE 3 END)" +
       " IN (SELECT d FROM r)"
@@ -182,7 +182,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE (b, " +
       "(CASE WHEN a IN (SELECT i FROM t1) THEN 1 WHEN a IN (SELECT j FROM t2) THEN 2 ELSE 3 END))" +
       " IN (SELECT e, d FROM r)"
@@ -194,7 +194,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT c FROM l WHERE (" +
       " (CASE WHEN a IN (SELECT i FROM t1) THEN 1 ELSE 2 END), " +
       " (CASE WHEN b IN (SELECT j FROM t2) THEN 3 ELSE 4 END)) " +
@@ -207,10 +207,10 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO some bugs in SubQueryRemoveRule
+    // todo some bugs in SubQueryRemoveRule
     thrown.expect(classOf[RuntimeException])
 
-    // TODO Calcite does not support project with correlated expressions.
+    // todo Calcite does not support project with correlated expressions.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a IN (SELECT i FROM t1 WHERE l.a = t1.i) THEN 1 ELSE 2 END) IN (SELECT d FROM r)"
     util.verifyRelPlanNotExpected(sqlQuery, "joinType=[semi]")
@@ -224,7 +224,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
 
   @Test
   def testInWithUncorrelatedOnWhere_ScalarQuery2(): Unit = {
-    // TODO convert IN in scalar_query to joinType=[semi] ???
+    // todo convert IN in scalar_query to joinType=[semi] ???
     val sqlQuery = "SELECT a FROM x WHERE " +
       "(SELECT MAX(d) FROM y WHERE c IN (SELECT e FROM z)) IN (SELECT f FROM z)"
     util.verifyRelPlan(sqlQuery)
@@ -477,7 +477,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
 
   @Test(expected = classOf[AssertionError])
   def testInWithCorrelatedOnWhere_UnsupportedCondition2(): Unit = {
-    // TODO java.lang.RuntimeException: While invoking method
+    // todo java.lang.RuntimeException: While invoking method
     // 'public RelDecorrelator$Frame RelDecorrelator.decorrelateRel(LogicalProject)'
     val sqlQuery = "SELECT * FROM l WHERE a IN (SELECT d FROM r WHERE l.b IN (SELECT j FROM t) " +
       "AND l.c = r.f)"
@@ -495,7 +495,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
   def testInWithCorrelatedOnWhere_Case2(): Unit = {
     util.addTableSource[(Int, Long)]("t1", 'i, 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a IN (SELECT 1 FROM t1) THEN 1 ELSE 2 END) IN (SELECT d FROM r WHERE l.c = r.f)"
     util.verifyRelPlan(sqlQuery)
@@ -515,7 +515,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int, Long)]("t1", 'i, 'j)
     util.addTableSource[(Int, Long)]("t2", 'i, 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a IN (SELECT i FROM t1) THEN 1 WHEN a IN (SELECT j FROM t2) THEN 2 ELSE 3 END)" +
       " IN (SELECT d FROM r WHERE l.c = r.f)"
@@ -527,7 +527,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int, Long)]("t1", 'i, 'j)
     util.addTableSource[(Int, Long)]("t2", 'i, 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE (b, " +
       "(CASE WHEN a IN (SELECT i FROM t1) THEN 1 WHEN a IN (SELECT j FROM t2) THEN 2 ELSE 3 END))" +
       " IN (SELECT e, d FROM r WHERE l.c = r.f)"
@@ -539,7 +539,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int, Long)]("t1", 'i, 'j)
     util.addTableSource[(Int, Long)]("t2", 'i, 'j)
 
-    // TODO Calcite does not support project with correlated expressions.
+    // todo Calcite does not support project with correlated expressions.
     val sqlQuery = "SELECT b FROM l WHERE (CASE WHEN a IN (SELECT i FROM t1 WHERE l.b = t1.j) " +
       "THEN 1 ELSE 2 END) IN (SELECT d FROM r WHERE l.c = r.f)"
     util.verifyRelPlanNotExpected(sqlQuery, "joinType=[semi]")
@@ -554,7 +554,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
 
   @Test
   def testInWithCorrelatedOnWhere_ScalarQuery2(): Unit = {
-    // TODO convert IN in scalar_query to joinType=[semi] ???
+    // todo convert IN in scalar_query to joinType=[semi] ???
     val sqlQuery = "SELECT a FROM x WHERE " +
       "(SELECT MAX(d) FROM y WHERE c IN (SELECT e FROM z)) IN (SELECT f FROM z WHERE z.e = x.a)"
     util.verifyRelPlan(sqlQuery)
@@ -562,7 +562,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
 
   @Test
   def testInWithCorrelatedOnWhere_ScalarQuery3(): Unit = {
-    // TODO convert IN in scalar_query to joinType=[semi] ???
+    // todo convert IN in scalar_query to joinType=[semi] ???
     val sqlQuery = "SELECT a FROM x WHERE " +
       "(SELECT MAX(d) FROM y WHERE c IN (SELECT e FROM z WHERE y.d = z.f))" +
       " IN (SELECT f FROM z WHERE z.e = x.a)"
@@ -606,7 +606,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
   @Test(expected = classOf[AssertionError])
   def testInWithCorrelatedOnWhere_ScalarQuery8(): Unit = {
     // nested correlation can not be converted joinType=[semi] now
-    // TODO There are some bugs when decorrelating in RelDecorrelator
+    // todo There are some bugs when decorrelating in RelDecorrelator
     val sqlQuery = "SELECT b FROM x WHERE a IN (SELECT c FROM y WHERE x.b = y.d AND c > " +
       "(SELECT 0.5 * SUM(e) FROM z WHERE x.a = z.e AND z.f < 100))"
     util.verifyRelPlanNotExpected(sqlQuery, "joinType=[semi]")
@@ -962,7 +962,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
 
   @Test
   def testInWithCorrelatedOnHaving(): Unit = {
-    // TODO There are some bugs when converting SqlNode to RelNode:
+    // todo There are some bugs when converting SqlNode to RelNode:
     val sqlQuery = "SELECT SUM(a) AS s FROM x GROUP BY b " +
       "HAVING MAX(a) IN (SELECT d FROM y WHERE y.d = x.b)"
 
@@ -1056,7 +1056,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
 
   @Test
   def testExistsWithUncorrelatedOnWhere6(): Unit = {
-    // TODO the result of SqlToRelConverter does not contain any field `b` info in SubQuery
+    // todo the result of SqlToRelConverter does not contain any field `b` info in SubQuery
     util.verifyRelPlan("SELECT a FROM x WHERE EXISTS (SELECT x.b IS NULL FROM y)")
   }
 
@@ -1211,13 +1211,13 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
 
   @Test
   def testExistsWithCorrelatedOnWhere8(): Unit = {
-    // TODO the result of SqlToRelConverter does not contain any field `a` info in SubQuery
+    // todo the result of SqlToRelConverter does not contain any field `a` info in SubQuery
     util.verifyRelPlan("SELECT a FROM x WHERE EXISTS (SELECT x.a IS NULL FROM y WHERE y.d = x.b)")
   }
 
   @Test
   def testExistsWithCorrelatedOnWhere_ComplexCondition1(): Unit = {
-    // TODO only d0 is required in LogicalProject(d=[$0], d0=[CAST($0):INTEGER])
+    // todo only d0 is required in LogicalProject(d=[$0], d0=[CAST($0):INTEGER])
     val sqlQuery = "SELECT * FROM l WHERE EXISTS " +
       "(SELECT CAST(e AS INTEGER), 1 FROM r where CAST(l.b AS INTEGER) = CAST(r.d AS INTEGER))"
     util.verifyRelPlan(sqlQuery)
@@ -1577,7 +1577,7 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
 
   @Test
   def testExistsWithCorrelatedOnHaving(): Unit = {
-    // TODO There are some bugs when converting SqlNode to RelNode:
+    // todo There are some bugs when converting SqlNode to RelNode:
     val sqlQuery1 =
       "SELECT SUM(a) AS s FROM x GROUP BY b HAVING EXISTS (SELECT * FROM y WHERE y.d = x.b)"
 
@@ -1662,12 +1662,12 @@ class SubQuerySemiJoinTest extends SubQueryTestBase {
   def testInExists3(): Unit = {
     util.addTableSource[(Int, Long, String)]("t2", 'l, 'm, 'n)
 
-    // TODO some bugs in SubQueryRemoveRule
+    // todo some bugs in SubQueryRemoveRule
     //  the result RelNode (LogicalJoin(condition=[=($1, $8)], joinType=[left]))
     //  after SubQueryRemoveRule is unexpected
     thrown.expect(classOf[AssertionError])
 
-    // TODO Calcite does not support project with correlated expressions.
+    // todo Calcite does not support project with correlated expressions.
     val sqlQuery = "SELECT c FROM l WHERE (" +
       " (CASE WHEN EXISTS (SELECT * FROM t WHERE l.a = t.i) THEN 1 ELSE 2 END), " +
       " (CASE WHEN b IN (SELECT m FROM t2) THEN 3 ELSE 4 END)) " +

@@ -43,7 +43,7 @@ object CorrelateUtil {
     // We should merge the top calc with the correlate program if we want to crop
     // the top unused projections and push used one into the correlate.
     // This is not supported yet, so we do a short-cut and return early.
-    // TODO: add case for pattern that we need a RexProgram merge.
+    // todo: add case for pattern that we need a RexProgram merge.
     projectable && correlateProgram.isEmpty
   }
 

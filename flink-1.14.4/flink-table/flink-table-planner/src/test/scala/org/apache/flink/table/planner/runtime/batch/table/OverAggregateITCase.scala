@@ -26,7 +26,7 @@ import org.apache.flink.table.planner.utils.DateTimeTestUtil._
 
 import org.junit.{Before, Ignore, Test}
 
-// TODO OverWindow on Batch should support to order by non-time attribute
+// todo OverWindow on Batch should support to order by non-time attribute
 @Ignore
 class OverAggregateITCase extends BatchTestBase {
 

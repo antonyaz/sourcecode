@@ -99,7 +99,7 @@ class LegacyTableSinkITCase extends BatchTestBase {
       .field("b", DataTypes.DECIMAL(10, 0))
       .build()
 
-    // TODO: should failed at TableSinkUtils::validateLogicalPhysicalTypesCompatible
+    // todo: should failed at TableSinkUtils::validateLogicalPhysicalTypesCompatible
     // CatalogTable hold new type but sink hold legacy type
     MemoryTableSourceSinkUtil.createLegacyUnsafeMemoryAppendTable(
       tEnv, schema, "testSink")

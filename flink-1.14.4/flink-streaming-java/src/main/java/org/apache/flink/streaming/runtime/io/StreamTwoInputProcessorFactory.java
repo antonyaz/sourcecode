@@ -109,7 +109,7 @@ public class StreamTwoInputProcessorFactory {
                 streamOperator instanceof InputSelectable ? (InputSelectable) streamOperator : null;
 
         // this is a bit verbose because we're manually handling input1 and input2
-        // TODO: extract method
+        // todo: extract method
         StreamConfig.InputConfig[] inputConfigs = streamConfig.getInputs(userClassloader);
         boolean input1IsSorted = requiresSorting(inputConfigs[0]);
         boolean input2IsSorted = requiresSorting(inputConfigs[1]);

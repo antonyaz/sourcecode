@@ -98,7 +98,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  */
 
 /**
- * TODO: add by antony at 2022/5/3
+ * todo: add by antony at 2022/5/3
  * ZooKeeperHaServices 在Flink内部主要实现两个功能
  * 基于curator框架实现
  * 1、选举
@@ -132,7 +132,7 @@ public class ZooKeeperHaServices extends AbstractHaServices {
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      *  创建JobGraphStore 和 ExecutionGraphStore
      */
     @Override
@@ -142,7 +142,7 @@ public class ZooKeeperHaServices extends AbstractHaServices {
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 创建正在运行Job的注册中心
      */
     @Override
@@ -152,7 +152,7 @@ public class ZooKeeperHaServices extends AbstractHaServices {
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 创建选举服务
      */
     @Override
@@ -162,7 +162,7 @@ public class ZooKeeperHaServices extends AbstractHaServices {
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 创建监听服务
      */
     @Override

@@ -83,7 +83,7 @@ public class HighAvailabilityServicesUtils {
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 创建高可用服务
      */
     public static HighAvailabilityServices createHighAvailabilityServices(
@@ -95,7 +95,7 @@ public class HighAvailabilityServicesUtils {
             throws Exception {
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  从flink-conf.yaml中来获取ha 配置模式，一般是zookeeper
          */
         HighAvailabilityMode highAvailabilityMode = HighAvailabilityMode.fromConfig(configuration);

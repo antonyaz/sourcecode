@@ -106,7 +106,7 @@ public abstract class RegisteredRpcConnection<
 
         if (REGISTRATION_UPDATER.compareAndSet(this, null, newRegistration)) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  开始注册
              */
             newRegistration.startRegistration();

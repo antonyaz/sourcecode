@@ -80,7 +80,7 @@ class AggCallSelectivityEstimator(agg: RelNode, mq: FlinkRelMetadataQuery)
 
   /**
    * Returns whether the given aggCall is supported now
-   * TODO supports more
+   * todo supports more
    */
   def isSupportedAggCall(aggCall: AggregateCall): Boolean = {
     aggCall.getAggregation.getKind match {
@@ -129,12 +129,12 @@ class AggCallSelectivityEstimator(agg: RelNode, mq: FlinkRelMetadataQuery)
       case _ =>
         val (min, includeMin) = argInterval match {
           case hasLower: WithLower =>
-            (SelectivityEstimator.comparableToDouble(hasLower.lower), hasLower.includeLower)
+            (SelectivityEstimator.comparabletodouble(hasLower.lower), hasLower.includeLower)
           case _ => (null, true)
         }
         val (max, includeMax) = argInterval match {
           case hasUpper: WithUpper =>
-            (SelectivityEstimator.comparableToDouble(hasUpper.upper), hasUpper.includeUpper)
+            (SelectivityEstimator.comparabletodouble(hasUpper.upper), hasUpper.includeUpper)
           case _ => (null, true)
         }
 
@@ -331,8 +331,8 @@ class AggCallSelectivityEstimator(agg: RelNode, mq: FlinkRelMetadataQuery)
         // return defaultAggCallSelectivity instead of 0.0
         defaultAggCallSelectivity
       case i: FiniteValueInterval =>
-        val min = SelectivityEstimator.comparableToDouble(i.lower)
-        val max = SelectivityEstimator.comparableToDouble(i.upper)
+        val min = SelectivityEstimator.comparabletodouble(i.lower)
+        val max = SelectivityEstimator.comparabletodouble(i.upper)
         if (ValueInterval.contains(i, SelectivityEstimator.literalToComparable(literal))) {
           // the agg call interval is an estimated value, not a correct value.
           // if `1.0 / (max - min)` is too small, uses default value
@@ -365,7 +365,7 @@ class AggCallSelectivityEstimator(agg: RelNode, mq: FlinkRelMetadataQuery)
     if (SelectivityEstimator.canConvertToNumericType(inputRef.getType) && aggCall.isDefined) {
       estimateNumericComparison(op, aggCall.get, literal)
     } else {
-      // TODO: It is difficult to support binary comparisons for non-numeric type
+      // todo: It is difficult to support binary comparisons for non-numeric type
       // without advanced statistics like histogram.
       se.defaultComparisonSelectivity
     }
@@ -398,15 +398,15 @@ class AggCallSelectivityEstimator(agg: RelNode, mq: FlinkRelMetadataQuery)
       case _ =>
         val (min, includeMin) = aggCallInterval match {
           case hasLower: WithLower =>
-            (SelectivityEstimator.comparableToDouble(hasLower.lower), hasLower.includeLower)
+            (SelectivityEstimator.comparabletodouble(hasLower.lower), hasLower.includeLower)
           case _ => (null, true)
         }
         val (max, includeMax) = aggCallInterval match {
           case hasUpper: WithUpper =>
-            (SelectivityEstimator.comparableToDouble(hasUpper.upper), hasUpper.includeUpper)
+            (SelectivityEstimator.comparabletodouble(hasUpper.upper), hasUpper.includeUpper)
           case _ => (null, true)
         }
-        val lit = SelectivityEstimator.literalToDouble(literal)
+        val lit = SelectivityEstimator.literaltodouble(literal)
         val (noOverlap, completeOverlap) = op match {
           case LESS_THAN =>
             val noOverlap = SelectivityEstimator.greaterThanOrEqualTo(min, lit)

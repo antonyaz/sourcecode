@@ -113,7 +113,7 @@ public class ArrayDataSerializer extends TypeSerializer<ArrayData> {
                 case FLOAT:
                     return new GenericArrayData(Arrays.copyOf(array.toFloatArray(), array.size()));
                 case DOUBLE:
-                    return new GenericArrayData(Arrays.copyOf(array.toDoubleArray(), array.size()));
+                    return new GenericArrayData(Arrays.copyOf(array.todoubleArray(), array.size()));
                 default:
                     throw new RuntimeException("Unknown type: " + eleType);
             }
@@ -151,7 +151,7 @@ public class ArrayDataSerializer extends TypeSerializer<ArrayData> {
                 case FLOAT:
                     return new GenericArrayData(from.toFloatArray());
                 case DOUBLE:
-                    return new GenericArrayData(from.toDoubleArray());
+                    return new GenericArrayData(from.todoubleArray());
             }
         }
 

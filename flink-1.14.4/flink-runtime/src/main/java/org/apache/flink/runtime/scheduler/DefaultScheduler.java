@@ -179,7 +179,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
                         getSchedulingTopology(), failoverStrategy, restartBackoffTimeStrategy);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  调度策略
          */
         this.schedulingStrategy =
@@ -216,12 +216,12 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
                 schedulingStrategy.getClass().getName());
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  监听状态变更为 RUNNING
          */
         transitionToRunning();
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  继续调度 schedulingStrategy 调度策略
          *  1.12及以前： 有多种实现
          *  1.13开始：就只有一个了 PipelinedRegionSchedulingStrategy
@@ -416,7 +416,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
         transitionToScheduled(verticesToDeploy);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  申请 slot
          *  ExecutionVertex => ExecutionVertexDeploymentOption => SlotExecutionVertexAssignment ==> DeploymentHandle
          *  1、ExecutionVertex 只是 ExecutionGraph中的一个顶点，代表了要执行的Task的信息的封装
@@ -431,7 +431,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
                 allocateSlots(executionVertexDeploymentOptions);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *   创建 DeploymentHandler 执行部署
          *   将 SlotExecutionAssignment 映射成为 DeploymentHandle
          */
@@ -442,14 +442,14 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
                         slotExecutionVertexAssignments);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  第二件大事： 执行 deploy
          *  等待当前regions  task  资源申请完毕后开始部署
          */
         waitForAllSlotsAndDeploy(deploymentHandles);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  映射关系
          *  Task =>> ExecutionVertex =>> SlotExecutionVertexAssignment  ==> DeploymentHandle
          *
@@ -509,14 +509,14 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 
     private void waitForAllSlotsAndDeploy(final List<DeploymentHandle> deploymentHandles) {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  1、分配资源
          *  assignAllResourcesAndRegisterProducedPartitions
          */
         FutureUtils.assertNoException(
                 assignAllResourcesAndRegisterProducedPartitions(deploymentHandles)
                         /**
-                         *  TODO: add by antony at 2022/5/3
+                         *  todo: add by antony at 2022/5/3
                          *  2、执行部署
                          *  所有的 Task 需要部署
                          */
@@ -553,7 +553,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
         return (ignored, throwable) -> {
             propagateIfNonNull(throwable);
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  遍历 执行部署
              */
             for (final DeploymentHandle deploymentHandle : deploymentHandles) {
@@ -566,7 +566,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
                 FutureUtils.assertNoException(
                         slotAssigned.handle(
                                 /**
-                                 *  TODO: add by antony at 2022/5/3
+                                 *  todo: add by antony at 2022/5/3
                                  *  执行部署 Task
                                  */
                                 deployOrHandleError(deploymentHandle)));
@@ -705,7 +705,7 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
 
             if (throwable == null) {
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  deployTaskSafe
                  */
                 deployTaskSafe(executionVertexId);
@@ -719,12 +719,12 @@ public class DefaultScheduler extends SchedulerBase implements SchedulerOperatio
     private void deployTaskSafe(final ExecutionVertexID executionVertexId) {
         try {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  获取 ExecutionGraph 中的顶点 ExecutionVertex
              */
             final ExecutionVertex executionVertex = getExecutionVertex(executionVertexId);
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  执行部署
              */
             executionVertexOperations.deploy(executionVertex);

@@ -586,7 +586,7 @@ public abstract class NettyMessage {
         @Override
         void write(ChannelOutboundInvoker out, ChannelPromise promise, ByteBufAllocator allocator)
                 throws IOException {
-            // TODO Directly serialize to Netty's buffer
+            // todo Directly serialize to Netty's buffer
             ByteBuffer serializedEvent = EventSerializer.toSerializedEvent(event);
 
             Consumer<ByteBuf> consumer =

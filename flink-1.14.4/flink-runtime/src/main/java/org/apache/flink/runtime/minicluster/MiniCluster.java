@@ -1194,7 +1194,7 @@ public class MiniCluster implements AutoCloseableAsync {
     // ------------------------------------------------------------------------
 
     private void initializeIOFormatClasses(Configuration configuration) {
-        // TODO: That we still have to call something like this is a crime against humanity
+        // todo: That we still have to call something like this is a crime against humanity
         FileOutputFormat.initDefaultsFromConfiguration(configuration);
     }
 

@@ -259,7 +259,7 @@ create temporary table tbl1 (
 [INFO] Execute statement succeed.
 !info
 
-# TODO: warning users the table already exists
+# todo: warning users the table already exists
 create temporary table if not exists tbl1 (
    `user` BIGINT NOT NULl,
    product VARCHAR(32),

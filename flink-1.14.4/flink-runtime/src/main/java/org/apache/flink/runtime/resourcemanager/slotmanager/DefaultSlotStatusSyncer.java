@@ -171,7 +171,7 @@ public class DefaultSlotStatusSyncer implements SlotStatusSyncer {
                                 if (throwable instanceof SlotOccupiedException) {
                                     LOG.error("Should not get this exception.", throwable);
                                 } else {
-                                    // TODO If the taskManager does not have enough resource, we
+                                    // todo If the taskManager does not have enough resource, we
                                     // may endlessly allocate slot on it until the next heartbeat.
                                     LOG.warn(
                                             "Slot allocation for allocation {} for job {} failed.",

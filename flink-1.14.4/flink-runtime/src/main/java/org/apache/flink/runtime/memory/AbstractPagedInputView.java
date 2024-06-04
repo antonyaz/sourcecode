@@ -376,7 +376,7 @@ public abstract class AbstractPagedInputView implements DataInputView {
 
     @Override
     public double readDouble() throws IOException {
-        return Double.longBitsToDouble(readLong());
+        return Double.longBitstodouble(readLong());
     }
 
     @Override

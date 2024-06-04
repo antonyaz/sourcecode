@@ -318,7 +318,7 @@ public class SubQueryDecorrelator extends RelShuttleImpl {
                         if (result.contains(false)) {
                             return false;
                         } else if (result.contains(true)) {
-                            // TODO supports correlation variable with OR
+                            // todo supports correlation variable with OR
                             //	return call.op.getKind() != SqlKind.OR || !result.contains(null);
                             return call.op.getKind() != SqlKind.OR;
                         } else {
@@ -456,7 +456,7 @@ public class SubQueryDecorrelator extends RelShuttleImpl {
 
             // If this Project has correlated reference, produce the correlated variables in the new
             // output.
-            // TODO Currently, correlation in projection is not supported.
+            // todo Currently, correlation in projection is not supported.
             assert !cm.mapRefRelToCorRef.containsKey(rel);
 
             final Map<Integer, Integer> mapInputToOutput = new HashMap<>();
@@ -1002,7 +1002,7 @@ public class SubQueryDecorrelator extends RelShuttleImpl {
 
         @Override
         public RelNode visit(LogicalCorrelate correlate) {
-            // TODO does not allow correlation condition in its inputs now
+            // todo does not allow correlation condition in its inputs now
             // If correlation conditions in correlate inputs reference to correlate outputs
             // variable,
             // that should not be supported, e.g.
@@ -1376,7 +1376,7 @@ public class SubQueryDecorrelator extends RelShuttleImpl {
         private final SortedMap<CorrelationId, RelNode> mapCorToCorRel;
         private final Map<RelNode, Set<CorrelationId>> mapSubQueryNodeToCorSet;
 
-        // TODO: create immutable copies of all maps
+        // todo: create immutable copies of all maps
         private CorelMap(
                 com.google.common.collect.Multimap<RelNode, CorRef> mapRefRelToCorRef,
                 SortedMap<CorrelationId, RelNode> mapCorToCorRel,

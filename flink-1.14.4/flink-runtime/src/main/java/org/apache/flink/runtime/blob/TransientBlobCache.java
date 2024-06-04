@@ -42,7 +42,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 /**
  * Provides access to transient BLOB files stored at the {@link BlobServer}.
  *
- * <p>TODO: make this truly transient by returning file streams to a local copy with the remote
+ * <p>todo: make this truly transient by returning file streams to a local copy with the remote
  * being removed upon retrieval and the local copy being deleted at the end of the stream.
  */
 public class TransientBlobCache extends AbstractBlobCache implements TransientBlobService {

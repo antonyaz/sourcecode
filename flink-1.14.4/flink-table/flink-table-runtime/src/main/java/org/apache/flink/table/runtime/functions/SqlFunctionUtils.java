@@ -740,7 +740,7 @@ public class SqlFunctionUtils {
     }
 
     public static String jsonValue(String jsonString, String pathString) {
-        // TODO: refactor this to use jackson ?
+        // todo: refactor this to use jackson ?
         return JsonUtils.getInstance().getJsonObject(jsonString, pathString);
     }
 

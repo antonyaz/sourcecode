@@ -158,7 +158,7 @@ public class RemoteInputChannel extends InputChannel {
                 "Bug in input channel setup logic: exclusive buffers have already been set for this input channel.");
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  申请独占内存
          */
         bufferManager.requestExclusiveBuffers(initialCredit);

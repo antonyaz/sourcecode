@@ -76,7 +76,7 @@ public class RowComparatorTest extends ComparatorTestBase<Row> {
 
     @BeforeClass
     public static void init() {
-        // TODO we cannot test null here as PojoComparator has no support for null keys
+        // todo we cannot test null here as PojoComparator has no support for null keys
         testPojo1.name = "";
         testPojo2.name = "Test1";
         testPojo3.name = "Test2";

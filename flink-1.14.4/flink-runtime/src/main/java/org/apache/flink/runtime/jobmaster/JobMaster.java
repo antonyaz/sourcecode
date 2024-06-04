@@ -143,6 +143,10 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
 
     private final ResourceID resourceId;
 
+    /**
+      todo: add by antony at: 2024/6/3
+      待执行的jobGraph
+    */
     private final JobGraph jobGraph;
 
     private final Time rpcTimeout;
@@ -308,21 +312,21 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
         log.info("Initializing job '{}' ({}).", jobName, jid);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建 ResourceManagerLeaderRetriever
          */
         resourceManagerLeaderRetriever =
                 highAvailabilityServices.getResourceManagerLeaderRetriever();
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建 SlotPoolService 管理Slot资源
          */
         this.slotPoolService =
                 checkNotNull(slotPoolServiceSchedulerFactory).createSlotPoolService(jid);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  从节点集合
          */
         this.registeredTaskManagers = new HashMap<>(4);
@@ -346,7 +350,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
         this.jobStatusListener = new JobManagerJobStatusListener();
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建调度得到 DefaultScheduler
          *  层层调度之内，将 JobGraph 转为 ExecutionGraph
          */
@@ -429,7 +433,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
     // ----------------------------------------------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 部署Task：调用链条
      * JobMaster -> DefaultScheduler -> SchedulingStrategy -> ExecutionVertext -> Execution -> RPC请求 -> TaskExecutor
      *  1、启动一些必要服务
@@ -441,7 +445,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
     protected void onStart() throws JobMasterException {
         try {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  开始启动
              */
             startJobExecution();
@@ -574,7 +578,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
         return CompletableFuture.completedFuture(Acknowledge.get());
     }
 
-    // TODO: This method needs a leader session ID
+    // todo: This method needs a leader session ID
     @Override
     public void acknowledgeCheckpoint(
             final JobID jobID,
@@ -598,7 +602,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
                 jobID, executionAttemptID, checkpointId, checkpointMetrics);
     }
 
-    // TODO: This method needs a leader session ID
+    // todo: This method needs a leader session ID
     @Override
     public void declineCheckpoint(DeclineCheckpoint decline) {
         schedulerNG.declineCheckpoint(decline);
@@ -927,14 +931,14 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
         validateRunsInMainThread();
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  1、先初始化一个上下文封装相关信息
          */
         JobShuffleContext context = new JobShuffleContextImpl(jobGraph.getJobID(), this);
         shuffleMaster.registerJob(context);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  启动JobMaster的一些必要服务
          *  1、启动心跳服务： JobMaster 需要维持和 ResourceManager 和 TaskExecutor 之间的心跳
          *  2、启动 SlotPoolImpl Slot管理服务 （内部两个定时任务）
@@ -952,7 +956,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
                 getFencingToken());
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  开始调度
          *  核心逻辑仅两件事
          *  1、申请slot
@@ -966,7 +970,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
     private void startJobMasterServices() throws Exception {
         try {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  两个心跳服务
              */
             this.taskManagerHeartbeatManager = createTaskManagerHeartbeatManager(heartbeatServices);
@@ -975,7 +979,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
 
             // start the slot pool make sure the slot pool now accepts messages for this leader
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  启动 slotPool服务
              */
             slotPoolService.start(getFencingToken(), getAddress(), getMainThreadExecutor());
@@ -1009,7 +1013,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
             resultingException = e;
         }
 
-        // TODO: Distinguish between job termination which should free all slots and a loss of
+        // todo: Distinguish between job termination which should free all slots and a loss of
         // leadership which should keep the slots
         slotPoolService.close();
 
@@ -1052,7 +1056,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
 
     private void startScheduling() {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          * schedulerNG = DefaultScheduler
          */
         schedulerNG.startScheduling();
@@ -1103,14 +1107,14 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
     private void notifyOfNewResourceManagerLeader(
             final String newResourceManagerAddress, final ResourceManagerId resourceManagerId) {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  更新 ResourceManager 地址信息
          */
         resourceManagerAddress =
                 createResourceManagerAddress(newResourceManagerAddress, resourceManagerId);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  重新连接 ResourceManager 完成注册
          */
         reconnectToResourceManager(
@@ -1294,7 +1298,7 @@ public class JobMaster extends PermanentlyFencedRpcEndpoint<JobMasterId>
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * resourceManager  变更后 JobMaster需要更新
      */
     private class ResourceManagerLeaderListener implements LeaderRetrievalListener {

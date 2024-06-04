@@ -265,7 +265,7 @@ object AggregateUtil extends Enumeration {
     } else {
       aggCalls.length
     }
-    // TODO: derive retraction flags from ChangelogMode trait when we support retraction for window
+    // todo: derive retraction flags from ChangelogMode trait when we support retraction for window
     val aggCallNeedRetractions = new Array[Boolean](aggSize)
     transformToAggregateInfoList(
       inputRowType,

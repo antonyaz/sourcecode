@@ -142,7 +142,7 @@ class MatchRecognizeITCase(backend: StateBackendMode) extends StreamingWithState
   def testCodeSplitsAreProperlyGenerated(): Unit = {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
     val tEnv = StreamTableEnvironment.create(env, TableTestUtil.STREAM_SETTING)
-    // TODO: this code is ported from old planner,
+    // todo: this code is ported from old planner,
     //  However code split is not supported in planner yet.
     tEnv.getConfig.setMaxGeneratedCodeLength(1)
 

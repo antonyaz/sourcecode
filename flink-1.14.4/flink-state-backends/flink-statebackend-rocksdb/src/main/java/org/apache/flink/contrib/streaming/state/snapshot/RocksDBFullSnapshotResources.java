@@ -91,14 +91,14 @@ public class RocksDBFullSnapshotResources<K> implements FullSnapshotResources<K>
         this.streamCompressionDecorator = streamCompressionDecorator;
 
         // we need to to this in the constructor, i.e. in the synchronous part of the snapshot
-        // TODO: better yet, we can do it outside the constructor
+        // todo: better yet, we can do it outside the constructor
         this.metaData = fillMetaData(metaDataCopy);
     }
 
     public static <K> RocksDBFullSnapshotResources<K> create(
             final LinkedHashMap<String, RocksDBKeyedStateBackend.RocksDbKvStateInfo>
                     kvStateInformation,
-            // TODO: was it important that this is a LinkedHashMap
+            // todo: was it important that this is a LinkedHashMap
             final Map<String, HeapPriorityQueueSnapshotRestoreWrapper<?>> registeredPQStates,
             final RocksDB db,
             final ResourceGuard rocksDBResourceGuard,

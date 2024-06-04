@@ -51,7 +51,7 @@ public class HiveFunctionUtil {
     }
 
     // This is copied from PlannerTypeUtils in flink-table-runtime that we shouldn't depend on
-    // TODO: remove this and use the original code when it's moved to accessible, dependable module
+    // todo: remove this and use the original code when it's moved to accessible, dependable module
     private static boolean isPrimitive(LogicalType type) {
         switch (type.getTypeRoot()) {
             case BOOLEAN:

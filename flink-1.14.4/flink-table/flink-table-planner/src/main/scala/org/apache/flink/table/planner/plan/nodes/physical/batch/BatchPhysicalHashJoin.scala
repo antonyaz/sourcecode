@@ -102,7 +102,7 @@ class BatchPhysicalHashJoin(
       (rightRowCnt,  FlinkRelMdUtil.binaryRowAverageSize(getRight))
     }
     // We aim for a 200% utilization of the bucket table when all the partition buffers are full.
-    // TODO use BinaryHashBucketArea.RECORD_BYTES instead of 8
+    // todo use BinaryHashBucketArea.RECORD_BYTES instead of 8
     val bucketSize = buildRowCount * 8 / FlinkCost.HASH_COLLISION_WEIGHT
     val recordSize = buildRowCount * (buildRowSize + BinaryRowDataSerializer.LENGTH_SIZE_IN_BYTES)
     val memCost = (bucketSize + recordSize) * shuffleBuildCount(mq)

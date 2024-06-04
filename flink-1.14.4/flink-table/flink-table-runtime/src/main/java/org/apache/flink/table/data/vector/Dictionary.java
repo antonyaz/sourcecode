@@ -28,7 +28,7 @@ public interface Dictionary {
 
     float decodeToFloat(int id);
 
-    double decodeToDouble(int id);
+    double decodetodouble(int id);
 
     byte[] decodeToBinary(int id);
 

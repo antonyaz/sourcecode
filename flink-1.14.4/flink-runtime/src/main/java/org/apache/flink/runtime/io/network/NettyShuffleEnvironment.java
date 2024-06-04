@@ -225,7 +225,7 @@ public class NettyShuffleEnvironment
                     partitionIndex++) {
                 resultPartitions[partitionIndex] =
                         /**
-                         *  TODO: add by antony at 2022/5/4
+                         *  todo: add by antony at 2022/5/4
                          *  通过 resultPartitionFactory 来创建
                          */
                         resultPartitionFactory.create(
@@ -257,7 +257,7 @@ public class NettyShuffleEnvironment
                     new InputChannelMetrics(networkInputGroup, ownerContext.getParentGroup());
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  初始化得到一个 InputGate 数据结果容器
              */
             SingleInputGate[] inputGates =
@@ -266,7 +266,7 @@ public class NettyShuffleEnvironment
                 final InputGateDeploymentDescriptor igdd =
                         inputGateDeploymentDescriptors.get(gateIndex);
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  创建 InputGate
                  *  通过 singleInputGateFactory 来创建
                  */
@@ -287,7 +287,7 @@ public class NettyShuffleEnvironment
 
             registerInputMetrics(config.isNetworkDetailedMetrics(), networkInputGroup, inputGates);
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  返回InputGate集合
              */
             return Arrays.asList(inputGates);
@@ -347,7 +347,7 @@ public class NettyShuffleEnvironment
             try {
                 LOG.debug("Starting network connection manager");
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  NettyConnectionManager 的启动
                  */
                 return connectionManager.start();

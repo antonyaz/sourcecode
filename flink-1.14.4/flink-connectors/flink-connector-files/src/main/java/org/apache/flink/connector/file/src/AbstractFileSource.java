@@ -137,7 +137,7 @@ public abstract class AbstractFileSource<T, SplitT extends FileSourceSplit>
         // sources)
         final Collection<FileSourceSplit> splits;
         try {
-            // TODO - in the next cleanup pass, we should try to remove the need to "wrap unchecked"
+            // todo - in the next cleanup pass, we should try to remove the need to "wrap unchecked"
             // here
             splits = enumerator.enumerateSplits(inputPaths, enumContext.currentParallelism());
         } catch (IOException e) {

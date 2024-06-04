@@ -40,13 +40,13 @@ public class CheckpointCoordinatorDeActivator implements JobStatusListener {
     public void jobStatusChanges(
             JobID jobId, JobStatus newJobStatus, long timestamp, Throwable error) {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  运行状态
          */
         if (newJobStatus == JobStatus.RUNNING) {
             // start the checkpoint scheduler
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  启动定时任务
              *  作用： 执行周期性的 触发 checkpoint  执行
              */

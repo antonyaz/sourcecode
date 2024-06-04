@@ -481,7 +481,7 @@ class HashWindowCodeGenerator(
     val bufferWindowElementTerm = newName("prepareWinElement")
     val bufferWindowElementWriterTerm = newName("prepareWinElementWriter")
     val exprCodegen = new ExprCodeGenerator(ctx, false)
-    // TODO refine this. Is it possible to reuse grouping key projection?
+    // todo refine this. Is it possible to reuse grouping key projection?
     val accessKeyExprs = for (idx <- 0 until aggMapKeyType.getFieldCount - 1) yield
       GenerateUtils.generateFieldAccess(
         ctx, aggMapKeyType, reuseAggMapKeyTerm, idx)

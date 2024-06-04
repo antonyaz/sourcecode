@@ -184,7 +184,7 @@ object ExpandUtil {
       val expandIdField = rexBuilder.makeBigintLiteral(BigDecimal.valueOf(expandId))
       projects.add(expandIdField)
 
-      // TODO only need output duplicate fields for the row against 'regular' aggregates
+      // todo only need output duplicate fields for the row against 'regular' aggregates
       // currently, we can't distinguish that
       // an expand row is for 'regular' aggregates or for 'distinct' aggregates
       duplicateFieldIndexes.foreach {

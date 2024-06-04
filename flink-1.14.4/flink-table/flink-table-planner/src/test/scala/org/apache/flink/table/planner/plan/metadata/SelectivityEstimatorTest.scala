@@ -1023,7 +1023,7 @@ class SelectivityEstimatorTest {
     // with builtin udf
     assertEquals(estimator.defaultComparisonSelectivity, estimator.evaluate(predicate1))
 
-    // TODO test with not builtin udf
+    // todo test with not builtin udf
   }
 
   @Test

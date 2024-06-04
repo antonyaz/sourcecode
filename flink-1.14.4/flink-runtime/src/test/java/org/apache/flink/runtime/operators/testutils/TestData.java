@@ -138,7 +138,7 @@ public final class TestData {
 
         public boolean next(org.apache.flink.types.Value[] target) {
             this.key = nextKey();
-            // TODO change this to something proper
+            // todo change this to something proper
             ((IntValue) target[0]).setValue(this.key);
             ((IntValue) target[1]).setValue(random.nextInt());
             return true;

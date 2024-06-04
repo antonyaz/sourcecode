@@ -300,7 +300,7 @@ public abstract class AbstractStreamOperator<OUT>
      *
      * <p>Please refer to FLINK-19741 for further details.
      *
-     * <p>TODO: this method can be removed once all timers are moved to be managed by state
+     * <p>todo: this method can be removed once all timers are moved to be managed by state
      * backends.
      *
      * @return flag indicating whether or not this operator is writing to raw keyed state via {@link

@@ -133,7 +133,7 @@ object LegacyDataViewUtils {
         case nestedCT: CompositeType[_] => includesDataView(nestedCT)
         case t: TypeInformation[_] if t.getTypeClass == classOf[ListView[_]] => true
         case t: TypeInformation[_] if t.getTypeClass == classOf[MapView[_, _]] => true
-        // TODO supports SortedMapView
+        // todo supports SortedMapView
         // case t: TypeInformation[_] if t.getTypeClass == classOf[SortedMapView[_, _]] => true
         case _ => false
       }

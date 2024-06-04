@@ -119,7 +119,7 @@ object FunctionCodeGenerator {
     }
 
     else {
-      // TODO more functions
+      // todo more functions
       throw new CodeGenException("Unsupported Function.")
     }
 

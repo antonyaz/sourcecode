@@ -175,7 +175,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
         rpcService = createRpcService(configuration, highAvailabilityServices, rpcSystem);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  给Task 生成一个resourceID
          */
         this.resourceId =
@@ -201,7 +201,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
         metricRegistry.startQueryService(metricQueryServiceRpcService, resourceId);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  BlobService中的一个组件
          */
         blobCacheService =
@@ -213,7 +213,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
                         configuration, pluginManager);
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 核心重点
          * 1、创建 taskExecutorService
          *  TaskExecutor 就是存在于 TaskManager 之上的用来管理资源的，处理 跟 slot有关的各种工作
@@ -401,7 +401,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
             LOG.info("Cannot determine the maximum number of open file descriptors");
         }
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  启动 taskManager
          */
         runTaskManagerProcessSecurely(args);
@@ -413,7 +413,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
     }
 
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 两个重要事情
      * 1、创建 TaskExecutorService
      * 2、启动 TaskExecutorService
@@ -435,7 +435,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
 
         try {
             /**
-             * TODO: add by antony at 2022/5/2
+             * todo: add by antony at 2022/5/2
              * 构造方法中来创建一系列 基础服务
              * createTaskExecutorService
              * 创建 TaskExecutor
@@ -458,7 +458,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
                             */
                             TaskManagerRunner::createTaskExecutorService);
             /**
-             * TODO: add by antony at 2022/5/2
+             * todo: add by antony at 2022/5/2
              * 启动TaskManagerRunner
              *  1、TaskManagerRunner
              *  2、TaskExecutorService
@@ -466,7 +466,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
              */
             taskManagerRunner.start();
             /**
-             * TODO: add by antony at 2022/5/2
+             * todo: add by antony at 2022/5/2
              * 1、taskManagerRunner.start()
              * 2、taskExecutorService.start()
              * 3、taskExecutor.start()
@@ -490,7 +490,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
 
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  加载配置文件，解析 flink-conf.yml
              */
             configuration = loadConfiguration(args);
@@ -500,7 +500,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  启动 TaskManager
          */
         runTaskManagerProcessSecurely(checkNotNull(configuration));
@@ -525,7 +525,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
                     SecurityUtils.getInstalledContext()
                             .runSecured(() ->
                                     /**
-                                     *  TODO: add by antony at 2022/5/4
+                                     *  todo: add by antony at 2022/5/4
                                      *  运行taskManager
                                      */
                                     runTaskManager(configuration, pluginManager));
@@ -561,7 +561,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
             throws Exception {
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 创建 TaskExecutor 核心
          * 两个事情
          * 1、TaskManagerServices : 包含各种IO服务、内存服务、shuffle服务等，TaskSlotTable等等
@@ -584,7 +584,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
     }
 
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 真正创建 TaskExecutor
      * 1、创建TaskmanagerServices
      * 2、创建TaskExecutor
@@ -609,10 +609,14 @@ public class TaskManagerRunner implements FatalErrorHandler {
 
         LOG.info("Starting TaskManager with ResourceID: {}", resourceID.getStringWithMetadata());
 
+        /**
+          todo: add by antony at: 2024/6/3
+          获取rpc地址
+        */
         String externalAddress = rpcService.getAddress();
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 从节点 资源配置
          */
         final TaskExecutorResourceSpec taskExecutorResourceSpec =
@@ -635,7 +639,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
 
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * IO线程池
          */
         final ExecutorService ioExecutor =
@@ -645,7 +649,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
 
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          *  第一个大事件
          *  封装 TaskExecutor 需要的各种基础服务
          *  包括： 内存管理、IO服务、广播服务、shuffle环境服务等等
@@ -669,7 +673,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
 
         String metricQueryServiceAddress = metricRegistry.getMetricQueryServiceGatewayRpcAddress();
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 创建第二个大事件
          * 创建得到一个TaskExecutor ，是一个RpcEndpoint组件
          *
@@ -687,7 +691,7 @@ public class TaskManagerRunner implements FatalErrorHandler {
                 fatalErrorHandler,
                 new TaskExecutorPartitionTrackerImpl(taskManagerServices.getShuffleEnvironment()));
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 接下来就是TaskExecutor的启动
          */
     }

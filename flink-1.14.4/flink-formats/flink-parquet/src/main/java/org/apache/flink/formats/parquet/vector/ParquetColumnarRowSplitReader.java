@@ -176,7 +176,7 @@ public class ParquetColumnarRowSplitReader implements Closeable {
                 if (type == null) {
                     throw new IllegalArgumentException(fieldNames[i] + " does not exist");
                 }
-                // TODO clip for array,map,row types.
+                // todo clip for array,map,row types.
                 types[i] = type;
             }
         }

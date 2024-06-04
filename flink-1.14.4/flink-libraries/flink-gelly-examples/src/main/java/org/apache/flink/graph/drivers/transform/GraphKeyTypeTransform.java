@@ -188,11 +188,11 @@ public class GraphKeyTypeTransform<VV, EV> extends ParameterizedBase
                 break;
 
             case DOUBLE:
-                translator = new LongValueToDoubleValue();
+                translator = new LongValuetodoubleValue();
                 break;
 
             case NATIVE_DOUBLE:
-                translator = new LongValueToDouble();
+                translator = new LongValuetodouble();
                 break;
 
             case STRING:
@@ -544,23 +544,23 @@ public class GraphKeyTypeTransform<VV, EV> extends ParameterizedBase
     }
 
     /** Translate {@link LongValue} to a {@link DoubleValue} bit string. */
-    static class LongValueToDoubleValue implements TranslateFunction<LongValue, DoubleValue> {
+    static class LongValuetodoubleValue implements TranslateFunction<LongValue, DoubleValue> {
         @Override
         public DoubleValue translate(LongValue value, DoubleValue reuse) throws Exception {
             if (reuse == null) {
                 reuse = new DoubleValue();
             }
 
-            reuse.setValue(Double.longBitsToDouble(value.getValue()));
+            reuse.setValue(Double.longBitstodouble(value.getValue()));
             return reuse;
         }
     }
 
     /** Translate {@link LongValue} to a {@link Double} bit string. */
-    static class LongValueToDouble implements TranslateFunction<LongValue, Double> {
+    static class LongValuetodouble implements TranslateFunction<LongValue, Double> {
         @Override
         public Double translate(LongValue value, Double reuse) throws Exception {
-            return Double.longBitsToDouble(value.getValue());
+            return Double.longBitstodouble(value.getValue());
         }
     }
 

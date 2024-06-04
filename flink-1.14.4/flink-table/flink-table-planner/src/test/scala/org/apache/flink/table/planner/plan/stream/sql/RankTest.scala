@@ -969,5 +969,5 @@ class RankTest extends TableTestBase {
     util.verifyExplainInsert(sql, ExplainDetail.CHANGELOG_MODE)
   }
 
-  // TODO add tests about multi-sinks and udf
+  // todo add tests about multi-sinks and udf
 }

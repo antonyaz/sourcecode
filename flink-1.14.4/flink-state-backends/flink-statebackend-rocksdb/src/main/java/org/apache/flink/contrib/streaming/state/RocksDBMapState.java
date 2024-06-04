@@ -319,7 +319,7 @@ class RocksDBMapState<K, N, UK, UV> extends AbstractRocksDBState<K, N, Map<UK, U
         Preconditions.checkNotNull(safeNamespaceSerializer);
         Preconditions.checkNotNull(safeValueSerializer);
 
-        // TODO make KvStateSerializer key-group aware to save this round trip and key-group
+        // todo make KvStateSerializer key-group aware to save this round trip and key-group
         // computation
         Tuple2<K, N> keyAndNamespace =
                 KvStateSerializer.deserializeKeyAndNamespace(
@@ -735,7 +735,7 @@ class RocksDBMapState<K, N, UK, UV> extends AbstractRocksDBState<K, N, Map<UK, U
                 return NULL_VALUE;
             } else {
                 // we have to skip the first byte indicating null user value
-                // TODO: optimization here could be to work with slices and not byte arrays
+                // todo: optimization here could be to work with slices and not byte arrays
                 // and copy slice sub-array only when needed
                 byte[] woNullByte = Arrays.copyOfRange(value, 1, value.length);
                 byte[] filteredValue = elementTransformer.filterOrTransform(woNullByte);

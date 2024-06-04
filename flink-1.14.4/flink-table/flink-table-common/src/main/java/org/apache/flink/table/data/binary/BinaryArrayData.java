@@ -491,7 +491,7 @@ public final class BinaryArrayData extends BinarySection implements ArrayData, T
     }
 
     @Override
-    public double[] toDoubleArray() {
+    public double[] todoubleArray() {
         checkNoNull();
         double[] values = new double[size];
         BinarySegmentUtils.copyToUnsafe(

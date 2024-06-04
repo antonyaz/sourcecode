@@ -104,7 +104,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * </ul>
  */
 /**
- * TODO: add by antony at 2022/5/3
+ * todo: add by antony at 2022/5/3
  * StandaloneResourceManager
  * ActiveResourceManager
  * 区别是： on YARN 的从节点的数量，不是固定不变的
@@ -123,7 +123,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
 
     /** All currently registered JobMasterGateways scoped by JobID. */
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * JobMaster的注册集合
      */
     private final Map<JobID, JobManagerRegistration> jobManagerRegistrations;
@@ -136,7 +136,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
 
     /** All currently registered TaskExecutors with there framework specific worker information. */
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 从节点 TaskExecutor 的注册集合
      */
     private final Map<ResourceID, WorkerRegistration<WorkerType>> taskExecutors;
@@ -147,7 +147,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
 
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 心跳服务 => 心跳机制
      * 内部两个方法：
      * 1、心跳主动方： createHeartbeatManagerSender
@@ -161,7 +161,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
 
     /** The slot manager maintains the available slots. */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * ResourceManager 是 资源管理器
      * 1、 管理 slot : SlotManager 存在于 ResourceManager 中用来管理 整个集群的资源的
      * 2、 管理 TaskExecutor : 一个注册集合 + 一个心跳机制
@@ -262,7 +262,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
     // ------------------------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * RM的启动流程
      * 1、创建StandaloneResourceManager 实例对象
      * 2、执行启动(启动StandaloneResourceManager这个RpcEndpoint组件)
@@ -273,7 +273,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
         try {
             log.info("Starting the resource manager.");
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  启动ResourceManager系列服务 【核心逻辑】
              */
             startResourceManagerServices();
@@ -291,7 +291,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
     private void startResourceManagerServices() throws Exception {
         try {
             /**
-             * TODO: add by antony at 2022/5/3
+             * todo: add by antony at 2022/5/3
              * jobLeaderIdService 监听服务
              * jobLeaderIdService 该组件就是监听器，监听JobLeader的地址
              * JobLeader = AppMaster
@@ -301,21 +301,21 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
             registerMetrics();
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  启动心跳服务
              *  与 TaskManager 和 JobManager 的心跳 fw
              */
             startHeartbeatServices();
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  启动 slotManager，
              */
             slotManager.start(
                     getFencingToken(), getMainThreadExecutor(), new ResourceActionsImpl());
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  内部调用初始化
              */
             initialize();
@@ -428,7 +428,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
             jobMasterIdFuture = jobLeaderIdService.getLeaderId(jobId);
         } catch (Exception e) {
             // we cannot check the job leader id so let's fail
-            // TODO: Maybe it's also ok to skip this check in case that we cannot check the leader
+            // todo: Maybe it's also ok to skip this check in case that we cannot check the leader
             // id
             ResourceManagerException exception =
                     new ResourceManagerException(
@@ -952,7 +952,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
         WorkerRegistration<WorkerType> oldRegistration =
                 taskExecutors.remove(taskExecutorResourceId);
         if (oldRegistration != null) {
-            // TODO :: suggest old taskExecutor to stop itself
+            // todo :: suggest old taskExecutor to stop itself
             log.debug(
                     "Replacing old registration of TaskExecutor {}.",
                     taskExecutorResourceId.getStringWithMetadata());
@@ -1082,7 +1082,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
                     resourceID.getStringWithMetadata(),
                     cause.getMessage());
 
-            // TODO :: suggest failed task executor to stop itself
+            // todo :: suggest failed task executor to stop itself
             slotManager.unregisterTaskManager(workerRegistration.getInstanceID(), cause);
             clusterPartitionTracker.processTaskExecutorShutdown(resourceID);
 
@@ -1137,7 +1137,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
     protected void releaseResource(InstanceID instanceId, Exception cause) {
         WorkerType worker = null;
 
-        // TODO: Improve performance by having an index on the instanceId
+        // todo: Improve performance by having an index on the instanceId
         for (Map.Entry<ResourceID, WorkerRegistration<WorkerType>> entry :
                 taskExecutors.entrySet()) {
             if (entry.getValue().getInstanceID().equals(instanceId)) {
@@ -1186,7 +1186,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
 
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 启动ResourceManager，
      * 1、ResourceManager 需要维护 从节点 TaskExecutor之间的心跳
      * 2、ResourceManager 需要维护 跟App 的JobMaster 之间的心跳
@@ -1194,7 +1194,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
      */
     private void startHeartbeatServices() {
         /**
-         * TODO: add by antony at 2022/5/3
+         * todo: add by antony at 2022/5/3
          * ResourceManager需要维护 从节点 TaskExecutor之间的心跳
          */
         taskManagerHeartbeatManager =
@@ -1205,7 +1205,7 @@ public abstract class ResourceManager<WorkerType extends ResourceIDRetrievable>
                         log);
 
         /**
-         * TODO: add by antony at 2022/5/3
+         * todo: add by antony at 2022/5/3
          * ResourceManager 需要维护 跟App 的JobMaster 之间的心跳
          */
         jobManagerHeartbeatManager =

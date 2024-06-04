@@ -45,7 +45,7 @@ public class HeartbeatServices {
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 构造方法很重要
      */
     public HeartbeatServices(
@@ -77,7 +77,7 @@ public class HeartbeatServices {
      * @return A new HeartbeatManager instance
      */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 心跳管理器
      */
     public <I, O> HeartbeatManager<I, O> createHeartbeatManager(
@@ -109,7 +109,7 @@ public class HeartbeatServices {
      * @return A new HeartbeatManager instance which actively sends heartbeats
      */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 心跳发送器
      */
     public <I, O> HeartbeatManager<I, O> createHeartbeatManagerSender(
@@ -135,18 +135,18 @@ public class HeartbeatServices {
      * @return An HeartbeatServices instance created from the given configuration
      */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 构建心跳服务
      */
     public static HeartbeatServices fromConfiguration(Configuration configuration) {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  心跳间隔时间：默认10s
          */
         long heartbeatInterval = configuration.getLong(HeartbeatManagerOptions.HEARTBEAT_INTERVAL);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  心跳超时时间：默认50s
          */
         long heartbeatTimeout = configuration.getLong(HeartbeatManagerOptions.HEARTBEAT_TIMEOUT);

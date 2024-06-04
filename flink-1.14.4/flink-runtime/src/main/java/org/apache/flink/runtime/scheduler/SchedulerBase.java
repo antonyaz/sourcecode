@@ -188,7 +188,7 @@ public abstract class SchedulerBase implements SchedulerNG, CheckpointScheduling
                         jobGraph, checkNotNull(checkpointRecoveryFactory));
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  最终将 JobGraph 转换为 ExecutionGraph 的核心代码
          *   runJob 有两种模式：提交 和 恢复，故名称为 createAndRestore
          */
@@ -337,7 +337,7 @@ public abstract class SchedulerBase implements SchedulerNG, CheckpointScheduling
             throws Exception {
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  转换JobGraph 至 ExecutionGraph
          *  在 JobMaster 的构造方法里面！！
          */
@@ -594,7 +594,7 @@ public abstract class SchedulerBase implements SchedulerNG, CheckpointScheduling
         registerJobMetrics();
         operatorCoordinatorHandler.startAllOperatorCoordinators();
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  继续调度
          */
         startSchedulingInternal();

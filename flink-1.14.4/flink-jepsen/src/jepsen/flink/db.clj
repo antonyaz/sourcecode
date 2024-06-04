@@ -65,7 +65,7 @@
   (let [c (clojure.string/join "\n" (map (fn [[k v]] (str (name k) ": " v))
                                          (seq (flink-configuration test node))))]
     (c/exec :echo c :> conf-file)
-    ;; TODO: write log4j.properties properly
+    ;; todo: write log4j.properties properly
     (c/exec (c/lit (str "sed -i'.bak' -e '/rootLogger\\.level/ s/=.*/= DEBUG/' " install-dir "/conf/log4j.properties")))))
 
 (defn- file-name

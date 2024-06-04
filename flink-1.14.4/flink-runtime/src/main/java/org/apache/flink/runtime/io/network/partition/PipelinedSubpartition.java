@@ -140,7 +140,7 @@ public class PipelinedSubpartition extends ResultSubpartition
     @Override
     public int add(BufferConsumer bufferConsumer, int partialRecordLength) {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  继续跟进
          */
         return add(bufferConsumer, partialRecordLength, false);

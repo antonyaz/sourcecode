@@ -428,7 +428,7 @@ public class DiffRepository {
                             + "'");
         } else {
             try {
-                // TODO jvs 25-Apr-2006:  reuse bulk of
+                // todo jvs 25-Apr-2006:  reuse bulk of
                 // DiffTestCase.diffTestLog here; besides newline
                 // insensitivity, it can report on the line
                 // at which the first diff occurs, which is useful
@@ -579,7 +579,7 @@ public class DiffRepository {
     /**
      * Serializes an XML document as text.
      *
-     * <p>TODO: I'm sure there's a library call to do this, but I'm danged if I can find it. --
+     * <p>todo: I'm sure there's a library call to do this, but I'm danged if I can find it. --
      * jhyde, 2006/2/9.
      */
     private static void write(Document doc, Writer w, int indent) {

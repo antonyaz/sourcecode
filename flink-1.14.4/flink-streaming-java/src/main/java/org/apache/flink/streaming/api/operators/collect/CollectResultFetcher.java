@@ -203,7 +203,7 @@ public class CollectResultFetcher<T> {
             JobStatus status = jobClient.getJobStatus().get();
             return status.isGloballyTerminalState();
         } catch (Exception e) {
-            // TODO
+            // todo
             //  This is sort of hack.
             //  Currently different execution environment will have different behaviors
             //  when fetching a finished job status.
@@ -233,7 +233,7 @@ public class CollectResultFetcher<T> {
         }
 
         try {
-            // TODO a more proper retry strategy?
+            // todo a more proper retry strategy?
             Thread.sleep(retryMillis);
         } catch (InterruptedException e) {
             LOG.warn("Interrupted when sleeping before a retry", e);

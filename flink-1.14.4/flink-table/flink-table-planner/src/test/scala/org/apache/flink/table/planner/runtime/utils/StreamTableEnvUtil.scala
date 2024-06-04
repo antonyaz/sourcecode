@@ -27,7 +27,7 @@ import org.apache.flink.table.planner.utils.TableTestUtil
 
 object StreamTableEnvUtil {
 
-  //  TODO unify BatchTableEnvUtil and StreamTableEnvUtil
+  //  todo unify BatchTableEnvUtil and StreamTableEnvUtil
   /**
     * Registers a [[DataStream]] as a table under a given name in the [[TableEnvironment]]'s
     * catalog.

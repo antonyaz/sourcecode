@@ -40,7 +40,7 @@ import java.lang.reflect.Method
   * 1.Some specific optimization of StringData.
   * 2.Deal with conversions between Java String and internal String.
   *
-  * <p>TODO Need to rewrite most of the methods here, calculated directly on the StringData
+  * <p>todo Need to rewrite most of the methods here, calculated directly on the StringData
   * instead of convert StringData to String.
   */
 object StringCallGen {

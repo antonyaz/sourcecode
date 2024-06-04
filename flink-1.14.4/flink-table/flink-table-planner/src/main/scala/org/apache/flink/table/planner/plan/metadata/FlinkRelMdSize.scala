@@ -342,9 +342,9 @@ class FlinkRelMdSize private extends MetadataHandler[BuiltInMetadata.Size] {
     }
     t.getSqlTypeName match {
       case SqlTypeName.BINARY | SqlTypeName.VARBINARY =>
-        value.asInstanceOf[ByteString].length().toDouble
+        value.asInstanceOf[ByteString].length().todouble
       case SqlTypeName.CHAR | SqlTypeName.VARCHAR =>
-        value.asInstanceOf[NlsString].getValue.length * FlinkRelMdSize.BYTES_PER_CHARACTER.toDouble
+        value.asInstanceOf[NlsString].getValue.length * FlinkRelMdSize.BYTES_PER_CHARACTER.todouble
       case _ => FlinkRelMdSize.averageTypeValueSize(t)
     }
   }
@@ -427,7 +427,7 @@ object FlinkRelMdSize {
     case SqlTypeName.DECIMAL => 12D
     case typeName if SqlTypeName.YEAR_INTERVAL_TYPES.contains(typeName) => 8D
     case typeName if SqlTypeName.DAY_INTERVAL_TYPES.contains(typeName) => 4D
-    // TODO after time/date => int, timestamp => long, this estimate value should update
+    // todo after time/date => int, timestamp => long, this estimate value should update
     case SqlTypeName.TIME | SqlTypeName.TIMESTAMP |
          SqlTypeName.TIMESTAMP_WITH_LOCAL_TIME_ZONE | SqlTypeName.DATE => 12D
     case SqlTypeName.ANY | SqlTypeName.OTHER => 128D // 128 is an arbitrary estimate

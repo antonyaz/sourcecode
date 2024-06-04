@@ -72,7 +72,7 @@ public class FlinkProjectJoinTransposeRule extends RelOptRule {
         final Join join = call.rel(1);
 
         if (!join.getJoinType().projectsRight()) {
-            return; // TODO: support SEMI/ANTI join later
+            return; // todo: support SEMI/ANTI join later
         }
         // locate all fields referenced in the projection and join condition;
         // determine which inputs are referenced in the projection and

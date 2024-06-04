@@ -36,6 +36,6 @@ public class ArrayDoubleArrayConverter implements DataStructureConverter<ArrayDa
 
     @Override
     public double[] toExternal(ArrayData internal) {
-        return internal.toDoubleArray();
+        return internal.todoubleArray();
     }
 }

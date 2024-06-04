@@ -491,7 +491,7 @@ public class HBaseSerde {
             case FLOAT:
                 return Bytes::toFloat;
             case DOUBLE:
-                return Bytes::toDouble;
+                return Bytes::todouble;
             case TIMESTAMP_WITHOUT_TIME_ZONE:
             case TIMESTAMP_WITH_LOCAL_TIME_ZONE:
                 final int timestampPrecision = getPrecision(fieldType);
@@ -522,7 +522,7 @@ public class HBaseSerde {
 
     private static FieldDecoder createTimestampDecoder() {
         return value -> {
-            // TODO: support higher precision
+            // todo: support higher precision
             long milliseconds = Bytes.toLong(value);
             return TimestampData.fromEpochMillis(milliseconds);
         };

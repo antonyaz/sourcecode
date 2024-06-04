@@ -1782,7 +1782,7 @@ public class RelDecorrelator implements ReflectiveVisitor {
 
                 final RelDataType newType;
                 if (!isSpecialCast) {
-                    // TODO: ideally this only needs to be called if the result
+                    // todo: ideally this only needs to be called if the result
                     // type will also change. However, since that requires
                     // support from type inference rules to tell whether a rule
                     // decides return type based on input types, for now all
@@ -1795,7 +1795,7 @@ public class RelDecorrelator implements ReflectiveVisitor {
                     // definition, and with no type inference rules, such as
                     // cast function with less than 2 operands.
 
-                    // TODO: Comments in RexShuttle.visitCall() mention other
+                    // todo: Comments in RexShuttle.visitCall() mention other
                     // types in this category. Need to resolve those together
                     // and preferably in the base class RexShuttle.
                     newType = call.getType();
@@ -2812,7 +2812,7 @@ public class RelDecorrelator implements ReflectiveVisitor {
         private final SortedMap<CorrelationId, RelNode> mapCorToCorRel;
         private final Map<RexFieldAccess, CorRef> mapFieldAccessToCorRef;
 
-        // TODO: create immutable copies of all maps
+        // todo: create immutable copies of all maps
         private CorelMap(
                 Multimap<RelNode, CorRef> mapRefRelToCorRef,
                 SortedMap<CorrelationId, RelNode> mapCorToCorRel,

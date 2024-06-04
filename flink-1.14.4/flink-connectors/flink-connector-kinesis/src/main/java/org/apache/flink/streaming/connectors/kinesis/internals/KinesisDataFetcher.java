@@ -673,7 +673,7 @@ public class KinesisDataFetcher<T> {
 
         // finally, start the infinite shard discovery and consumer launching loop;
         // we will escape from this loop only when shutdownFetcher() or stopWithError() is called
-        // TODO: have this thread emit the records for tracking backpressure
+        // todo: have this thread emit the records for tracking backpressure
 
         final long discoveryIntervalMillis =
                 Long.parseLong(
@@ -1260,7 +1260,7 @@ public class KinesisDataFetcher<T> {
         public void onProcessingTime(long timestamp) {
             if (nextWatermark != Long.MIN_VALUE) {
                 long globalWatermark = lastGlobalWatermark;
-                // TODO: refresh watermark while idle
+                // todo: refresh watermark while idle
                 if (!(isIdle && nextWatermark == propagatedLocalWatermark)) {
                     globalWatermark = watermarkTracker.updateWatermark(nextWatermark);
                     propagatedLocalWatermark = nextWatermark;

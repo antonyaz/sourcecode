@@ -473,14 +473,14 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
             throws ClusterDeploymentException {
         try {
             /**
-             *  TODO: add by antony at 2022/10/3
+             *  todo: add by antony at 2022/10/3
              *
              */
             return deployInternal(
                     clusterSpecification,
                     "Flink per-job cluster",
                     /**
-                     *  TODO: add by antony at 2022/10/3
+                     *  todo: add by antony at 2022/10/3
                      *  YarnJobClusterEntrypoint 启动AM的入口
                      */
                     getYarnJobClusterEntrypoint(),
@@ -554,7 +554,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
         }
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  check vcore
          */
         isReadyForDeployment(clusterSpecification);
@@ -568,7 +568,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
 
         // Create application via yarnClient
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  创建应用
          */
         final YarnClientApplication yarnApplication = yarnClient.createApplication();
@@ -620,7 +620,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
                 ClusterEntrypoint.INTERNAL_CLUSTER_EXECUTION_MODE, executionMode.toString());
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  start app master
          */
         ApplicationReport report =
@@ -799,7 +799,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
         // ------------------ Initialize the file systems -------------------------
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  初始化 fileSystem
          */
         org.apache.flink.core.fs.FileSystem.initialize(
@@ -820,7 +820,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
         }
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  yarn 的  appContext
          */
         ApplicationSubmissionContext appContext = yarnApplication.getApplicationSubmissionContext();
@@ -829,7 +829,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
                 Utils.getQualifiedRemoteSharedPaths(configuration, yarnConfiguration);
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  上传工具类
          */
         final YarnApplicationFileUploader fileUploader =
@@ -858,7 +858,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
 
         // ------------------ Add Zookeeper namespace to local flinkConfiguraton ------
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  set ha
          */
         setHAClusterIdIfNotSet(configuration, appId);
@@ -866,7 +866,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
         if (HighAvailabilityMode.isHighAvailabilityModeActivated(configuration)) {
             // activate re-execution of failed applications
             /**
-             *  TODO: add by antony at 2022/10/3
+             *  todo: add by antony at 2022/10/3
              *  yarn 情况下重试次数默认为2
              */
             appContext.setMaxAppAttempts(
@@ -986,7 +986,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
                 .append(File.pathSeparator);
 
         // write job graph to tmp file and add it to local resource
-        // TODO: server use user main method to generate job graph
+        // todo: server use user main method to generate job graph
         if (jobGraph != null) {
             File tmpJobGraphFile = null;
             try {
@@ -999,7 +999,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
                 final String jobGraphFilename = "job.graph";
                 configuration.setString(JOB_GRAPH_FILE_PATH, jobGraphFilename);
                 /**
-                 *  TODO: add by antony at 2022/10/3
+                 *  todo: add by antony at 2022/10/3
                  *  将JobGraph写入tmp文件并添加到本地资源，上传至HDFS
                  */
                 fileUploader.registerSingleLocalResource(
@@ -1132,7 +1132,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
                 JobManagerProcessUtils.processSpecFromConfigWithNewOptionToInterpretLegacyHeap(
                         flinkConfiguration, JobManagerOptions.TOTAL_PROCESS_MEMORY);
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  封装启动AM Container 的Java命令
          */
         final ContainerLaunchContext amContainer =
@@ -1241,7 +1241,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId> {
         Runtime.getRuntime().addShutdownHook(deploymentFailureHook);
         LOG.info("Submitting application master " + appId);
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  提交App 应用
          */
         yarnClient.submitApplication(appContext);

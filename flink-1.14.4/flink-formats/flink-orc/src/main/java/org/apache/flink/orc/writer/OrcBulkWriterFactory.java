@@ -87,7 +87,7 @@ public class OrcBulkWriterFactory<T> implements BulkWriter.Factory<T> {
         this.writerProperties = writerProperties;
         this.confMap = new HashMap<>();
 
-        // Todo: Replace the Map based approach with a better approach
+        // todo: Replace the Map based approach with a better approach
         for (Map.Entry<String, String> entry : configuration) {
             confMap.put(entry.getKey(), entry.getValue());
         }

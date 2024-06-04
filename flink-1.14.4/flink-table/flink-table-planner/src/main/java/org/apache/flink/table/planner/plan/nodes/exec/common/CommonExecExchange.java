@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * Base class for exec Exchange.
  *
- * <p>TODO Remove this class once its functionality is replaced by ExecEdge.
+ * <p>todo Remove this class once its functionality is replaced by ExecEdge.
  */
 public abstract class CommonExecExchange extends ExecNodeBase<RowData>
         implements SingleTransformationTranslator<RowData> {

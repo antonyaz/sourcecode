@@ -135,7 +135,7 @@ alter database db2 set ('k1' = 'a', 'k2' = 'b');
 [INFO] Execute statement succeed.
 !info
 
-# TODO: show database properties when we support DESCRIBE DATABSE
+# todo: show database properties when we support DESCRIBE DATABSE
 
 show databases;
 +---------------+

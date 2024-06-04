@@ -112,6 +112,10 @@ public class PackagedProgram implements AutoCloseable {
      * @throws ProgramInvocationException This invocation is thrown if the Program can't be properly
      *     loaded. Causes may be a missing / wrong class or manifest files.
      */
+    /**
+      todo: add by antony at: 2024/6/3
+      基于所提交的jar来创建对应的program实例
+    */
     private PackagedProgram(
             @Nullable File jarFile,
             List<URL> classpaths,
@@ -150,7 +154,7 @@ public class PackagedProgram implements AutoCloseable {
 
         // load the entry point class
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  设置启动的mainClass
          */
         this.mainClass =
@@ -224,7 +228,7 @@ public class PackagedProgram implements AutoCloseable {
         FlinkSecurityManager.monitorUserSystemExitForCurrentThread();
         try {
             /**
-             * TODO: add by antony at 2022/5/3
+             * todo: add by antony at 2022/5/3
              * 构造PackageProgram 对象的时候
              */
             callMainMethod(mainClass, args);
@@ -338,7 +342,7 @@ public class PackagedProgram implements AutoCloseable {
 
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  获取用户指定的entryClass
              */
             mainMethod = entryClass.getMethod("main", String[].class);
@@ -364,8 +368,8 @@ public class PackagedProgram implements AutoCloseable {
         }
 
         try {
-            // TODO: 调用用户代码中的 main 方法
-            // TODO: 2021/12/13 执行 main 方法后，会自动进入到 StreamExecutionEnvironment 的 execute()
+            // todo: 调用用户代码中的 main 方法
+            // todo: 2021/12/13 执行 main 方法后，会自动进入到 StreamExecutionEnvironment 的 execute()
             mainMethod.invoke(null, (Object) args);
         } catch (IllegalArgumentException e) {
             throw new ProgramInvocationException(
@@ -394,7 +398,7 @@ public class PackagedProgram implements AutoCloseable {
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 解析得到jar中的主类
      */
     private static String getEntryPointClassNameFromJar(URL jarFile)

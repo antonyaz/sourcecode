@@ -91,7 +91,7 @@ public class StateMetaInfoSnapshot {
     /** The configurations of all the type serializers used with the state. */
     @Nonnull private final Map<String, TypeSerializerSnapshot<?>> serializerSnapshots;
 
-    // TODO this will go away once all serializers have the restoreSerializer() factory method
+    // todo this will go away once all serializers have the restoreSerializer() factory method
     // properly implemented.
     /** The serializers used by the state. */
     @Nonnull private final Map<String, TypeSerializer<?>> serializers;
@@ -105,10 +105,10 @@ public class StateMetaInfoSnapshot {
     }
 
     /**
-     * TODO this variant, which requires providing the serializers, TODO should actually be removed,
-     * leaving only {@link #StateMetaInfoSnapshot(String, BackendStateType, Map, Map)}. TODO This is
+     * todo this variant, which requires providing the serializers, todo should actually be removed,
+     * leaving only {@link #StateMetaInfoSnapshot(String, BackendStateType, Map, Map)}. todo This is
      * still used by snapshot extracting methods (i.e. computeSnapshot() method of specific state
-     * meta TODO info subclasses), and will be removed once all serializers have the
+     * meta todo info subclasses), and will be removed once all serializers have the
      * restoreSerializer() factory method implemented.
      */
     public StateMetaInfoSnapshot(
@@ -164,7 +164,7 @@ public class StateMetaInfoSnapshot {
         return Collections.unmodifiableMap(serializerSnapshots);
     }
 
-    /** TODO this method should be removed once the serializer map is removed. */
+    /** todo this method should be removed once the serializer map is removed. */
     @Nullable
     public TypeSerializer<?> getTypeSerializer(@Nonnull String key) {
         return serializers.get(key);

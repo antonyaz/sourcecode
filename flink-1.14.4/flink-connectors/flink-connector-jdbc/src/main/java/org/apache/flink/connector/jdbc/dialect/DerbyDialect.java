@@ -96,7 +96,7 @@ class DerbyDialect extends AbstractDialect {
         // The data types used in Derby are list at
         // http://db.apache.org/derby/docs/10.14/ref/crefsqlj31068.html
 
-        // TODO: We can't convert BINARY data type to
+        // todo: We can't convert BINARY data type to
         //  PrimitiveArrayTypeInfo.BYTE_PRIMITIVE_ARRAY_TYPE_INFO in
         // LegacyTypeInfoDataTypeConverter.
         return Arrays.asList(

@@ -57,7 +57,7 @@ abstract class CommonCalc(
       case _ => true
     }
     val newRowCnt = mq.getRowCount(this)
-    // TODO use inputRowCnt to compute cpu cost
+    // todo use inputRowCnt to compute cpu cost
     planner.getCostFactory.makeCost(newRowCnt, newRowCnt * compCnt, 0)
   }
 

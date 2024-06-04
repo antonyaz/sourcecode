@@ -89,7 +89,7 @@ class FlinkRelMdRowCount private extends MetadataHandler[BuiltInMetadata.RowCoun
     if (fetch != null) {
       val limit = RexLiteral.intValue(fetch)
       if (limit < rowCount) {
-        return limit.toDouble
+        return limit.todouble
       }
     }
     rowCount
@@ -182,7 +182,7 @@ class FlinkRelMdRowCount private extends MetadataHandler[BuiltInMetadata.RowCoun
         ndvOfGroupKeysOnGlobalAgg
       } else if (grouping.isEmpty) {
         // output rowcount of local agg is parallelism for agg which has no group keys
-        parallelism.toDouble
+        parallelism.todouble
       } else {
         val distinctRowCount = mq.getDistinctRowCount(input, grouping, null)
         if (distinctRowCount == null) {

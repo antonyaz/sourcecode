@@ -803,14 +803,14 @@ public class CheckpointConfig implements java.io.Serializable {
      */
     public void configure(ReadableConfig configuration) {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  checkpoint 的模式： CheckpointMode.EXACTLY_ONCE
          */
         configuration
                 .getOptional(ExecutionCheckpointingOptions.CHECKPOINTING_MODE)
                 .ifPresent(this::setCheckpointingMode);
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  两次checkpoint之间的时间间隔： checkpoint可以通过execution.checkpointing.interval来设置
          *  默认没有启动
          */
@@ -818,14 +818,14 @@ public class CheckpointConfig implements java.io.Serializable {
                 .getOptional(ExecutionCheckpointingOptions.CHECKPOINTING_INTERVAL)
                 .ifPresent(i -> this.setCheckpointInterval(i.toMillis()));
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  一次 checkpoint 执行的超时时间，execution.checkpointing.timeout = 10min
          */
         configuration
                 .getOptional(ExecutionCheckpointingOptions.CHECKPOINTING_TIMEOUT)
                 .ifPresent(t -> this.setCheckpointTimeout(t.toMillis()));
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  execution.checkpointing.max-concurrent-checkpoints = 1
          */
         configuration
@@ -833,7 +833,7 @@ public class CheckpointConfig implements java.io.Serializable {
                 .ifPresent(this::setMaxConcurrentCheckpoints);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  两次checkpoint 执行 中间的暂停时间
          *  至少要休息几分钟时间
          *  execution.checkpointing.min-pause = Duration.ZERO
@@ -842,7 +842,7 @@ public class CheckpointConfig implements java.io.Serializable {
                 .getOptional(ExecutionCheckpointingOptions.MIN_PAUSE_BETWEEN_CHECKPOINTS)
                 .ifPresent(m -> this.setMinPauseBetweenCheckpoints(m.toMillis()));
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  execution.checkpointing.tolerable-failed-checkpoints
          */
         configuration

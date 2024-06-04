@@ -664,13 +664,13 @@ class TemporalTypesTest extends ExpressionTestBase {
     // casting
 
     testAllApis(
-      // TODO fix after FLIP-51
+      // todo fix after FLIP-51
       -'f9.cast(DataTypes.INTERVAL(DataTypes.MONTH).bridgedTo(classOf[JInt])),
       "-CAST(f9 AS INTERVAL MONTH)",
       "-2-00")
 
     testAllApis(
-      // TODO fix after FLIP-51
+      // todo fix after FLIP-51
       -'f10.cast(DataTypes.INTERVAL(DataTypes.SECOND(3)).bridgedTo(classOf[JLong])),
       "-CAST(f10 AS INTERVAL SECOND(3))",
       "-0 00:00:12.000")
@@ -836,7 +836,7 @@ class TemporalTypesTest extends ExpressionTestBase {
     testSqlApi("EXTRACT(QUARTER FROM TO_DATE('2018-01-01'))", "1")
 
     // Floor & Ceil
-    // TODO: fix this legacy bug
+    // todo: fix this legacy bug
     //testSqlApi("CEIL(TO_DATE('2018-03-18') TO DAY)", "2018-04-01")
     //testSqlApi("CEIL(TIMESTAMP '2018-03-20 06:10:31' TO HOUR)", "2018-03-20 07:00:00.000")
   }
@@ -1167,7 +1167,7 @@ class TemporalTypesTest extends ExpressionTestBase {
 
 
     // TIMESTAMPADD should support microsecond/nanosecond
-    // TODO: https://issues.apache.org/jira/browse/CALCITE-3530
+    // todo: https://issues.apache.org/jira/browse/CALCITE-3530
     //  (1970-01-01 00:00:00.123455789:TIMESTAMP(9), /INT(*(1:INTERVAL MICROSECOND, 1), 1000))
     // testSqlApi(
     //  "TIMESTAMPADD(MICROSECOND, 1, TIMESTAMP '1970-01-01 00:00:00.123455789')",
@@ -1175,7 +1175,7 @@ class TemporalTypesTest extends ExpressionTestBase {
     //)
 
     // TIMESTAMPDIFF should support microsecond/nanosecond
-    // TODO: https://issues.apache.org/jira/browse/CALCITE-3530 and
+    // todo: https://issues.apache.org/jira/browse/CALCITE-3530 and
     //   https://issues.apache.org/jira/browse/CALCITE-3529
     //  *(
     //  CAST(

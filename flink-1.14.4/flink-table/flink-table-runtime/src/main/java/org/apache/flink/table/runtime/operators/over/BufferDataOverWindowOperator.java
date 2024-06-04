@@ -121,7 +121,7 @@ public class BufferDataOverWindowOperator extends TableStreamOperator<RowData>
         while (bufferIterator.advanceNext()) {
             BinaryRowData currentRow = bufferIterator.getRow();
             RowData output = currentRow;
-            // TODO Reform AggsHandleFunction.getValue instead of use JoinedRowData. Multilayer
+            // todo Reform AggsHandleFunction.getValue instead of use JoinedRowData. Multilayer
             // JoinedRowData is slow.
             for (int i = 0; i < overWindowFrames.length; i++) {
                 OverWindowFrame frame = overWindowFrames[i];

@@ -116,14 +116,14 @@ public abstract class RecordWriter<T extends IOReadableWritable> implements Avai
 
     public void broadcastEvent(AbstractEvent event, boolean isPriorityEvent) throws IOException {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  给 CheckpointBarrier 加入到每个ResultSubPartition中输入到下游
          */
         targetPartition.broadcastEvent(event, isPriorityEvent);
 
         if (flushAlways) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  执行 flush
              */
             flushAll();

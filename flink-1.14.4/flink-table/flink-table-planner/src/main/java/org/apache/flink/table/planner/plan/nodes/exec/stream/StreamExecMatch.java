@@ -138,13 +138,13 @@ public class StreamExecMatch extends ExecNodeBase<RowData>
                 translatePattern(matchSpec, config, planner.getRelBuilder(), inputRowType);
         final Pattern<RowData, RowData> cepPattern = cepPatternAndNames.f0;
 
-        // TODO remove this once it is supported in CEP library
+        // todo remove this once it is supported in CEP library
         if (NFACompiler.canProduceEmptyMatches(cepPattern)) {
             throw new TableException(
                     "Patterns that can produce empty matches are not supported. There must be at least one non-optional state.");
         }
 
-        // TODO remove this once it is supported in CEP library
+        // todo remove this once it is supported in CEP library
         if (cepPattern.getQuantifier().hasProperty(Quantifier.QuantifierProperty.GREEDY)) {
             throw new TableException(
                     "Greedy quantifiers are not allowed as the last element of a Pattern yet. "

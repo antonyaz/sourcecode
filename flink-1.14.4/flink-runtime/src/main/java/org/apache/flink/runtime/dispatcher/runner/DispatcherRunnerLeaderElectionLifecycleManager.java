@@ -37,9 +37,9 @@ final class DispatcherRunnerLeaderElectionLifecycleManager<
         this.dispatcherRunner = dispatcherRunner;
         this.leaderElectionService = leaderElectionService;
 
-        // TODO: 2021/12/11 高可用，选举服务
+        // todo: 2021/12/11 高可用，选举服务
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          *  dispatcherRunner LeaderContender 竞选者
          *  竞选成功：回调  dispatcherRunner.grantLeadership()
          * 即回调到： DefaultDispatcherRunner 类中的 grantLeadership()
@@ -76,7 +76,7 @@ final class DispatcherRunnerLeaderElectionLifecycleManager<
             T dispatcherRunner, LeaderElectionService leaderElectionService) throws Exception {
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 开启该 DispatcherRunnerLeaderElectionLifecycleManager 对象的生命周期
          */
         return new DispatcherRunnerLeaderElectionLifecycleManager<>(

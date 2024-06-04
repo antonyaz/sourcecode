@@ -106,7 +106,7 @@ class HCatInputFormat[T](
             }
           case HCatFieldSchema.Type.DOUBLE =>
             if (o.isInstanceOf[String]) {
-              vals(i) = o.asInstanceOf[String].toDouble
+              vals(i) = o.asInstanceOf[String].todouble
             }
             else {
               vals(i) = o.asInstanceOf[Double]

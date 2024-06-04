@@ -434,7 +434,7 @@ public class HiveTableUtil {
         }
 
         if (isView) {
-            // TODO: [FLINK-12398] Support partitioned view in catalog API
+            // todo: [FLINK-12398] Support partitioned view in catalog API
             hiveTable.setPartitionKeys(new ArrayList<>());
 
             CatalogView view = (CatalogView) table;

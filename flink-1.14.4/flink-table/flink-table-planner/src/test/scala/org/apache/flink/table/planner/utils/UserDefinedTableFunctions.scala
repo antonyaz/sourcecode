@@ -129,7 +129,7 @@ class MockPythonTableFunction extends TableFunction[Row] with PythonFunction {
   override def getPythonEnv: PythonEnv = null
 }
 
-//TODO support dynamic type
+//todo support dynamic type
 //class UDTFWithDynamicType extends TableFunction[Row] {
 //
 //  def eval(str: String, column: Int): Unit = {

@@ -105,7 +105,7 @@ public class OffsetOverFrame implements OverWindowFrame {
             } else {
                 // reset the default based current row
                 // NOTE: Special methods customized for LeadLagAggFunction.
-                // TODO refactor it.
+                // todo refactor it.
                 processor.retract(current);
             }
         } else {

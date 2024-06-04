@@ -263,7 +263,7 @@ public final class TaskDeploymentDescriptor implements Serializable {
             Preconditions.checkNotNull(blobService);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  KV方式存储的
              *  1、从BlobServer 获取 Job 信息
              */
@@ -284,7 +284,7 @@ public final class TaskDeploymentDescriptor implements Serializable {
             Preconditions.checkNotNull(blobService);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  2、从BlobServer 获取 Task 信息
              */
             final File dataFile = blobService.getFile(jobId, taskInfoKey);

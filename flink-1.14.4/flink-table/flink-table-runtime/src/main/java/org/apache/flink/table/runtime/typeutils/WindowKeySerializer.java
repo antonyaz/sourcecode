@@ -107,7 +107,7 @@ public class WindowKeySerializer extends PagedTypeSerializer<WindowKey> {
      * Actually, the return value is just for saving checkSkipReadForFixLengthPart in the
      * mapFromPages, the cost is very small.
      *
-     * <p>TODO so, we can remove this return value for simplifying interface.
+     * <p>todo so, we can remove this return value for simplifying interface.
      */
     @Override
     public int serializeToPages(WindowKey record, AbstractPagedOutputView target)

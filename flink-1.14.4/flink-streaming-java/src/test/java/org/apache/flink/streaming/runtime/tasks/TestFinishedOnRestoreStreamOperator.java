@@ -116,7 +116,7 @@ public class TestFinishedOnRestoreStreamOperator
 
     @Override
     public OperatorMetricGroup getMetricGroup() {
-        // TODO: Should this be allowed to access for finished tasks?
+        // todo: Should this be allowed to access for finished tasks?
         return createUnregisteredOperatorMetricGroup();
     }
 

@@ -21,7 +21,7 @@ package org.apache.flink.runtime.rpc;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * TODO: 用来粘合RpcService 和 RpcEndpoint
+ * todo: 用来粘合RpcService 和 RpcEndpoint
  * 当 RpcService启动一个RpcEndpoint的时候，就得到一个RpcServer
  * RpcServer是当前节点， 获取到的关于刚启动的这个RpcEndpoint的ref对象
  */

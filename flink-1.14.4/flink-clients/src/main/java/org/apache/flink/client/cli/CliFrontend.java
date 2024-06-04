@@ -235,7 +235,7 @@ public class CliFrontend {
         }
 
         /**
-         *  TODO: add by antony at 2022/10/2
+         *  todo: add by antony at 2022/10/2
          *  进行客户端的选择
          */
         final CustomCommandLine activeCommandLine =
@@ -246,7 +246,7 @@ public class CliFrontend {
         final List<URL> jobJars = getJobJarAndDependencies(programOptions);
 
         /**
-         *  TODO: add by antony at 2022/10/2
+         *  todo: add by antony at 2022/10/2
          *  获取有效配置信息
          */
         final Configuration effectiveConfiguration =
@@ -254,9 +254,13 @@ public class CliFrontend {
 
         LOG.debug("Effective executor configuration: {}", effectiveConfiguration);
 
+        /**
+          todo: add by antony at: 2024/6/3
+          获取提交的program中的相关信息，包含mainClass
+        */
         try (PackagedProgram program = getPackagedProgram(programOptions, effectiveConfiguration)) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  执行用户程序
              */
             executeProgram(effectiveConfiguration, program);
@@ -284,6 +288,10 @@ public class CliFrontend {
         PackagedProgram program;
         try {
             LOG.info("Building program from JAR file");
+            /**
+              todo: add by antony at: 2024/6/3
+
+            */
             program = buildProgram(programOptions, effectiveConfiguration);
         } catch (FileNotFoundException e) {
             throw new CliArgsException(
@@ -299,7 +307,7 @@ public class CliFrontend {
         final Configuration effectiveConfiguration = new Configuration(configuration);
 
         /**
-         *  TODO: add by antony at 2022/10/2
+         *  todo: add by antony at 2022/10/2
          *  获取有效配置信息，一系列参数获取
          */
         final Configuration commandLineConfiguration =
@@ -325,7 +333,7 @@ public class CliFrontend {
                         checkNotNull(programOptions), checkNotNull(jobJars));
 
         /**
-         *  TODO: add by antony at 2022/10/2
+         *  todo: add by antony at 2022/10/2
          *  整合配置信息
          */
         executionParameters.applyToConfiguration(effectiveConfiguration);
@@ -834,7 +842,7 @@ public class CliFrontend {
     protected void executeProgram(final Configuration configuration, final PackagedProgram program)
             throws ProgramInvocationException {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  1、找到jar中的mainClass
          *  2、通过反射创建mainClass 的实例
          *  3、通过反射调用mainClass 实例的 main() 方法
@@ -1149,6 +1157,10 @@ public class CliFrontend {
       客户端执行函数入口
     */
     public static void main(final String[] args) {
+        /**
+          todo: add by antony at: 2024/6/3
+          输出环境信息
+        */
         EnvironmentInformation.logEnvironmentInfo(LOG, "Command Line Client", args);
 
         // 1. find the configuration directory
@@ -1169,7 +1181,7 @@ public class CliFrontend {
             SecurityUtils.install(new SecurityConfiguration(cli.configuration));
             retCode = SecurityUtils.getInstalledContext().runSecured(() ->
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  解析参数并运行
                      */
                     cli.parseAndRun(args));
@@ -1278,7 +1290,7 @@ public class CliFrontend {
             LOG.debug(
                     "Checking custom commandline {}, isActive: {}", cli, cli.isActive(commandLine));
             /**
-             *  TODO: add by antony at 2022/10/2
+             *  todo: add by antony at 2022/10/2
              *
              */
             if (cli.isActive(commandLine)) {

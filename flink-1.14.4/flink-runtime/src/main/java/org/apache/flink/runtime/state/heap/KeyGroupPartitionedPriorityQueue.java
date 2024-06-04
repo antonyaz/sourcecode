@@ -162,7 +162,7 @@ public class KeyGroupPartitionedPriorityQueue<
             return;
         }
 
-        // TODO consider bulk loading the partitions and "heapify" keyGroupHeap once after all
+        // todo consider bulk loading the partitions and "heapify" keyGroupHeap once after all
         // elements are inserted.
         for (T element : toAdd) {
             add(element);

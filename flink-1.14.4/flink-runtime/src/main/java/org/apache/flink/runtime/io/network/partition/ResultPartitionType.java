@@ -99,7 +99,7 @@ public enum ResultPartitionType {
      * Can the partition be reconnected.
      *
      * <p>Attention: this attribute is introduced temporally for
-     * ResultPartitionType.PIPELINED_APPROXIMATE It will be removed afterwards: TODO: 1. Approximate
+     * ResultPartitionType.PIPELINED_APPROXIMATE It will be removed afterwards: todo: 1. Approximate
      * local recovery has its won failover strategy to restart the failed set of tasks instead of
      * restarting downstream of failed tasks depending on {@code
      * RestartPipelinedRegionFailoverStrategy} 2. FLINK-19895: Unify the life cycle of

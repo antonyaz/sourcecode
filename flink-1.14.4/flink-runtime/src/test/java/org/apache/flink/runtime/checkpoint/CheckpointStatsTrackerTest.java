@@ -132,7 +132,7 @@ public class CheckpointStatsTrackerTest {
                         .addJobVertex(jobVertexID, 3, 256)
                         .build();
         ExecutionJobVertex jobVertex = graph.getJobVertex(jobVertexID);
-        Map<JobVertexID, Integer> vertexToDop =
+        Map<JobVertexID, Integer> vertextodop =
                 singletonMap(jobVertexID, jobVertex.getParallelism());
 
         CheckpointStatsTracker tracker =
@@ -148,7 +148,7 @@ public class CheckpointStatsTrackerTest {
                         1,
                         CheckpointProperties.forCheckpoint(
                                 CheckpointRetentionPolicy.NEVER_RETAIN_AFTER_TERMINATION),
-                        vertexToDop);
+                        vertextodop);
 
         completed1.reportSubtaskStats(jobVertexID, createSubtaskStats(0));
         completed1.reportSubtaskStats(jobVertexID, createSubtaskStats(1));
@@ -163,14 +163,14 @@ public class CheckpointStatsTrackerTest {
                         1,
                         CheckpointProperties.forCheckpoint(
                                 CheckpointRetentionPolicy.NEVER_RETAIN_AFTER_TERMINATION),
-                        vertexToDop);
+                        vertextodop);
 
         failed.reportFailedCheckpoint(12, null);
 
         // Completed savepoint
         PendingCheckpointStats savepoint =
                 tracker.reportPendingCheckpoint(
-                        2, 1, CheckpointProperties.forSavepoint(true), vertexToDop);
+                        2, 1, CheckpointProperties.forSavepoint(true), vertextodop);
 
         savepoint.reportSubtaskStats(jobVertexID, createSubtaskStats(0));
         savepoint.reportSubtaskStats(jobVertexID, createSubtaskStats(1));
@@ -185,7 +185,7 @@ public class CheckpointStatsTrackerTest {
                         1,
                         CheckpointProperties.forCheckpoint(
                                 CheckpointRetentionPolicy.NEVER_RETAIN_AFTER_TERMINATION),
-                        vertexToDop);
+                        vertextodop);
 
         RestoredCheckpointStats restored =
                 new RestoredCheckpointStats(

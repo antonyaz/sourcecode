@@ -33,7 +33,7 @@ def extract_data_view_specs_from_accumulator(current_index, accumulator):
     extracted_specs = []
     for field in accumulator:
         i += 1
-        # TODO: infer the coder from the input types and output type of the built-in functions
+        # todo: infer the coder from the input types and output type of the built-in functions
         if isinstance(field, MapView):
             extracted_specs.append(MapViewSpec(
                 "builtInAgg%df%d" % (current_index, i), i, PickleCoder(), PickleCoder()))

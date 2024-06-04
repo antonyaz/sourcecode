@@ -457,7 +457,7 @@ public class Configuration extends ExecutionConfig.GlobalJobParameters
      */
     @Deprecated
     public double getDouble(String key, double defaultValue) {
-        return getRawValue(key).map(ConfigurationUtils::convertToDouble).orElse(defaultValue);
+        return getRawValue(key).map(ConfigurationUtils::converttodouble).orElse(defaultValue);
     }
 
     /**

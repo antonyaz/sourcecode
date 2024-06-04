@@ -224,7 +224,7 @@ public final class RocksDBResourceContainer implements AutoCloseable {
      */
     private boolean overwriteFilterIfExist(BlockBasedTableConfig blockBasedTableConfig) {
         if (blockBasedTableConfig.filterPolicy() != null) {
-            // TODO Can get filter's config in the future RocksDB version, and build new filter use
+            // todo Can get filter's config in the future RocksDB version, and build new filter use
             // existing config.
             BloomFilter newFilter = new BloomFilter(10, false);
             LOG.info(

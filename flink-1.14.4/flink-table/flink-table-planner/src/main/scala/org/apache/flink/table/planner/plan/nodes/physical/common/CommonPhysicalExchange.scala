@@ -71,7 +71,7 @@ abstract class CommonPhysicalExchange(
         // network cost of Broadcast = size * (parallelism of other input) which we don't have here.
         val nParallelism = Math.max(1,
           (inputSize / SQL_DEFAULT_PARALLELISM_WORKER_PROCESS_SIZE).toInt)
-        val cpuCost = nParallelism.toDouble * inputRows * SERIALIZE_DESERIALIZE_CPU_COST
+        val cpuCost = nParallelism.todouble * inputRows * SERIALIZE_DESERIALIZE_CPU_COST
         val networkCost = nParallelism * inputSize
         costFactory.makeCost(inputRows, cpuCost, 0, networkCost, 0)
       case RelDistribution.Type.HASH_DISTRIBUTED =>

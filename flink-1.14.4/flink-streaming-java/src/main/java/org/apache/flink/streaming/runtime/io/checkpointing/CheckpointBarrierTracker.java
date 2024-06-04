@@ -91,7 +91,7 @@ public class CheckpointBarrierTracker extends CheckpointBarrierHandler {
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 1、如果 Task 的 InputChannel 个数为1个，则接收到这 Barrier 的时候就 执行 checkpoint
      * 2、如果 Task 的 InputChannel 个数不为1个
      *  2-1、第一次接收到 barrier： 创建一个 CheckpointBarrierCount，并且计数为1
@@ -111,19 +111,19 @@ public class CheckpointBarrierTracker extends CheckpointBarrierHandler {
         // 3. Received barrier from channel 1.
         // In this case we should finish the existing pending checkpoint.
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  单输入： 则立即完成对齐
          *  如果当前 Task 的 InputGate 中的 InputChannel 只有一个，上游 Task 只有一个
          */
         if (receivedBarrier.getId() > latestPendingCheckpointID && numOpenChannels == 1) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  标记 Checkpoint 的一些信息
              */
             markAlignmentStartAndEnd(barrierId, receivedBarrier.getTimestamp());
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  通知当前这个 非SourceStreamTask 执行 Checkpoint
              */
             notifyCheckpoint(receivedBarrier);
@@ -148,7 +148,7 @@ public class CheckpointBarrierTracker extends CheckpointBarrierHandler {
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  根据 CheckpointBarrierCount 的情况来执行相关处理
          *  如果这个 Task 刚才接收到的 CheckpointBarrier 不是第一个，代码逻辑的走向
          */
@@ -157,7 +157,7 @@ public class CheckpointBarrierTracker extends CheckpointBarrierHandler {
             int numChannelsNew = barrierCount.markChannelAligned(channelInfo);
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  对齐了 == 已经接收到所有 InputChannel 中这个相同的 CheckpointID 的 barrier
              */
             if (numChannelsNew == barrierCount.getTargetChannelCount()) {
@@ -171,7 +171,7 @@ public class CheckpointBarrierTracker extends CheckpointBarrierHandler {
                 // notify the listener
                 if (!barrierCount.isAborted()) {
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  执行 对齐后 checkpoint
                      */
                     triggerCheckpointOnAligned(barrierCount);
@@ -183,7 +183,7 @@ public class CheckpointBarrierTracker extends CheckpointBarrierHandler {
             // if it is not newer than the latest checkpoint ID, then there cannot be a
             // successful checkpoint for that ID anyways
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  第一次接收到 barrier
              */
             if (barrierId > latestPendingCheckpointID) {
@@ -365,13 +365,13 @@ public class CheckpointBarrierTracker extends CheckpointBarrierHandler {
     private static final class CheckpointBarrierCount {
 
         /**
-         * TODO: add by antony at 2022/5/4
+         * todo: add by antony at 2022/5/4
          * checkpointID
          */
         private final long checkpointId;
 
         /**
-         * TODO: add by antony at 2022/5/4
+         * todo: add by antony at 2022/5/4
          *   接受的 barrier target的数量
          */
         private final int targetChannelCount;

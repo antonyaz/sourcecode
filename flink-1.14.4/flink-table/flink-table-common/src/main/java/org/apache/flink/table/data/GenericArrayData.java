@@ -316,7 +316,7 @@ public final class GenericArrayData implements ArrayData {
     }
 
     @Override
-    public double[] toDoubleArray() {
+    public double[] todoubleArray() {
         if (isPrimitiveArray) {
             return (double[]) array;
         }

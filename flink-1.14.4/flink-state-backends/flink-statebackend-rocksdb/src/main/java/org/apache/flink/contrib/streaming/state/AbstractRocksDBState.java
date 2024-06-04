@@ -129,7 +129,7 @@ public abstract class AbstractRocksDBState<K, N, V> implements InternalKvState<K
             final TypeSerializer<V> safeValueSerializer)
             throws Exception {
 
-        // TODO make KvStateSerializer key-group aware to save this round trip and key-group
+        // todo make KvStateSerializer key-group aware to save this round trip and key-group
         // computation
         Tuple2<K, N> keyAndNamespace =
                 KvStateSerializer.deserializeKeyAndNamespace(

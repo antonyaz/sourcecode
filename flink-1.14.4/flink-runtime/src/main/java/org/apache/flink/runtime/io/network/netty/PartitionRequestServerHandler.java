@@ -70,7 +70,7 @@ class PartitionRequestServerHandler extends SimpleChannelInboundHandler<NettyMes
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * netty框架负责调用
      */
     @Override

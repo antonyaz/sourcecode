@@ -181,7 +181,7 @@ object GenerateUtils {
       s"$nullTerm = false;"
     }
 
-    // TODO: should we also consider other types?
+    // todo: should we also consider other types?
     val parameters = operands.map(x =>
       if (isCharacterString(x.resultType)){
         "( " + x.nullTerm + " ) ? null : (" + x.resultTerm + ")"
@@ -457,7 +457,7 @@ object GenerateUtils {
         generateSymbol(literalValue.asInstanceOf[Enum[_]])
 
       case SYMBOL =>
-        throw new UnsupportedOperationException() // TODO support symbol?
+        throw new UnsupportedOperationException() // todo support symbol?
 
       case ARRAY | MULTISET | MAP | ROW | STRUCTURED_TYPE | NULL | UNRESOLVED =>
         throw new CodeGenException(s"Type not supported: $literalType")
@@ -772,7 +772,7 @@ object GenerateUtils {
          INTERVAL_YEAR_MONTH | INTERVAL_DAY_TIME =>
       s"($leftTerm > $rightTerm ? 1 : $leftTerm < $rightTerm ? -1 : 0)"
     case TIMESTAMP_WITH_TIME_ZONE | MULTISET | MAP =>
-      throw new UnsupportedOperationException() // TODO support MULTISET and MAP?
+      throw new UnsupportedOperationException() // todo support MULTISET and MAP?
     case ARRAY =>
       val at = t.asInstanceOf[ArrayType]
       val compareFunc = newName("compareArray")

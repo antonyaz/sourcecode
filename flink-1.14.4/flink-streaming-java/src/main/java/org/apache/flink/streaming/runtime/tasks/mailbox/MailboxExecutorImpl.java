@@ -72,7 +72,7 @@ public final class MailboxExecutorImpl implements MailboxExecutor {
             final Object... descriptionArgs) {
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  提交一封 mail 到 mailbox
              */
             mailbox.put(

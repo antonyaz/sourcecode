@@ -149,7 +149,7 @@ public class PlannerTypeUtils {
                 // only support precisions for DECIMAL, TIMESTAMP_WITHOUT_TIME_ZONE,
                 // TIMESTAMP_WITH_LOCAL_TIME_ZONE
                 // still consider precision for others (e.g. TIME).
-                // TODO: add other precision types here in the future
+                // todo: add other precision types here in the future
             case DECIMAL:
             case TIMESTAMP_WITHOUT_TIME_ZONE:
             case TIMESTAMP_WITH_LOCAL_TIME_ZONE:

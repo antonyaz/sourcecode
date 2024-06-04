@@ -229,7 +229,7 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
       override def visitCall(call: RexCall): Unit = {
         call.getOperator match {
           case AND => throw new RuntimeException("This should not happen.")
-          // TODO supports more operators
+          // todo supports more operators
           case GREATER_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN | LESS_THAN_OR_EQUAL =>
             val (left, right) = (call.operands.get(0), call.operands.get(1))
             (left, right) match {
@@ -267,7 +267,7 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
     val visitor = new RexVisitorImpl[Unit](true) {
       override def visitCall(call: RexCall): Unit = {
         call.getOperator match {
-          // TODO supports more operators
+          // todo supports more operators
           case GREATER_THAN | GREATER_THAN_OR_EQUAL | LESS_THAN | LESS_THAN_OR_EQUAL | EQUALS =>
             val (left, right) = (call.operands.get(0), call.operands.get(1))
             (left, right) match {
@@ -354,33 +354,33 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
           case GREATER_THAN =>
             (left, right) match {
               case (i: RexInputRef, l: RexLiteral) =>
-                ValueInterval(literalToDouble(l), null, includeLower = false, includeUpper = false)
+                ValueInterval(literaltodouble(l), null, includeLower = false, includeUpper = false)
               case (l: RexLiteral, _: RexInputRef) =>
-                ValueInterval(null, literalToDouble(l), includeLower = false, includeUpper = false)
+                ValueInterval(null, literaltodouble(l), includeLower = false, includeUpper = false)
               case _ => throw new RuntimeException("This should not happen.")
             }
           case GREATER_THAN_OR_EQUAL =>
             (left, right) match {
               case (_: RexInputRef, l: RexLiteral) =>
-                ValueInterval(literalToDouble(l), null, includeLower = true, includeUpper = false)
+                ValueInterval(literaltodouble(l), null, includeLower = true, includeUpper = false)
               case (l: RexLiteral, _: RexInputRef) =>
-                ValueInterval(null, literalToDouble(l), includeLower = false, includeUpper = true)
+                ValueInterval(null, literaltodouble(l), includeLower = false, includeUpper = true)
               case _ => throw new RuntimeException("This should not happen.")
             }
           case LESS_THAN =>
             (left, right) match {
               case (_: RexInputRef, l: RexLiteral) =>
-                ValueInterval(null, literalToDouble(l), includeLower = false, includeUpper = false)
+                ValueInterval(null, literaltodouble(l), includeLower = false, includeUpper = false)
               case (l: RexLiteral, _: RexInputRef) =>
-                ValueInterval(literalToDouble(l), null, includeLower = false, includeUpper = false)
+                ValueInterval(literaltodouble(l), null, includeLower = false, includeUpper = false)
               case _ => throw new RuntimeException("This should not happen.")
             }
           case LESS_THAN_OR_EQUAL =>
             (left, right) match {
               case (_: RexInputRef, l: RexLiteral) =>
-                ValueInterval(null, literalToDouble(l), includeLower = false, includeUpper = true)
+                ValueInterval(null, literaltodouble(l), includeLower = false, includeUpper = true)
               case (l: RexLiteral, _: RexInputRef) =>
-                ValueInterval(literalToDouble(l), null, includeLower = true, includeUpper = false)
+                ValueInterval(literaltodouble(l), null, includeLower = true, includeUpper = false)
               case _ => throw new RuntimeException("This should not happen.")
             }
           case _ => throw new RuntimeException("This should not happen.")
@@ -420,9 +420,9 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
         andInterval match {
           case ValueInterval.empty => Some(0.0)
           case lv: FiniteValueInterval =>
-            // TODO not take include min/max into consideration now
-            val (min, max) = (comparableToDouble(v.lower), comparableToDouble(v.upper))
-            val (litMin, litMax) = (comparableToDouble(lv.lower), comparableToDouble(lv.upper))
+            // todo not take include min/max into consideration now
+            val (min, max) = (comparabletodouble(v.lower), comparabletodouble(v.upper))
+            val (litMin, litMax) = (comparabletodouble(lv.lower), comparabletodouble(lv.upper))
             Some((litMax - litMin) / (max - min))
           case _ =>
             // predicate like `a > 10 AND a > 20` had been simplified in `evaluate` method
@@ -561,7 +561,7 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
     if (canConvertToNumericType(inputRef.getType)) {
       estimateNumericComparison(op, inputRef, literal)
     } else {
-      // TODO: It is difficult to support binary comparisons for non-numeric type
+      // todo: It is difficult to support binary comparisons for non-numeric type
       // without advanced statistics like histogram.
       defaultComparisonSelectivity
     }
@@ -590,14 +590,14 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
       case ValueInterval.empty => Some(0.0)
       case _ =>
         val (min, includeMin) = columnInterval match {
-          case hasLower: WithLower => (comparableToDouble(hasLower.lower), hasLower.includeLower)
+          case hasLower: WithLower => (comparabletodouble(hasLower.lower), hasLower.includeLower)
           case _ => (null, true)
         }
         val (max, includeMax) = columnInterval match {
-          case hasUpper: WithUpper => (comparableToDouble(hasUpper.upper), hasUpper.includeUpper)
+          case hasUpper: WithUpper => (comparabletodouble(hasUpper.upper), hasUpper.includeUpper)
           case _ => (null, true)
         }
-        val lit = literalToDouble(literal)
+        val lit = literaltodouble(literal)
         val (noOverlap, completeOverlap) = op match {
           case LESS_THAN => (
             greaterThanOrEqualTo(min, lit),
@@ -631,7 +631,7 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
                   1.0
                 }
               } else {
-                // TODO not take includeMin into consideration now
+                // todo not take includeMin into consideration now
                 (lit - min) / (max - min)
               }
             case LESS_THAN_OR_EQUAL =>
@@ -643,7 +643,7 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
                   0.0
                 }
               } else {
-                // TODO not take includeMax into consideration now
+                // todo not take includeMax into consideration now
                 (lit - min) / (max - min)
               }
             case GREATER_THAN =>
@@ -655,7 +655,7 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
                   1.0
                 }
               } else {
-                // TODO not take includeMin into consideration now
+                // todo not take includeMin into consideration now
                 (max - lit) / (max - min)
               }
             case GREATER_THAN_OR_EQUAL =>
@@ -666,7 +666,7 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
                   0.0
                 }
               } else {
-                // TODO not take includeMax into consideration now
+                // todo not take includeMax into consideration now
                 (max - lit) / (max - min)
               }
           }
@@ -697,7 +697,7 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
     if (canConvertToNumericType(left.getType) && canConvertToNumericType(right.getType)) {
       estimateNumericComparison(op, left, right)
     } else {
-      // TODO: It is difficult to support binary comparisons for non-numeric type
+      // todo: It is difficult to support binary comparisons for non-numeric type
       // without advanced statistics like histogram.
       op match {
         case EQUALS => defaultEqualsSelectivity
@@ -754,19 +754,19 @@ class SelectivityEstimator(rel: RelNode, mq: FlinkRelMetadataQuery)
     }
     // left interval
     val (leftMin, leftIncludeMin) = leftInterval match {
-      case hasLower: WithLower => (comparableToDouble(hasLower.lower), hasLower.includeLower)
+      case hasLower: WithLower => (comparabletodouble(hasLower.lower), hasLower.includeLower)
       case _ => (null, true)
     }
     val (leftMax, leftIncludeMax) = leftInterval match {
-      case hasUpper: WithUpper => (comparableToDouble(hasUpper.upper), hasUpper.includeUpper)
+      case hasUpper: WithUpper => (comparabletodouble(hasUpper.upper), hasUpper.includeUpper)
       case _ => (null, true)
     }
     val (rightMin, rightIncludeMin) = rightInterval match {
-      case hasLower: WithLower => (comparableToDouble(hasLower.lower), hasLower.includeLower)
+      case hasLower: WithLower => (comparabletodouble(hasLower.lower), hasLower.includeLower)
       case _ => (null, true)
     }
     val (rightMax, rightIncludeMax) = rightInterval match {
-      case hasUpper: WithUpper => (comparableToDouble(hasUpper.upper), hasUpper.includeUpper)
+      case hasUpper: WithUpper => (comparabletodouble(hasUpper.upper), hasUpper.includeUpper)
       case _ => (null, true)
     }
     // determine the overlapping degree between predicate interval and column's interval
@@ -1030,8 +1030,8 @@ object SelectivityEstimator {
           case SqlTypeFamily.NUMERIC | SqlTypeFamily.BOOLEAN | SqlTypeFamily.DATE |
                SqlTypeFamily.TIME | SqlTypeFamily.TIMESTAMP =>
             ValueInterval(
-              comparableToDouble(lower),
-              comparableToDouble(upper),
+              comparabletodouble(lower),
+              comparabletodouble(upper),
               includeLower,
               includeUpper)
           case SqlTypeFamily.CHARACTER =>
@@ -1060,7 +1060,7 @@ object SelectivityEstimator {
     if (!literal.isNull) {
       literal.getType.getFamily match {
         case SqlTypeFamily.NUMERIC | SqlTypeFamily.BOOLEAN | SqlTypeFamily.DATE |
-             SqlTypeFamily.TIME | SqlTypeFamily.TIMESTAMP => literalToDouble(literal)
+             SqlTypeFamily.TIME | SqlTypeFamily.TIMESTAMP => literaltodouble(literal)
         case SqlTypeFamily.CHARACTER => literal.getValueAs(classOf[String])
         case _ => throw new UnsupportedOperationException(
           s"Can't get value as comparable from literal type: ${literal.getType}")
@@ -1070,7 +1070,7 @@ object SelectivityEstimator {
     }
   }
 
-  def comparableToDouble(value: Any): JDouble = {
+  def comparabletodouble(value: Any): JDouble = {
     value match {
       case null => null
       case v: Number => v.doubleValue()
@@ -1087,15 +1087,15 @@ object SelectivityEstimator {
     }
   }
 
-  def literalToDouble(literal: RexLiteral): JDouble = {
+  def literaltodouble(literal: RexLiteral): JDouble = {
     if (!literal.isNull) {
       literal.getType.getFamily match {
         case SqlTypeFamily.NUMERIC =>
-          literal.getValue3.toString.toDouble
+          literal.getValue3.toString.todouble
         case SqlTypeFamily.BOOLEAN =>
           if (RexLiteral.booleanValue(literal)) 1.0 else 0.0
         case SqlTypeFamily.DATE | SqlTypeFamily.TIME | SqlTypeFamily.TIMESTAMP =>
-          literal.getValue2.toString.toDouble
+          literal.getValue2.toString.todouble
         case _ =>
           throw new UnsupportedOperationException(
             s"Can't get value as Double from literal type: ${literal.getType}")

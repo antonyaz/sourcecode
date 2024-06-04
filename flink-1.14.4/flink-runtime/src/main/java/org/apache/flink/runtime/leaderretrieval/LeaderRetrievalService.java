@@ -30,7 +30,7 @@ package org.apache.flink.runtime.leaderretrieval;
  */
 
 /**
- * TODO: add by antony at 2022/5/3
+ * todo: add by antony at 2022/5/3
  *  观察者设计模式
  *
  */
@@ -44,7 +44,7 @@ public interface LeaderRetrievalService {
      * @throws Exception
      */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 启动监听
      * 如果通过这个 LeaderRetrievalService 的start(listener) 启动了监听之后响应了，则回调
      * listener.notifyLeaderAddress 方法

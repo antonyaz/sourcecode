@@ -1776,7 +1776,7 @@ public class HiveParserCalcitePlanner {
             HiveParserWindowingSpec.WindowFunctionSpec wFnSpec =
                     (HiveParserWindowingSpec.WindowFunctionSpec) winExprSpec;
             HiveParserASTNode windowProjAst = wFnSpec.getExpression();
-            // TODO: do we need to get to child?
+            // todo: do we need to get to child?
             int wndSpecASTIndx = getWindowSpecIndx(windowProjAst);
             // 2. Get Hive Aggregate Info
             AggInfo hiveAggInfo =
@@ -2036,7 +2036,7 @@ public class HiveParserCalcitePlanner {
         // 2.Row resolvers for input, output
         HiveParserRowResolver outRR = new HiveParserRowResolver();
         Integer pos = 0;
-        // TODO: will this also fix windowing? try
+        // todo: will this also fix windowing? try
         HiveParserRowResolver inputRR = relToRowResolver.get(srcRel), starRR = inputRR;
         if (starSrcRel != null) {
             starRR = relToRowResolver.get(starSrcRel);
@@ -2311,7 +2311,7 @@ public class HiveParserCalcitePlanner {
                         ExprNodeColumnDesc colExp = (ExprNodeColumnDesc) exprDesc;
                         String[] altMapping = inputRR.getAlternateMappings(colExp.getColumn());
                         if (altMapping != null) {
-                            // TODO: this can overwrite the mapping. Should this be allowed?
+                            // todo: this can overwrite the mapping. Should this be allowed?
                             outRR.put(altMapping[0], altMapping[1], colInfo);
                         }
                     }
@@ -2547,7 +2547,7 @@ public class HiveParserCalcitePlanner {
                         + ", actually got "
                         + convertedOperator.getClass().getSimpleName());
 
-        // TODO: how to decide this?
+        // todo: how to decide this?
         Type elementType = Object[].class;
         // create LogicalTableFunctionScan
         RelNode tableFunctionScan =
@@ -2803,7 +2803,7 @@ public class HiveParserCalcitePlanner {
 
         // 9. In case this HiveParserQB corresponds to subquery then modify its RR to point to
         // subquery alias
-        // TODO: cleanup this
+        // todo: cleanup this
         if (qb.getParseInfo().getAlias() != null) {
             HiveParserRowResolver rr = relToRowResolver.get(res);
             HiveParserRowResolver newRR = new HiveParserRowResolver();

@@ -60,11 +60,11 @@ public class KeyedBackendSerializationProxy<K> extends VersionedIOReadableWritab
         META_INFO_SNAPSHOT_FORMAT_VERSION_MAPPER.put(6, CURRENT_STATE_META_INFO_SNAPSHOT_VERSION);
     }
 
-    // TODO allow for more (user defined) compression formats + backwards compatibility story.
+    // todo allow for more (user defined) compression formats + backwards compatibility story.
     /** This specifies if we use a compressed format write the key-groups */
     private boolean usingKeyGroupCompression;
 
-    // TODO the keySerializer field should be removed, once all serializers have the
+    // todo the keySerializer field should be removed, once all serializers have the
     // restoreSerializer() method implemented
     private TypeSerializer<K> keySerializer;
     private TypeSerializerSnapshot<K> keySerializerSnapshot;

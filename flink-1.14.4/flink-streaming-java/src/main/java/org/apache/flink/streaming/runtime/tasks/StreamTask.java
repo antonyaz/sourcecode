@@ -272,7 +272,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 
     final MailboxExecutor mainMailboxExecutor;
 
-    /** TODO it might be replaced by the global IO executor on TaskManager level future. */
+    /** todo it might be replaced by the global IO executor on TaskManager level future. */
     private final ExecutorService channelIOExecutor;
 
     // ========================================================
@@ -375,7 +375,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
         this.configuration = new StreamConfig(environment.getTaskConfiguration());
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  一般情况下创建的就是 SingleRecordWriter
          *  这个 SingleRecordWriter 组件，就是负责当前这个Task的结果输出
          */
@@ -383,7 +383,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
         this.actionExecutor = Preconditions.checkNotNull(actionExecutor);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  调用 ProcessInput 开始数据处理 *******非常重要*******
          *  1、负责从上游拉取数据
          *  2、执行逻辑计算
@@ -400,7 +400,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
         environment.setAsyncOperationsThreadPool(asyncOperationsThreadPool);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建 StateBackend， 按照我们的配置，一般获取到的是FsStateBackend + RocksDBStateBackend
          */
         this.stateBackend = createStateBackend();
@@ -512,7 +512,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
      */
     protected void processInput(MailboxDefaultAction.Controller controller) throws Exception {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *   OneInputStreamTask -> inputProcessor -> StreamOneInputProcess
          *   TwoInputStreamTask -> inputProcessor -> StreamTwoInputProcess
          */
@@ -1043,7 +1043,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
         try {
             runnable.run();
         } catch (Throwable t) {
-            // TODO: investigate why Throwable instead of Exception is used here.
+            // todo: investigate why Throwable instead of Exception is used here.
             Exception e = t instanceof Exception ? (Exception) t : new Exception(t);
             return firstOrSuppressed(e, originalException);
         }
@@ -1129,7 +1129,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
     // ------------------------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 触发 checkpoint
      */
     @Override
@@ -1138,13 +1138,13 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 
         CompletableFuture<Boolean> result = new CompletableFuture<>();
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  提交一封邮件 到 mail box
          */
         mainMailboxExecutor.execute(
                 () -> {
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  下面的系列代码，就是mail的run方法
                      */
                     try {
@@ -1155,7 +1155,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
                         if (noUnfinishedInputGates) {
                             result.complete(
                                     /**
-                                     *  TODO: add by antony at 2022/5/4
+                                     *  todo: add by antony at 2022/5/4
                                      *
                                      */
                                     triggerCheckpointAsyncInMailbox(
@@ -1178,7 +1178,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 三个事情
      * 1、初始化
      * 2、执行checkpoint
@@ -1203,13 +1203,13 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
                             .setCheckpointStartDelayNanos(latestAsyncCheckpointStartDelayNanos);
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  1、初始化
              */
             subtaskCheckpointCoordinator.initInputsCheckpoint(checkpointMetaData.getCheckpointId(), checkpointOptions);
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  2、执行checkpoint
              *  重点： 插入 barrier 到数据流中
              *  SourceStreamTask 执行 checkpoint，： performCheckpoint
@@ -1219,7 +1219,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
             boolean success = performCheckpoint(checkpointMetaData, checkpointOptions, checkpointMetrics);
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  3、根据执行结果来判断是否需要取消
              */
             if (!success) {
@@ -1317,7 +1317,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
         FlinkSecurityManager.monitorUserSystemExitForCurrentThread();
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  执行 checkpoint
              *  1、其实 SourceStreamTask 和 OneInputStreamTask 执行 checkpoint 的逻辑， 是一样的 都是performCheckpoint
              */
@@ -1393,7 +1393,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
                         }
 
                         /**
-                         *  TODO: add by antony at 2022/5/4
+                         *  todo: add by antony at 2022/5/4
                          *
                          */
                         subtaskCheckpointCoordinator.checkpointState(
@@ -1664,7 +1664,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
                             StreamConfig configuration, Environment environment) {
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建RecordWriter
          *  一般是一个出边(单流操作) 也就是 SingleRecordWriter
          *  多个边的话(对流进行拆分)

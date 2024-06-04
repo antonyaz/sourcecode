@@ -59,7 +59,7 @@ public class AbstractSessionClusterExecutor<
     }
 
     /**
-     * TODO: pipeline即传入的streamGraph
+     * todo: pipeline即传入的streamGraph
      */
     @Override
     public CompletableFuture<JobClient> execute(
@@ -68,7 +68,7 @@ public class AbstractSessionClusterExecutor<
             @Nonnull final ClassLoader userCodeClassloader)
             throws Exception {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  将StreamGraph转换成JobGraph
          *  pipeline 即 StreamGraph
          *  1、将 StreamGraph 转换为 JobGraph
@@ -80,7 +80,7 @@ public class AbstractSessionClusterExecutor<
         final JobGraph jobGraph = PipelineExecutorUtils.getJobGraph(pipeline, configuration);
 
         /**
-         * TODO: 关于提交Job的流程，是一种简单的C/S架构实现
+         * todo: 关于提交Job的流程，是一种简单的C/S架构实现
          * 1、客户端RestclusterClient: 启动一个Netty客户端
          * 2、 服务器WebMonitorEndpoint： 启动一个Netty服务器
          * 1 与 2 通信方式： rest请求
@@ -97,7 +97,7 @@ public class AbstractSessionClusterExecutor<
             checkState(clusterID != null);
 
             /**
-             * TODO: 构建clusterClient = RestClusterClient
+             * todo: 构建clusterClient = RestClusterClient
              * 在这个东西的内部，启动一个nettty的客户端
              * RestClusterClient
              */
@@ -105,7 +105,7 @@ public class AbstractSessionClusterExecutor<
                     clusterDescriptor.retrieve(clusterID);
             ClusterClient<ClusterID> clusterClient = clusterClientProvider.getClusterClient();
             /**
-             * TODO: 提交JobGraph到WebMonitorEndpoint
+             * todo: 提交JobGraph到WebMonitorEndpoint
              */
             return clusterClient
                     .submitJob(jobGraph) //提交Job

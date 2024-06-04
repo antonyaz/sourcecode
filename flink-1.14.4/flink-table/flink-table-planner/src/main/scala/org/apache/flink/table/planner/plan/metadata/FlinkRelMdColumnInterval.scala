@@ -282,8 +282,8 @@ class FlinkRelMdColumnInterval private extends MetadataHandler[ColumnInterval] {
           baseNode.getCluster.getRexBuilder, null, searchCall)
         getRexNodeInterval(expanded, baseNode, mq)
 
-      // TODO supports ScalarSqlFunctions.IF
-      // TODO supports CAST
+      // todo supports ScalarSqlFunctions.IF
+      // todo supports CAST
 
       case rexCall: RexCall if rexCall.op.isInstanceOf[SqlBinaryOperator] =>
         val leftValueInterval = getRexNodeInterval(rexCall.operands.get(0), baseNode, mq)
@@ -677,7 +677,7 @@ class FlinkRelMdColumnInterval private extends MetadataHandler[ColumnInterval] {
               }
             case COUNT =>
               RightSemiInfiniteValueInterval(JBigDecimal.valueOf(0), includeLower = true)
-            // TODO add more built-in agg functions
+            // todo add more built-in agg functions
             case _ => null
           }
         } else {
@@ -760,7 +760,7 @@ class FlinkRelMdColumnInterval private extends MetadataHandler[ColumnInterval] {
     } else {
       fmq.getColumnInterval(join.getRight, index - nLeftColumns)
     }
-    //TODO if column at index position is EuqiJoinKey in a Inner Join, its interval is
+    //todo if column at index position is EuqiJoinKey in a Inner Join, its interval is
     // origin interval intersect interval in the pair joinJoinKey.
     // for example, if join is a InnerJoin with condition l.A = r.A
     // the valueInterval of l.A is the intersect of l.A with r.A

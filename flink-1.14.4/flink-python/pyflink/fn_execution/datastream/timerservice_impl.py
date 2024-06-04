@@ -41,7 +41,7 @@ class LegacyInternalTimerServiceImpl(InternalTimerService[N]):
     """
     Internal implementation of InternalTimerService.
 
-    TODO: Use InternalTimerServiceImpl instead.
+    todo: Use InternalTimerServiceImpl instead.
     """
 
     def __init__(self, keyed_state_backend: RemoteKeyedStateBackend):

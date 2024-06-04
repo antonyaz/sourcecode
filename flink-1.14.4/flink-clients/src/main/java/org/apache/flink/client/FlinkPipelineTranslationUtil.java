@@ -32,14 +32,14 @@ public final class FlinkPipelineTranslationUtil {
 
     /** Transmogrifies the given {@link Pipeline} to a {@link JobGraph}. */
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * pipeline 即 StreamGraph
      */
     public static JobGraph getJobGraph(
             Pipeline pipeline, Configuration optimizerConfiguration, int defaultParallelism) {
 
         /**
-         * TODO: 获取Translator = StreamGraphTranslator
+         * todo: 获取Translator = StreamGraphTranslator
          * 有流处理的
          * 有批处理的
          *
@@ -47,7 +47,7 @@ public final class FlinkPipelineTranslationUtil {
         FlinkPipelineTranslator pipelineTranslator = getPipelineTranslator(pipeline);
 
         /**
-         * TODO: 通过translator来执行转换
+         * todo: 通过translator来执行转换
          *
          */
         return pipelineTranslator.translateToJobGraph(

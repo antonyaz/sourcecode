@@ -48,8 +48,8 @@ public final class ParquetDictionary implements Dictionary {
     }
 
     @Override
-    public double decodeToDouble(int id) {
-        return dictionary.decodeToDouble(id);
+    public double decodetodouble(int id) {
+        return dictionary.decodetodouble(id);
     }
 
     @Override

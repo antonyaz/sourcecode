@@ -38,7 +38,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Utility class for catalog testing. TODO: Move util methods to CatalogTest and remove this class
+ * Utility class for catalog testing. todo: Move util methods to CatalogTest and remove this class
  */
 public class CatalogTestUtil {
     public static void checkEquals(CatalogTable t1, CatalogTable t2) {

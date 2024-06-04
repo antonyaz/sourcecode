@@ -32,7 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A {@link TableSourceQueryOperation} with {@link FlinkStatistic} and qualifiedName. TODO this
+ * A {@link TableSourceQueryOperation} with {@link FlinkStatistic} and qualifiedName. todo this
  * class should be deleted after unique key in TableSchema is ready and setting catalog statistic to
  * TableSourceTable in DatabaseCalciteSchema is ready
  *

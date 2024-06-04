@@ -56,7 +56,7 @@ public final class KeyedStateCheckpointOutputStream
     @Override
     public void close() throws IOException {
         // users should not be able to actually close the stream, it is closed by the system.
-        // TODO if we want to support async writes, this call could trigger a callback to the
+        // todo if we want to support async writes, this call could trigger a callback to the
         // snapshot context that a handle is available.
     }
 

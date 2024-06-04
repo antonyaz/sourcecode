@@ -53,7 +53,7 @@ public class PipelinedApproximateSubpartition extends PipelinedSubpartition {
      * PipelinedApproximateSubpartition#releaseView()} is called only before creating a new view.
      *
      * <p>There is still one corner case when a downstream task fails continuously in a short period
-     * of time then multiple netty worker threads can createReadView at the same time. TODO: This
+     * of time then multiple netty worker threads can createReadView at the same time. todo: This
      * problem will be solved in FLINK-19774
      */
     @Override

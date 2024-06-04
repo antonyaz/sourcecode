@@ -914,7 +914,7 @@ public class SegmentsUtil {
         if (segOffset < segSize - 7) {
             return segments[segIndex].getDouble(segOffset);
         } else {
-            return Double.longBitsToDouble(getLongSlowly(segments, segSize, segIndex, segOffset));
+            return Double.longBitstodouble(getLongSlowly(segments, segSize, segIndex, segOffset));
         }
     }
 

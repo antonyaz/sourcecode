@@ -249,7 +249,7 @@ class CorrelateITCase extends BatchTestBase {
       Seq(row(105), row(11), row(12)))
   }
 
-// TODO support dynamic type
+// todo support dynamic type
 //  @Test
 //  def testDynamicTypeWithSQL(): Unit = {
 //    registerFunction("funcDyna0", new UDTFWithDynamicType0)

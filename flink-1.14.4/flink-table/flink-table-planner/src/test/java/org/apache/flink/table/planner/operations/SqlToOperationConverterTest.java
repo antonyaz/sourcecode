@@ -922,7 +922,7 @@ public class SqlToOperationConverterTest {
         parse(sql, planner, parser);
     }
 
-    @Test // TODO: tweak the tests when FLINK-13604 is fixed.
+    @Test // todo: tweak the tests when FLINK-13604 is fixed.
     public void testCreateTableWithFullDataTypes() {
         final List<TestItem> testItems =
                 Arrays.asList(

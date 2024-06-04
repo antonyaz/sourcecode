@@ -113,7 +113,7 @@ public class FullSnapshotAsyncWriter<K>
 
         KeyedBackendSerializationProxy<K> serializationProxy =
                 new KeyedBackendSerializationProxy<>(
-                        // TODO: this code assumes that writing a serializer is threadsafe, we
+                        // todo: this code assumes that writing a serializer is threadsafe, we
                         // should support to
                         // get a serialized form already at state registration time in the
                         // future
@@ -152,7 +152,7 @@ public class FullSnapshotAsyncWriter<K>
                                 .getStreamCompressionDecorator()
                                 .decorateWithCompression(checkpointOutputStream);
                 kgOutView = new DataOutputViewStreamWrapper(kgOutStream);
-                // TODO this could be aware of keyGroupPrefixBytes and write only one byte
+                // todo this could be aware of keyGroupPrefixBytes and write only one byte
                 // if possible
                 kgOutView.writeShort(mergeIterator.kvStateId());
                 previousKey = mergeIterator.key();
@@ -181,7 +181,7 @@ public class FullSnapshotAsyncWriter<K>
 
                 // write meta data if we have to
                 if (mergeIterator.isNewKeyGroup()) {
-                    // TODO this could be aware of keyGroupPrefixBytes and write only one
+                    // todo this could be aware of keyGroupPrefixBytes and write only one
                     // byte if possible
                     kgOutView.writeShort(END_OF_KEY_GROUP_MARK);
                     // this will just close the outer stream
@@ -190,7 +190,7 @@ public class FullSnapshotAsyncWriter<K>
                     keyGroupRangeOffsets.setKeyGroupOffset(
                             mergeIterator.keyGroup(), checkpointOutputStream.getPos());
                     // write the kev-state
-                    // TODO this could be aware of keyGroupPrefixBytes and write only one
+                    // todo this could be aware of keyGroupPrefixBytes and write only one
                     // byte if possible
                     kgOutStream =
                             snapshotResources
@@ -200,7 +200,7 @@ public class FullSnapshotAsyncWriter<K>
                     kgOutView.writeShort(mergeIterator.kvStateId());
                 } else if (mergeIterator.isNewKeyValueState()) {
                     // write the k/v-state
-                    // TODO this could be aware of keyGroupPrefixBytes and write only one
+                    // todo this could be aware of keyGroupPrefixBytes and write only one
                     // byte if possible
                     kgOutView.writeShort(mergeIterator.kvStateId());
                 }
@@ -216,7 +216,7 @@ public class FullSnapshotAsyncWriter<K>
                 assert (!hasMetaDataFollowsFlag(previousKey));
                 setMetaDataFollowsFlagInKey(previousKey);
                 writeKeyValuePair(previousKey, previousValue, kgOutView);
-                // TODO this could be aware of keyGroupPrefixBytes and write only one byte if
+                // todo this could be aware of keyGroupPrefixBytes and write only one byte if
                 // possible
                 kgOutView.writeShort(END_OF_KEY_GROUP_MARK);
                 // this will just close the outer stream

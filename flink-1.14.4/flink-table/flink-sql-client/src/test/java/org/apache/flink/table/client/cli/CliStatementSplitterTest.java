@@ -32,7 +32,7 @@ public class CliStatementSplitterTest {
 
     @Test
     public void testIsNotEndOfStatement() {
-        // TODO: fix ';
+        // todo: fix ';
         List<String> lines = Arrays.asList(" --;", "", "select -- ok;", "\n");
         for (String line : lines) {
             assertFalse(

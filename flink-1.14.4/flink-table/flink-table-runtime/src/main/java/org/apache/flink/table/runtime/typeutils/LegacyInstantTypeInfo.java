@@ -32,7 +32,7 @@ import java.util.Objects;
  * <p>The different between Types.INSTANT is the TypeInformation holds a precision Reminder:
  * Conversion from DataType to TypeInformation (and back) exists in
  * TableSourceUtil.computeIndexMapping, which should be fixed after we remove Legacy TypeInformation
- * TODO: https://issues.apache.org/jira/browse/FLINK-14927
+ * todo: https://issues.apache.org/jira/browse/FLINK-14927
  */
 public class LegacyInstantTypeInfo extends BasicTypeInfo<Instant> {
 

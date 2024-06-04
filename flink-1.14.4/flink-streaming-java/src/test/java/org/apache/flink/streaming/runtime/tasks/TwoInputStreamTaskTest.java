@@ -310,7 +310,7 @@ public class TwoInputStreamTaskTest {
         testHarness.waitForInputProcessing();
 
         // Wait to allow input to end up in the output.
-        // TODO Use count down latches instead as a cleaner solution
+        // todo Use count down latches instead as a cleaner solution
         for (int i = 0; i < 20; ++i) {
             if (testHarness.getOutput().size() >= expectedOutput.size()) {
                 break;

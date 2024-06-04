@@ -162,11 +162,11 @@ public class MetricFetcherImpl<T extends RestfulGateway> implements MetricFetche
                         },
                         executor);
 
-                // TODO: Once the old code has been ditched, remove the explicit TaskManager query
+                // todo: Once the old code has been ditched, remove the explicit TaskManager query
                 // service discovery
-                // TODO: and return it as part of requestMetricQueryServiceAddresses. Moreover,
+                // todo: and return it as part of requestMetricQueryServiceAddresses. Moreover,
                 // change the MetricStore such that
-                // TODO: we don't have to explicitly retain the valid TaskManagers, e.g. letting it
+                // todo: we don't have to explicitly retain the valid TaskManagers, e.g. letting it
                 // be a cache with expiry time
                 CompletableFuture<Collection<Tuple2<ResourceID, String>>>
                         taskManagerQueryServiceGatewaysFuture =

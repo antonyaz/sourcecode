@@ -37,9 +37,9 @@ This file is based on the checkstyle file of Apache Beam.
 	</module>
 
 	<module name="RegexpSingleline">
-		<!-- Checks that TODOs don't have stuff in parenthesis, e.g., username. -->
-		<property name="format" value="((//.*)|(\*.*))TODO\("/>
-		<property name="message" value="TODO comments must not include usernames."/>
+		<!-- Checks that todos don't have stuff in parenthesis, e.g., username. -->
+		<property name="format" value="((//.*)|(\*.*))todo\("/>
+		<property name="message" value="todo comments must not include usernames."/>
 		<property name="severity" value="error"/>
 	</module>
 
@@ -173,7 +173,7 @@ This file is based on the checkstyle file of Apache Beam.
 		<!-- Enforce Java-style array declarations -->
 		<module name="ArrayTypeStyle"/>
 
-		<module name="TodoComment">
+		<module name="todoComment">
 			<!-- Checks that disallowed strings are not used in comments.  -->
 			<property name="format" value="(FIXME)|(XXX)|(@author)"/>
 		</module>

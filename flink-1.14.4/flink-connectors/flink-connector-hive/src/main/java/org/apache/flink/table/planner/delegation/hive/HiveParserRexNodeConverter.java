@@ -236,7 +236,7 @@ public class HiveParserRexNodeConverter {
             return cluster.getRexBuilder().makeFieldAccess(rexNode, fieldDesc.getFieldName(), true);
         } else {
             if (fieldDesc.getIsList()) {
-                // TODO: support this, need to create a func to create an array with fields within
+                // todo: support this, need to create a func to create an array with fields within
                 // the origin array?
             }
             // This may happen for schema-less tables, where columns are dynamically
@@ -289,7 +289,7 @@ public class HiveParserRexNodeConverter {
         if (value == null) {
             hiveTypeCategory = PrimitiveObjectInspector.PrimitiveCategory.VOID;
         }
-        // TODO: Verify if we need to use ConstantObjectInspector to unwrap data
+        // todo: Verify if we need to use ConstantObjectInspector to unwrap data
         switch (hiveTypeCategory) {
             case BOOLEAN:
                 calciteLiteral = rexBuilder.makeLiteral((Boolean) value);
@@ -308,7 +308,7 @@ public class HiveParserRexNodeConverter {
             case LONG:
                 calciteLiteral = rexBuilder.makeBigintLiteral(new BigDecimal((Long) value));
                 break;
-                // TODO: is Decimal an exact numeric or approximate numeric?
+                // todo: is Decimal an exact numeric or approximate numeric?
             case DECIMAL:
                 if (value instanceof HiveDecimal) {
                     value = ((HiveDecimal) value).bigDecimalValue();
@@ -326,7 +326,7 @@ public class HiveParserRexNodeConverter {
                     // For now, we will not run CBO in the presence of invalid decimal literals.
                     throw new SemanticException(
                             "Expression " + literal.getExprString() + " is not a valid decimal");
-                    // TODO: return createNullLiteral(literal);
+                    // todo: return createNullLiteral(literal);
                 }
                 BigDecimal bd = (BigDecimal) value;
                 BigInteger unscaled = bd.unscaledValue();
@@ -352,7 +352,7 @@ public class HiveParserRexNodeConverter {
                                 new BigDecimal(Float.toString((Float) value)), calciteDataType);
                 break;
             case DOUBLE:
-                // TODO: The best solution is to support NaN in expression reduction.
+                // todo: The best solution is to support NaN in expression reduction.
                 if (Double.isNaN((Double) value)) {
                     throw new SemanticException("NaN");
                 }
@@ -461,7 +461,7 @@ public class HiveParserRexNodeConverter {
         List<RexNode> childRexNodeLst = new ArrayList<>();
         List<RelDataType> argTypes = new ArrayList<>();
 
-        // TODO: 1) Expand to other functions as needed 2) What about types other than primitive.
+        // todo: 1) Expand to other functions as needed 2) What about types other than primitive.
         TypeInfo tgtDT = null;
         GenericUDF tgtUdf = func.getGenericUDF();
 
@@ -480,7 +480,7 @@ public class HiveParserRexNodeConverter {
             tgtDT = func.getTypeInfo();
 
             assert func.getChildren().size() == 2;
-            // TODO: checking 2 children is useless, compare already does that.
+            // todo: checking 2 children is useless, compare already does that.
         } else if (isCompare && (func.getChildren().size() == 2)) {
             tgtDT =
                     FunctionRegistry.getCommonClassForComparison(
@@ -546,7 +546,7 @@ public class HiveParserRexNodeConverter {
             retType = cast.getType();
         }
 
-        // TODO: Cast Function in Calcite have a bug where it infer type on cast throws
+        // todo: Cast Function in Calcite have a bug where it infer type on cast throws
         // an exception
         if (flattenExpr
                 && expr instanceof RexCall
@@ -707,12 +707,12 @@ public class HiveParserRexNodeConverter {
             String udfClassName = ((GenericUDFBridge) gUDF).getUdfClassName();
             if (udfClassName != null) {
                 int sp = udfClassName.lastIndexOf('.');
-                // TODO: add method to UDFBridge to say if it is a cast func
+                // todo: add method to UDFBridge to say if it is a cast func
                 if (sp >= 0 & (sp + 1) < udfClassName.length()) {
                     udfClassName = udfClassName.substring(sp + 1);
                     if (udfClassName.equals("UDFToBoolean")
                             || udfClassName.equals("UDFToByte")
-                            || udfClassName.equals("UDFToDouble")
+                            || udfClassName.equals("UDFtodouble")
                             || udfClassName.equals("UDFToInteger")
                             || udfClassName.equals("UDFToLong")
                             || udfClassName.equals("UDFToShort")

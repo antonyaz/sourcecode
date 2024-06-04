@@ -171,7 +171,7 @@ class ImperativeAggCodeGen(
 
   def accumulate(generator: ExprCodeGenerator): String = {
     val (parameters, code) = aggParametersCode(generator)
-    // TODO handle accumulate has primitive parameters
+    // todo handle accumulate has primitive parameters
     val call = s"$functionTerm.accumulate($parameters);"
     filterExpression match {
       case None =>

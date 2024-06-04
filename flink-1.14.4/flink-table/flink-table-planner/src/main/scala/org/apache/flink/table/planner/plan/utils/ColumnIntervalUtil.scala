@@ -169,7 +169,7 @@ object ColumnIntervalUtil {
               upperInclude)
           case _ => null
         }
-      // TODO add more case
+      // todo add more case
       case _ => null
     }
 

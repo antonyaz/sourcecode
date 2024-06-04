@@ -244,14 +244,14 @@ public class JobMasterServiceLeadershipRunner implements JobManagerRunner, Leade
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 竞选成功回调入口
      */
     @Override
     public void grantLeadership(UUID leaderSessionID) {
         runIfStateRunning(
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  启动JobMasterServiceProcess
                  */
                 () -> startJobMasterServiceProcessAsync(leaderSessionID),
@@ -268,7 +268,7 @@ public class JobMasterServiceLeadershipRunner implements JobManagerRunner, Leade
                                         ThrowingRunnable.unchecked(
                                                 () ->
                                                         /**
-                                                         *  TODO: add by antony at 2022/5/4
+                                                         *  todo: add by antony at 2022/5/4
                                                          * 1、vverifyJobSchedulingStatus()
                                                          * 2、CreateJobMasterServiceProcess()
                                                          */
@@ -283,7 +283,7 @@ public class JobMasterServiceLeadershipRunner implements JobManagerRunner, Leade
     private void verifyJobSchedulingStatusAndCreateJobMasterServiceProcess(UUID leaderSessionId)
             throws FlinkException {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  获取ZK中的 Job状态
          */
         final RunningJobsRegistry.JobSchedulingStatus jobSchedulingStatus =
@@ -293,7 +293,7 @@ public class JobMasterServiceLeadershipRunner implements JobManagerRunner, Leade
             jobAlreadyDone();
         } else {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  创建一个新的JobMasterServiceProcess处理器
              *  里面做了两件事
              *  1、创建 JobMaster
@@ -340,7 +340,7 @@ public class JobMasterServiceLeadershipRunner implements JobManagerRunner, Leade
 
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  更新JobMaster的状态 为 RUNNING
              */
             runningJobsRegistry.setJobRunning(getJobID());
@@ -353,7 +353,7 @@ public class JobMasterServiceLeadershipRunner implements JobManagerRunner, Leade
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建JobMaster 并启动
          */
         jobMasterServiceProcess = jobMasterServiceProcessFactory.create(leaderSessionId);

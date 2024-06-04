@@ -74,13 +74,13 @@ public class NettyProtocol {
      */
     public ChannelHandler[] getServerChannelHandlers() {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *
          */
         PartitionRequestQueue queueOfPartitionQueues = new PartitionRequestQueue();
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  负责处理消费端 通过 PartitionRequestClient 发送的 PartitionRequest 和 AddCredit 请求
          */
         PartitionRequestServerHandler serverHandler =
@@ -88,7 +88,7 @@ public class NettyProtocol {
                         partitionProvider, taskEventPublisher, queueOfPartitionQueues);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  四种Handlers
          */
         return new ChannelHandler[] {
@@ -133,7 +133,7 @@ public class NettyProtocol {
      */
     public ChannelHandler[] getClientChannelHandlers() {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  CreditBased  具有反压功能
          */
         NetworkClientHandler networkClientHandler = new CreditBasedPartitionRequestClientHandler();

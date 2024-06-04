@@ -65,9 +65,9 @@ class SqlExpressionTest extends ExpressionTestBase {
     testSqlApi("'TEST' NOT LIKE '%EST'", "false")
     testSqlApi("'%EST' NOT LIKE '.%EST' ESCAPE '.'", "false")
     testSqlApi("'TEST' SIMILAR TO '.EST'", "true")
-    //testSqlApi("'TEST' SIMILAR TO ':.EST' ESCAPE ':'", "true") // TODO
+    //testSqlApi("'TEST' SIMILAR TO ':.EST' ESCAPE ':'", "true") // todo
     testSqlApi("'TEST' NOT SIMILAR TO '.EST'", "false")
-    //testSqlApi("'TEST' NOT SIMILAR TO ':.EST' ESCAPE ':'", "false") // TODO
+    //testSqlApi("'TEST' NOT SIMILAR TO ':.EST' ESCAPE ':'", "false") // todo
     testSqlApi("'TEST' IN ('west', 'TEST', 'rest')", "true")
     testSqlApi("'TEST' IN ('west', 'rest')", "false")
     testSqlApi("'TEST' NOT IN ('west', 'TEST', 'rest')", "false")

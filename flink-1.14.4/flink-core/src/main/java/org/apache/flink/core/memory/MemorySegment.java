@@ -1147,7 +1147,7 @@ public final class MemorySegment {
      *     segment size minus 8.
      */
     public double getDouble(int index) {
-        return Double.longBitsToDouble(getLong(index));
+        return Double.longBitstodouble(getLong(index));
     }
 
     /**
@@ -1164,7 +1164,7 @@ public final class MemorySegment {
      *     segment size minus 8.
      */
     public double getDoubleLittleEndian(int index) {
-        return Double.longBitsToDouble(getLongLittleEndian(index));
+        return Double.longBitstodouble(getLongLittleEndian(index));
     }
 
     /**
@@ -1181,7 +1181,7 @@ public final class MemorySegment {
      *     segment size minus 8.
      */
     public double getDoubleBigEndian(int index) {
-        return Double.longBitsToDouble(getLongBigEndian(index));
+        return Double.longBitstodouble(getLongBigEndian(index));
     }
 
     /**

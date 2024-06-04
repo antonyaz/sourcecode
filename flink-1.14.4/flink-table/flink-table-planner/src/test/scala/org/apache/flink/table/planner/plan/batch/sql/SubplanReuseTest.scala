@@ -99,7 +99,7 @@ class SubplanReuseTest extends TableTestBase {
 
   @Test
   def testSubplanReuseOnSourceWithLimit(): Unit = {
-    // TODO re-check this plan after PushLimitIntoTableSourceScanRule is introduced
+    // todo re-check this plan after PushLimitIntoTableSourceScanRule is introduced
     util.tableEnv.getConfig.getConfiguration.setBoolean(
       OptimizerConfigOptions.TABLE_OPTIMIZER_REUSE_SOURCE_ENABLED, true)
     util.tableEnv.getConfig.getConfiguration.setString(
@@ -359,7 +359,7 @@ class SubplanReuseTest extends TableTestBase {
         |WITH r AS (SELECT a, b, c, v FROM x, LATERAL TABLE(str_split(c, '-')) AS T(v))
         |SELECT * FROM r r1, r r2 WHERE r1.v = r2.v
       """.stripMargin
-    // TODO the sub-plan of Correlate should be reused,
+    // todo the sub-plan of Correlate should be reused,
     // however the digests of Correlates are different
     util.verifyExecPlan(sqlQuery)
   }

@@ -122,7 +122,7 @@ class DecomposeGroupingSetsRuleTest extends TableTestBase {
       """
         |SELECT a, GROUP_ID() AS g, COUNT(*) as c FROM MyTable GROUP BY GROUPING SETS (a, (), ())
       """.stripMargin
-    // TODO:
+    // todo:
     // When "[CALCITE-1824] GROUP_ID returns wrong result" is fixed,
     // "Calc(select=[a, 0 AS g, c])" will be changed to
     // "Calc(select=[a, CASE(=($e, 0), 0, =($e, 1), 0, 1) AS g, c])".

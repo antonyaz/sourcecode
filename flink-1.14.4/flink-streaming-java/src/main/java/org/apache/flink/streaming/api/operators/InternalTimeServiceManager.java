@@ -58,7 +58,7 @@ public interface InternalTimeServiceManager<K> {
     /**
      * Snapshots the timers to raw keyed state.
      *
-     * <p><b>TODO:</b> This can be removed once heap-based timers are integrated with RocksDB
+     * <p><b>todo:</b> This can be removed once heap-based timers are integrated with RocksDB
      * incremental snapshots.
      */
     void snapshotToRawKeyedState(

@@ -158,7 +158,7 @@ public final class LookupJoinUtil {
         int[] lookupKeyIndicesInOrder = getOrderedLookupKeys(lookupKeys);
 
         if (temporalTable instanceof TableSourceTable) {
-            // TODO: support nested lookup keys in the future,
+            // todo: support nested lookup keys in the future,
             //  currently we only support top-level lookup keys
             int[][] indices =
                     IntStream.of(lookupKeyIndicesInOrder)

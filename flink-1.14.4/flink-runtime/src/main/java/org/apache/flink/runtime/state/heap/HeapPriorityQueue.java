@@ -168,7 +168,7 @@ public class HeapPriorityQueue<T extends HeapPriorityQueueElement>
             final int grow = (oldArraySize < 64) ? oldArraySize + 2 : oldArraySize >> 1;
             resizeQueueArray(oldArraySize + grow, minRequiredNewSize);
         }
-        // TODO implement shrinking as well?
+        // todo implement shrinking as well?
         return minRequiredNewSize;
     }
 }

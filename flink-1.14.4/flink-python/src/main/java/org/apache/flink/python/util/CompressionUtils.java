@@ -242,7 +242,7 @@ public class CompressionUtils {
                         addIfBitSet(mode, 0, permissions, PosixFilePermission.OTHERS_EXECUTE);
                         // the permission of the target file will be set to be the same as the
                         // symlink
-                        // TODO: support setting the permission without following links
+                        // todo: support setting the permission without following links
                         try {
                             Files.setPosixFilePermissions(outputPath, permissions);
                         } catch (NoSuchFileException e) {

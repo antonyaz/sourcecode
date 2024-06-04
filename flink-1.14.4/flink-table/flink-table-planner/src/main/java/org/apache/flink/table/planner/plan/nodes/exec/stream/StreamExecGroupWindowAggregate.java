@@ -372,7 +372,7 @@ public class StreamExecGroupWindowAggregate extends StreamExecAggregateBase {
             } else if (isProctimeAttribute(timeField) && hasRowIntervalType(size)) {
                 builder = builder.countWindow(toLong(size));
             } else {
-                // TODO: EventTimeTumblingGroupWindow should sort the stream on event time
+                // todo: EventTimeTumblingGroupWindow should sort the stream on event time
                 // before applying the  windowing logic. Otherwise, this would be the same as a
                 // ProcessingTimeTumblingGroupWindow
                 throw new UnsupportedOperationException(
@@ -392,7 +392,7 @@ public class StreamExecGroupWindowAggregate extends StreamExecAggregateBase {
             } else if (isProctimeAttribute(timeField) && hasRowIntervalType(size)) {
                 builder = builder.countWindow(toLong(size), toLong(slide));
             } else {
-                // TODO: EventTimeTumblingGroupWindow should sort the stream on event time
+                // todo: EventTimeTumblingGroupWindow should sort the stream on event time
                 // before applying the  windowing logic. Otherwise, this would be the same as a
                 // ProcessingTimeTumblingGroupWindow
                 throw new UnsupportedOperationException(

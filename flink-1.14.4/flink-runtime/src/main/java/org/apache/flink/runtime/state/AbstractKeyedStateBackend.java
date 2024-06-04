@@ -321,7 +321,7 @@ public abstract class AbstractKeyedStateBackend<K>
     }
 
     /**
-     * TODO: NOTE: This method does a lot of work caching / retrieving states just to update the
+     * todo: NOTE: This method does a lot of work caching / retrieving states just to update the
      * namespace. This method should be removed for the sake of namespaces being lazily fetched from
      * the keyed state backend, or being set on the state directly.
      *
@@ -379,7 +379,7 @@ public abstract class AbstractKeyedStateBackend<K>
         return keyValueStatesByName.size();
     }
 
-    // TODO remove this once heap-based timers are working with RocksDB incremental snapshots!
+    // todo remove this once heap-based timers are working with RocksDB incremental snapshots!
     public boolean requiresLegacySynchronousTimerSnapshots(CheckpointType checkpointType) {
         return false;
     }

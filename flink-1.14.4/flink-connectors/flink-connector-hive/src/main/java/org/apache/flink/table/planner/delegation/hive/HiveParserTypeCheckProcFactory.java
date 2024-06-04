@@ -1048,7 +1048,7 @@ public class HiveParserTypeCheckProcFactory {
                 }
             } else {
                 // other operators or functions
-                // TODO: should check SqlOperator first and ideally shouldn't be using
+                // todo: should check SqlOperator first and ideally shouldn't be using
                 // ExprNodeGenericFuncDesc at all
                 FunctionInfo fi = HiveParserUtils.getFunctionInfo(funcText);
 
@@ -1187,7 +1187,7 @@ public class HiveParserTypeCheckProcFactory {
                 }
                 if (genericUDF instanceof GenericUDFOPOr) {
                     // flatten OR
-                    // TODO: don't do this because older version UDF only supports 2 args
+                    // todo: don't do this because older version UDF only supports 2 args
                     List<ExprNodeDesc> childrenList = new ArrayList<>(children.size());
                     for (ExprNodeDesc child : children) {
                         if (FunctionRegistry.isOpOr(child)) {
@@ -1199,7 +1199,7 @@ public class HiveParserTypeCheckProcFactory {
                     desc = ExprNodeGenericFuncDesc.newInstance(genericUDF, funcText, children);
                 } else if (genericUDF instanceof GenericUDFOPAnd) {
                     // flatten AND
-                    // TODO: don't do this because older version UDF only supports 2 args
+                    // todo: don't do this because older version UDF only supports 2 args
                     List<ExprNodeDesc> childrenList = new ArrayList<>(children.size());
                     for (ExprNodeDesc child : children) {
                         if (FunctionRegistry.isOpAnd(child)) {

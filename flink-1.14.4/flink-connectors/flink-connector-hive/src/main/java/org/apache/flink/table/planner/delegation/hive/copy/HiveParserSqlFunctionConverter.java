@@ -103,7 +103,7 @@ public class HiveParserSqlFunctionConverter {
                 name, calciteArgTypes, retType, FunctionRegistry.isDeterministic(hiveUDF));
     }
 
-    // TODO: this is not valid. Function names for built-in UDFs are specified in
+    // todo: this is not valid. Function names for built-in UDFs are specified in
     // FunctionRegistry, and only happen to match annotations. For user UDFs, the
     // name is what user specifies at creation time (annotation can be absent,
     // different, or duplicate some other function).
@@ -391,7 +391,7 @@ public class HiveParserSqlFunctionConverter {
         switch (hiveUdfName) {
                 // Follow hive's rules for type inference as oppose to Calcite's
                 // for return type.
-                // TODO: Perhaps we should do this for all functions, not just +,-
+                // todo: Perhaps we should do this for all functions, not just +,-
             case "-":
                 calciteOp =
                         new SqlMonotonicBinaryOperator(

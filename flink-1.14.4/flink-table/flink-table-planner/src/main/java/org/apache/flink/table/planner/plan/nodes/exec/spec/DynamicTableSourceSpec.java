@@ -73,7 +73,7 @@ public class DynamicTableSourceSpec extends CatalogTableSpecBase {
         if (tableSource == null) {
             tableSource =
                     FactoryUtil.createTableSource(
-                            null, // catalog, TODO support create Factory from catalog
+                            null, // catalog, todo support create Factory from catalog
                             objectIdentifier,
                             catalogTable,
                             configuration,

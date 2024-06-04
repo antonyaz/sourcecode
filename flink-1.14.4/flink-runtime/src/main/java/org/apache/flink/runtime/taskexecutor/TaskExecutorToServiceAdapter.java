@@ -35,7 +35,7 @@ public class TaskExecutorToServiceAdapter implements TaskManagerRunner.TaskExecu
     @Override
     public void start() {
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 通过 rpc 服务，启动 TaskExecutor，找 taskExecutor.onStart() 方法
          */
         taskExecutor.start();

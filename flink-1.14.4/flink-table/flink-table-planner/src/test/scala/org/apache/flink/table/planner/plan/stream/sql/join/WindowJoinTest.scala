@@ -486,7 +486,7 @@ class WindowJoinTest extends TableTestBase {
 
   // ----------------------------------------------------------------------------------------
   // Window starts equality and window ends equality are both required for window join.
-  // TODO: In the future, we could support join clause which only includes window starts
+  // todo: In the future, we could support join clause which only includes window starts
   //  equality or window ends equality for TUMBLE or HOP window.
   // ----------------------------------------------------------------------------------------
 

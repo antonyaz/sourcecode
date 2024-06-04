@@ -232,7 +232,7 @@ public class CliOptionsParser {
     }
 
     public static void printHelpGatewayModeClient() {
-        // TODO enable this once gateway mode is in place
+        // todo enable this once gateway mode is in place
         //		HelpFormatter formatter = new HelpFormatter();
         //		formatter.setLeftPadding(5);
         //		formatter.setWidth(80);

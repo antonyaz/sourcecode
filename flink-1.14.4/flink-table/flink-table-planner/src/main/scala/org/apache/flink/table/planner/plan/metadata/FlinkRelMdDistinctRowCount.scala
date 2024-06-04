@@ -75,7 +75,7 @@ class FlinkRelMdDistinctRowCount private extends MetadataHandler[BuiltInMetadata
           val colStats = statistic.getColumnStats(fieldName)
           if (colStats != null && colStats.getNdv != null) {
             // Never let ndv of a column go below 1, as it will result in incorrect calculations.
-            ndv * Math.max(colStats.getNdv.toDouble, 1D)
+            ndv * Math.max(colStats.getNdv.todouble, 1D)
           } else {
             return null
           }

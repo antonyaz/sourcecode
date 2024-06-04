@@ -187,7 +187,7 @@ public class RexLiteral extends RexNode {
     /** The real type of this literal, as reported by {@link #getType}. */
     private final RelDataType type;
 
-    // TODO jvs 26-May-2006:  Use SqlTypeFamily instead; it exists
+    // todo jvs 26-May-2006:  Use SqlTypeFamily instead; it exists
     // for exactly this purpose (to avoid the confusion which results
     // from overloading SqlTypeName).
     /**

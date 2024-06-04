@@ -55,7 +55,7 @@ public class WordCount {
         final MultipleParameterTool params = MultipleParameterTool.fromArgs(args);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  1、内部需要关注成员变量： transformations
          *  2、关于配置的解析
          */
@@ -72,7 +72,7 @@ public class WordCount {
             for (String input : params.getMultiParameterRequired("input")) {
                 if (text == null) {
                     /**
-                     * TODO: 将算子转成transformation 放置到env的成员变量中
+                     * todo: 将算子转成transformation 放置到env的成员变量中
                      * 对接数据源，转成transformation
                      */
                     text = env.readTextFile(input);

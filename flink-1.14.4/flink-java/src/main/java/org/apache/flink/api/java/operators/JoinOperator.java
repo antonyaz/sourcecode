@@ -1048,7 +1048,7 @@ public abstract class JoinOperator<I1, I2, OUT>
     //
     //		@Override
     //		protected Operator<I1> translateToDataFlow(Operator<I1> input1, Operator<I2> input2) {
-    //			// TODO: Runtime support required. Each left tuple may be returned only once.
+    //			// todo: Runtime support required. Each left tuple may be returned only once.
     //			// 	     Special exec strategy (runtime + optimizer) based on hash join required.
     //			// 		 Either no duplicates of right side in HT or left tuples removed from HT after first
     // match.
@@ -1067,7 +1067,7 @@ public abstract class JoinOperator<I1, I2, OUT>
     //
     //		@Override
     //		protected Operator<I2> translateToDataFlow(Operator<I1> input1, Operator<I2> input2) {
-    //			// TODO: Runtime support required. Each right tuple may be returned only once.
+    //			// todo: Runtime support required. Each right tuple may be returned only once.
     //			// 	     Special exec strategy (runtime + optimizer) based on hash join required.
     //			// 		 Either no duplicates of left side in HT or right tuples removed from HT after first
     // match.

@@ -126,7 +126,7 @@ public final class DynamicSinkUtils {
                         schema.toSourceRowDataType(),
                         TypeTransformations.legacyRawToTypeInfoRaw(),
                         TypeTransformations.legacyToNonLegacy());
-        // TODO erase the conversion class earlier when dropping legacy code, esp. FLINK-22321
+        // todo erase the conversion class earlier when dropping legacy code, esp. FLINK-22321
         return TypeConversions.fromLogicalToDataType(fixedDataType.getLogicalType());
     }
 

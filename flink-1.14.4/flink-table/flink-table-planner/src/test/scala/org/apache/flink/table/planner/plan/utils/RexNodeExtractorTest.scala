@@ -376,7 +376,7 @@ class RexNodeExtractorTest extends RexNodeTestBase {
       // amount / id == 100
       rexBuilder.makeCall(SqlStdOperatorTable.EQUALS,
         rexBuilder.makeCall(FlinkSqlOperatorTable.DIVIDE, t0, t1), t2)
-      // TODO supports this case
+      // todo supports this case
       // -amount == 100
       // rexBuilder.makeCall(SqlStdOperatorTable.EQUALS,
       //  rexBuilder.makeCall(SqlStdOperatorTable.UNARY_MINUS, t0), t2)

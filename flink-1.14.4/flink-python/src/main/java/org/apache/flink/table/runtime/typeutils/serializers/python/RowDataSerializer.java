@@ -85,7 +85,7 @@ public class RowDataSerializer extends org.apache.flink.table.runtime.typeutils.
 
         for (int i = 0; i < row.getArity(); i++) {
             if (!row.isNullAt(i)) {
-                // TODO: support RowData natively in Python, then we can eliminate the redundant
+                // todo: support RowData natively in Python, then we can eliminate the redundant
                 // serialize/deserialize
                 fieldSerializers[i].serialize(fieldGetters[i].getFieldOrNull(row), target);
             }

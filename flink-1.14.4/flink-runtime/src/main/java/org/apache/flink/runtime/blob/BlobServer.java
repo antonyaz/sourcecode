@@ -72,7 +72,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  */
 
 /**
- * TODO: add by antony at 2022/5/2
+ * todo: add by antony at 2022/5/2
  * 本身是个线程，注意run()方法
  */
 public class BlobServer extends Thread
@@ -86,7 +86,7 @@ public class BlobServer extends Thread
 
     /** The server socket listening for incoming connections. */
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 通过BIO实现，启动一个BIO的服务器
      */
     private final ServerSocket serverSocket;
@@ -102,7 +102,7 @@ public class BlobServer extends Thread
 
     /** Blob store for distributed file storage, e.g. in HA. */
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 提供存储
      */
     private final BlobStore blobStore;
@@ -112,7 +112,7 @@ public class BlobServer extends Thread
 
     /** The maximum number of concurrent connections. */
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 最大连接数，最大50，可以通过blob.fetch.num-concurrent进行修改或配置
      */
     private final int maxConnections;
@@ -278,7 +278,7 @@ public class BlobServer extends Thread
     }
 
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * blobserver 本身是一个线程
      */
     @Override
@@ -286,7 +286,7 @@ public class BlobServer extends Thread
         try {
             while (!this.shutdownRequested.get()) {
                 /**
-                 * TODO: add by antony at 2022/5/2
+                 * todo: add by antony at 2022/5/2
                  * 每接收到一个客户端的连接，就使用一个线程来专门提供服务
                  */
                 BlobServerConnection conn =

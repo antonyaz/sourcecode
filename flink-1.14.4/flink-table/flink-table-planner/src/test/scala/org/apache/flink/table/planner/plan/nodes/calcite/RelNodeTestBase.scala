@@ -42,7 +42,7 @@ import java.util
 
 /**
  * A base class for rel node test.
- * TODO refactor the metadata test to extract the common logic for all related tests.
+ * todo refactor the metadata test to extract the common logic for all related tests.
  */
 class RelNodeTestBase {
   val tableConfig = new TableConfig()

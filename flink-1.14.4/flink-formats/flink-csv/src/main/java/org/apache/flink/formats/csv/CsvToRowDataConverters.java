@@ -158,7 +158,7 @@ public class CsvToRowDataConverters implements Serializable {
             case FLOAT:
                 return this::convertToFloat;
             case DOUBLE:
-                return this::convertToDouble;
+                return this::converttodouble;
             case CHAR:
             case VARCHAR:
                 return this::convertToString;
@@ -206,7 +206,7 @@ public class CsvToRowDataConverters implements Serializable {
         }
     }
 
-    private double convertToDouble(JsonNode jsonNode) {
+    private double converttodouble(JsonNode jsonNode) {
         if (jsonNode.isDouble()) {
             // avoid redundant toString and parseDouble, for better performance
             return jsonNode.asDouble();
@@ -232,7 +232,7 @@ public class CsvToRowDataConverters implements Serializable {
     private CsvToRowDataConverter convertToTime(TimeType timeType) {
         final int precision = timeType.getPrecision();
         // csv currently is using Time.valueOf() to parse time string
-        // TODO: FLINK-17525 support millisecond and nanosecond
+        // todo: FLINK-17525 support millisecond and nanosecond
         // get number of milliseconds of the day
         if (precision > 3) {
             throw new IllegalArgumentException(

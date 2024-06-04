@@ -109,13 +109,13 @@ public final class JobSubmitHandler
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  在服务器段，加载JobGraphFile文件恢复至JobGraph对象 ，即 反序列化
          */
         CompletableFuture<JobGraph> jobGraphFuture = loadJobGraph(requestBody, nameToFile);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  获取依赖的jar文件
          */
         Collection<Path> jarFiles = getJarFilesToUpload(requestBody.jarFileNames, nameToFile);
@@ -124,7 +124,7 @@ public final class JobSubmitHandler
                 getArtifactFilesToUpload(requestBody.artifactFileNames, nameToFile);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  上传
          */
         CompletableFuture<JobGraph> finalizedJobGraphFuture =
@@ -134,7 +134,7 @@ public final class JobSubmitHandler
                 finalizedJobGraphFuture.thenCompose(
                         jobGraph ->
                                 /**
-                                 *  TODO: add by antony at 2022/5/4
+                                 *  todo: add by antony at 2022/5/4
                                  *  提交JobGraph至Dispatcher (gateway)
                                  *  Dispatcher: 负责启动这个Job的JobManagerRunner，内部启动JobMaster
                                  */

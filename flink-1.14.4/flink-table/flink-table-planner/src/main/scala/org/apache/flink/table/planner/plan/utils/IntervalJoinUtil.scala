@@ -456,7 +456,7 @@ object IntervalJoinUtil {
   }
 
   def satisfyIntervalJoin(join: FlinkLogicalJoin, newLeft: RelNode, newRight: RelNode): Boolean = {
-    // TODO support SEMI/ANTI joinSplitAggregateRuleTest
+    // todo support SEMI/ANTI joinSplitAggregateRuleTest
     if (!join.getJoinType.projectsRight) {
       return false
     }

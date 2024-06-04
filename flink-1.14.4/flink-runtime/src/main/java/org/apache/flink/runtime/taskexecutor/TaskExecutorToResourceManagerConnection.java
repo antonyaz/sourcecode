@@ -101,7 +101,7 @@ public class TaskExecutorToResourceManagerConnection
                 getTargetAddress(),
                 success.getRegistrationId());
         /**
-         *  TODO: add by antony at 2022/5/2
+         *  todo: add by antony at 2022/5/2
          *  注册成功的回调
          */
         registrationListener.onRegistrationSuccess(this, success);
@@ -151,7 +151,7 @@ public class TaskExecutorToResourceManagerConnection
             this.taskExecutorRegistration = taskExecutorRegistration;
         }
 
-        // TODO: 2021/12/11 开始注册，调用的是这个方法
+        // todo: 2021/12/11 开始注册，调用的是这个方法
         @Override
         protected CompletableFuture<RegistrationResponse> invokeRegistration(
                 ResourceManagerGateway resourceManager,
@@ -161,7 +161,7 @@ public class TaskExecutorToResourceManagerConnection
 
             Time timeout = Time.milliseconds(timeoutMillis);
             /**
-             * TODO: add by antony at 2022/5/2
+             * todo: add by antony at 2022/5/2
              * 终于可以发送 注册的 RPC 请求了
              * TaskExecutor 向 ResourceManager 注册，发送注册请求
              */

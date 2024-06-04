@@ -108,7 +108,7 @@ final class IndexGeneratorFactory {
                 public String generate(RowData row) {
                     Object fieldOrNull = fieldGetter.getFieldOrNull(row);
                     final String formattedField;
-                    // TODO we can possibly optimize it to use the nullability of the field
+                    // todo we can possibly optimize it to use the nullability of the field
                     if (fieldOrNull != null) {
                         formattedField = formatFunction.format(fieldOrNull, dateTimeFormatter);
                     } else {

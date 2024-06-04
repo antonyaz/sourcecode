@@ -207,7 +207,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                 RestClusterClientConfiguration.fromConfiguration(configuration);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建 RestClient
          *  netty客户端，
          */
@@ -315,7 +315,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                         () -> {
                             try {
                                 /**
-                                 * TODO: 生成JobGraph文件
+                                 * todo: 生成JobGraph文件
                                  */
                                 final java.nio.file.Path jobGraphFile =
                                         Files.createTempFile("flink-jobgraph", ".bin");
@@ -323,7 +323,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                                         new ObjectOutputStream(
                                                 Files.newOutputStream(jobGraphFile))) {
                                     /**
-                                     * TODO: 1、将JobGraph写入文件中
+                                     * todo: 1、将JobGraph写入文件中
                                      */
                                     objectOut.writeObject(jobGraph);
                                 }
@@ -348,7 +348,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                                             jobGraphFile, RestConstants.CONTENT_TYPE_BINARY));
 
                             /**
-                             * TODO: 2、上传任务所依赖的jars
+                             * todo: 2、上传任务所依赖的jars
                              */
                             for (Path jar : jobGraph.getUserJars()) {
                                 jarFileNames.add(jar.getName());
@@ -391,7 +391,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                                             artifactFileNames);
 
                             /**
-                             * TODO: 二元组（请求体，待上传的文件的集合）
+                             * todo: 二元组（请求体，待上传的文件的集合）
                              */
                             return Tuple2.of(
                                     requestBody, Collections.unmodifiableCollection(filesToUpload));
@@ -405,7 +405,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                                     jobGraph.getName(),
                                     jobGraph.getJobID());
                             /**
-                             *  TODO: add by antony at 2022/5/4
+                             *  todo: add by antony at 2022/5/4
                              *  发送 RPC 请求
                              */
                             return sendRetriableRequest(
@@ -438,7 +438,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                         jobGraphFile -> {
                             try {
                                 /**
-                                 * TODO: 上传完毕后，删除JobGraph文件
+                                 * todo: 上传完毕后，删除JobGraph文件
                                  */
                                 Files.delete(jobGraphFile);
                             } catch (IOException e) {
@@ -870,13 +870,13 @@ public class RestClusterClient<T> implements ClusterClient<T> {
         return retry(
                 () ->
                         /**
-                         * TODO: 1、获取主节点上的WebMonitorEndpoint组件的base url
+                         * todo: 1、获取主节点上的WebMonitorEndpoint组件的base url
                          * RestServer的具体实现，就是WebMonitorEndpoint(内部启动了一个netty服务端)
                          */
                         getWebMonitorBaseUrl()
                                 .thenCompose(
                                         /**
-                                         * TODO: 将  webMonitorBaseUrl作为参数
+                                         * todo: 将  webMonitorBaseUrl作为参数
                                          */
                                         webMonitorBaseUrl -> {
                                             try {

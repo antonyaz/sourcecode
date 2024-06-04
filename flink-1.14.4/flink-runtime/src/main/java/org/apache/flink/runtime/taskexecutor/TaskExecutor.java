@@ -622,7 +622,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
     // ----------------------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 1、TaskExecutor 接受 JobMaster 发送的submitTask 的 RPC请求，来运行 StreamTask
      * 五件事情
      * 1、标记TaskSlot为active
@@ -666,7 +666,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             }
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  1、标记TaskSlot 为active，
              *  如果标记成功，就注销超时任务(任务一旦超时，TaskSlot会被回收)
              */
@@ -684,7 +684,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             // re-integrate offloaded data:
             try {
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  2、从BlobService 下载Task 执行所需的各种资源
                  *      2-1、Job信息
                  *      2-2、Task信息
@@ -731,7 +731,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                             tdd.getAttemptNumber());
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  一系列Task所需要的组件
              */
             InputSplitProvider inputSplitProvider =
@@ -756,7 +756,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                     jobManagerConnection.getClassLoaderHandle();
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  比较重要的
              */
             ResultPartitionConsumableNotifier resultPartitionConsumableNotifier =
@@ -771,7 +771,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                             taskInformation.getJobVertexId(),
                             tdd.getSubtaskIndex());
 
-            // TODO: Pass config value from user program and do overriding here.
+            // todo: Pass config value from user program and do overriding here.
             final StateChangelogStorage<?> changelogStorage;
             try {
                 changelogStorage =
@@ -784,7 +784,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             final JobManagerTaskRestore taskRestore = tdd.getTaskRestore();
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  比较重要的
              */
             final TaskStateManager taskStateManager =
@@ -797,7 +797,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                             checkpointResponder);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  比较重要的
              */
             MemoryManager memoryManager;
@@ -808,7 +808,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             }
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  3、构造Task对象
              *  构造方法的最后 ，初始化了一个线程对象，该线程对象的目标对象及this
              *  构造方法内部还会创建系列其他组件
@@ -856,7 +856,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
                     tdd.getAllocationId());
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  4、向TaskSlotTable 注册该task
              *  taskSlot是TaskExecutor 中的slot 的抽象，由于存在slot共享，所以有可能一个slot 运行了多个Task
              *  TaskSlotTable: 存在于TaskExecutor中 专门负责管理 从节点 TaskSlot 资源，管理了多个 TaskSlot
@@ -865,7 +865,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             boolean taskAdded;
             try {
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  把刚才创建的Task 实例 加入到对应的TaskSlot的tasks集合中
                  */
                 taskAdded = taskSlotTable.addTask(task);
@@ -875,7 +875,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 
             if (taskAdded) {
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  5、启动 task 的执行
                  *  启动task 实例内部的线程， 最终 跳转到Task.run() 处
                  */
@@ -895,7 +895,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             return FutureUtils.completedExceptionally(e);
         }
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  1、Spark 中执行一个 Task 也是一个线程， 不过是封装了一个 TaskRunner 的线程对象，提交到 Executor 中的线程池中来执行
          *  2、Flink 中，执行一个 Task 是通过一个专门的线程来执行这个Task
          *  为什么呢？？
@@ -1031,11 +1031,11 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 
             closeJobManagerConnectionIfNoAllocatedResources(jobId);
         } catch (Throwable t) {
-            // TODO: Do we still need this catch branch?
+            // todo: Do we still need this catch branch?
             onFatalError(t);
         }
 
-        // TODO: Maybe it's better to return an Acknowledge here to notify the JM about the
+        // todo: Maybe it's better to return an Acknowledge here to notify the JM about the
         // success/failure with an Exception
     }
 
@@ -1066,7 +1066,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
     // ----------------------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 触发 checkpoint 运行
      */
     @Override
@@ -1089,14 +1089,14 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  根据 attemptID(taskID) 从 注册表 中找到 Task 对象
          */
         final Task task = taskSlotTable.getTask(executionAttemptID);
 
         if (task != null) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  针对该 task 执行 checkpoint
              */
             task.triggerCheckpointBarrier(checkpointId, checkpointTimestamp, checkpointOptions);
@@ -1189,7 +1189,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
             final String targetAddress,
             final ResourceManagerId resourceManagerId,
             final Time timeout) {
-        // TODO: Filter invalid requests from the resource manager by using the
+        // todo: Filter invalid requests from the resource manager by using the
         // instance/registration Id
 
         log.info(
@@ -2063,7 +2063,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 释放槽位
      */
     private void freeSlotInternal(AllocationID allocationId, Throwable cause) {
@@ -2144,7 +2144,7 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 
         if (taskSlotTable.isValidTimeout(allocationId, ticket)) {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  timeout超时后，需要free Slot
              *  当一个Slot 超时未使用，则TaskExecutor 对其进行回收
              */

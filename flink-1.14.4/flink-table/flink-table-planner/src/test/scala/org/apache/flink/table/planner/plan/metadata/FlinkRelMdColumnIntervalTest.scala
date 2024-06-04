@@ -274,7 +274,7 @@ class FlinkRelMdColumnIntervalTest extends FlinkRelMdHandlerTestBase {
       expr7, relBuilder.literal(10), relBuilder.literal(12))
     val expr10 = relBuilder.call(CASE, expr2, expr9, expr4, expr8, relBuilder.literal(null))
     val expr11 = relBuilder.call(CASE, expr5, relBuilder.literal(1), relBuilder.field(3))
-    // TODO add tests for IF
+    // todo add tests for IF
     val rowType = typeFactory.buildRelNodeRowType(
       Array("f0", "f1", "f2", "f3"),
       Array(new IntType(), new IntType(), new IntType(), new IntType()))
@@ -612,7 +612,7 @@ class FlinkRelMdColumnIntervalTest extends FlinkRelMdHandlerTestBase {
       return
     }
 
-    def toDouble(number: Any): JDouble = {
+    def todouble(number: Any): JDouble = {
       val v = ColumnIntervalUtil.convertNumberToString(number)
         .getOrElse(throw new TableException(""))
       java.lang.Double.valueOf(v)
@@ -624,11 +624,11 @@ class FlinkRelMdColumnIntervalTest extends FlinkRelMdHandlerTestBase {
         case InfiniteValueInterval =>
           (Double.NegativeInfinity, Double.PositiveInfinity, false, false)
         case f: FiniteValueInterval =>
-          (toDouble(f.lower), toDouble(f.upper), f.includeLower, f.includeUpper)
+          (todouble(f.lower), todouble(f.upper), f.includeLower, f.includeUpper)
         case l: LeftSemiInfiniteValueInterval =>
-          (Double.NegativeInfinity, toDouble(l.upper), false, l.includeUpper)
+          (Double.NegativeInfinity, todouble(l.upper), false, l.includeUpper)
         case r: RightSemiInfiniteValueInterval =>
-          (toDouble(r.lower), Double.PositiveInfinity, r.includeLower, false)
+          (todouble(r.lower), Double.PositiveInfinity, r.includeLower, false)
       }
     }
 

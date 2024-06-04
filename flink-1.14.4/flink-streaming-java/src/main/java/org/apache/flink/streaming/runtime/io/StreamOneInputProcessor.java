@@ -63,7 +63,7 @@ public final class StreamOneInputProcessor<IN> implements StreamInputProcessor {
     @Override
     public DataInputStatus processInput() throws Exception {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *
          */
         DataInputStatus status = input.emitNext(output);

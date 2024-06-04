@@ -667,7 +667,7 @@ object TestLegacyFilterableTableSource {
         s"Record_$cnt",
         cnt.toLong.asInstanceOf[AnyRef],
         cnt.toInt.asInstanceOf[AnyRef],
-        cnt.toDouble.asInstanceOf[AnyRef])
+        cnt.todouble.asInstanceOf[AnyRef])
     }
   }
 

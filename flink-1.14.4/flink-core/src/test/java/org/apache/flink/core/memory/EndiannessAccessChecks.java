@@ -160,13 +160,13 @@ public class EndiannessAccessChecks {
                 segment.putDoubleLittleEndian(pos, val);
                 double r = segment.getDoubleBigEndian(pos);
                 double reversed =
-                        Double.longBitsToDouble(Long.reverseBytes(Double.doubleToRawLongBits(r)));
+                        Double.longBitstodouble(Long.reverseBytes(Double.doubleToRawLongBits(r)));
                 assertEquals(val, reversed, 0.0f);
 
                 segment.putDoubleBigEndian(pos, val);
                 r = segment.getDoubleLittleEndian(pos);
                 reversed =
-                        Double.longBitsToDouble(Long.reverseBytes(Double.doubleToRawLongBits(r)));
+                        Double.longBitstodouble(Long.reverseBytes(Double.doubleToRawLongBits(r)));
                 assertEquals(val, reversed, 0.0f);
             }
         }

@@ -56,9 +56,9 @@ public abstract class KafkaMigrationTestBase extends KafkaTestBase {
             new KeyedSerializationSchemaWrapper<>(integerSerializationSchema);
 
     /**
-     * TODO change this to the corresponding savepoint version to be written (e.g. {@link
-     * MigrationVersion#v1_3} for 1.3) TODO and remove all @Ignore annotations on write*Snapshot()
-     * methods to generate savepoints TODO Note: You should generate the savepoint based on the
+     * todo change this to the corresponding savepoint version to be written (e.g. {@link
+     * MigrationVersion#v1_3} for 1.3) todo and remove all @Ignore annotations on write*Snapshot()
+     * methods to generate savepoints todo Note: You should generate the savepoint based on the
      * release branch instead of the master.
      */
     protected final Optional<MigrationVersion> flinkGenerateSavepointVersion = Optional.empty();
@@ -113,7 +113,7 @@ public abstract class KafkaMigrationTestBase extends KafkaTestBase {
             // Create a committed transaction
             testHarness.processElement(42, 0L);
 
-            // TODO: when stop with savepoint is available, replace this code with it (with stop
+            // todo: when stop with savepoint is available, replace this code with it (with stop
             // with savepoint
             // there won't be any pending transactions)
             OperatorSubtaskState snapshot = testHarness.snapshot(0L, 1L);

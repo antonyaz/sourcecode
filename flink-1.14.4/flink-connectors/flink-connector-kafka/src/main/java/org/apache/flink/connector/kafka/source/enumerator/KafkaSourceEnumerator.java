@@ -305,7 +305,7 @@ public class KafkaSourceEnumerator
             LOG.debug("Partition discovery is disabled.");
             noMoreNewPartitionSplits = true;
         }
-        // TODO: Handle removed partitions.
+        // todo: Handle removed partitions.
         addPartitionSplitChangeToPendingAssignments(partitionSplitChange.newPartitionSplits);
         assignPendingPartitionSplits(context.registeredReaders().keySet());
     }

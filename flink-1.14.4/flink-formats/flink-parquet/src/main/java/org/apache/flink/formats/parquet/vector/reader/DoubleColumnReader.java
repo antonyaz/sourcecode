@@ -74,7 +74,7 @@ public class DoubleColumnReader extends AbstractColumnReader<WritableDoubleVecto
             int rowId, int num, WritableDoubleVector column, WritableIntVector dictionaryIds) {
         for (int i = rowId; i < rowId + num; ++i) {
             if (!column.isNullAt(i)) {
-                column.setDouble(i, dictionary.decodeToDouble(dictionaryIds.getInt(i)));
+                column.setDouble(i, dictionary.decodetodouble(dictionaryIds.getInt(i)));
             }
         }
     }

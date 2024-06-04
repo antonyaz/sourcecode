@@ -35,7 +35,7 @@ import java.io.InputStream;
  * <p>Note: None of these BLOBs is highly available (HA). This case is covered by BLOBs in the
  * {@link PermanentBlobService}.
  *
- * <p>TODO: change API to not rely on local files but return {@link InputStream} objects
+ * <p>todo: change API to not rely on local files but return {@link InputStream} objects
  */
 public interface TransientBlobService extends Closeable {
 

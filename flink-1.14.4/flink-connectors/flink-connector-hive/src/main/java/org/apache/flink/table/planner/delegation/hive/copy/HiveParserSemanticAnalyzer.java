@@ -517,7 +517,7 @@ public class HiveParserSemanticAnalyzer {
                     sampleCols.add((HiveParserASTNode) sampleClause.getChild(i));
                 }
             }
-            // TODO: For now only support sampling on up to two columns
+            // todo: For now only support sampling on up to two columns
             // Need to change it to list of columns
             if (sampleCols.size() > 2) {
                 throw new SemanticException(
@@ -618,7 +618,7 @@ public class HiveParserSemanticAnalyzer {
         // then we don't have a table name.
         HiveParserASTNode tabName = (HiveParserASTNode) virtualTableRefChildren.get(0);
         if (tabName.getToken().getType() != HiveASTParser.TOK_ANONYMOUS) {
-            // TODO, if you want to make select ... from (values(...) as foo(...) work,
+            // todo, if you want to make select ... from (values(...) as foo(...) work,
             // you need to parse this list of columns names and build it into the table
             throw new SemanticException(ErrorMsg.VALUES_TABLE_CONSTRUCTOR_NOT_SUPPORTED.getMsg());
         }
@@ -965,7 +965,7 @@ public class HiveParserSemanticAnalyzer {
                                     (HiveParserASTNode) ast.getChild(0).getChild(0),
                                     currentDatabase);
                     qbp.addInsertIntoTable(tabName, ast);
-                    // TODO: hive doesn't break here, so we copy what's below here
+                    // todo: hive doesn't break here, so we copy what's below here
                     handleTokDestination(ctx1, ast, qbp, plannerCtx);
                     break;
 
@@ -1436,7 +1436,7 @@ public class HiveParserSemanticAnalyzer {
         }
     }
 
-    // TODO: check view references, too
+    // todo: check view references, too
     private void gatherCTEReferences(
             HiveParserQB qb, HiveParserBaseSemanticAnalyzer.CTEClause current)
             throws HiveException {
@@ -1909,7 +1909,7 @@ public class HiveParserSemanticAnalyzer {
     }
 
     @SuppressWarnings("nls")
-    // TODO: make aliases unique, otherwise needless rewriting takes place
+    // todo: make aliases unique, otherwise needless rewriting takes place
     public Integer genColListRegex(
             String colRegex,
             String tabAlias,
@@ -1932,7 +1932,7 @@ public class HiveParserSemanticAnalyzer {
                     HiveParserErrorMsg.getMsg(ErrorMsg.INVALID_TABLE_ALIAS, sel));
         }
 
-        // TODO: Have to put in the support for AS clause
+        // todo: Have to put in the support for AS clause
         Pattern regex;
         try {
             regex = Pattern.compile(colRegex, Pattern.CASE_INSENSITIVE);
@@ -2055,7 +2055,7 @@ public class HiveParserSemanticAnalyzer {
                 }
                 // First, look up the column from the source against which * is to be resolved.
                 // We'd later translated this into the column from proper input, if it's valid.
-                // TODO: excludeCols may be possible to remove using the same technique.
+                // todo: excludeCols may be possible to remove using the same technique.
                 String name = colInfo.getInternalName();
                 String[] tmp = colSrcRR.reverseLookup(name);
 
@@ -2075,7 +2075,7 @@ public class HiveParserSemanticAnalyzer {
 
                 // If input (GBY) is different than the source of columns, find the
                 // same column in input.
-                // TODO: This is fraught with peril.
+                // todo: This is fraught with peril.
                 if (input != colSrcRR) {
                     colInfo = input.get(tabAlias, tmp[1]);
                     if (colInfo == null) {

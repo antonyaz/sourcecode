@@ -67,7 +67,7 @@ abstract class FlinkLogicalRankRuleBase
     val exprList = calcProgram.getProjectList.map(calcProgram.expandLocalRef)
 
     val inputFields = RelOptUtil.InputFinder.bits(exprList, null).toList
-    // TODO use the field name specified by user
+    // todo use the field name specified by user
     // the field name may be dropped by `ProjectToWindowRule`. so use field name in calc
     // if the calc output rank number directly, otherwise use field name in window now
     val outputRankNumber = inputFields.contains(rankFieldIndex)

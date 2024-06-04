@@ -52,7 +52,7 @@ import static org.apache.flink.table.planner.utils.StreamExchangeModeUtils.getBa
 /**
  * This {@link ExecNode} represents a change of partitioning of the input elements for batch.
  *
- * <p>TODO Remove this class once FLINK-21224 is finished.
+ * <p>todo Remove this class once FLINK-21224 is finished.
  */
 public class BatchExecExchange extends CommonExecExchange implements BatchExecNode<RowData> {
     // the required exchange mode for reusable BatchExecExchange

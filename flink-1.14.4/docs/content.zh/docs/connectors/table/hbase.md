@@ -302,7 +302,7 @@ float toFloat(byte[] bytes)
       <td>
 {{< highlight "java" >}}
 byte[] toBytes(double val)
-double toDouble(byte[] bytes)
+double todouble(byte[] bytes)
 {{< /highlight >}}
       </td>
     </tr>

@@ -51,7 +51,7 @@ public class DataStreamQueryOperation<E> implements QueryOperation {
     private final DataStream<E> dataStream;
     private final int[] fieldIndices;
     private final ResolvedSchema resolvedSchema;
-    // TODO remove this while ResolvedSchema supports fieldNullables
+    // todo remove this while ResolvedSchema supports fieldNullables
     private final boolean[] fieldNullables;
     private final FlinkStatistic statistic;
 

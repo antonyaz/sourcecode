@@ -280,7 +280,7 @@ class TableSourceTest extends TableTestBase {
          |""".stripMargin
     )
 
-    //TODO: always push projection into table source in FLINK-22118
+    //todo: always push projection into table source in FLINK-22118
     util.verifyExecPlan(
       s"""
          |SELECT

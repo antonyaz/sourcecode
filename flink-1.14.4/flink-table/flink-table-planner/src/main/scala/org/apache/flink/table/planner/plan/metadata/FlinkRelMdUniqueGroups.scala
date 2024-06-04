@@ -303,7 +303,7 @@ class FlinkRelMdUniqueGroups private extends MetadataHandler[UniqueGroups] {
       }
 
       val groupingOutCols = groupingInToOutMap.values
-      // TODO drop some nonGroupingCols base on FlinkRelMdColumnUniqueness#areColumnsUnique(window)
+      // todo drop some nonGroupingCols base on FlinkRelMdColumnUniqueness#areColumnsUnique(window)
       val nonGroupingCols = columnList.filterNot(groupingOutCols.contains)
       ImmutableBitSet.of(uniqueGroupsFromGrouping).union(ImmutableBitSet.of(nonGroupingCols))
     }

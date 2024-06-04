@@ -391,7 +391,7 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 作用：标记TaskSlot 为 active
      * 背景信息： 在申请slot的时候，如果一个TaskExecutor 提供了一个TaskSlot  给某一个 JobMaster 去使用时，
      * 只要完成了申请/分派，那么TaskExecutor 就需要去注册一个 超时任务，作用就是为了防止这个TaskSlot被申请了
@@ -399,7 +399,7 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
      */
     private boolean markExistingSlotActive(TaskSlot<T> taskSlot) {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  1、标记TaskSlot 为active
          */
         if (taskSlot.markActive()) {
@@ -407,7 +407,7 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
             LOG.info("Activate slot {}.", taskSlot.getAllocationId());
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  2、标记成功后，取消TaskSlot的超时任务
              */
             timerService.unregisterTimeout(taskSlot.getAllocationId());
@@ -509,7 +509,7 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * TaskExecutor：    TaskSlotTable       TaskSlot
      * ResourceManager  SlotManagerImpl     TaskManagerSlot
      * JobMaster        SlotPoolImpl        AllocatedSlot
@@ -517,14 +517,14 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
     @Override
     public boolean tryMarkSlotActive(JobID jobId, AllocationID allocationId) {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          * 获取TaskSlot
          */
         TaskSlot<T> taskSlot = getTaskSlot(allocationId);
 
         if (taskSlot != null && taskSlot.isAllocated(jobId, allocationId)) {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  标记TaskSlot 为 Active
              */
             return markExistingSlotActive(taskSlot);
@@ -570,19 +570,19 @@ public class TaskSlotTableImpl<T extends TaskSlotPayload> implements TaskSlotTab
         Preconditions.checkNotNull(task);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  taskSlot 是 TaskExecutor 中 slot 的抽象对象
          */
         TaskSlot<T> taskSlot = getTaskSlot(task.getAllocationId());
 
         if (taskSlot != null) {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  判定是否处于active状态
              */
             if (taskSlot.isActive(task.getJobID(), task.getAllocationId())) {
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  只有被标记为active的时候，才会加入到tasks集合额中
                  */
                 if (taskSlot.add(task)) {

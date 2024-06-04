@@ -476,7 +476,7 @@ public class CheckpointCoordinator {
 
         checkNotNull(checkpointProperties);
 
-        // TODO, call triggerCheckpoint directly after removing timer thread
+        // todo, call triggerCheckpoint directly after removing timer thread
         // for now, execute the trigger in timer thread to avoid competition
         final CompletableFuture<CompletedCheckpoint> resultFuture = new CompletableFuture<>();
         timer.execute(
@@ -520,7 +520,7 @@ public class CheckpointCoordinator {
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  核心逻辑两个事情
          *  1、构造一个  CheckpointTriggerRequest RPC 请求对象
          *  2、JobMaster 发送 RPC 请求给 SourceStreamTask 所在节点的 TaskExecutor
@@ -534,7 +534,7 @@ public class CheckpointCoordinator {
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      *  JobMaster 中执行 checkpoint 内部逻辑：
      *  1、生成 CheckpointID(Barrier使用) 和  CheckpointStorageLocation
      *  2、*重要* 生成 PendingCheckpointRequest 对象 (JobMaster管理)
@@ -563,7 +563,7 @@ public class CheckpointCoordinator {
                                     plan -> {
                                         try {
                                             /**
-                                             *  TODO: add by antony at 2022/5/4
+                                             *  todo: add by antony at 2022/5/4
                                              *  1、初始化checkpointID 和 checkpointStorageLocation
                                              */
                                             CheckpointIdAndStorageLocation
@@ -581,7 +581,7 @@ public class CheckpointCoordinator {
                             .thenApplyAsync(
                                     (checkpointInfo) ->
                                             /**
-                                             *  TODO: add by antony at 2022/5/4
+                                             *  todo: add by antony at 2022/5/4
                                              *  2、创建 PendingCheckpoint ，如果checkpoint 完成，会变成
                                              *  CompletedCheckpoint
                                              *
@@ -622,7 +622,7 @@ public class CheckpointCoordinator {
                                         FutureUtils.getWithoutException(
                                                 pendingCheckpointCompletableFuture);
                                 /**
-                                 *  TODO: add by antony at 2022/5/4
+                                 *  todo: add by antony at 2022/5/4
                                  *  3、开始执行checkpoint 重点，让 task 拍摄快照： 持久化状态数据
                                  */
                                 return snapshotMasterState(checkpoint);
@@ -650,7 +650,7 @@ public class CheckpointCoordinator {
                                             }
                                         } else {
                                             /**
-                                             *  TODO: add by antony at 2022/5/4
+                                             *  todo: add by antony at 2022/5/4
                                              *  4、触发 checkpoint rpc 请求  重点方法
                                              */
                                             triggerCheckpointRequest(
@@ -674,7 +674,7 @@ public class CheckpointCoordinator {
                                     }));
         } catch (Throwable throwable) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  checkpoint 失败回调
              */
             onTriggerFailure(request, throwable);
@@ -691,7 +691,7 @@ public class CheckpointCoordinator {
                             checkpoint.getFailureCause()));
         } else {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  触发rpc 请求  重点
              */
             triggerTasks(request, timestamp, checkpoint)
@@ -729,7 +729,7 @@ public class CheckpointCoordinator {
             // So we need to complete this pending checkpoint.
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *
              */
             if (maybeCompleteCheckpoint(checkpoint)) {
@@ -742,7 +742,7 @@ public class CheckpointCoordinator {
             CheckpointTriggerRequest request, long timestamp, PendingCheckpoint checkpoint) {
         // no exception, no discarding, everything is OK
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  获取checkpointID
          */
         final long checkpointId = checkpoint.getCheckpointID();
@@ -758,7 +758,7 @@ public class CheckpointCoordinator {
         // send messages to the tasks to trigger their checkpoints
         List<CompletableFuture<Acknowledge>> acks = new ArrayList<>();
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  在 ExecutionGraph中 每个顶点为 ExecutionVertex
          *  在执行 deploy() 的时候，真正执行部署的是 ExecutionVertex 中的一个成员变量 Execution
          *  ExecutionVertex.deploy() {
@@ -778,7 +778,7 @@ public class CheckpointCoordinator {
          */
         for (Execution execution : checkpoint.getCheckpointPlan().getTasksToTrigger()) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  同步
              */
             if (request.props.isSynchronous()) {
@@ -963,7 +963,7 @@ public class CheckpointCoordinator {
      * @param throwable the reason of trigger failure
      */
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 1、取消当前正在进行的checkpoint
      * 2、取消 PendingCheckpoint
      * 3、执行队列中的 checkpoint  请求
@@ -977,7 +977,7 @@ public class CheckpointCoordinator {
 
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  取消当前正在进行的checkpoint
              */
             coordinatorsToCheckpoint.forEach(
@@ -998,7 +998,7 @@ public class CheckpointCoordinator {
 
                 synchronized (lock) {
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  取消 PendingCheckpoint
                      */
                     abortPendingCheckpoint(checkpoint, cause);
@@ -1015,7 +1015,7 @@ public class CheckpointCoordinator {
         } finally {
             isTriggering = false;
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  执行队列中的  checkpoint 请求
              */
             executeQueuedRequest();
@@ -1851,7 +1851,7 @@ public class CheckpointCoordinator {
 
             periodicScheduling = true;
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  注意两个参数：
              *  minPauseBetweenCheckpoints： 两次checkpoint  之间的停顿时间
              *  baseInterval： 上次开始和下一次开始之间的时间
@@ -1927,7 +1927,7 @@ public class CheckpointCoordinator {
 
     private ScheduledFuture<?> scheduleTriggerWithDelay(long initDelay) {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  initDelay： 延期时间
          *  baseInterval： 间隔时间
          *
@@ -1936,7 +1936,7 @@ public class CheckpointCoordinator {
          */
         return timer.scheduleAtFixedRate(
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  定时触发checkpoint ：  ScheduledTrigger
                  */
                 new ScheduledTrigger(), initDelay, baseInterval, TimeUnit.MILLISECONDS);
@@ -1967,7 +1967,7 @@ public class CheckpointCoordinator {
 
             if (jobStatusListener == null) {
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  监听器
                  *  回调方法： jobStatusChanges
                  */
@@ -2001,7 +2001,7 @@ public class CheckpointCoordinator {
         public void run() {
             try {
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  触发 checkpoint
                  *  当前代码依然在 JobMaster 中执行
                  */

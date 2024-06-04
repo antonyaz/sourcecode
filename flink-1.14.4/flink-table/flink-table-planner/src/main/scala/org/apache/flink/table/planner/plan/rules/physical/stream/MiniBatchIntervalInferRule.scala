@@ -69,7 +69,7 @@ class MiniBatchIntervalInferRule extends RelOptRule(
 
     val updatedTrait = rel match {
       case _: StreamPhysicalGroupWindowAggregate =>
-        // TODO introduce mini-batch window aggregate later
+        // todo introduce mini-batch window aggregate later
         MiniBatchIntervalTrait.NO_MINIBATCH
 
       case _: StreamPhysicalWatermarkAssigner => MiniBatchIntervalTrait.NONE
@@ -130,7 +130,7 @@ class MiniBatchIntervalInferRule extends RelOptRule(
         mode == MiniBatchMode.RowTime || mode == MiniBatchMode.ProcTime
       case _: StreamPhysicalWatermarkAssigner  =>
         // append minibatch node if it is rowtime mode and the child is watermark assigner
-        // TODO: if it is ProcTime mode, we also append a minibatch node for now.
+        // todo: if it is ProcTime mode, we also append a minibatch node for now.
         //  Because the downstream can be a regular aggregate and the watermark assigner
         //  might be redundant. In FLINK-14621, we will remove redundant watermark assigner,
         //  then we can remove the ProcTime condition.

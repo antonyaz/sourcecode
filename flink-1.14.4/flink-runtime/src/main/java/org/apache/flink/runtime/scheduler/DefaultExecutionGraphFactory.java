@@ -104,7 +104,7 @@ public class DefaultExecutionGraphFactory implements ExecutionGraphFactory {
                 };
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  通过 DefaultExecutionGraphBuilder  来 构造 ExecutionGraph
          */
         final ExecutionGraph newExecutionGraph =
@@ -131,7 +131,7 @@ public class DefaultExecutionGraphFactory implements ExecutionGraphFactory {
                         vertexParallelismStore);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *
          */
         final CheckpointCoordinator checkpointCoordinator =

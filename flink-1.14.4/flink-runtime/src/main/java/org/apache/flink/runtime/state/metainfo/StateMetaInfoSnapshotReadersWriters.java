@@ -52,7 +52,7 @@ public class StateMetaInfoSnapshotReadersWriters {
      * Enum for backwards compatibility. This gives a hint about the expected state type for which a
      * {@link StateMetaInfoSnapshot} should be deserialized.
      *
-     * <p>TODO this can go away after we eventually drop backwards compatibility with all versions <
+     * <p>todo this can go away after we eventually drop backwards compatibility with all versions <
      * 5.
      */
     public enum StateTypeHint {

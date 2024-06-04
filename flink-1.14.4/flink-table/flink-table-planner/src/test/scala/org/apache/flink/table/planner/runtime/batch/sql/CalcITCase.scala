@@ -339,7 +339,7 @@ class CalcITCase extends BatchTestBase {
     // If the timestamp literal '1969-07-20 16:17:39' is inserted in Washington D.C.
     // and then queried from Paris, it might be shown in the following ways based
     // on timestamp semantics:
-    // TODO: Add ZonedDateTime/OffsetDateTime
+    // todo: Add ZonedDateTime/OffsetDateTime
     val new_york = ZoneId.of("America/New_York")
     val ldt = localDateTime("1969-07-20 16:17:39")
     val data = Seq(row(
@@ -598,7 +598,7 @@ class CalcITCase extends BatchTestBase {
         row(row(105, 105))))
   }
 
-  // TODO
+  // todo
 //  @Test
 //  def testUDFWithGetResultTypeFromLiteral(): Unit = {
 //    registerFunction("hashCode0", LiteralHashCode)
@@ -900,7 +900,7 @@ class CalcITCase extends BatchTestBase {
     )
   }
 
-  @Ignore // TODO support Unicode
+  @Ignore // todo support Unicode
   @Test
   def testFunctionWithUnicodeParameters(): Unit = {
     val data = List(
@@ -1169,7 +1169,7 @@ class CalcITCase extends BatchTestBase {
   }
 
   /**
-    * TODO Support below string timestamp format to cast to timestamp:
+    * todo Support below string timestamp format to cast to timestamp:
     * yyyy
     * yyyy-[m]m
     * yyyy-[m]m-[d]d

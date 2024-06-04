@@ -556,7 +556,7 @@ public final class LogicalTypeCasts {
 
             if (sourceType.isNullable() && !targetType.isNullable()
                     || sourceType.getClass() != targetType.getClass()
-                    || // TODO drop this line once we remove legacy types
+                    || // todo drop this line once we remove legacy types
                     sourceType.getTypeRoot() != targetType.getTypeRoot()) {
                 return false;
             }

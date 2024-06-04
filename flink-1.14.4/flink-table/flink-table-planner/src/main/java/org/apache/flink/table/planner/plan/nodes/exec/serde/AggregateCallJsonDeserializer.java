@@ -143,7 +143,7 @@ public class AggregateCallJsonDeserializer extends StdDeserializer<AggregateCall
                 ctx.getFlinkContext().getCatalogManager().getDataTypeFactory();
 
         // built-in function
-        // TODO supports other module's built-in function
+        // todo supports other module's built-in function
         if (jsonNode.has(FIELD_NAME_BUILT_IN) && jsonNode.get(FIELD_NAME_BUILT_IN).booleanValue()) {
             Optional<FunctionDefinition> definition =
                     CoreModule.INSTANCE.getFunctionDefinition(name);

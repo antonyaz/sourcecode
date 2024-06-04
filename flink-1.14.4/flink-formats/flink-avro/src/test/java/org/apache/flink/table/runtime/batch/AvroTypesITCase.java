@@ -168,7 +168,7 @@ public class AvroTypesITCase extends AbstractTestBase {
         List<Row> results =
                 CollectionUtil.iteratorToList(
                         DataStreamUtils.collect(tEnv.toAppendStream(result, Row.class)));
-        // TODO we should get an Avro record here instead of a nested row.
+        // todo we should get an Avro record here instead of a nested row.
         //  This should be fixed with FLIP-136
         String expected =
                 "+I[black, null, Whatever, [true], [hello], true, java.nio.HeapByteBuffer[pos=0 lim=10 cap=10], "

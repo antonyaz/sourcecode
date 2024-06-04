@@ -452,7 +452,7 @@ public class SqlDateTimeUtils {
     /** Returns the epoch days since 1970-01-01. */
     public static int strToDate(String dateStr, String fromFormat) {
         // It is OK to use UTC, we just want get the epoch days
-        // TODO  use offset, better performance
+        // todo  use offset, better performance
         long ts = parseToTimeMillis(dateStr, fromFormat, TimeZone.getTimeZone("UTC"));
         ZoneId zoneId = ZoneId.of("UTC");
         Instant instant = Instant.ofEpochMilli(ts);
@@ -745,14 +745,14 @@ public class SqlDateTimeUtils {
                 } else if (type instanceof DateType) {
                     return divide(utcTs, TimeUnit.DAY.multiplier);
                 } else {
-                    // TODO support it
+                    // todo support it
                     throw new TableException(type + " is unsupported now.");
                 }
             case DECADE:
-                // TODO support it
+                // todo support it
                 throw new TableException("DECADE is unsupported now.");
             case EPOCH:
-                // TODO support it
+                // todo support it
                 throw new TableException("EPOCH is unsupported now.");
             case MICROSECOND:
                 if (type instanceof TimestampType) {
@@ -962,7 +962,7 @@ public class SqlDateTimeUtils {
      * own method of handling date changes such as leap seconds(e.g. OS will slow down the clock to
      * accommodate for this). (2). DST(Daylight Saving Time) is a legal issue, governments changed
      * it over time. Some days are NOT exactly 24 hours long, it could be 23/25 hours long on the
-     * first or last day of daylight saving time. JDK can handle DST correctly. TODO: carefully
+     * first or last day of daylight saving time. JDK can handle DST correctly. todo: carefully
      * written algorithm can improve the performance
      */
     public static int dateDiff(long t1, long t2, TimeZone tz) {

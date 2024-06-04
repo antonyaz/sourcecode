@@ -337,7 +337,7 @@ public class HybridSourceSplitEnumerator
 
         @Override
         public Map<Integer, ReaderInfo> registeredReaders() {
-            // TODO: not start enumerator until readers are ready?
+            // todo: not start enumerator until readers are ready?
             Map<Integer, ReaderInfo> readers = realContext.registeredReaders();
             if (readers.size() != readerSourceIndex.size()) {
                 return filterRegisteredReaders(readers);

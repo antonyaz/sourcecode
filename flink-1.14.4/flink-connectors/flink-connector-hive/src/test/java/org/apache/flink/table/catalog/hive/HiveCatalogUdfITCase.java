@@ -71,7 +71,7 @@ import java.util.stream.Stream;
 import static java.lang.String.format;
 
 /**
- * IT case for HiveCatalog. TODO: move to flink-connector-hive-test end-to-end test module once it's
+ * IT case for HiveCatalog. todo: move to flink-connector-hive-test end-to-end test module once it's
  * setup
  */
 public class HiveCatalogUdfITCase extends AbstractTestBase {

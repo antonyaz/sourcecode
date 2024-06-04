@@ -99,7 +99,7 @@ class FlinkRelMdDistinctRowCountTest extends FlinkRelMdHandlerTestBase {
     assertEquals(21.90,
       mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(5), null), 1e-2)
     assertEquals(35.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(6), null))
-    // TODO check result ??
+    // todo check result ??
     assertEquals(5.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(7), null), 1e-2)
     assertEquals(1.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(8), null))
     assertEquals(1.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(9), null))
@@ -121,7 +121,7 @@ class FlinkRelMdDistinctRowCountTest extends FlinkRelMdHandlerTestBase {
     assertEquals(21.90,
       mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(5), expr1), 1e-2)
     assertEquals(22.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(6), expr1), 1e-2)
-    // TODO check result ??
+    // todo check result ??
     assertEquals(5.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(7), expr1), 1e-2)
     assertEquals(1.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(8), expr1))
     assertEquals(1.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(9), expr1))
@@ -145,7 +145,7 @@ class FlinkRelMdDistinctRowCountTest extends FlinkRelMdHandlerTestBase {
     assertEquals(21.90,
       mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(5), expr2), 1e-2)
     assertEquals(1.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(6), expr2), 1e-2)
-    // TODO check result ??
+    // todo check result ??
     assertEquals(5.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(7), expr2), 1e-2)
     assertEquals(1.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(8), expr2))
     assertEquals(1.0, mq.getDistinctRowCount(logicalProject, ImmutableBitSet.of(9), expr2))
@@ -314,7 +314,7 @@ class FlinkRelMdDistinctRowCountTest extends FlinkRelMdHandlerTestBase {
         assertEquals(5.0, mq.getDistinctRowCount(rank, ImmutableBitSet.of(3, 5), null))
     }
 
-    // TODO FLINK-12282
+    // todo FLINK-12282
     assertEquals(1.0, mq.getDistinctRowCount(batchGlobalRank, ImmutableBitSet.of(), null))
     assertEquals(1.0, mq.getDistinctRowCount(batchGlobalRank, ImmutableBitSet.of(0), null))
     assertEquals(1.0, mq.getDistinctRowCount(batchGlobalRank, ImmutableBitSet.of(1), null))

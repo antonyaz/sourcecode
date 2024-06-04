@@ -89,7 +89,7 @@ public class ZooKeeperLeaderRetrievalDriver implements LeaderRetrievalDriver {
         this.connectionInformationPath = ZooKeeperUtils.generateConnectionInformationPath(path);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  TreeCache 会自动更新对应path节点数据中的一个缓存组件
          */
         this.cache =

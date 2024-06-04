@@ -183,7 +183,7 @@ object FlinkRexUtil {
     }
 
     private def checkCnfRexCallCount(node: RexNode): Unit = {
-      // TODO use more efficient solution to get number of RexCall in CNF node
+      // todo use more efficient solution to get number of RexCall in CNF node
       if (maxNodeCount >= 0 && getNumberOfRexCall(node) > maxNodeCount) {
         throw INSTANCE
       }

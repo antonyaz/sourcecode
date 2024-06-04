@@ -194,7 +194,7 @@ public abstract class ParquetVectorizedInputFormat<T, SplitT extends FileSourceS
                 if (type == null) {
                     throw new IllegalArgumentException(projectedFields[i] + " does not exist");
                 }
-                // TODO clip for array,map,row types.
+                // todo clip for array,map,row types.
                 types[i] = type;
             }
         }

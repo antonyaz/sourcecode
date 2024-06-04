@@ -159,7 +159,7 @@ final class NonSpanningWrapper implements DataInputView {
 
     @Override
     public final double readDouble() {
-        return Double.longBitsToDouble(readLong());
+        return Double.longBitstodouble(readLong());
     }
 
     @Override

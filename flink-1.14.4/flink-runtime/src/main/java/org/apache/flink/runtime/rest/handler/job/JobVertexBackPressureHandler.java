@@ -123,7 +123,7 @@ public class JobVertexBackPressureHandler
 
     private double getMaxBackPressureRatio(List<SubtaskBackPressureInfo> subtaskBackPressureInfos) {
         return subtaskBackPressureInfos.stream()
-                .mapToDouble(backPressureInfo -> backPressureInfo.getBackPressuredRatio())
+                .maptodouble(backPressureInfo -> backPressureInfo.getBackPressuredRatio())
                 .max()
                 .getAsDouble();
     }

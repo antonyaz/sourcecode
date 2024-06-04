@@ -1088,7 +1088,7 @@ public class HiveCatalog extends AbstractCatalog {
                         partitionSpec);
             }
         }
-        // TODO: handle GenericCatalogPartition
+        // todo: handle GenericCatalogPartition
         StorageDescriptor sd = hiveTable.getSd().deepCopy();
         sd.setLocation(
                 catalogPartition.getProperties().remove(SqlCreateHiveTable.TABLE_LOCATION_URI));

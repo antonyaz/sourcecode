@@ -68,7 +68,7 @@ public class FlinkKafkaInternalProducer<K, V> implements Producer<K, V> {
     // Kafka 2.3.0, we need this workaround before Kafka dependency is bumped to 2.3.0 to avoid
     // deadlock
     // between a transaction committing / aborting thread and a producer closing thread.
-    // TODO: remove the workaround after Kafka dependency is bumped to 2.3.0+
+    // todo: remove the workaround after Kafka dependency is bumped to 2.3.0+
     private final Object producerClosingLock;
     private volatile boolean closed;
 

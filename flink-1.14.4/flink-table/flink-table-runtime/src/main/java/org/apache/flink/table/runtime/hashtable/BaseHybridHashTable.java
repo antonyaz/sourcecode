@@ -144,7 +144,7 @@ public abstract class BaseHybridHashTable implements MemorySegmentPool {
             long buildRowCount,
             boolean tryDistinctBuildRow) {
 
-        // TODO: read compression config from configuration
+        // todo: read compression config from configuration
         this.compressionEnable =
                 conf.getBoolean(ExecutionConfigOptions.TABLE_EXEC_SPILL_COMPRESSION_ENABLED);
         this.compressionCodecFactory =

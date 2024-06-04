@@ -96,7 +96,7 @@ public class SourceStreamTask<
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 如果这个Task为SourceStreamTask，它的内部，会启动一个线程   LegacySourceFunctionThread 来负责对接数据源
      * 如果自定义了一个S肉测组件，需要在每个Taks的内部，都要启动一个对接数据源的线程
      *
@@ -109,7 +109,7 @@ public class SourceStreamTask<
                 StreamTaskActionExecutor.synchronizedExecutor(lock));
         this.lock = Preconditions.checkNotNull(lock);
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  初始化一个对接数据源的线程
          */
         this.sourceThread = new LegacySourceFunctionThread();
@@ -130,11 +130,11 @@ public class SourceStreamTask<
 
                         @Override
                         public void triggerCheckpoint(long checkpointId) throws FlinkException {
-                            // TODO - we need to see how to derive those. We should probably not
+                            // todo - we need to see how to derive those. We should probably not
                             // encode this in the
-                            // TODO -   source's trigger message, but do a handshake in this task
+                            // todo -   source's trigger message, but do a handshake in this task
                             // between the trigger
-                            // TODO -   message from the master, and the source's trigger
+                            // todo -   message from the master, and the source's trigger
                             // notification
                             final CheckpointOptions checkpointOptions =
                                     CheckpointOptions.forConfig(

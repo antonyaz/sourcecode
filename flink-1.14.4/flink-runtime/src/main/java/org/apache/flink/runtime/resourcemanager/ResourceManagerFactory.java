@@ -94,7 +94,7 @@ public abstract class ResourceManagerFactory<T extends ResourceIDRetrievable> {
             throws Exception {
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  初始化系列服务
          */
         final ResourceManagerRuntimeServices resourceManagerRuntimeServices =
@@ -105,7 +105,7 @@ public abstract class ResourceManagerFactory<T extends ResourceIDRetrievable> {
                         context.getSlotManagerMetricGroup());
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建 ResourceManager
          */
         return createResourceManager(

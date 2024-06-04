@@ -84,7 +84,7 @@ public class ProjectWatermarkAssignerTransposeRule extends RelOptRule {
         List<RexInputRef> transposedProjects = new LinkedList<>();
         List<String> usedNames = new LinkedList<>();
 
-        // TODO: support nested projection push down in transpose
+        // todo: support nested projection push down in transpose
         // add the used column RexInputRef and names into list
         for (NestedColumn column : nestedSchema.columns().values()) {
             // mark by hand

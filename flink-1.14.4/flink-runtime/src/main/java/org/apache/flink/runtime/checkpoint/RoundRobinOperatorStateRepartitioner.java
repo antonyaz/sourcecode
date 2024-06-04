@@ -83,7 +83,7 @@ public class RoundRobinOperatorStateRepartitioner
 
             repartitionUnionState(unionStates, mergeMapList);
 
-            // TODO: Currently if some tasks is finished, we would rescale the
+            // todo: Currently if some tasks is finished, we would rescale the
             // remaining state. A better solution would be not touch the non-empty
             // subtask state and only fix the empty ones.
             repartitionBroadcastState(partlyFinishedBroadcastStates, mergeMapList);

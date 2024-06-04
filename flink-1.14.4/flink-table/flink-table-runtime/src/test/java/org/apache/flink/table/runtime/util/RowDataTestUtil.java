@@ -50,7 +50,7 @@ public class RowDataTestUtil {
 
     private static String fieldToString(Object field, TimeZone tz) {
         if (field instanceof Date || field instanceof Time || field instanceof Timestamp) {
-            // TODO support after FLINK-11898 is merged
+            // todo support after FLINK-11898 is merged
             throw new UnsupportedOperationException();
         } else {
             return StringUtils.arrayAwareToString(field);

@@ -101,7 +101,7 @@ public class CheckpointFailureManager {
 
     private boolean isJobManagerFailure(
             CheckpointException exception, @Nullable ExecutionAttemptID executionAttemptID) {
-        // TODO: Try to get rid of checking nullability of executionAttemptID because false value of
+        // todo: Try to get rid of checking nullability of executionAttemptID because false value of
         // isPreFlightFailure should guarantee that executionAttemptID is always not null.
         return isPreFlightFailure(exception) || executionAttemptID == null;
     }

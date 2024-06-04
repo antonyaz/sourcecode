@@ -374,7 +374,7 @@ class StreamPandasUDAFITTests(PyFlinkStreamTableTestCase):
         result = [i for i in iterator]
         # if the WindowAssigner.isEventTime() does not return false,
         # the w.start would be 1970-01-01
-        # TODO: After fixing the TimeZone problem of window with processing time (will be fixed in
+        # todo: After fixing the TimeZone problem of window with processing time (will be fixed in
         # FLIP-162), we should replace it with a more accurate assertion.
         self.assertTrue(result[0][1].year > 1970)
 

@@ -96,9 +96,9 @@ public class OperatorStateRestoreOperation implements RestoreOperation<Void> {
                         // must fail now if the previous typeSerializer cannot be restored because
                         // there is no typeSerializer
                         // capable of reading previous state
-                        // TODO when eager state registration is in place, we can try to get a
+                        // todo when eager state registration is in place, we can try to get a
                         // convert deserializer
-                        // TODO from the newly registered typeSerializer instead of simply failing
+                        // todo from the newly registered typeSerializer instead of simply failing
                         // here
 
                         throw new IOException(
@@ -119,7 +119,7 @@ public class OperatorStateRestoreOperation implements RestoreOperation<Void> {
                         registeredOperatorStates.put(
                                 listState.getStateMetaInfo().getName(), listState);
                     } else {
-                        // TODO with eager state registration in place, check here for
+                        // todo with eager state registration in place, check here for
                         // typeSerializer migration strategies
                     }
                 }
@@ -140,9 +140,9 @@ public class OperatorStateRestoreOperation implements RestoreOperation<Void> {
                         // must fail now if the previous typeSerializer cannot be restored because
                         // there is no typeSerializer
                         // capable of reading previous state
-                        // TODO when eager state registration is in place, we can try to get a
+                        // todo when eager state registration is in place, we can try to get a
                         // convert deserializer
-                        // TODO from the newly registered typeSerializer instead of simply failing
+                        // todo from the newly registered typeSerializer instead of simply failing
                         // here
 
                         throw new IOException(
@@ -163,7 +163,7 @@ public class OperatorStateRestoreOperation implements RestoreOperation<Void> {
                         registeredBroadcastStates.put(
                                 broadcastState.getStateMetaInfo().getName(), broadcastState);
                     } else {
-                        // TODO with eager state registration in place, check here for
+                        // todo with eager state registration in place, check here for
                         // typeSerializer migration strategies
                     }
                 }

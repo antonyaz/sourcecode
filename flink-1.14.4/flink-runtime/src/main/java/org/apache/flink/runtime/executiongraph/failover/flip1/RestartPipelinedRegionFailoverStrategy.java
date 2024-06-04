@@ -117,7 +117,7 @@ public class RestartPipelinedRegionFailoverStrategy implements FailoverStrategy 
         final SchedulingPipelinedRegion failedRegion =
                 topology.getPipelinedRegionOfVertex(executionVertexId);
         if (failedRegion == null) {
-            // TODO: show the task name in the log
+            // todo: show the task name in the log
             throw new IllegalStateException(
                     "Can not find the failover region for task " + executionVertexId, cause);
         }

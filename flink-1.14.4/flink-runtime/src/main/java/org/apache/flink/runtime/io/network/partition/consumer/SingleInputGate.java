@@ -260,14 +260,14 @@ public class SingleInputGate extends IndexedInputGate {
 
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  内存缓冲池
          *  MemorySegment : 内存片段 内部就是一个Buffer
          */
         BufferPool bufferPool = bufferPoolFactory.get();
         setBufferPool(bufferPool);
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  跟InputChannel 申请独占缓存
          */
         setupChannels();
@@ -480,7 +480,7 @@ public class SingleInputGate extends IndexedInputGate {
         // larger than 0.
         synchronized (requestLock) {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  遍历每个 InputChannel，给它申请独占内存
              */
             for (InputChannel inputChannel : inputChannels.values()) {

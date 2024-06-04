@@ -261,8 +261,8 @@ object ClosureCleaner {
       return
     }
 
-    // TODO: clean all inner closures first. This requires us to find the inner objects.
-    // TODO: cache outerClasses / innerClasses / accessedFields
+    // todo: clean all inner closures first. This requires us to find the inner objects.
+    // todo: cache outerClasses / innerClasses / accessedFields
 
     if (func == null) {
       return
@@ -579,7 +579,7 @@ private class FieldAccessFinder(
 private class InnerClosureFinder(output: Set[Class[_]]) extends ClassVisitor(ASM6) {
   var myName: String = null
 
-  // TODO: Recursively find inner closures that we indirectly reference, e.g.
+  // todo: Recursively find inner closures that we indirectly reference, e.g.
   //   val closure1 = () = { () => 1 }
   //   val closure2 = () => { (1 to 5).map(closure1) }
   // The second closure technically has two inner closures, but this finder only finds one

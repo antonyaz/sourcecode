@@ -302,7 +302,7 @@ public class FullSnapshotRestoreOperation<K>
                 // clear the signal bit in the key to make it ready for insertion
                 // again
                 clearMetaDataFollowsFlag(key);
-                // TODO this could be aware of keyGroupPrefixBytes and write only
+                // todo this could be aware of keyGroupPrefixBytes and write only
                 // one byte if possible
                 currentKvStateId = END_OF_KEY_GROUP_MARK & kgInputView.readShort();
                 if (END_OF_KEY_GROUP_MARK == currentKvStateId) {

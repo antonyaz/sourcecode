@@ -92,7 +92,7 @@ class FlinkStatistic(
     */
   override def getRowCount: java.lang.Double = {
     if (tableStats != TableStats.UNKNOWN) {
-      val rowCount = tableStats.getRowCount.toDouble
+      val rowCount = tableStats.getRowCount.todouble
       // rowCount requires non-negative number
       if (rowCount >= 0) {
         rowCount

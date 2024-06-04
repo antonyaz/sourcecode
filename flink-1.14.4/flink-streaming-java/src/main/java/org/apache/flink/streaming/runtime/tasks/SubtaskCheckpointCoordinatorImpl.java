@@ -240,7 +240,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * Task 执行 checkpoint  的 核心逻辑
      */
     @Override
@@ -277,7 +277,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
         // Step (0): Record the last triggered checkpointId and abort the sync phase of checkpoint
         // if necessary.
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  记录上次触发的 checkpointId 并在必要时中止 checkpoint 的同步阶段
          */
         lastCheckpointId = metadata.getCheckpointId();
@@ -301,7 +301,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
         // Step (1): Prepare the checkpoint, allow operators to do some pre-barrier work.
         //           The pre-barrier work should be nothing or minimal in the common case.
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  准备检查点，让操作员做一些预先的屏障工作
          *  在普通情况下， 与故障工作应该没有或很少
          *
@@ -311,7 +311,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
 
         // Step (2): Send the checkpoint barrier downstream
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  最关键的一段代码： 嵌入 barrier  **最重要**
          *  向下游 发送检查点屏障
          *  内部实现：给当前这个 Task 的每个 ResultSubPartition 嵌入一条数据： CheckpointBarrier
@@ -324,7 +324,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
 
         // Step (3): Prepare to spill the in-flight buffers for input and output
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  准备 溢出 输入和输出的 飞行缓冲区
          */
         if (options.isUnalignedCheckpoint()) {
@@ -340,14 +340,14 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
                 new HashMap<>(operatorChain.getNumberOfOperators());
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  执行 checkpoint *比较重要*
              *  当前 Task 的 快照拍摄， Task 执行 Checkpoint
              */
             if (takeSnapshotSync(
                     snapshotFutures, metadata, metrics, options, operatorChain, isRunning)) {
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  发送 ACK 反馈消息给 JobMaster *比较重要*
                  */
                 finishAndReportAsync(
@@ -605,7 +605,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
         // we are transferring ownership over snapshotInProgressList for cleanup to the thread,
         // active on submit
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *
          */
         asyncOperationsThreadPool.execute(asyncCheckpointRunnable);
@@ -638,7 +638,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
                         : ChannelStateWriteResult.EMPTY;
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  解析得到 Checkpoint 的一些保存媒介信息，有可能是内存，有可能是外部存储
          */
         CheckpointStreamFactory storage =
@@ -647,7 +647,7 @@ class SubtaskCheckpointCoordinatorImpl implements SubtaskCheckpointCoordinator {
 
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  持久化 checkpoint
              */
             operatorChain.snapshotState(

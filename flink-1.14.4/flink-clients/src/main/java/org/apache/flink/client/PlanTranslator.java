@@ -83,7 +83,7 @@ public class PlanTranslator implements FlinkPipelineTranslator {
         Optimizer optimizer = new Optimizer(new DataStatistics(), optimizerConfiguration);
         OptimizedPlan optimizedPlan = optimizer.compile(plan);
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  创建JobGraphGenerator
          */
         JobGraphGenerator jobGraphGenerator = new JobGraphGenerator(optimizerConfiguration);

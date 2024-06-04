@@ -82,7 +82,7 @@ class FlinkRelMdRowCountTest extends FlinkRelMdHandlerTestBase {
     Array(logicalRank, flinkLogicalRank, batchLocalRank, streamRank).foreach {
       rank => assertEquals(5.0, mq.getRowCount(rank))
     }
-    // TODO FLINK-12282
+    // todo FLINK-12282
     assertEquals(1.0, mq.getRowCount(batchGlobalRank))
 
     Array(logicalRank2, flinkLogicalRank2, batchLocalRank2, streamRank2).foreach {
@@ -126,7 +126,7 @@ class FlinkRelMdRowCountTest extends FlinkRelMdHandlerTestBase {
       agg => assertEquals(7.0, mq.getRowCount(agg))
     }
 
-    // TODO re-check this
+    // todo re-check this
     Array(streamGlobalAggWithLocal, streamGlobalAggWithoutLocal).foreach {
       agg => assertEquals(50.0, mq.getRowCount(agg))
     }

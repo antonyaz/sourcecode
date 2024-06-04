@@ -108,14 +108,14 @@ class BlobServerConnection extends Thread {
                 switch (operation) {
                     case PUT_OPERATION:
                         /**
-                         * TODO: add by antony at 2022/5/2
+                         * todo: add by antony at 2022/5/2
                          * 提供存储数据
                          */
                         put(inputStream, outputStream, new byte[BUFFER_SIZE]);
                         break;
                     case GET_OPERATION:
                         /**
-                         * TODO: add by antony at 2022/5/2
+                         * todo: add by antony at 2022/5/2
                          * 提供读取数据
                          */
                         get(inputStream, outputStream, new byte[BUFFER_SIZE]);

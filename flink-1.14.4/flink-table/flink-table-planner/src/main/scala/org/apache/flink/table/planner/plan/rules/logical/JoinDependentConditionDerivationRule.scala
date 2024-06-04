@@ -59,7 +59,7 @@ class JoinDependentConditionDerivationRule
 
   override def matches(call: RelOptRuleCall): Boolean = {
     val join: LogicalJoin = call.rel(0)
-    // TODO supports more join type
+    // todo supports more join type
     join.getJoinType == JoinRelType.INNER
   }
 
@@ -101,7 +101,7 @@ class JoinDependentConditionDerivationRule
           rightDisjunctions += builder.and(rightConjunctions)
         }
 
-        // TODO Consider whether it is worth doing a filter if we have histogram.
+        // todo Consider whether it is worth doing a filter if we have histogram.
         if (leftDisjunctions.nonEmpty) {
           additionalConditions += builder.or(leftDisjunctions)
         }

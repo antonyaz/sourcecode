@@ -22,7 +22,7 @@ import org.apache.flink.annotation.Internal;
 
 import javax.annotation.Nonnull;
 
-/** Interface to deal with state snapshot and restore of state. TODO find better name? */
+/** Interface to deal with state snapshot and restore of state. todo find better name? */
 @Internal
 public interface StateSnapshotRestore {
 

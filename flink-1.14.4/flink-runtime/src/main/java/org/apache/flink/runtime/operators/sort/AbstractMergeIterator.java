@@ -162,7 +162,7 @@ public abstract class AbstractMergeIterator<T1, T2, O> implements JoinTaskIterat
         if (v1HasNext) {
             if (v2HasNext) {
                 // both sides contain more than one value
-                // TODO: Decide which side to spill and which to block!
+                // todo: Decide which side to spill and which to block!
                 crossMwithNValues(firstV1, values1, firstV2, values2, joinFunction, collector);
             } else {
                 crossSecond1withNValues(firstV2, firstV1, values1, joinFunction, collector);

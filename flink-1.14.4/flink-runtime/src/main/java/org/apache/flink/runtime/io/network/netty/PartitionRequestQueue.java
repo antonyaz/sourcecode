@@ -85,7 +85,7 @@ class PartitionRequestQueue extends ChannelInboundHandlerAdapter {
         // This can be resolved by separating the creation of the view and allowing
         // notifications.
 
-        // TODO This could potentially have a bad performance impact as in the
+        // todo This could potentially have a bad performance impact as in the
         // worst case (network consumes faster than the producer) each buffer
         // will trigger a separate event loop task being scheduled.
         ctx.executor().execute(() -> ctx.pipeline().fireUserEventTriggered(reader));

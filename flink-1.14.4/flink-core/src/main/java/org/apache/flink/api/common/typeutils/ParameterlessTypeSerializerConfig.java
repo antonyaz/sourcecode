@@ -41,7 +41,7 @@ public final class ParameterlessTypeSerializerConfig<T> extends TypeSerializerCo
     /**
      * A string identifier that encodes the serialization format used by the serializer.
      *
-     * <p>TODO we might change this to a proper serialization format class in the future
+     * <p>todo we might change this to a proper serialization format class in the future
      */
     private String serializationFormatIdentifier;
 

@@ -46,7 +46,7 @@ class TimestampITCase extends StreamingTestBase {
         DataTypes.INT(),
         DataTypes.BIGINT(),
         DataTypes.TIMESTAMP(9),
-        // TODO: support high precision TIMESTAMP as timeAttributes
+        // todo: support high precision TIMESTAMP as timeAttributes
         //  LegacyTypeInfoDataTypeConverter does not support TIMESTAMP(p) where p > 3
         //  see TableSourceValidation::validateTimestampExtractorArguments
         DataTypes.TIMESTAMP(3),

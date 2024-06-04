@@ -303,7 +303,7 @@ public class StreamGraphGenerator {
 
     public StreamGraph generate() {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建一个空的StreamGraph数据结构
          */
         streamGraph = new StreamGraph(executionConfig, checkpointConfig, savepointRestoreSettings);
@@ -312,7 +312,7 @@ public class StreamGraphGenerator {
                         ExecutionCheckpointingOptions.ENABLE_CHECKPOINTS_AFTER_TASKS_FINISH));
         shouldExecuteInBatchMode = shouldExecuteInBatchMode();
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  将编程中的各种细节信息，都设置到StreamGraph中
          */
         configureStreamGraph(streamGraph);
@@ -321,7 +321,7 @@ public class StreamGraphGenerator {
 
         for (Transformation<?> transformation : transformations) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  执行转换
              *  UserFunction => StreamOperation => Transformation => StreamNode
              */

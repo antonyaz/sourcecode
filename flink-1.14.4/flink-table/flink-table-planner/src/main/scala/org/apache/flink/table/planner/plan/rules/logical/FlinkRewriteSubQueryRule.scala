@@ -91,7 +91,7 @@ class FlinkRewriteSubQueryRule(
         case l: RexLiteral =>
           l.getTypeName.getFamily match {
             case SqlTypeFamily.NUMERIC if l.getValue != null =>
-              val v = l.getValue.toString.toDouble
+              val v = l.getValue.toString.todouble
               (0.0 < v && v < 1.0) || (include0 && v == 0.0) || (include1 && v == 1.0)
             case _ => false
           }

@@ -29,7 +29,7 @@ import java.io.InputStream;
  * This class provides access to input streams that contain data of one state partition of a
  * partitionable state.
  *
- * <p>TODO use bounded stream that fail fast if the limit is exceeded on corrupted reads.
+ * <p>todo use bounded stream that fail fast if the limit is exceeded on corrupted reads.
  */
 @PublicEvolving
 public class StatePartitionStreamProvider {

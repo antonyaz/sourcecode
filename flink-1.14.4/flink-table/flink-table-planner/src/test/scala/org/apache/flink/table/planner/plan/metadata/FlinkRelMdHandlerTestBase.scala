@@ -84,7 +84,7 @@ class FlinkRelMdHandlerTestBase {
   val catalogManager: CatalogManager = CatalogManagerMocks.createEmptyCatalogManager()
   val moduleManager = new ModuleManager
 
-  // TODO batch RelNode and stream RelNode should have different PlannerContext
+  // todo batch RelNode and stream RelNode should have different PlannerContext
   //  and RelOptCluster due to they have different trait definitions.
   val plannerContext: PlannerContext =
   new PlannerContext(
@@ -2803,7 +2803,7 @@ class FlinkRelMdHandlerTestBase {
             case DATE => rexBuilder.makeDateLiteral(new DateString(v))
             case TIME => rexBuilder.makeTimeLiteral(new TimeString(v), 0)
             case TIMESTAMP => rexBuilder.makeTimestampLiteral(new TimestampString(v), 0)
-            case DOUBLE => rexBuilder.makeApproxLiteral(BigDecimal.valueOf(v.toDouble))
+            case DOUBLE => rexBuilder.makeApproxLiteral(BigDecimal.valueOf(v.todouble))
             case FLOAT => rexBuilder.makeApproxLiteral(BigDecimal.valueOf(v.toFloat))
             case VARCHAR => rexBuilder.makeLiteral(v)
             case _ => throw new TableException(s"${fieldType.getSqlTypeName} is not supported!")

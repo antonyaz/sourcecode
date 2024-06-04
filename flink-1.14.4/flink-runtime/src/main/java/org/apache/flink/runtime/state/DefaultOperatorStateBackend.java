@@ -74,7 +74,7 @@ public class DefaultOperatorStateBackend implements OperatorStateBackend {
      * <p>In contrast to {@link #registeredOperatorStates} which may be repopulated with restored
      * state, this map is always empty at the beginning.
      *
-     * <p>TODO this map should be moved to a base class once we have proper hierarchy for the
+     * <p>todo this map should be moved to a base class once we have proper hierarchy for the
      * operator state backends.
      *
      * @see <a href="https://issues.apache.org/jira/browse/FLINK-6849">FLINK-6849</a>
@@ -252,7 +252,7 @@ public class DefaultOperatorStateBackend implements OperatorStateBackend {
 
         // end up here if its the first time access after execution for the
         // provided state name; check compatibility of restored state, if any
-        // TODO with eager registration in place, these checks should be moved to restore()
+        // todo with eager registration in place, these checks should be moved to restore()
 
         stateDescriptor.initializeSerializerUnlessSet(getExecutionConfig());
         TypeSerializer<S> partitionStateSerializer =

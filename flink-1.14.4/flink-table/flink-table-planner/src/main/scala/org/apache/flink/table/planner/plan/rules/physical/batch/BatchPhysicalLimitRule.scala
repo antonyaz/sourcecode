@@ -81,7 +81,7 @@ class BatchPhysicalLimitRule
         providedLocalTraitSet,
         newLocalInput,
         rexBuilder.makeLiteral(0, intType, true),
-        rexBuilder.makeLiteral(limit, intType, true), // TODO use Long type for limit ?
+        rexBuilder.makeLiteral(limit, intType, true), // todo use Long type for limit ?
         false)
     } else {
       newLocalInput

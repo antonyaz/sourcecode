@@ -131,7 +131,7 @@ public class JsonRowDeserializationSchema implements DeserializationSchema<Row> 
     /** @deprecated Use the provided {@link Builder} instead. */
     @Deprecated
     public void setFailOnMissingField(boolean failOnMissingField) {
-        // TODO make this class immutable once we drop this method
+        // todo make this class immutable once we drop this method
         this.failOnMissingField = failOnMissingField;
         this.runtimeConverter = createConverter(this.typeInfo);
     }
@@ -368,7 +368,7 @@ public class JsonRowDeserializationSchema implements DeserializationSchema<Row> 
         } else if (simpleTypeInfo == Types.LONG) {
             return Optional.of(this::convertToLong);
         } else if (simpleTypeInfo == Types.DOUBLE) {
-            return Optional.of(this::convertToDouble);
+            return Optional.of(this::converttodouble);
         } else if (simpleTypeInfo == Types.FLOAT) {
             return Optional.of((mapper, jsonNode) -> Float.parseFloat(jsonNode.asText().trim()));
         } else if (simpleTypeInfo == Types.SHORT) {
@@ -431,7 +431,7 @@ public class JsonRowDeserializationSchema implements DeserializationSchema<Row> 
         }
     }
 
-    private double convertToDouble(ObjectMapper mapper, JsonNode jsonNode) {
+    private double converttodouble(ObjectMapper mapper, JsonNode jsonNode) {
         if (jsonNode.isDouble()) {
             // avoid redundant toString and parseDouble, for better performance
             return jsonNode.asDouble();

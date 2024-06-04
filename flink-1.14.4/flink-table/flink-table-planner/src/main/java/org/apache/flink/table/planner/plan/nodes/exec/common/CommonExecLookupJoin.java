@@ -176,7 +176,7 @@ public abstract class CommonExecLookupJoin extends ExecNodeBase<RowData>
     protected CommonExecLookupJoin(
             FlinkJoinType joinType,
             @Nullable RexNode joinCondition,
-            // TODO: refactor this into TableSourceTable, once legacy TableSource is removed
+            // todo: refactor this into TableSourceTable, once legacy TableSource is removed
             TemporalTableSourceSpec temporalTableSourceSpec,
             Map<Integer, LookupJoinUtil.LookupKey> lookupKeys,
             @Nullable List<RexNode> projectionOnTemporalTable,

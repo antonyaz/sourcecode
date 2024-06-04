@@ -289,7 +289,7 @@ public abstract class FileInputFormat<OT> extends RichInputFormat<OT, FileInputS
             throw new IllegalArgumentException("File path cannot be null.");
         }
 
-        // TODO The job-submission web interface passes empty args (and thus empty
+        // todo The job-submission web interface passes empty args (and thus empty
         // paths) to compute the preview graph. The following is a workaround for
         // this situation and we should fix this.
 

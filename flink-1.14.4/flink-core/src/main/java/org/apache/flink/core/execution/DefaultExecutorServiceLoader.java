@@ -41,7 +41,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 @Internal
 public class DefaultExecutorServiceLoader implements PipelineExecutorServiceLoader {
 
-    // TODO: This code is almost identical to the ClusterClientServiceLoader and its default
+    // todo: This code is almost identical to the ClusterClientServiceLoader and its default
     // implementation.
     // The reason of this duplication is the package structure which does not allow for the
     // ExecutorServiceLoader

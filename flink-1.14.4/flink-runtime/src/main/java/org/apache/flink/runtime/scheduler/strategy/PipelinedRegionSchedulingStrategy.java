@@ -144,7 +144,7 @@ public class PipelinedRegionSchedulingStrategy implements SchedulingStrategy {
     @Override
     public void startScheduling() {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  首先获取 血缘区域
          *  构造 PipelineRegion
          */
@@ -153,7 +153,7 @@ public class PipelinedRegionSchedulingStrategy implements SchedulingStrategy {
                         .filter(this::isSourceRegion)
                         .collect(Collectors.toSet());
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  按照 血缘区域  执行调度
          */
         maybeScheduleRegions(sourceRegions);
@@ -222,12 +222,12 @@ public class PipelinedRegionSchedulingStrategy implements SchedulingStrategy {
 
         final Map<ConsumedPartitionGroup, Boolean> consumableStatusCache = new HashMap<>();
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *
          */
         for (SchedulingPipelinedRegion region : regionsSorted) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *
              */
             maybeScheduleRegion(region, consumableStatusCache);
@@ -246,7 +246,7 @@ public class PipelinedRegionSchedulingStrategy implements SchedulingStrategy {
                 "BUG: trying to schedule a region which is not in CREATED state");
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  背景知识
          *  1、ExecutionGraph 中的每个任务顶点 叫做： ExecutionVertex
          *  2、ExecutionVertex 会指派 Task 的选项 ExecutionVertex => ExecutionVertexDeploymentOption
@@ -260,7 +260,7 @@ public class PipelinedRegionSchedulingStrategy implements SchedulingStrategy {
                 SchedulingStrategyUtils.createExecutionVertexDeploymentOptions(
                         regionVerticesSorted.get(region), id -> deploymentOption);
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  这是 JobMaster 调度和部署的起点
          *  1、allocateSlots： 申请 这个 Job 所需要的所有的slot
          *  2、Deploy： 申请到了slot之后，执行 Task 的部署

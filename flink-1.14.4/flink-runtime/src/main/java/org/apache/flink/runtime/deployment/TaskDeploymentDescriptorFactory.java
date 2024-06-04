@@ -122,7 +122,7 @@ public class TaskDeploymentDescriptorFactory {
         for (ConsumedPartitionGroup consumedPartitionGroup : consumedPartitionGroups) {
             // If the produced partition has multiple consumers registered, we
             // need to request the one matching our sub task index.
-            // TODO Refactor after removing the consumers from the intermediate result partitions
+            // todo Refactor after removing the consumers from the intermediate result partitions
             IntermediateResultPartition resultPartition =
                     resultPartitionRetriever.apply(consumedPartitionGroup.getFirst());
 

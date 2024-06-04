@@ -157,7 +157,7 @@ abstract class AggregateITCaseBase(testName: String) extends BatchTestBase {
 
   @Test
   def testPhaseAggregation(): Unit = {
-    // TODO
+    // todo
   }
 
   @Test
@@ -845,7 +845,7 @@ abstract class AggregateITCaseBase(testName: String) extends BatchTestBase {
     )
   }
 
-  // TODO: supports `pivot`.
+  // todo: supports `pivot`.
 
   @Test
   def testGroupByLiteral(): Unit = {
@@ -885,9 +885,9 @@ abstract class AggregateITCaseBase(testName: String) extends BatchTestBase {
         DataTypes.FIELD("m", DataTypes.TIMESTAMP()),
         DataTypes.FIELD("n", DataTypes.DECIMAL(3, 2))
       ),
-      row("Alice", 1, 1, 2, 9223, -2.3F, 9.9D, "true", "varchar", "char", 
+      row("Alice", 1, 1, 2, 9223, -2.3F, 9.9D, "true", "varchar", "char",
         "2021-8-3", "20:8:17", "2021-8-3 20:8:29", 9.99),
-      row("Alice", null, null, null, null, null, null, null, null, 
+      row("Alice", null, null, null, null, null, null, null, null,
         null, null, null, null, null),
       row("Alice", 1, 1, 2, 9223, -2.3F, 9.9D, "true", "varchar", "char",
         "2021-8-3", "20:8:17", "2021-8-3 20:8:29", 9.99)
@@ -915,14 +915,14 @@ abstract class AggregateITCaseBase(testName: String) extends BatchTestBase {
          |order by a
          |""".stripMargin,
       Seq(
-        row("Alice", 1, 1, null, 1, 1, null, 2, 2, null, 9223, 9223, null, -2.3, -2.3, null, 
-          9.9, 9.9, null, true, true, null, "varchar", "varchar", null, "char                ", 
-          "char                ", null, "2021-08-03", "2021-08-03", null, "20:08:17", "20:08:17", 
+        row("Alice", 1, 1, null, 1, 1, null, 2, 2, null, 9223, 9223, null, -2.3, -2.3, null,
+          9.9, 9.9, null, true, true, null, "varchar", "varchar", null, "char                ",
+          "char                ", null, "2021-08-03", "2021-08-03", null, "20:08:17", "20:08:17",
           null, "2021-08-03T20:08:29", "2021-08-03T20:08:29", null, 9.99, 9.99, null),
         row("Alice", 1, null, 1, 1, null, 1, 2, null, 2, 9223, null, 9223,
-          -2.3, null, -2.3, 9.9, null, 9.9, true, null, true, "varchar", null, 
-          "varchar", "char                ", null, "char                ", "2021-08-03", null, 
-          "2021-08-03", "20:08:17", null, "20:08:17", "2021-08-03T20:08:29", null, 
+          -2.3, null, -2.3, 9.9, null, 9.9, true, null, true, "varchar", null,
+          "varchar", "char                ", null, "char                ", "2021-08-03", null,
+          "2021-08-03", "20:08:17", null, "20:08:17", "2021-08-03T20:08:29", null,
           "2021-08-03T20:08:29", 9.99, null, 9.99),
         row("Alice", null, null, 1, null, null, 1, null, null, 2, null, null, 9223, null,
           null, -2.3, null, null, 9.9, null, null, true, null, null, "varchar", null, null,
@@ -931,7 +931,7 @@ abstract class AggregateITCaseBase(testName: String) extends BatchTestBase {
       ))
   }
 
-  // TODO support csv
+  // todo support csv
 //  @Test
 //  def testMultiGroupBys(): Unit = {
 //    val csvPath = CommonTestData.writeToTempFile(

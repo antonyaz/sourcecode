@@ -60,7 +60,7 @@ public interface AuxiliaryConverter {
             //      case TUMBLE_START:
             //      case HOP_START:
             //      case SESSION_START:
-            //      case SESSION_END: // TODO: ?
+            //      case SESSION_END: // todo: ?
             //        return e;
             //      case TUMBLE_END:
             //        return rexBuilder.makeCall(

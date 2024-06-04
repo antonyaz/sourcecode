@@ -422,7 +422,7 @@ object ScalarOperatorGens {
   private def checkImplicitConversionValidity(
       left: GeneratedExpression,
       right: GeneratedExpression): Unit = {
-    // TODO: in flip-154, we should support implicit type conversion between (var)char and numeric,
+    // todo: in flip-154, we should support implicit type conversion between (var)char and numeric,
     // but flink has not yet supported now
     if ((isNumeric(left.resultType) && isCharacterString(right.resultType))
       || (isNumeric(right.resultType) && isCharacterString(left.resultType))) {
@@ -1081,7 +1081,7 @@ object ScalarOperatorGens {
       }
 
     // * (not Date/Time/Timestamp) -> String
-    // TODO: GenericType with Date/Time/Timestamp -> String would call toString implicitly
+    // todo: GenericType with Date/Time/Timestamp -> String would call toString implicitly
     case (_, VARCHAR | CHAR) =>
       generateStringResultCallIfArgsNotNull(ctx, Seq(operand), targetType) {
         terms => s""" "" + ${terms.head}"""
@@ -1120,7 +1120,7 @@ object ScalarOperatorGens {
             case SMALLINT => "toShort"
             case INTEGER => "toInt"
             case BIGINT => "toLong"
-            case DOUBLE => "toDouble"
+            case DOUBLE => "todouble"
             case FLOAT => "toFloat"
             case _ => null
           }
@@ -2470,7 +2470,7 @@ object ScalarOperatorGens {
       case INTEGER => "castToInt"
       case BIGINT => "castToLong"
       case FLOAT => "castToFloat"
-      case DOUBLE => "castToDouble"
+      case DOUBLE => "casttodouble"
       case BOOLEAN => "castToBoolean"
       case _ => throw new CodeGenException(s"Unsupported decimal casting type: '$targetType'")
     }
@@ -2497,7 +2497,7 @@ object ScalarOperatorGens {
         s"$DECIMAL_UTIL.${decToPrimMethod(resultType)}($operandTerm)"
     }
     // numeric to numeric
-    // TODO: Create a wrapper layer that handles type conversion between numeric.
+    // todo: Create a wrapper layer that handles type conversion between numeric.
     else if (isNumeric(operandType) && isNumeric(resultType)) {
       val resultTypeValue = resultTypeTerm + "Value()"
       val boxedTypeTerm = boxedTypeTermForType(operandType)

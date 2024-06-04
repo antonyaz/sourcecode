@@ -32,7 +32,7 @@ import java.util.Objects;
  * <p>The difference between Types.SQL_TIMESTAMP is this TypeInformation holds a precision Reminder:
  * Conversion from DateType to TypeInformation (and back) exists in
  * TableSourceUtil.computeIndexMapping, which should be fixed after we remove Legacy TypeInformation
- * TODO: https://issues.apache.org/jira/browse/FLINK-14927
+ * todo: https://issues.apache.org/jira/browse/FLINK-14927
  */
 public class LegacyTimestampTypeInfo extends SqlTimeTypeInfo<Timestamp> {
 

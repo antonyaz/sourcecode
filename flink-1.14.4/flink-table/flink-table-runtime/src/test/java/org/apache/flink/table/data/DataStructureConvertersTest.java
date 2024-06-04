@@ -128,7 +128,7 @@ public class DataStructureConvertersTest {
                         .convertedTo(LocalTime.class, LocalTime.parse("12:34:56"))
                         .convertedTo(Integer.class, 45_296_000)
                         .convertedTo(Long.class, 45_296_000_000_000L),
-                TestSpec.forDataType(TIME(3)) // TODO support precision of 9
+                TestSpec.forDataType(TIME(3)) // todo support precision of 9
                         .convertedTo(LocalTime.class, LocalTime.parse("12:34:56.001"))
                         .convertedTo(Integer.class, 45_296_001),
                 TestSpec.forDataType(TIMESTAMP(9))
@@ -172,7 +172,7 @@ public class DataStructureConvertersTest {
                 TestSpec.forDataType(INTERVAL(MONTH()))
                         .convertedTo(Period.class, Period.of(0, 30, 0))
                         .convertedTo(Integer.class, 30),
-                TestSpec.forDataType(INTERVAL(DAY(), SECOND(3))) // TODO support precision of 9
+                TestSpec.forDataType(INTERVAL(DAY(), SECOND(3))) // todo support precision of 9
                         .convertedTo(Duration.class, Duration.ofMillis(123))
                         .convertedTo(Long.class, 123L),
                 TestSpec.forDataType(ARRAY(BOOLEAN().notNull()))

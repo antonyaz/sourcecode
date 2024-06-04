@@ -192,7 +192,7 @@ class GroupingSetsTest extends TableTestBase {
   @Test
   def testRollupOnColumnWithNulls(): Unit = {
     // Note the two rows with NULL key (one represents ALL)
-    // TODO check plan after null type supported
+    // todo check plan after null type supported
     util.verifyExecPlan("SELECT gender, COUNT(*) AS c FROM emp GROUP BY ROLLUP(gender)")
   }
 

@@ -70,7 +70,7 @@ public class OrcNoHiveShim implements OrcShim<VectorizedRowBatch> {
                         .skipCorruptRecords(OrcConf.SKIP_CORRUPT_DATA.getBoolean(conf))
                         .tolerateMissingSchema(OrcConf.TOLERATE_MISSING_SCHEMA.getBoolean(conf));
 
-        // TODO configure filters
+        // todo configure filters
 
         // configure selected fields
         options.include(computeProjectionMask(schema, selectedFields));

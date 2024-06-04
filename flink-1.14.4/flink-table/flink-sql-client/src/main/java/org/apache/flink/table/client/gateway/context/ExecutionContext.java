@@ -49,7 +49,7 @@ import static org.apache.flink.table.client.gateway.context.SessionContext.Sessi
  */
 public class ExecutionContext {
 
-    // TODO: merge the ExecutionContext into the SessionContext.
+    // todo: merge the ExecutionContext into the SessionContext.
     // Members that should be reused in the same session.
     private final Configuration flinkConfig;
     private final SessionState sessionState;

@@ -147,7 +147,7 @@ class TableSourceTest extends TableTestBase {
 
   @Test
   def testNestedProjectFieldWithITEM(): Unit = {
-    //TODO: always push projection into table source in FLINK-22118
+    //todo: always push projection into table source in FLINK-22118
     util.verifyExecPlan(
       s"""
          |SELECT

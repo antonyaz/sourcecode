@@ -352,7 +352,7 @@ public class RecordTest {
     @Test
     public void testUpdateBinaryRepresentations() {
         try {
-            // TODO: this is not an extensive test of updateBinaryRepresentation()
+            // todo: this is not an extensive test of updateBinaryRepresentation()
             // and should be extended!
 
             Record r = new Record();

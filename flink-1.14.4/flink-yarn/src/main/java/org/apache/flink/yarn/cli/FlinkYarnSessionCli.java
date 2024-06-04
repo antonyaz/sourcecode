@@ -371,7 +371,7 @@ public class FlinkYarnSessionCli extends AbstractYarnCli {
     @Override
     public boolean isActive(CommandLine commandLine) {
         /**
-         *  TODO: add by antony at 2022/10/2
+         *  todo: add by antony at 2022/10/2
          *
          */
         if (!super.isActive(commandLine)) {
@@ -408,14 +408,14 @@ public class FlinkYarnSessionCli extends AbstractYarnCli {
             }
 
             /**
-             *  TODO: add by antony at 2022/10/2
+             *  todo: add by antony at 2022/10/2
              *  HA_CLUSTER_ID：
              */
             effectiveConfiguration.setString(HA_CLUSTER_ID, zooKeeperNamespace);
             effectiveConfiguration.setString(
                     YarnConfigOptions.APPLICATION_ID, ConverterUtils.toString(applicationId));
             /**
-             *  TODO: add by antony at 2022/10/2
+             *  todo: add by antony at 2022/10/2
              *  目标执行器：
              *  决定后面什么类型的执行器提交任务：yarn-session、yarn-per-job
              */

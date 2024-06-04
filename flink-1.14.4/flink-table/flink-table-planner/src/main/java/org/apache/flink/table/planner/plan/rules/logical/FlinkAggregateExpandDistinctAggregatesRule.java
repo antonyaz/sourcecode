@@ -530,7 +530,7 @@ public final class FlinkAggregateExpandDistinctAggregatesRule extends RelOptRule
         int aggCallIdx = 0;
         int x = groupCount;
         final List<AggregateCall> newCalls = new ArrayList<>();
-        // TODO supports more aggCalls (currently only supports COUNT)
+        // todo supports more aggCalls (currently only supports COUNT)
         // Some aggregate functions (e.g. COUNT) have the special property that they can return a
         // non-null result without any input. We need to make sure we return a result in this case.
         final List<Integer> needDefaultValueAggCalls = new ArrayList<>();

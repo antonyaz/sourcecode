@@ -207,5 +207,5 @@ abstract class AggregateTestBase extends TableTestBase {
     util.verifyExecPlan(sql)
   }
 
-  // TODO supports group sets
+  // todo supports group sets
 }

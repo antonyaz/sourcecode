@@ -456,7 +456,7 @@ class FunctionGenerator private(config: TableConfig) {
       BuiltInMethod.FLOOR.method,
       Some(BuiltInMethods.TIMESTAMP_FLOOR_TIME_ZONE)))
 
-  // TODO: fixme if CALCITE-3199 fixed
+  // todo: fixme if CALCITE-3199 fixed
   //  https://issues.apache.org/jira/browse/CALCITE-3199
   addSqlFunction(
     CEIL,

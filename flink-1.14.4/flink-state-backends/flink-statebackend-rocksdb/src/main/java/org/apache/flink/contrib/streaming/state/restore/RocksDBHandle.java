@@ -177,7 +177,7 @@ class RocksDBHandle implements AutoCloseable {
                     stateMetaInfoSnapshot.getName(),
                     registeredStateMetaInfoEntry);
         } else {
-            // TODO with eager state registration in place, check here for serializer migration
+            // todo with eager state registration in place, check here for serializer migration
             // strategies
         }
 

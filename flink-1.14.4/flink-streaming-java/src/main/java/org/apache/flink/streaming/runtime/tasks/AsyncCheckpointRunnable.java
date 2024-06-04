@@ -134,7 +134,7 @@ final class AsyncCheckpointRunnable implements Runnable, Closeable {
                     AsyncCheckpointState.RUNNING, AsyncCheckpointState.COMPLETED)) {
 
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  汇报给 JobMaster
                  */
                 reportCompletedSnapshotStates(
@@ -225,7 +225,7 @@ final class AsyncCheckpointRunnable implements Runnable, Closeable {
         taskEnvironment
                 .getTaskStateManager()
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  给 JobMaster 发送消息
                  */
                 .reportTaskStateSnapshots(

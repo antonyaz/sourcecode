@@ -88,7 +88,7 @@ abstract class CommonPhysicalLookupJoin(
     cluster: RelOptCluster,
     traitSet: RelTraitSet,
     input: RelNode,
-    // TODO: refactor this into TableSourceTable, once legacy TableSource is removed
+    // todo: refactor this into TableSourceTable, once legacy TableSource is removed
     temporalTable: RelOptTable,
     val calcOnTemporalTable: Option[RexProgram],
     val joinInfo: JoinInfo,

@@ -67,7 +67,7 @@ public final class BlobClient implements Closeable {
 
     /** The socket connection to the BLOB server. */
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 客户端
      */
     private final Socket socket;
@@ -125,7 +125,7 @@ public final class BlobClient implements Closeable {
      * @throws IOException if an I/O error occurs during the download
      */
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 下载服务
      */
     static void downloadFromBlobServer(
@@ -409,7 +409,7 @@ public final class BlobClient implements Closeable {
      * @throws IOException if the upload fails
      */
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 文件上传服务=>大对象:大的二进制对象
      * 提交Job的时候会上传大文件
      */

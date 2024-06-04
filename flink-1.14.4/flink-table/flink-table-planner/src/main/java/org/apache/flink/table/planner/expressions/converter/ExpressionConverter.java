@@ -140,7 +140,7 @@ public class ExpressionConverter implements ExpressionVisitor<RexNode> {
                                 extractValue(valueLiteral, Period.class).toTotalMonths());
                 break;
             case INTERVAL_DAY_TIME:
-                // TODO planner supports only milliseconds precision
+                // todo planner supports only milliseconds precision
                 // convert to total millis
                 value = BigDecimal.valueOf(extractValue(valueLiteral, Duration.class).toMillis());
                 break;
@@ -150,7 +150,7 @@ public class ExpressionConverter implements ExpressionVisitor<RexNode> {
                                 (int) extractValue(valueLiteral, LocalDate.class).toEpochDay());
                 break;
             case TIME_WITHOUT_TIME_ZONE:
-                // TODO type factory strips the precision, for literals we can be more lenient
+                // todo type factory strips the precision, for literals we can be more lenient
                 // already
                 // Moreover conversion from long supports precision up to TIME(3) planner does not
                 // support higher

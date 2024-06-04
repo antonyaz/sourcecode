@@ -195,7 +195,7 @@ public class ArrayObjectArrayConverter<E> implements DataStructureConverter<Arra
             case FLOAT:
                 return internal -> (E[]) ArrayUtils.toObject(internal.toFloatArray());
             case DOUBLE:
-                return internal -> (E[]) ArrayUtils.toObject(internal.toDoubleArray());
+                return internal -> (E[]) ArrayUtils.toObject(internal.todoubleArray());
             case DISTINCT_TYPE:
                 return createGenericToJavaArrayConverter(
                         ((DistinctType) elementType).getSourceType());

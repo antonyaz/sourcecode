@@ -80,7 +80,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 /**
- * IT case for HiveCatalog. TODO: move to flink-connector-hive-test end-to-end test module once it's
+ * IT case for HiveCatalog. todo: move to flink-connector-hive-test end-to-end test module once it's
  * setup
  */
 public class HiveCatalogITCase {

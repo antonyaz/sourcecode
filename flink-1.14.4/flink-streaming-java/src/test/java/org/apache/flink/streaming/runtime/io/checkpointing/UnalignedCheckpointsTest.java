@@ -385,7 +385,7 @@ public class UnalignedCheckpointsTest {
 
         assertOutput(sequence);
         assertEquals(2L, channelStateWriter.getLastStartedCheckpointId());
-        // TODO: treat EndOfPartitionEvent as a special CheckpointBarrier?
+        // todo: treat EndOfPartitionEvent as a special CheckpointBarrier?
         assertInflightData();
     }
 

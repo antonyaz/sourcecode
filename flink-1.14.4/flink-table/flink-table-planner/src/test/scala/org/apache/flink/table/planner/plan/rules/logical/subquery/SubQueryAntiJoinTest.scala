@@ -150,7 +150,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
   def testNotInWithUncorrelatedOnWhere_Case2(): Unit = {
     util.addTableSource[(Int)]("t1", 'i)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a NOT IN (SELECT 1 FROM t1) THEN 1 ELSE 2 END) NOT IN (SELECT d FROM r)"
     util.verifyRelPlan(sqlQuery)
@@ -160,7 +160,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
   def testNotInWithUncorrelatedOnWhere_Case3(): Unit = {
     util.addTableSource[(Int)]("t1", 'i)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a NOT IN (SELECT i FROM t1) THEN 1 ELSE 2 END) NOT IN (SELECT d FROM r)"
     util.verifyRelPlan(sqlQuery)
@@ -172,7 +172,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a NOT IN (SELECT i FROM t1) THEN 1" +
       " WHEN a NOT IN (SELECT j FROM t2) THEN 2 ELSE 3 END)" +
@@ -186,7 +186,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE (b, " +
       "(CASE WHEN a NOT IN (SELECT i FROM t1) THEN 1" +
       " WHEN a NOT IN (SELECT j FROM t2) THEN 2 ELSE 3 END))" +
@@ -200,7 +200,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT c FROM l WHERE (" +
       " (CASE WHEN a NOT IN (SELECT i FROM t1) THEN 1 ELSE 2 END), " +
       " (CASE WHEN b NOT IN (SELECT j FROM t2) THEN 3 ELSE 4 END)) " +
@@ -212,10 +212,10 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
   def testNotInWithUncorrelatedOnWhere_Case7(): Unit = {
     util.addTableSource[(Int)]("t1", 'i)
 
-    // TODO some bugs in SubQueryRemoveRule
+    // todo some bugs in SubQueryRemoveRule
     thrown.expect(classOf[RuntimeException])
 
-    // TODO Calcite does not support project with correlated expressions.
+    // todo Calcite does not support project with correlated expressions.
     val sqlQuery = "SELECT b FROM l WHERE " +
       "(CASE WHEN a NOT IN (SELECT i FROM t1 WHERE l.a = t1.i) THEN 1 ELSE 2 END) " +
       "NOT IN (SELECT d FROM r)"
@@ -301,7 +301,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
   def testNotInWithCorrelatedOnWhere_Case2(): Unit = {
     util.addTableSource[(Int)]("t1", 'i)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a IN (SELECT 1 FROM t1) THEN 1 ELSE 2 END)" +
       " NOT IN (SELECT d FROM r WHERE l.c = r.f)"
@@ -323,7 +323,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE" +
       " (CASE WHEN a NOT IN (SELECT i FROM t1) THEN 1" +
       " WHEN a NOT IN (SELECT j FROM t2) THEN 2 ELSE 3 END)" +
@@ -336,7 +336,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
+    // todo currently, FlinkSubQueryRemoveRule does not support SubQuery on Project.
     val sqlQuery = "SELECT b FROM l WHERE (b, " +
       "(CASE WHEN a NOT IN (SELECT i FROM t1) THEN 1" +
       " WHEN a NOT IN (SELECT j FROM t2) THEN 2 ELSE 3 END))" +
@@ -349,7 +349,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
     util.addTableSource[(Int)]("t1", 'i)
     util.addTableSource[(Int)]("t2", 'j)
 
-    // TODO Calcite does not support project with correlated expressions.
+    // todo Calcite does not support project with correlated expressions.
     val sqlQuery = "SELECT b FROM l WHERE " +
       "(CASE WHEN a NOT IN (SELECT i FROM t1 WHERE l.a = t1.i) THEN 1 ELSE 2 END)" +
       " NOT IN (SELECT d FROM r WHERE l.c = r.f)"
@@ -501,7 +501,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
 
   @Test
   def testNotExistsWithUncorrelatedOnWhere6(): Unit = {
-    // TODO the result of SqlToRelConverter does not contain any field `b` info in SubQuery
+    // todo the result of SqlToRelConverter does not contain any field `b` info in SubQuery
     util.verifyRelPlan("SELECT a FROM x WHERE NOT EXISTS (SELECT x.b IS NULL FROM y)")
   }
 
@@ -591,7 +591,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
 
   @Test
   def testNotExistsWithCorrelatedOnWhere8(): Unit = {
-    // TODO the result of SqlToRelConverter does not contain any field `a` info in SubQuery
+    // todo the result of SqlToRelConverter does not contain any field `a` info in SubQuery
     util.verifyRelPlan(
       "SELECT a FROM x WHERE NOT EXISTS (SELECT x.a IS NULL FROM y WHERE y.d = x.b)")
   }
@@ -620,7 +620,7 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
 
   @Test(expected = classOf[AssertionError])
   def testNotExistsWithCorrelatedOnWhere_UnsupportedCondition2(): Unit = {
-    // TODO Calcite decorrelateRel error
+    // todo Calcite decorrelateRel error
     val sqlQuery = "SELECT * FROM l WHERE NOT EXISTS " +
       " (SELECT * FROM (SELECT * FROM r WHERE r.d = l.a AND r.e > 100) s " +
       "LEFT JOIN t ON s.f = t.k AND l.b = t.j)"
@@ -729,12 +729,12 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
   def testNotInNotExists3(): Unit = {
     util.addTableSource[(Int, Long, String)]("t2", 'l, 'm, 'n)
 
-    // TODO some bugs in SubQueryRemoveRule
+    // todo some bugs in SubQueryRemoveRule
     //  the result RelNode (LogicalJoin(condition=[=($1, $11)], joinType=[left]))
     //  after SubQueryRemoveRule is unexpected
     thrown.expect(classOf[AssertionError])
 
-    // TODO Calcite does not support project with correlated expressions.
+    // todo Calcite does not support project with correlated expressions.
     val sqlQuery = "SELECT c FROM l WHERE (" +
       " (CASE WHEN NOT EXISTS (SELECT * FROM t WHERE l.a = t.i) THEN 1 ELSE 2 END), " +
       " (CASE WHEN b NOT IN (SELECT m FROM t2) THEN 3 ELSE 4 END)) " +
@@ -758,10 +758,10 @@ class SubQueryAntiJoinTest extends SubQueryTestBase {
   def testInNotInExistsNotExists2(): Unit = {
     util.addTableSource[(Int, Long, String)]("t2", 'l, 'm, 'n)
 
-    // TODO some bugs in SubQueryRemoveRule
+    // todo some bugs in SubQueryRemoveRule
     thrown.expect(classOf[RuntimeException])
 
-    // TODO Calcite does not support project with correlated expressions.
+    // todo Calcite does not support project with correlated expressions.
     val sqlQuery = "SELECT c FROM l WHERE (" +
       " (CASE WHEN b IN (SELECT j FROM t WHERE l.a = t.i) THEN 1 ELSE 2 END), " +
       " (CASE WHEN NOT EXISTS (SELECT m FROM t2) THEN 3 " +

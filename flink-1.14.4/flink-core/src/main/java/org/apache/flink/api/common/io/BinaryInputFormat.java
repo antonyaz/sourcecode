@@ -237,7 +237,7 @@ public abstract class BinaryInputFormat<T> extends FileInputFormat<T>
             // the block and
             // is of fixed size, currently 3 * Long.SIZE.
 
-            // TODO: seek not supported by compressed streams. Will throw exception
+            // todo: seek not supported by compressed streams. Will throw exception
             this.stream.seek(this.splitStart + this.splitLength - blockInfo.getInfoSize());
             blockInfo.read(new DataInputViewStreamWrapper(this.stream));
         }

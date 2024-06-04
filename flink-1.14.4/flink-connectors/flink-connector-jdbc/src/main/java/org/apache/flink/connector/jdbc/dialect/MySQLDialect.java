@@ -118,7 +118,7 @@ public class MySQLDialect extends AbstractDialect {
         // The data types used in Mysql are list at:
         // https://dev.mysql.com/doc/refman/8.0/en/data-types.html
 
-        // TODO: We can't convert BINARY data type to
+        // todo: We can't convert BINARY data type to
         //  PrimitiveArrayTypeInfo.BYTE_PRIMITIVE_ARRAY_TYPE_INFO in
         // LegacyTypeInfoDataTypeConverter.
         return Arrays.asList(

@@ -36,7 +36,7 @@ import java.util.UUID;
  */
 
 /**
- * TODO: add by antony at 2022/5/3
+ * todo: add by antony at 2022/5/3
  *  LeaderElectionService 选举服务对象
  *  LeaderContender 参选者对象
  *  当调用该组件的start方法标识开始参选
@@ -50,7 +50,7 @@ public interface LeaderElectionService {
      * @throws Exception
      */
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      *  启动选举
      *  leaderElectionService.start(this) => 可以推测出leaderElectionService作为了LeaderContender的子类
      *  如果选举成功，则回调 contender.grantLeadership 方法
@@ -76,7 +76,7 @@ public interface LeaderElectionService {
      * @param leaderAddress The address of the new leader
      */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 确认
      */
     void confirmLeadership(UUID leaderSessionID, String leaderAddress);
@@ -89,7 +89,7 @@ public interface LeaderElectionService {
      * @return true if the associated {@link LeaderContender} is the leader, otherwise false
      */
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      *  检测是否有 leadership权限
      */
     boolean hasLeadership(@Nonnull UUID leaderSessionId);

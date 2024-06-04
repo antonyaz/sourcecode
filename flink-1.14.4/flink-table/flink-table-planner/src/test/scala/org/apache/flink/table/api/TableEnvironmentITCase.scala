@@ -698,7 +698,7 @@ class TableEnvironmentITCase(tableEnvName: String, isStreaming: Boolean) extends
     val schema = new TableSchema(Array("name", "pt"), Array(Types.STRING, Types.LOCAL_DATE_TIME))
     val sourceType = Types.STRING
     val tableSource = new TestTableSourceWithTime(true, schema, sourceType, data, null, "pt")
-    // TODO refactor this after FLINK-16160 is finished
+    // todo refactor this after FLINK-16160 is finished
     tEnv.asInstanceOf[TableEnvironmentInternal].registerTableSourceInternal("T", tableSource)
 
     val tableResult = tEnv.executeSql("select * from T")

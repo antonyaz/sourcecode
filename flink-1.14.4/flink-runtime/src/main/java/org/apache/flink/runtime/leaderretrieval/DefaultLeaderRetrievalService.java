@@ -93,7 +93,7 @@ public class DefaultLeaderRetrievalService
         synchronized (lock) {
             leaderListener = listener;
             /**
-             * TODO: add by antony at 2022/5/3
+             * todo: add by antony at 2022/5/3
              * 启动监听服务
              * 内部通过NodeCache组件来执行 znode 节点缓存的
              * 原理： NodeCache 本意是用来缓存某个znode节点的数据，

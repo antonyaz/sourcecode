@@ -53,7 +53,7 @@ public class PipelineExecutorUtils {
         final ExecutionConfigAccessor executionConfigAccessor =
                 ExecutionConfigAccessor.fromConfiguration(configuration);
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  将 pipeline(StreamGraph) 转换为 JobGraph
          */
         final JobGraph jobGraph =

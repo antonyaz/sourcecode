@@ -446,7 +446,7 @@ class SortCodeGenerator(
       case VARCHAR | CHAR | VARBINARY | BINARY |
            DATE | TIME_WITHOUT_TIME_ZONE => true
       case TIMESTAMP_WITHOUT_TIME_ZONE =>
-        // TODO: support normalize key for non-compact timestamp
+        // todo: support normalize key for non-compact timestamp
         TimestampData.isCompact(t.asInstanceOf[TimestampType].getPrecision)
       case DECIMAL => DecimalData.isCompact(t.asInstanceOf[DecimalType].getPrecision)
       case _ => false

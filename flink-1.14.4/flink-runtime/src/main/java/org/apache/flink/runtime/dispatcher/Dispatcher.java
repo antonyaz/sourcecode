@@ -210,14 +210,14 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
     // ------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 启动入口
      */
     @Override
     public void onStart() throws Exception {
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  启动 dispatcher 服务
              */
             startDispatcherServices();
@@ -230,7 +230,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  启动JobMaster 此处是重点
          */
         startRecoveredJobs();
@@ -253,7 +253,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
     private void startRecoveredJobs() {
         for (JobGraph recoveredJob : recoveredJobs) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *
              */
             runRecoveredJob(recoveredJob);
@@ -265,7 +265,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
         checkNotNull(recoveredJob);
         try {
             /**
-             * TODO: add by antony at 2022/5/2
+             * todo: add by antony at 2022/5/2
              * 执行Job
              * ExecutionType 为 RECOVERY
              * 恢复一个还没有执行完毕的Job
@@ -402,7 +402,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      *  到此为止，主节点已经接收到了Job 和Job的相关信息，接下来
      *  为这个Job启动 JobMaster
      *  1、把 JobGraph 构造成 ExecutionGraph
@@ -414,7 +414,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
 
         final CompletableFuture<Acknowledge> persistAndRunFuture =
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  持久化并启动Job   this::persistAndRunJob
                  */
                 waitForTerminatingJob(jobGraph.getJobID(), jobGraph, this::persistAndRunJob)
@@ -443,14 +443,14 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
 
     private void persistAndRunJob(JobGraph jobGraph) throws Exception {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  完成注册
          *  1、将JobGraph 持久化到HDFS，然后返回一个 StateHandle 句柄 = 元数据
          *  2、将 StateHandle 写入到ZK中
          */
         jobGraphWriter.putJobGraph(jobGraph);
         /**
-         * TODO: 运行Job
+         * todo: 运行Job
          * 此处 ExecutionType 为  SUBMISSION
          *
          */
@@ -458,7 +458,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
     }
 
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * 当主节点接收到一个Job的提交后，则调用runJob来执行该Job
      */
     private void runJob(JobGraph jobGraph, ExecutionType executionType) throws Exception {
@@ -466,7 +466,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
         long initializationTimestamp = System.currentTimeMillis();
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建 JobManagerRunner，也就是逻辑上的JobMaster
          *  两件事情，逻辑极其复杂
          *  JobManagerRunner 内部就是封装了 JobMaster
@@ -475,7 +475,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
                 createJobManagerRunner(jobGraph, initializationTimestamp);
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 执行Job的登记，登记到 Dispatcher的内存中
          */
         runningJobs.put(jobGraph.getJobID(), jobManagerRunner);
@@ -547,7 +547,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
         final RpcService rpcService = getRpcService();
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建 JobMaster
          *  Dispatcher、JobMaster、ResourceManager
          *  返回的是 JobMasterServiceLeadershipRunner
@@ -556,7 +556,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
                 jobManagerRunnerFactory.createJobManagerRunner(
                         jobGraph,
                         /**
-                         *  TODO: add by antony at 2022/5/4
+                         *  todo: add by antony at 2022/5/4
                          *  下述参数就是主节点中的基础服务
                          */
                         configuration,
@@ -568,7 +568,7 @@ public abstract class Dispatcher extends PermanentlyFencedRpcEndpoint<Dispatcher
                         fatalErrorHandler,
                         initializationTimestamp);
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  启动 JobMaster
          *  1、JobMaster 初始化好了之后，去监控得到ResourceManager的地址，然后连接ResourceManager，做注册+心跳
          *  2、执行start后，即跳转到JobMaster 这个 RpcEndpoint的onStart() 方法

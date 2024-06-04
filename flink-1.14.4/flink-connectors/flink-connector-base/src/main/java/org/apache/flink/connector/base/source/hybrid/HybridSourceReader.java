@@ -220,7 +220,7 @@ public class HybridSourceReader<T> implements SourceReader<T, HybridSourceSplit>
                     currentSourceIndex,
                     currentReader);
         }
-        // TODO: track previous readers splits till checkpoint
+        // todo: track previous readers splits till checkpoint
         Source source = switchedSources.sourceOf(index);
         SourceReader<T, ?> reader;
         try {

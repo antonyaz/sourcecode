@@ -173,20 +173,20 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
             log.info("Starting rest endpoint.");
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  初始化Router对象
              */
             final Router router = new Router();
             final CompletableFuture<String> restAddressFuture = new CompletableFuture<>();
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  初始化系列Handlers
              */
             handlers = initializeHandlers(restAddressFuture);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  handler需要排序
              */
             /* sort the handlers such that they are ordered the following:
@@ -199,13 +199,13 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
             Collections.sort(handlers, RestHandlerUrlComparator.INSTANCE);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  去重
              */
             checkAllEndpointsAndHandlersAreUnique(handlers);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  注册handler
              */
             handlers.forEach(handler -> registerHandler(router, handler, log));
@@ -259,7 +259,7 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
                             0, new ExecutorThreadFactory("flink-rest-server-netty-worker"));
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  netty 的启动引导入口
              */
             bootstrap = new ServerBootstrap();
@@ -279,7 +279,7 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
             }
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  绑定端口启动
              *  在一个允许的范围内来绑定对应的端口
              */
@@ -289,7 +289,7 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
                     chosenPort = portsIterator.next();
                     final ChannelFuture channel;
                     /**
-                     * TODO: add by antony at 2022/5/2
+                     * todo: add by antony at 2022/5/2
                      * 尝试绑定到迭代到的某个端口，如果没有报错，就绑定该端口；如果报错，就迭代下一个端口继续尝试
                      * 绑定成功后，需要将得到的地址(address:port)注册到客户端能够识别的地方也就是zookeeper中
                      */
@@ -319,7 +319,7 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
             log.debug("Binding rest endpoint to {}:{}.", restBindAddress, chosenPort);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  获得刚才启动好的netty的服务器端地址
              */
             final InetSocketAddress bindAddress = (InetSocketAddress) serverChannel.localAddress();
@@ -338,13 +338,13 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
             restAddressFuture.complete(restBaseUrl);
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  状态变更为RUNNING
              */
             state = State.RUNNING;
 
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  内部启动
              */
             startInternal();
@@ -553,7 +553,7 @@ public abstract class RestServerEndpoint implements AutoCloseableAsync {
                     specificationHandler.f0.getHttpMethod(),
                     versionedHandlerURL);
             /**
-             *  TODO: add by antony at 2022/10/3
+             *  todo: add by antony at 2022/10/3
              *  注册 handler
              */
             registerHandler(

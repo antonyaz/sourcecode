@@ -187,7 +187,7 @@ public class WebMonitorEndpoint<T extends RestfulGateway> extends RestServerEndp
     private final MetricFetcher metricFetcher;
 
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      *  选举服务
      */
     private final LeaderElectionService leaderElectionService;
@@ -790,7 +790,7 @@ public class WebMonitorEndpoint<T extends RestfulGateway> extends RestServerEndp
                 Tuple2.of(
                         clientCoordinationHandler.getMessageHeaders(), clientCoordinationHandler));
 
-        // TODO: Remove once the Yarn proxy can forward all REST verbs
+        // todo: Remove once the Yarn proxy can forward all REST verbs
         handlers.add(
                 Tuple2.of(
                         YarnCancelJobTerminationHeaders.getInstance(),
@@ -926,7 +926,7 @@ public class WebMonitorEndpoint<T extends RestfulGateway> extends RestServerEndp
     }
 
     /**
-     * TODO: add by antony at 2022/5/2
+     * todo: add by antony at 2022/5/2
      * WebMonitorEndpoint 组件启动的时候 做了三件事
      * 1、启动netty服务器段
      * 2、执行选举（本身leaderElectionService就是用来做选举的，选举的实现，基于分布式锁）
@@ -937,7 +937,7 @@ public class WebMonitorEndpoint<T extends RestfulGateway> extends RestServerEndp
     @Override
     public void startInternal() throws Exception {
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 启动选举服务
          * this： leaderContender，此处的this是WebMonitorEndpoint
          * 如果选举成功：回调 this.grantLeadership()
@@ -945,7 +945,7 @@ public class WebMonitorEndpoint<T extends RestfulGateway> extends RestServerEndp
         leaderElectionService.start(this);
 
         /**
-         * TODO: add by antony at 2022/5/2
+         * todo: add by antony at 2022/5/2
          * 启动定时任务清理executionGraphCache 过期的executionGraph
          */
         startExecutionGraphCacheCleanupTask();
@@ -1008,7 +1008,7 @@ public class WebMonitorEndpoint<T extends RestfulGateway> extends RestServerEndp
     // -------------------------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      *  回调
      */
     @Override
@@ -1018,7 +1018,7 @@ public class WebMonitorEndpoint<T extends RestfulGateway> extends RestServerEndp
                 getRestBaseUrl(),
                 leaderSessionID);
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  确认
          */
         leaderElectionService.confirmLeadership(leaderSessionID, getRestBaseUrl());

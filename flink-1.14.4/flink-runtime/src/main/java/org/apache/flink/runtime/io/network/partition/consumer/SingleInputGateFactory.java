@@ -130,7 +130,7 @@ public class SingleInputGateFactory {
                         networkBufferSize);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  创建 InputChannel
          */
         createInputChannels(owningTaskName, igdd, inputGate, metrics);
@@ -153,7 +153,7 @@ public class SingleInputGateFactory {
 
         for (int i = 0; i < inputChannels.length; i++) {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  创建InputChannel LocalRecoveredInputChannel 或 RemoteRecoveredInputChannel
              */
             inputChannels[i] =
@@ -161,7 +161,7 @@ public class SingleInputGateFactory {
                             inputGate, i, shuffleDescriptors[i], channelStatistics, metrics);
         }
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  将创建的 inputChannels 注册到inputGate
          */
         inputGate.setInputChannels(inputChannels);
@@ -214,7 +214,7 @@ public class SingleInputGateFactory {
             InputChannelMetrics metrics) {
         ResultPartitionID partitionId = inputChannelDescriptor.getResultPartitionID();
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  local mode
          */
         if (inputChannelDescriptor.isLocalTo(taskExecutorResourceId)) {
@@ -232,7 +232,7 @@ public class SingleInputGateFactory {
                     metrics);
         } else {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  remote mode
              */
             // Different instances => remote

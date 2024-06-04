@@ -105,7 +105,7 @@ public class AvroFileSystemFormatFactory implements FileSystemFormatFactory {
      * InputFormat that reads avro record into {@link RowData}.
      *
      * <p>This extends {@link AvroInputFormat}, but {@link RowData} is not a avro record, so now we
-     * remove generic information. TODO {@link AvroInputFormat} support type conversion.
+     * remove generic information. todo {@link AvroInputFormat} support type conversion.
      */
     private static class RowDataAvroInputFormat extends AvroInputFormat {
 

@@ -1194,7 +1194,7 @@ public class DataStream<T> {
         // read the output type of the input Transform to coax out errors about MissingTypeInfo
         transformation.getOutputType();
         /**
-         * TODO: 算子转成transformation
+         * todo: 算子转成transformation
          * 生成了一个 OneInputTransformation
          */
         OneInputTransformation<T, R> resultTransform =
@@ -1210,7 +1210,7 @@ public class DataStream<T> {
                 new SingleOutputStreamOperator(environment, resultTransform);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  添加至env的成员变量集合中
          */
         getExecutionEnvironment().addOperator(resultTransform);

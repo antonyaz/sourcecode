@@ -35,7 +35,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
  * provide a id method until 2.8.1. We have to add this util for acquiring the {@link TxnID} for
  * compatible consideration.
  *
- * <p>TODO Remove this hack after pulsar 2.8.1 release.
+ * <p>todo Remove this hack after pulsar 2.8.1 release.
  */
 @Internal
 @SuppressWarnings("java:S3011")

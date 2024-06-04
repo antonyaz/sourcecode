@@ -67,21 +67,21 @@ public class AbstractJobClusterExecutor<
             @Nonnull final Configuration configuration,
             @Nonnull final ClassLoader userCodeClassloader)
             throws Exception {
-        // TODO: 将 Stream Graph 转换为 Job Graph
+        // todo: 将 Stream Graph 转换为 Job Graph
         final JobGraph jobGraph = PipelineExecutorUtils.getJobGraph(pipeline, configuration);
 
         try (final ClusterDescriptor<ClusterID> clusterDescriptor =
-                     // TODO: 集群描述器,创建&启动 YarnClient，包含 yarn 和 flink 等配置信息
+                     // todo: 集群描述器,创建&启动 YarnClient，包含 yarn 和 flink 等配置信息
                      clusterClientFactory.createClusterDescriptor(configuration)) {
             final ExecutionConfigAccessor configAccessor =
                     ExecutionConfigAccessor.fromConfiguration(configuration);
 
-            // TODO: 集群特有配置：JobManager 内存、TaskManager 内存、每个TaskManager 的 slots 数量ink
+            // todo: 集群特有配置：JobManager 内存、TaskManager 内存、每个TaskManager 的 slots 数量ink
             final ClusterSpecification clusterSpecification =
                     clusterClientFactory.getClusterSpecification(configuration);
 
             final ClusterClientProvider<ClusterID> clusterClientProvider =
-                    // TODO: 2021/12/13 部署至集群
+                    // todo: 2021/12/13 部署至集群
                     clusterDescriptor.deployJobCluster(
                             clusterSpecification, jobGraph, configAccessor.getDetachedMode());
             LOG.info("Job has been submitted with JobID " + jobGraph.getJobID());

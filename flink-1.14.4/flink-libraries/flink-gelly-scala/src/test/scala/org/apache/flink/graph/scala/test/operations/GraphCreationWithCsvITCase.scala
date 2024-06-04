@@ -54,7 +54,7 @@ MultipleProgramsTestBase(mode) {
         pathVertices = verticesSplit.getPath.toString,
         pathEdges = edgesSplit.getPath.toString,
         env = env)
-    
+
     val result = graph.getTriplets().collect()
     expectedResult = "1,2,1,2,ot\n3,2,3,2,tt\n3,1,3,1,to\n"
     TestBaseUtils.compareResultAsTuples(result.asJava, expectedResult)
@@ -75,7 +75,7 @@ MultipleProgramsTestBase(mode) {
         pathVertices = verticesSplit.getPath.toString,
         pathEdges = edgesSplit.getPath.toString,
         env = env)
-    
+
     val result = graph.getTriplets().collect()
     expectedResult = "1,2,one,two,(null)\n3,2,three,two,(null)\n3,1,three,one,(null)\n"
     TestBaseUtils.compareResultAsTuples(result.asJava, expectedResult)
@@ -94,7 +94,7 @@ MultipleProgramsTestBase(mode) {
         pathEdges = edgesSplit.getPath.toString,
         vertexValueInitializer = new VertexDoubleIdAssigner(),
         env = env)
-    
+
     val result = graph.getTriplets().collect()
     expectedResult = "1,2,1.0,2.0,12\n3,2,3.0,2.0,32\n3,1,3.0,1.0,31\n"
     TestBaseUtils.compareResultAsTuples(result.asJava, expectedResult)
@@ -112,7 +112,7 @@ MultipleProgramsTestBase(mode) {
     val graph = Graph.fromCsvReader[Long, NullValue, Long](
         pathEdges = edgesSplit.getPath.toString,
         env = env)
-    
+
     val result = graph.getTriplets().collect()
     expectedResult = "1,2,(null),(null),12\n3,2,(null),(null),32\n" +
       "3,1,(null),(null),31\n"
@@ -131,7 +131,7 @@ MultipleProgramsTestBase(mode) {
     val graph = Graph.fromCsvReader[Long, NullValue, NullValue](
         pathEdges = edgesSplit.getPath.toString,
         env = env)
-    
+
     val result = graph.getTriplets().collect()
     expectedResult = "1,2,(null),(null),(null)\n" +
       "3,2,(null),(null),(null)\n3,1,(null),(null),(null)\n"
@@ -158,7 +158,7 @@ MultipleProgramsTestBase(mode) {
         ignoreCommentsVertices = "%",
         pathEdges = edgesSplit.getPath.toString,
         env = env)
-    
+
     val result = graph.getTriplets().collect()
     expectedResult = "1,2,1,2,ot\n3,2,3,2,tt\n3,1,3,1,to\n"
     TestBaseUtils.compareResultAsTuples(result.asJava, expectedResult)
@@ -184,7 +184,7 @@ MultipleProgramsTestBase(mode) {
         ignoreCommentsEdges = "//",
         pathEdges = edgesSplit.getPath.toString,
         env = env)
-    
+
     val result = graph.getTriplets().collect()
     expectedResult = "1,2,1,2,ot\n3,2,3,2,tt\n3,1,3,1,to\n"
     TestBaseUtils.compareResultAsTuples(result.asJava, expectedResult)
@@ -205,7 +205,7 @@ MultipleProgramsTestBase(mode) {
 
     final class VertexDoubleIdAssigner extends MapFunction[Long, Double] {
       @throws(classOf[Exception])
-      def map(id: Long): Double = {id.toDouble}
+      def map(id: Long): Double = {id.todouble}
     }
 
 }

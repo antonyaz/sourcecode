@@ -71,7 +71,7 @@ public class NettyShuffleServiceFactory
             ShuffleEnvironmentContext shuffleEnvironmentContext) {
         checkNotNull(shuffleEnvironmentContext);
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  准备相关参数配置
          */
         NettyShuffleEnvironmentConfiguration networkConfig =
@@ -81,7 +81,7 @@ public class NettyShuffleServiceFactory
                         shuffleEnvironmentContext.isLocalCommunicationOnly(),
                         shuffleEnvironmentContext.getHostAddress());
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  创建 NettyShuffleEnvironment
          */
         return createNettyShuffleEnvironment(
@@ -109,7 +109,7 @@ public class NettyShuffleServiceFactory
     }
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 在创建 ShuffleEnvironment 的时候，内部做了很多事儿
      * 1、创建了一个Netty 客户端
      * 2、创建了一个Netty 服务器端
@@ -143,7 +143,7 @@ public class NettyShuffleServiceFactory
         }
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  初始化 nettyServer 和 netttyClient
          */
         ConnectionManager connectionManager =
@@ -180,7 +180,7 @@ public class NettyShuffleServiceFactory
         registerShuffleMetrics(metricGroup, networkBufferPool);
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  初始化 ResultPartition 输出组件工厂
          */
         ResultPartitionFactory resultPartitionFactory =
@@ -202,7 +202,7 @@ public class NettyShuffleServiceFactory
                         config.isSSLEnabled());
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  初始化 InputGate 输入组件
          */
         SingleInputGateFactory singleInputGateFactory =

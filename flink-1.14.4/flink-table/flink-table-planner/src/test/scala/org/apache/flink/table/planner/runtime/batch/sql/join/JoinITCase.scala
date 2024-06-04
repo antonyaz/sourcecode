@@ -652,8 +652,8 @@ class JoinITCase(expectedJoinType: JoinType) extends BatchTestBase {
 
   @Test
   def testJoinWithNull(): Unit = {
-    // TODO enable all
-    // TODO not support same source until set lazy_from_source
+    // todo enable all
+    // todo not support same source until set lazy_from_source
     if (expectedJoinType == SortMergeJoin) {
       checkResult(
         "SELECT c, g FROM NullTable3, NullTable5 " +

@@ -222,7 +222,7 @@ class FlinkRelMdUpsertKeys private extends MetadataHandler[UpsertKeys] {
     FlinkRelMdUniqueKeys.INSTANCE.getJoinUniqueKeys(
       join.joinType, leftType, filterKeys(leftKeys, leftJoinKeys), null,
       areColumnsUpsertKeys(leftKeys, leftJoinKeys),
-      // TODO get uniqueKeys from TableSchema of TableSource
+      // todo get uniqueKeys from TableSchema of TableSource
       null)
   }
 

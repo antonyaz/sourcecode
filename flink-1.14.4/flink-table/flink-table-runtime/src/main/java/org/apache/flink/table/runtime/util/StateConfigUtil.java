@@ -42,7 +42,7 @@ public class StateConfigUtil {
     }
 
     public static boolean isStateImmutableInStateBackend(KeyedStateBackend<?> keyedStateBackend) {
-        // TODO: remove the hard code check once FLINK-21027 is supported
+        // todo: remove the hard code check once FLINK-21027 is supported
         return keyedStateBackend.isStateImmutableInStateBackend(CheckpointType.CHECKPOINT);
     }
 }

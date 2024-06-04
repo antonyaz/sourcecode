@@ -336,7 +336,7 @@ public class FlinkKafkaShuffle {
         SourceFunction<T> kafkaConsumer =
                 new FlinkKafkaShuffleConsumer<>(topic, schema, typeSerializer, kafkaProperties);
 
-        // TODO: consider situations where numberOfPartitions != consumerParallelism
+        // todo: consider situations where numberOfPartitions != consumerParallelism
         Preconditions.checkArgument(
                 kafkaProperties.getProperty(PARTITION_NUMBER) != null,
                 "Missing partition number for Kafka Shuffle");

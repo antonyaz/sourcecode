@@ -82,7 +82,7 @@ public class FlinkSemiAntiJoinJoinTransposeRule extends RelOptRule {
         if (join.getJoinType() == JoinRelType.SEMI || join.getJoinType() == JoinRelType.ANTI) {
             return;
         }
-        // TODO support other join type
+        // todo support other join type
         if (join.getJoinType() != JoinRelType.INNER) {
             return;
         }
@@ -98,7 +98,7 @@ public class FlinkSemiAntiJoinJoinTransposeRule extends RelOptRule {
         // unsupported case1. (NOT) EXISTS with uncorrelation
         // e.g. SELECT * FROM x, y WHERE x.c = y.f AND EXISTS (SELECT * FROM z)
         // SemiJoin may be push to both Join's left and Join's right.
-        // TODO currently we does not handle this
+        // todo currently we does not handle this
         if (leftInputRefs.isEmpty() || rightInputRefs.isEmpty()) {
             return;
         }

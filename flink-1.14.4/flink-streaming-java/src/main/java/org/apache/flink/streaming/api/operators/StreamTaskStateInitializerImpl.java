@@ -358,7 +358,7 @@ public class StreamTaskStateInitializerImpl implements StreamTaskStateInitialize
         if (restoreStateAlternatives.hasNext()) {
 
             Collection<OperatorStateHandle> rawOperatorState = restoreStateAlternatives.next();
-            // TODO currently this does not support local state recovery, so we expect there is only
+            // todo currently this does not support local state recovery, so we expect there is only
             // one handle.
             Preconditions.checkState(
                     !restoreStateAlternatives.hasNext(),
@@ -395,7 +395,7 @@ public class StreamTaskStateInitializerImpl implements StreamTaskStateInitialize
         if (restoreStateAlternatives.hasNext()) {
             Collection<KeyedStateHandle> rawKeyedState = restoreStateAlternatives.next();
 
-            // TODO currently this does not support local state recovery, so we expect there is only
+            // todo currently this does not support local state recovery, so we expect there is only
             // one handle.
             Preconditions.checkState(
                     !restoreStateAlternatives.hasNext(),
@@ -500,7 +500,7 @@ public class StreamTaskStateInitializerImpl implements StreamTaskStateInitialize
             extends AbstractStateStreamIterator<StatePartitionStreamProvider, OperatorStateHandle> {
 
         private final String
-                stateName; // TODO since we only support a single named state in raw, this could be
+                stateName; // todo since we only support a single named state in raw, this could be
         // dropped
         private long[] offsets;
         private int offPos;

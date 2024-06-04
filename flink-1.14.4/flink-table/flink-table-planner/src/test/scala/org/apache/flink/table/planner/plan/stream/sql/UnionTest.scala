@@ -24,7 +24,7 @@ import org.apache.flink.table.planner.utils.TableTestBase
 
 import org.junit.{Before, Test}
 
-// TODO add more union case after aggregation and join supported
+// todo add more union case after aggregation and join supported
 class UnionTest extends TableTestBase {
 
   private val util = streamTestUtil()

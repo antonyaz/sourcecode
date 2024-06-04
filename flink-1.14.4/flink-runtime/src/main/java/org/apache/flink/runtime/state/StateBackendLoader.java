@@ -111,7 +111,7 @@ public class StateBackendLoader {
         checkNotNull(classLoader, "classLoader");
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  配置文件
          *  state.backend = hashmap | jobmanager | filesystem | rocksdb
          */
@@ -124,7 +124,7 @@ public class StateBackendLoader {
         String factoryClassName = backendName;
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  三种实现
          *  1、MemoryStateBackend
          *  2、HashMapStateBackend
@@ -138,7 +138,7 @@ public class StateBackendLoader {
 
         switch (backendName.toLowerCase()) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  做checkpoint的时候，持久化保存的状态数据句柄信息 放在JobManager的内存中
              */
             case MEMORY_STATE_BACKEND_NAME:

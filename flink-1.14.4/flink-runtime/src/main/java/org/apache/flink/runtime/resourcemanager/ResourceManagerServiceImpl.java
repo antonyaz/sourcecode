@@ -118,7 +118,7 @@ public class ResourceManagerServiceImpl implements ResourceManagerService, Leade
         LOG.info("Starting resource manager service.");
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  开启竞选
          *  直接查看回调： this.grantLeadership
          */
@@ -189,7 +189,7 @@ public class ResourceManagerServiceImpl implements ResourceManagerService, Leade
     // ------------------------------------------------------------------------
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      * 回调入口
      */
     @Override
@@ -210,7 +210,7 @@ public class ResourceManagerServiceImpl implements ResourceManagerService, Leade
 
                         try {
                             /**
-                             *  TODO: add by antony at 2022/5/3
+                             *  todo: add by antony at 2022/5/3
                              *  选举成功后回调
                              *  startNewLeaderResourceManager
                              */
@@ -262,18 +262,18 @@ public class ResourceManagerServiceImpl implements ResourceManagerService, Leade
     @GuardedBy("lock")
     private void startNewLeaderResourceManager(UUID newLeaderSessionID) throws Exception {
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  1、停止以前的 leaderResourceManager
          */
         stopLeaderResourceManager();
 
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  2、更新sessionID
          */
         this.leaderSessionID = newLeaderSessionID;
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *  3、创建ResourceManager 即 RpcServer
          */
         this.leaderResourceManager =
@@ -287,7 +287,7 @@ public class ResourceManagerServiceImpl implements ResourceManagerService, Leade
                         (ignore) -> {
                             synchronized (lock) {
                                 /**
-                                 *  TODO: add by antony at 2022/5/3
+                                 *  todo: add by antony at 2022/5/3
                                  *  4、如果resourceManager为leader的话，就启动rm
                                  */
                                 return startResourceManagerIfIsLeader(newLeaderResourceManager);
@@ -298,7 +298,7 @@ public class ResourceManagerServiceImpl implements ResourceManagerService, Leade
                         (isStillLeader) -> {
                             if (isStillLeader) {
                                 /**
-                                 *  TODO: add by antony at 2022/5/3
+                                 *  todo: add by antony at 2022/5/3
                                  *  如果leader角色没有改变，确认zk地址信息
                                  */
                                 leaderElectionService.confirmLeadership(
@@ -317,7 +317,7 @@ public class ResourceManagerServiceImpl implements ResourceManagerService, Leade
             ResourceManager<?> resourceManager) {
         if (isLeader(resourceManager)) {
             /**
-             *  TODO: add by antony at 2022/5/3
+             *  todo: add by antony at 2022/5/3
              *  启动resourceManager rpcServer的start() 即 查看 对应的 onStart()
              *  查看 ResourceManager 对象的 onStart()
              */
@@ -396,7 +396,7 @@ public class ResourceManagerServiceImpl implements ResourceManagerService, Leade
         return new ResourceManagerServiceImpl(
                 resourceManagerFactory,
                 /**
-                 *  TODO: add by antony at 2022/10/3
+                 *  todo: add by antony at 2022/10/3
                  *  创建
                  */
                 resourceManagerFactory.createResourceManagerProcessContext(

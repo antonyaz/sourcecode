@@ -164,7 +164,7 @@ public final class DynamicSourceUtils {
         // lookup table source is validated in LookupJoin node
     }
 
-    // TODO: isUpsertSource(), isSourceChangeEventsDuplicate()
+    // todo: isUpsertSource(), isSourceChangeEventsDuplicate()
 
     /**
      * Returns a list of required metadata keys. Ordered by the iteration order of {@link

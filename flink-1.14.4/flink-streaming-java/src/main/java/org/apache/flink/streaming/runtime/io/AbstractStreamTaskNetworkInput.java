@@ -88,20 +88,20 @@ public abstract class AbstractStreamTaskNetworkInput<
     public DataInputStatus emitNext(DataOutput<T> output) throws Exception {
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  循环，等待获取数据
          */
         while (true) {
             // get the stream element from the deserializer
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  如果 currentRecordDeserializer 不为空， 表示里面有数据
              */
             if (currentRecordDeserializer != null) {
                 RecordDeserializer.DeserializationResult result;
                 try {
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  获取数据
                      */
                     result = currentRecordDeserializer.getNextRecord(deserializationDelegate);
@@ -114,12 +114,12 @@ public abstract class AbstractStreamTaskNetworkInput<
                 }
 
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  执行逻辑处理
                  */
                 if (result.isFullRecord()) {
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  执行数据处理逻辑
                      */
                     processElement(deserializationDelegate.getInstance(), output);
@@ -128,7 +128,7 @@ public abstract class AbstractStreamTaskNetworkInput<
             }
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  阻塞获取数据 ：
              *  类型为 BufferOrEvent 即此时获取的数据可能是 Buffer 也可能是 Event
              *  Buffer： 真是的带处理的计算数据
@@ -141,18 +141,18 @@ public abstract class AbstractStreamTaskNetworkInput<
                 // data after the barrier before checkpoint is performed for unaligned checkpoint
                 // mode
                 /**
-                 *  TODO: add by antony at 2022/5/4
+                 *  todo: add by antony at 2022/5/4
                  *  Buffer
                  */
                 if (bufferOrEvent.get().isBuffer()) {
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  处理数据
                      */
                     processBuffer(bufferOrEvent.get());
                 } else {
                     /**
-                     *  TODO: add by antony at 2022/5/4
+                     *  todo: add by antony at 2022/5/4
                      *  Event，比如 CheckpointBarrier
                      */
                     return processEvent(bufferOrEvent.get());

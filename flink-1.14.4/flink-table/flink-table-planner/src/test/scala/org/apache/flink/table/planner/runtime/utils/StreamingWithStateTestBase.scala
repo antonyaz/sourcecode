@@ -50,7 +50,7 @@ import scala.collection.mutable.ArrayBuffer
 class StreamingWithStateTestBase(state: StateBackendMode) extends StreamingTestBase {
 
   enableObjectReuse = state match {
-    case HEAP_BACKEND => false // TODO heap statebackend not support obj reuse now.
+    case HEAP_BACKEND => false // todo heap statebackend not support obj reuse now.
     case ROCKSDB_BACKEND => true
   }
 

@@ -132,7 +132,7 @@ public class HiveGenericUDAF
                         inputInspectors,
                         // The flag to indicate if the UDAF invocation was from the windowing
                         // function call or not.
-                        // TODO: investigate whether this has impact on Flink streaming job with
+                        // todo: investigate whether this has impact on Flink streaming job with
                         // windows
                         Boolean.FALSE,
                         // Returns true if the UDAF invocation was qualified with DISTINCT keyword.
@@ -152,7 +152,7 @@ public class HiveGenericUDAF
 
     /**
      * This is invoked without calling open(), so we need to call init() for
-     * getNewAggregationBuffer(). TODO: re-evaluate how this will fit into Flink's new type
+     * getNewAggregationBuffer(). todo: re-evaluate how this will fit into Flink's new type
      * inference and udf system
      */
     @Override

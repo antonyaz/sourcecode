@@ -61,7 +61,7 @@ public class JobDetailsInfo implements ResponseBody {
 
     public static final String FIELD_NAME_MAX_PARALLELISM = "maxParallelism";
 
-    // TODO: For what do we need this???
+    // todo: For what do we need this???
     public static final String FIELD_NAME_NOW = "now";
 
     public static final String FIELD_NAME_TIMESTAMPS = "timestamps";

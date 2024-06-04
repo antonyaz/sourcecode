@@ -94,14 +94,14 @@ public class YarnJobClusterEntrypoint extends JobClusterEntrypoint {
                 YarnEntrypointUtils.loadConfiguration(workingDirectory, dynamicParameters, env);
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *  创建 yarn job cluster entry point
          */
         YarnJobClusterEntrypoint yarnJobClusterEntrypoint =
                 new YarnJobClusterEntrypoint(configuration);
 
         /**
-         *  TODO: add by antony at 2022/10/3
+         *  todo: add by antony at 2022/10/3
          *
          */
         ClusterEntrypoint.runClusterEntrypoint(yarnJobClusterEntrypoint);

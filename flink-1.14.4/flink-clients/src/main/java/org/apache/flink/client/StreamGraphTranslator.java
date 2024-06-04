@@ -48,7 +48,7 @@ public class StreamGraphTranslator implements FlinkPipelineTranslator {
 
         StreamGraph streamGraph = (StreamGraph) pipeline;
         /**
-         * TODO: 执行转换
+         * todo: 执行转换
          *
          */
         return streamGraph.getJobGraph(null);

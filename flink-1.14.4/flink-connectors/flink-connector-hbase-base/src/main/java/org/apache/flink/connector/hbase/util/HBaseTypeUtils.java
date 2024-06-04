@@ -63,7 +63,7 @@ public class HBaseTypeUtils {
             case 6:
                 return Bytes.toFloat(value);
             case 7:
-                return Bytes.toDouble(value);
+                return Bytes.todouble(value);
             case 8:
                 return Bytes.toBoolean(value);
             case 9: // sql.Timestamp encoded as long

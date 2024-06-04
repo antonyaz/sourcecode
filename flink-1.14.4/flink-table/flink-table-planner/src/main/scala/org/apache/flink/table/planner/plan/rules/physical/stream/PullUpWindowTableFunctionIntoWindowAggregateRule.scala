@@ -58,7 +58,7 @@ class PullUpWindowTableFunctionIntoWindowAggregateRule
 
     val aggInputWindowProps = fmq.getRelWindowProperties(calc).getWindowColumns
     // aggregate call shouldn't be on window columns
-    // TODO: this can be supported in the future by referencing them as a RexFieldVariable
+    // todo: this can be supported in the future by referencing them as a RexFieldVariable
     windowAgg.aggCalls.forall { call =>
       aggInputWindowProps.intersect(ImmutableBitSet.of(call.getArgList)).isEmpty
     }

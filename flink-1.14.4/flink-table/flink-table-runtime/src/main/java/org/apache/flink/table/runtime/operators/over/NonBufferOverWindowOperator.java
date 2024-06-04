@@ -100,7 +100,7 @@ public class NonBufferOverWindowOperator extends TableStreamOperator<RowData>
                 processor.setAccumulators(processor.createAccumulators());
             }
 
-            // TODO Reform AggsHandleFunction.getValue instead of use JoinedRowData. Multilayer
+            // todo Reform AggsHandleFunction.getValue instead of use JoinedRowData. Multilayer
             // JoinedRowData is slow.
             processor.accumulate(input);
             RowData value = processor.getValue();

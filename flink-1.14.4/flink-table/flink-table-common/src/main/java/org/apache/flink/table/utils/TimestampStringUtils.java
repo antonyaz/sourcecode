@@ -27,7 +27,7 @@ import java.util.TimeZone;
 /**
  * Utils to represent a LocalDateTime to String, considered the precision.
  *
- * <p>TODO://This class keep same SQL formats with {@code
+ * <p>todo://This class keep same SQL formats with {@code
  * org.apache.flink.table.runtime.functions.SqlDateTimeUtils} which used in Flink SQL codegen, The
  * two utils will be unified once FLINK-21456 finished.
  */

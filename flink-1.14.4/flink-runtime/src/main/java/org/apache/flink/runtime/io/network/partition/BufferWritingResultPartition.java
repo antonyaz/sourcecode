@@ -180,13 +180,13 @@ public abstract class BufferWritingResultPartition extends ResultPartition {
         finishUnicastBufferBuilders();
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  将 CheckpointBarrier 转换成 BufferConsumer
          */
         try (BufferConsumer eventBufferConsumer =
                 EventSerializer.toBufferConsumer(event, isPriorityEvent)) {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  给 CheckpointBarrier 加入到每个 ResultSubpartition 中输出到下游
              */
             for (ResultSubpartition subpartition : subpartitions) {

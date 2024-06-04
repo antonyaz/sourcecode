@@ -244,7 +244,7 @@ public final class ColumnarArrayData implements ArrayData, TypedSetters {
     }
 
     @Override
-    public double[] toDoubleArray() {
+    public double[] todoubleArray() {
         double[] res = new double[numElements];
         for (int i = 0; i < numElements; i++) {
             res[i] = getDouble(i);

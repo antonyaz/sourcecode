@@ -120,7 +120,7 @@ class DistinctAggregateTest(
 
   @Test
   def testSomeColumnsBothInDistinctAggAndGroupBy(): Unit = {
-    // TODO: the COUNT(DISTINCT a) can be optimized to literal 1
+    // todo: the COUNT(DISTINCT a) can be optimized to literal 1
     util.verifyExecPlan("SELECT a, COUNT(DISTINCT a), COUNT(b) FROM MyTable GROUP BY a")
   }
 

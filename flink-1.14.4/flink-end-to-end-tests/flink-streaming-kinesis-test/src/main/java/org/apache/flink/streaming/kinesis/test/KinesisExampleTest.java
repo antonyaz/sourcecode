@@ -111,7 +111,7 @@ public class KinesisExampleTest {
             Assert.assertTrue(expectedResult, results.contains(expectedResult));
         }
 
-        // TODO: main thread needs to create job or CLI fails with:
+        // todo: main thread needs to create job or CLI fails with:
         // "The program didn't contain a Flink job. Perhaps you forgot to call execute() on the
         // execution environment."
         System.out.println("test finished");

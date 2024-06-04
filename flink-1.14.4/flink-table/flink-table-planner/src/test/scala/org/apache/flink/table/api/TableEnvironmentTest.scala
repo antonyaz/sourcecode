@@ -1279,7 +1279,7 @@ class TableEnvironmentTest {
     val tableResult1 = tableEnv.executeSql(createTableStmt)
     assertEquals(ResultKind.SUCCESS, tableResult1.getResultKind)
 
-    // TODO we can support them later
+    // todo we can support them later
     testUnsupportedExplain("explain plan excluding attributes for select * from MyTable")
     testUnsupportedExplain("explain plan including all attributes for select * from MyTable")
     testUnsupportedExplain("explain plan with type for select * from MyTable")

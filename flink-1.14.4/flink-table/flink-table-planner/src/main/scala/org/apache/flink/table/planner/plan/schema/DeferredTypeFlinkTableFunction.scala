@@ -43,7 +43,7 @@ class DeferredTypeFlinkTableFunction(
       tableFunction: functions.TableFunction[_],
       arguments: Array[AnyRef],
       argTypes: Array[Class[_]]): DataType = {
-    // TODO
+    // todo
 //    val resultType = tableFunction.getResultType(arguments, argTypes)
     val resultType = tableFunction.getResultType
     if (resultType != null) {

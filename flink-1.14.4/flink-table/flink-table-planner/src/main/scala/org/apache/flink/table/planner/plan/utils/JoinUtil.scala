@@ -118,7 +118,7 @@ object JoinUtil {
     if (remaining.isAlwaysTrue) {
       JoinInfo.of(ImmutableIntList.copyOf(leftKeys), ImmutableIntList.copyOf(rightKeys))
     } else {
-      // TODO create NonEquiJoinInfo directly
+      // todo create NonEquiJoinInfo directly
       JoinInfo.of(left, right, condition)
     }
   }

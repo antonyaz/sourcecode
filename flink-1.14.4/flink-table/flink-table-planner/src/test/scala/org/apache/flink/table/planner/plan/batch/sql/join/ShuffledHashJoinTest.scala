@@ -111,7 +111,7 @@ class ShuffledHashJoinTest extends JoinTestBase {
 
   @Test
   override def testSelfJoin(): Unit = {
-    // TODO use shuffle hash join if isBroadcast is true and isBroadcastHashJoinEnabled is false ?
+    // todo use shuffle hash join if isBroadcast is true and isBroadcastHashJoinEnabled is false ?
     thrown.expect(classOf[TableException])
     thrown.expectMessage("Cannot generate a valid execution plan for the given query")
     super.testSelfJoin()

@@ -10717,7 +10717,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
         targetColumnList.add(id);
     jj_consume_token(EQ);
     exp = Expression(ExprContext.ACCEPT_SUB_QUERY);
-        // TODO:  support DEFAULT also
+        // todo:  support DEFAULT also
         sourceExpressionList.add(exp);
     label_18:
     while (true) {
@@ -11235,7 +11235,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
       jj_la1[148] = jj_gen;
       ;
     }
-        // TODO zfong 5/26/06: note that extra parentheses are accepted above
+        // todo zfong 5/26/06: note that extra parentheses are accepted above
         // around the VALUES clause as a hack for unparse, but this is
         // actually invalid SQL; should fix unparse
         insertValues = SqlStdOperatorTable.VALUES.createCall(
@@ -12585,7 +12585,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
     throw new Error("Missing return statement in function");
   }
 
-// TODO jvs 15-Nov-2003:  SQL standard allows parentheses in the FROM list for
+// todo jvs 15-Nov-2003:  SQL standard allows parentheses in the FROM list for
 // building up non-linear join trees (e.g. OUTER JOIN two tables, and then INNER
 // JOIN the result).  Also note that aliases on parenthesized FROM expressions
 // "hide" all table names inside the parentheses (without aliases, they're
@@ -16547,7 +16547,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
         // 1. datetime literal
         // 2. datetime value function, i.e. CURRENT_TIMESTAMP
         // 3. datetime term in 1 or 2 +(or -) interval term
-    
+
         // We extend to support column reference, use Expression
         // to simplify the parsing code.
         e = Expression(ExprContext.ACCEPT_NON_QUERY);
@@ -19556,7 +19556,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
     throw new Error("Missing return statement in function");
   }
 
-// TODO jvs 15-Nov-2003:  ANY/ALL
+// todo jvs 15-Nov-2003:  ANY/ALL
   final public void Expression2b(ExprContext exprContext, List<Object> list) throws ParseException {
     SqlNode e;
     SqlOperator op;
@@ -22199,7 +22199,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
         break;
       case UNICODE_STRING_LITERAL:
         jj_consume_token(UNICODE_STRING_LITERAL);
-            // TODO jvs 2-Feb-2009:  support the explicit specification of
+            // todo jvs 2-Feb-2009:  support the explicit specification of
             // a character set for Unicode string literals, per SQL:2003
             unicodeEscapeChar = BACKSLASH;
             charSet = "UTF16";
@@ -22370,7 +22370,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case LBRACKET:
         jj_consume_token(LBRACKET);
-        // TODO: do trigraph as well ??( ??)
+        // todo: do trigraph as well ??( ??)
                 e = Expression(ExprContext.ACCEPT_NON_QUERY);
                                                        args = startList(e);
         label_45:
@@ -25689,7 +25689,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
     throw new Error("Missing return statement in function");
   }
 
-//TODO: real parse errors.
+//todo: real parse errors.
   final public int UnsignedIntLiteral() throws ParseException {
     Token t;
     t = jj_consume_token(UNSIGNED_INTEGER_LITERAL);
@@ -29154,7 +29154,7 @@ public class FlinkSqlParserImpl extends SqlAbstractParserImpl implements FlinkSq
  * view definitions to permanently bind references to a particular function
  * after the overload resolution performed by view creation.
  *
- * <p>TODO jvs 25-Mar-2005:  Once we have SQL-Flagger support, flag SPECIFIC
+ * <p>todo jvs 25-Mar-2005:  Once we have SQL-Flagger support, flag SPECIFIC
  * as non-standard.
  */
   final public SqlNode NamedFunctionCall() throws ParseException {

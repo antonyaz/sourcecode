@@ -24,7 +24,7 @@ import org.apache.flink.util.StringUtils;
 
 import java.util.Locale;
 
-/** TODO: add javadoc. */
+/** todo: add javadoc. */
 public class MetricsAggregationParameter
         extends MessageQueryParameter<MetricsAggregationParameter.AggregationMode> {
 

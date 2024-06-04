@@ -190,7 +190,7 @@ public final class RocksDBMemoryConfiguration implements Serializable {
         // writeBufferRatio)
         // we should ensure the sum of write buffer manager capacity and high priority pool less
         // than cache capacity.
-        // TODO change the formula once FLINK-15532 resolved.
+        // todo change the formula once FLINK-15532 resolved.
         if (writeBufferRatio != null
                 && highPriorityPoolRatio != null
                 && 2 * writeBufferRatio / (3 - writeBufferRatio) + highPriorityPoolRatio >= 1.0) {

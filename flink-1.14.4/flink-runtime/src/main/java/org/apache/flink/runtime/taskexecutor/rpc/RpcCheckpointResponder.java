@@ -46,7 +46,7 @@ public class RpcCheckpointResponder implements CheckpointResponder {
             TaskStateSnapshot subtaskState) {
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  TaskExecutor 中的一个 Task 执行完 Checkpoint ，则给对应的 JobMaster 发送 ack 反馈
          */
         checkpointCoordinatorGateway.acknowledgeCheckpoint(

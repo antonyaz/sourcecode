@@ -59,8 +59,8 @@ object LongHashJoinGenerator {
           TimestampData.isCompact(lzTs.getPrecision)
         case _ => false
       }
-      // TODO decimal and multiKeys support.
-      // TODO All HashJoinType support.
+      // todo decimal and multiKeys support.
+      // todo All HashJoinType support.
     }
   }
 

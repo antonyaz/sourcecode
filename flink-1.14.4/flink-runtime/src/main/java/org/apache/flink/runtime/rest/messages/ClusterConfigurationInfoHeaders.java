@@ -31,9 +31,9 @@ public final class ClusterConfigurationInfoHeaders
     private static final ClusterConfigurationInfoHeaders INSTANCE =
             new ClusterConfigurationInfoHeaders();
 
-    // TODO this REST path is inappropriately set due to legacy design reasons, and ideally should
+    // todo this REST path is inappropriately set due to legacy design reasons, and ideally should
     // be '/config';
-    // TODO changing it would require corresponding path changes in flink-runtime-web
+    // todo changing it would require corresponding path changes in flink-runtime-web
     public static final String CLUSTER_CONFIG_REST_PATH = "/jobmanager/config";
 
     private ClusterConfigurationInfoHeaders() {}

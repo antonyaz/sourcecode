@@ -149,7 +149,7 @@ public abstract class AbstractOperatorRestoreTestBase extends TestLogger {
         String savepointPath = null;
 
         // FLINK-6918: Retry cancel with savepoint message in case that StreamTasks were not running
-        // TODO: The retry logic should be removed once the StreamTask lifecycle has been fixed (see
+        // todo: The retry logic should be removed once the StreamTask lifecycle has been fixed (see
         // FLINK-4714)
         while (deadline.hasTimeLeft() && savepointPath == null) {
             try {

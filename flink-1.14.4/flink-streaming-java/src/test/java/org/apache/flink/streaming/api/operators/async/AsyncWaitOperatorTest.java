@@ -1104,7 +1104,7 @@ public class AsyncWaitOperatorTest extends TestLogger {
     /**
      * This helper function is needed to check that the temporary fix for FLINK-13063 can be
      * backwards compatible with the old chaining behavior by setting the ChainingStrategy manually.
-     * TODO: remove after a proper fix for FLINK-13063 is in place that allows chaining.
+     * todo: remove after a proper fix for FLINK-13063 is in place that allows chaining.
      */
     private <IN, OUT> SingleOutputStreamOperator<OUT> addAsyncOperatorLegacyChained(
             DataStream<IN> in,

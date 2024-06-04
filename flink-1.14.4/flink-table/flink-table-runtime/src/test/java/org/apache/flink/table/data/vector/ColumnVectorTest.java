@@ -280,7 +280,7 @@ public class ColumnVectorTest {
         }
 
         double[] doubles =
-                LongStream.range(0, SIZE).boxed().mapToDouble(Number::doubleValue).toArray();
+                LongStream.range(0, SIZE).boxed().maptodouble(Number::doubleValue).toArray();
         byte[] binary = new byte[SIZE * 8];
         UNSAFE.copyMemory(doubles, DOUBLE_ARRAY_OFFSET, binary, BYTE_ARRAY_OFFSET, binary.length);
         vector = new HeapDoubleVector(SIZE);
@@ -391,7 +391,7 @@ public class ColumnVectorTest {
         }
 
         @Override
-        public double decodeToDouble(int id) {
+        public double decodetodouble(int id) {
             return (double) intDictionary[id];
         }
 

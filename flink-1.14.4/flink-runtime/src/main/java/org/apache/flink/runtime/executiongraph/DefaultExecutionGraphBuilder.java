@@ -121,7 +121,7 @@ public class DefaultExecutionGraphBuilder {
         final DefaultExecutionGraph executionGraph;
         try {
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  创建ExecutionGraph
              */
             executionGraph =
@@ -198,7 +198,7 @@ public class DefaultExecutionGraphBuilder {
                     jobId);
         }
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  真正的做转换
          */
         executionGraph.attachJobGraph(sortedTopology);
@@ -318,7 +318,7 @@ public class DefaultExecutionGraphBuilder {
             }
 
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  设置 checkpoint 相关参数
              *  名称的变化
              *  StreamGraph     ->  JobGraph                -> ExecutionGraph
@@ -327,7 +327,7 @@ public class DefaultExecutionGraphBuilder {
             final CheckpointCoordinatorConfiguration chkConfig =
                     snapshotSettings.getCheckpointCoordinatorConfiguration();
             /**
-             *  TODO: add by antony at 2022/5/4
+             *  todo: add by antony at 2022/5/4
              *  设置checkpoint配置参数并启动
              */
             executionGraph.enableCheckpointing(

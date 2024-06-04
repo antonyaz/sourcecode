@@ -614,7 +614,7 @@ public class AdaptiveScheduler
                 StateWithExecutionGraph.class,
                 stateWithExecutionGraph ->
                         /**
-                         *  TODO: add by antony at 2022/5/4
+                         *  todo: add by antony at 2022/5/4
                          *
                          */
                         stateWithExecutionGraph.acknowledgeCheckpoint(

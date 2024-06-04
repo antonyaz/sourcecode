@@ -185,7 +185,7 @@ public class HiveWriterFactory implements Serializable {
         this.recordSerDe = (Serializer) serdeLib;
         ReflectionUtils.setConf(recordSerDe, jobConf);
 
-        // TODO: support partition properties, for now assume they're same as table properties
+        // todo: support partition properties, for now assume they're same as table properties
         SerDeUtils.initializeSerDe((Deserializer) recordSerDe, jobConf, tableProperties, null);
 
         this.formatFields = allColumns.length - partitionColumns.length;

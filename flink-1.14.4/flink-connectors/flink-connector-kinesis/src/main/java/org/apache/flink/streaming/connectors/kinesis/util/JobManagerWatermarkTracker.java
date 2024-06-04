@@ -107,7 +107,7 @@ public class JobManagerWatermarkTracker extends WatermarkTracker {
         private long updateTimeoutMillis = DEFAULT_UPDATE_TIMEOUT_MILLIS;
         private long logAccumulatorIntervalMillis = -1;
 
-        // TODO: wrap accumulator
+        // todo: wrap accumulator
         static long addCount;
         static long lastLogged;
         private static final Logger LOG = LoggerFactory.getLogger(WatermarkAggregateFunction.class);

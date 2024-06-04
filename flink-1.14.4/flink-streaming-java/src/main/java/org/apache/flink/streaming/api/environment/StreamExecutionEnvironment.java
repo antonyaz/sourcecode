@@ -171,13 +171,13 @@ public class StreamExecutionEnvironment {
 
     /** Settings that control the checkpointing behavior. */
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * checkpoint 配置参数
      */
     private final CheckpointConfig checkpointCfg = new CheckpointConfig();
 
     /**
-     * TODO: add by antony at 2022/5/3
+     * todo: add by antony at 2022/5/3
      *  该变量非常重要
      *  Transformation： StreamNode、Operator、Function
      *  Userfunction => StreamOperator => Transformation => OperatorChain => StreamNode(并行化后，得到StreamTask)
@@ -341,7 +341,7 @@ public class StreamExecutionEnvironment {
     public StreamExecutionEnvironment setRuntimeMode(final RuntimeExecutionMode executionMode) {
         checkNotNull(executionMode);
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  获取执行模式 Stream & Batch & Automatic
          */
         configuration.set(ExecutionOptions.RUNTIME_MODE, executionMode);
@@ -926,7 +926,7 @@ public class StreamExecutionEnvironment {
      * @param classLoader a class loader to use when loading classes
      */
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 配置系列参数
      * 配置checkpoint参数
      */
@@ -936,7 +936,7 @@ public class StreamExecutionEnvironment {
                 .getOptional(StreamPipelineOptions.TIME_CHARACTERISTIC)
                 .ifPresent(this::setStreamTimeCharacteristic);
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  StateBackend
          */
         Optional.ofNullable(loadStateBackend(configuration, classLoader))
@@ -995,13 +995,13 @@ public class StreamExecutionEnvironment {
                                         flag));
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  所有的参数都解析到ExecutionConfig
          */
         config.configure(configuration, classLoader);
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  把checkpoint 相关的参数，都解析出来之后，存放在CheckpointConfig中
          *  1、checkpointCfg 会首先被设置到 StreamGraph 中
          *  2、随着 StreamGraph 被构建成 JobGraph ，继续往下传递，就传递到了 JobGraph 中
@@ -1768,12 +1768,12 @@ public class StreamExecutionEnvironment {
 
         SingleOutputStreamOperator<OUT> source =
                 /**
-                 *  TODO: add by antony at 2022/5/3
+                 *  todo: add by antony at 2022/5/3
                  *  内部生成transformation
                  */
                 addSource(monitoringFunction, sourceName, null, boundedness)
                         /**
-                         * TODO: 将transformation添加至env的transformations成员变量中
+                         * todo: 将transformation添加至env的transformations成员变量中
                          *
                          */
                         .transform("Split Reader: " + sourceName, typeInfo, factory);
@@ -1939,7 +1939,7 @@ public class StreamExecutionEnvironment {
      */
     public JobExecutionResult execute() throws Exception {
         /**
-         *  TODO: add by antony at 2022/10/2
+         *  todo: add by antony at 2022/10/2
          *  执行代码
          */
         return execute(getStreamGraph());
@@ -1959,7 +1959,7 @@ public class StreamExecutionEnvironment {
     public JobExecutionResult execute(String jobName) throws Exception {
         Preconditions.checkNotNull(jobName, "Streaming Job name should not be null.");
         /**
-         *  TODO: add by antony at 2022/5/3
+         *  todo: add by antony at 2022/5/3
          *   构造 StreamGraph 并执行
          *   思路：
          *   1、遍历env中的 transformations 集合中的 transformation ，构造成一个 StreamNode
@@ -1983,7 +1983,7 @@ public class StreamExecutionEnvironment {
     @Internal
     public JobExecutionResult execute(StreamGraph streamGraph) throws Exception {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  执行StreamGraph
          */
         final JobClient jobClient = executeAsync(streamGraph);
@@ -2088,7 +2088,7 @@ public class StreamExecutionEnvironment {
                 "No execution.target specified in your configuration file.");
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  根据提交模式选择合适的 executor factory
          */
         final PipelineExecutorFactory executorFactory =
@@ -2100,14 +2100,14 @@ public class StreamExecutionEnvironment {
                 configuration.get(DeploymentOptions.TARGET));
 
         /**
-         *  TODO: add by antony at 2022/10/2
+         *  todo: add by antony at 2022/10/2
          *  选择核实的executor 来提交任务
          */
         CompletableFuture<JobClient> jobClientFuture =
                 executorFactory
                         .getExecutor(configuration)
                         /**
-                         *  TODO: add by antony at 2022/5/4
+                         *  todo: add by antony at 2022/5/4
                          *  根据已选择的 executor 来执行 StreamGraph
                          *  streamGraph 是Pipeline的子类
                          */
@@ -2138,7 +2138,7 @@ public class StreamExecutionEnvironment {
     @Internal
     public StreamGraph getStreamGraph() {
         /**
-         *  TODO: add by antony at 2022/10/2
+         *  todo: add by antony at 2022/10/2
          *  转换streamGraph
          */
         return getStreamGraph(true);
@@ -2157,7 +2157,7 @@ public class StreamExecutionEnvironment {
     public StreamGraph getStreamGraph(boolean clearTransformations) {
         final StreamGraph streamGraph = getStreamGraphGenerator(transformations).generate();
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  清空transformations
          *  目的是为了env能复用
          */
@@ -2188,7 +2188,7 @@ public class StreamExecutionEnvironment {
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  传入 checkpointCfg参数
          */
         return new StreamGraphGenerator(transformations, config, checkpointCfg, configuration)
@@ -2240,7 +2240,7 @@ public class StreamExecutionEnvironment {
     public void addOperator(Transformation<?> transformation) {
         Preconditions.checkNotNull(transformation, "transformation must not be null.");
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  每个算子的内部实现 ，底层都是构建了一个Transformation加入到Env对象中的List<Transformation> transformations成员变量中
          */
         this.transformations.add(transformation);

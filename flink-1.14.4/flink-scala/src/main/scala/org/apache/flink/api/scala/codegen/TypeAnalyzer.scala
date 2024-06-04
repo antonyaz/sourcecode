@@ -389,7 +389,7 @@ private[flink] trait TypeAnalyzer[C <: Context] { this: MacroContextHolder[C]
         } catch {
           case e: Throwable => None
         }
-        // TODO: use this once 2.10 is no longer supported
+        // todo: use this once 2.10 is no longer supported
         // tpe is the Enumeration.Value alias, get the owner
         // val owner = tpe.typeSymbol.owner
         // if (owner.isModule &&

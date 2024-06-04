@@ -195,7 +195,7 @@ public interface RankProcessStrategy {
                 }
 
                 if (isMonotonic) {
-                    // TODO: choose a set of primary key
+                    // todo: choose a set of primary key
                     return Arrays.asList(
                             new UpdateFastStrategy(upsertKeys.iterator().next().toArray()),
                             RETRACT_STRATEGY);

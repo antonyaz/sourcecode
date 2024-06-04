@@ -363,7 +363,7 @@ public class TableEnvironmentImpl implements TableEnvironmentInternal {
     @Override
     public Table fromTableSource(TableSource<?> source) {
         // only accept StreamTableSource and LookupableTableSource here
-        // TODO should add a validation, while StreamTableSource is in flink-table-api-java-bridge
+        // todo should add a validation, while StreamTableSource is in flink-table-api-java-bridge
         // module now
         return createTable(new TableSourceQueryOperation<>(source, !IS_STREAM_TABLE));
     }
@@ -1449,7 +1449,7 @@ public class TableEnvironmentImpl implements TableEnvironmentInternal {
                                 sb.append(e);
                             });
         }
-        // TODO: Print the column comment until FLINK-18958 is fixed
+        // todo: Print the column comment until FLINK-18958 is fixed
         return sb.toString();
     }
 
@@ -1922,7 +1922,7 @@ public class TableEnvironmentImpl implements TableEnvironmentInternal {
         List<Transformation<?>> transformations = planner.translateJsonPlan(jsonPlan);
         List<String> sinkIdentifierNames = new ArrayList<>();
         for (int i = 0; i < transformations.size(); ++i) {
-            // TODO serialize the sink table names to json plan ?
+            // todo serialize the sink table names to json plan ?
             sinkIdentifierNames.add("sink" + i);
         }
         return executeInternal(transformations, sinkIdentifierNames);

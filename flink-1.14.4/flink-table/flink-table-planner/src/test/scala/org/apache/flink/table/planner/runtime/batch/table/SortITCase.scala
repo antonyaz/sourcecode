@@ -64,7 +64,7 @@ class SortITCase extends BatchTestBase {
     compare(t, sortExpectedly(tupleDataSetStrings))
   }
 
-  @Ignore //TODO something not support?
+  @Ignore //todo something not support?
   @Test
   def testOrderByOffset(): Unit = {
     val ds = CollectionBatchExecTable.get3TupleDataSet(tEnv)

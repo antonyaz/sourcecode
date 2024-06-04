@@ -119,7 +119,7 @@ public class PostgresDialect extends AbstractDialect {
         // The data types used in PostgreSQL are list at:
         // https://www.postgresql.org/docs/12/datatype.html
 
-        // TODO: We can't convert BINARY data type to
+        // todo: We can't convert BINARY data type to
         //  PrimitiveArrayTypeInfo.BYTE_PRIMITIVE_ARRAY_TYPE_INFO in
         // LegacyTypeInfoDataTypeConverter.
         return Arrays.asList(

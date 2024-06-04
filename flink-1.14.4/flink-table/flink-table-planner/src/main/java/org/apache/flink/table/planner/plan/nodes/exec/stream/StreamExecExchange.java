@@ -49,7 +49,7 @@ import static org.apache.flink.util.Preconditions.checkArgument;
 /**
  * This {@link ExecNode} represents a change of partitioning of the input elements for stream.
  *
- * <p>TODO Remove this class once FLINK-21224 is finished.
+ * <p>todo Remove this class once FLINK-21224 is finished.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StreamExecExchange extends CommonExecExchange implements StreamExecNode<RowData> {
@@ -85,7 +85,7 @@ public class StreamExecExchange extends CommonExecExchange implements StreamExec
                 parallelism = 1;
                 break;
             case HASH:
-                // TODO Eliminate duplicate keys
+                // todo Eliminate duplicate keys
                 int[] keys = ((HashDistribution) inputProperty.getRequiredDistribution()).getKeys();
                 InternalTypeInfo<RowData> inputType =
                         (InternalTypeInfo<RowData>) inputTransform.getOutputType();

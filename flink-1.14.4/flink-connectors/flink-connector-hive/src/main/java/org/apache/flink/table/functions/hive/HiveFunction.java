@@ -22,7 +22,7 @@ import org.apache.flink.annotation.Internal;
 import org.apache.flink.table.types.DataType;
 
 /**
- * Interface for Hive simple udf, generic udf, and generic udtf. TODO: Note: this is only a
+ * Interface for Hive simple udf, generic udf, and generic udtf. todo: Note: this is only a
  * temporary interface for workaround when Flink type system and udf system rework is not finished.
  * Should adapt to Flink type system and Flink UDF framework later on.
  */

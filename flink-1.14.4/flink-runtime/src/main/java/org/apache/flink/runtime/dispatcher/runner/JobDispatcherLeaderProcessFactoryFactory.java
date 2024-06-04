@@ -52,7 +52,7 @@ public class JobDispatcherLeaderProcessFactoryFactory
 
         try {
             /**
-             *  TODO: add by antony at 2022/10/3
+             *  todo: add by antony at 2022/10/3
              *  获取JobGrapha
              */
             jobGraph =

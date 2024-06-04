@@ -196,7 +196,7 @@ alter function func11 as 'org.apache.flink.table.client.gateway.local.LocalExecu
 [INFO] Execute statement succeed.
 !info
 
-# TODO: show func11 when we support DESCRIBE FUNCTION
+# todo: show func11 when we support DESCRIBE FUNCTION
 
 create temporary function tmp_func as 'LowerUDF';
 [INFO] Execute statement succeed.

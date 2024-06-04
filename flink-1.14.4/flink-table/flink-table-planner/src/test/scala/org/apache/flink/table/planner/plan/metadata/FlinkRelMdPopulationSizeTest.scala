@@ -181,7 +181,7 @@ class FlinkRelMdPopulationSizeTest extends FlinkRelMdHandlerTestBase {
         rank match {
           case r: BatchPhysicalRank =>
             // local batch rank does not output rank func
-            // TODO re-check this
+            // todo re-check this
             if (r.isGlobal) {
               assertEquals(1.0, mq.getPopulationSize(rank, ImmutableBitSet.of(7)))
               assertEquals(1.0, mq.getPopulationSize(rank, ImmutableBitSet.of(7)))

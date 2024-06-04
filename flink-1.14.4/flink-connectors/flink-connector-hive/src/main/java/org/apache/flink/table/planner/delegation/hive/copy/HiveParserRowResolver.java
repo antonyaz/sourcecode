@@ -50,7 +50,7 @@ public class HiveParserRowResolver implements Serializable {
     private final Map<String, String[]> altInvRslvMap;
     private final Map<String, HiveParserASTNode> expressionMap;
 
-    // TODO: Refactor this and do in a more object oriented manner
+    // todo: Refactor this and do in a more object oriented manner
     private boolean isExprResolver;
 
     private static final Logger LOG =
@@ -317,7 +317,7 @@ public class HiveParserRowResolver implements Serializable {
         public int val = 0;
     }
 
-    // TODO: 1) How to handle collisions? 2) Should we be cloning ColumnInfo or not?
+    // todo: 1) How to handle collisions? 2) Should we be cloning ColumnInfo or not?
     private static boolean add(
             HiveParserRowResolver rrToAddTo,
             HiveParserRowResolver rrToAddFrom,

@@ -145,7 +145,7 @@ public abstract class CheckpointBarrierHandler implements Closeable {
         }
 
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *
          */
         toNotifyOnCheckpoint.triggerCheckpointOnBarrier(

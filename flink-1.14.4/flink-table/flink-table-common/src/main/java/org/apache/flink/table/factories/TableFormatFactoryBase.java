@@ -45,7 +45,7 @@ import static org.apache.flink.table.descriptors.DescriptorProperties.WATERMARK_
 public abstract class TableFormatFactoryBase<T> implements TableFormatFactory<T> {
 
     // Constants for schema derivation
-    // TODO drop constants once SchemaValidator has been ported to flink-table-common
+    // todo drop constants once SchemaValidator has been ported to flink-table-common
     private static final String SCHEMA = "schema";
     private static final String SCHEMA_NAME = "name";
     private static final String SCHEMA_DATA_TYPE = "data-type";

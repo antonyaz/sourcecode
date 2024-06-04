@@ -91,7 +91,7 @@ public class BatchExecOverAggregate extends BatchExecOverAggregateBase {
         final TableConfig tableConfig = planner.getTableConfig();
         // The generated sort is used for generating the comparator among partitions.
         // So here not care the ASC or DESC for the grouping fields.
-        // TODO just replace comparator to equaliser
+        // todo just replace comparator to equaliser
         final int[] partitionFields = overSpec.getPartition().getFieldIndices();
         final GeneratedRecordComparator genComparator =
                 ComparatorCodeGenerator.gen(

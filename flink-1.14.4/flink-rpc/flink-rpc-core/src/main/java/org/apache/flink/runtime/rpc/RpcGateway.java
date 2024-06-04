@@ -19,7 +19,7 @@
 package org.apache.flink.runtime.rpc;
 
 /**
- * TODO: 跟Hadoop中的Protocol 通信协议一样
+ * todo: 跟Hadoop中的Protocol 通信协议一样
  * 跟Spark中的RpcEndpoint一致
  *  子类特别多
  *  作为Rpc服务组件

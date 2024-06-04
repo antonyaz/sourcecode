@@ -42,7 +42,7 @@ import static org.apache.flink.test.checkpointing.EventTimeWindowCheckpointingIT
  * This test delegates to instances of {@link EventTimeWindowCheckpointingITCase} that have been
  * reconfigured to use local recovery.
  *
- * <p>TODO: This class must be refactored to properly extend {@link
+ * <p>todo: This class must be refactored to properly extend {@link
  * EventTimeWindowCheckpointingITCase}.
  */
 @RunWith(Parameterized.class)

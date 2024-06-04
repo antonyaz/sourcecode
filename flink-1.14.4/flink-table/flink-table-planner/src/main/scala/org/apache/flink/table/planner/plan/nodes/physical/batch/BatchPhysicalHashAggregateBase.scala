@@ -70,9 +70,9 @@ abstract class BatchPhysicalHashAggregateBase(
       // happen under the assumption
       val ndvOfGroupKey = Util.first(mq.getRowCount(this), 1d)
       //  We aim for a 200% utilization of the bucket table.
-      // TODO use BytesHashMap.BUCKET_SIZE instead of 16
+      // todo use BytesHashMap.BUCKET_SIZE instead of 16
       val bucketSize = ndvOfGroupKey * 16 / HASH_COLLISION_WEIGHT
-      // TODO use BytesHashMap.RECORD_EXTRA_LENGTH instead of 8
+      // todo use BytesHashMap.RECORD_EXTRA_LENGTH instead of 8
       val recordSize = ndvOfGroupKey * (FlinkRelMdUtil.binaryRowAverageSize(this) + 8)
       bucketSize + recordSize
     }

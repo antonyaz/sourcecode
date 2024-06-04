@@ -45,7 +45,7 @@ public class ProcessingTimeServiceUtil {
         //   after the timer for the timsetamp T has already been fired.
         // (2) past timers(processingTimestamp < currentTimestamp): do not need to delay the firing
         //   because currentTimestamp is larger than processingTimestamp pluses the 1ms offset.
-        // TODO. The processing timers' performance can be further improved.
+        // todo. The processing timers' performance can be further improved.
         //   see FLINK-23690 and https://github.com/apache/flink/pull/16744
         if (processingTimestamp >= currentTimestamp) {
             return processingTimestamp - currentTimestamp + 1;

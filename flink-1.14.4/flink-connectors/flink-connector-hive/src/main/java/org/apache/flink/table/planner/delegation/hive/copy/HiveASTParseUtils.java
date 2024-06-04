@@ -185,7 +185,7 @@ public class HiveASTParseUtils {
             Tree child = selExpr.getChild(selExpr.getChildCount() - 1);
             switch (child.getType()) {
                 case HiveASTParser.TOK_SETCOLREF:
-                    // We have a nested setcolref. Process that and start from scratch TODO: use
+                    // We have a nested setcolref. Process that and start from scratch todo: use
                     // stack?
                     processSetColsNode((HiveParserASTNode) child, searcher);
                     processSetColsNode(setCols, searcher);
@@ -223,7 +223,7 @@ public class HiveASTParseUtils {
                     }
                 default:
                     // Not really sure how to refer to this (or if we can).
-                    // TODO: We could find a different from branch for the union, that might have an
+                    // todo: We could find a different from branch for the union, that might have an
                     // alias? Or we could add an alias here to refer to, but that might break other
                     // branches.
                     LOG.debug(
@@ -253,7 +253,7 @@ public class HiveASTParseUtils {
             HashSet<String> aliases) {
         String colAlias = child.getText();
         if (!aliases.add(colAlias)) {
-            // TODO: if a side of the union has 2 columns with the same name, noone on the higher
+            // todo: if a side of the union has 2 columns with the same name, noone on the higher
             //       level can refer to them. We could change the alias in the original node.
             LOG.debug("Replacing SETCOLREF with ALLCOLREF because of duplicate alias " + colAlias);
             return false;

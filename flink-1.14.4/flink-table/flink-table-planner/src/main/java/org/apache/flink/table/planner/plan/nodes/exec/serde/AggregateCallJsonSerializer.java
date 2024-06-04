@@ -93,7 +93,7 @@ public class AggregateCallJsonSerializer extends StdSerializer<AggregateCall> {
         gen.writeStringField(FIELD_NAME_NAME, operator.getName());
         gen.writeStringField(FIELD_NAME_KIND, operator.kind.name());
         gen.writeStringField(FIELD_NAME_SYNTAX, operator.getSyntax().name());
-        // TODO if a udf is registered with class name, class name is recorded enough
+        // todo if a udf is registered with class name, class name is recorded enough
         if (operator instanceof AggSqlFunction) {
             AggSqlFunction aggSqlFunc = (AggSqlFunction) operator;
             gen.writeStringField(FIELD_NAME_DISPLAY_NAME, aggSqlFunc.displayName());

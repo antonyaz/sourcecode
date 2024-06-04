@@ -185,7 +185,7 @@ public class RegularOperatorChain<OUT, OP extends StreamOperator<OUT>>
                 operatorSnapshotsInProgress.put(
                         operatorWrapper.getStreamOperator().getOperatorID(),
                         /**
-                         *  TODO: add by antony at 2022/5/4
+                         *  todo: add by antony at 2022/5/4
                          *  保存快照 buildOperatorSnapshotFutures
                          */
                         buildOperatorSnapshotFutures(
@@ -200,7 +200,7 @@ public class RegularOperatorChain<OUT, OP extends StreamOperator<OUT>>
     }
 
     /**
-     * TODO: add by antony at 2022/5/4
+     * todo: add by antony at 2022/5/4
      * 把当前 这个 StreamOperator 的状态数据 进行持久化保存
      */
     private OperatorSnapshotFutures buildOperatorSnapshotFutures(
@@ -212,7 +212,7 @@ public class RegularOperatorChain<OUT, OP extends StreamOperator<OUT>>
             CheckpointStreamFactory storage)
             throws Exception {
         /**
-         *  TODO: add by antony at 2022/5/4
+         *  todo: add by antony at 2022/5/4
          *  执行checkpoint ， 状态数据持久化
          */
         OperatorSnapshotFutures snapshotInProgress =
